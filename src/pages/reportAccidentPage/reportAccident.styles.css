@@ -1,0 +1,93 @@
+#additional-details {
+  width: 19.4375rem ;
+  height: 3.3125rem ;
+  margin: auto;
+}
+
+fieldset {
+  border: 0;
+}
+
+option:hover{
+  background-color: #E72020;
+  color: #fff;
+}
+.report-title {
+  color: #2C2C2C;
+  font-size: 1.875rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.report-desc {
+  color: #2C2C2C;
+  padding: 0.9375rem 0rem 1.875rem 0rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.form-group {
+  margin: 1rem 0rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+  color: #030F25;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+textarea{
+  width: 19.4375rem !important;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form-control:focus{
+  border: 0.0625rem solid #000;
+  
+}
+
+.btn-send{
+  background-color: #E72020;
+  padding: 0.625rem 8.125rem;
+  display: block;
+  margin: auto;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-send:hover {
+  color: #E72020;
+  background: #ffffff;
+  border: 0.0625rem solid #E72020;
+}
+
+.btn-upload-picture {
+  border: 0.0625rem solid #E72020;
+  padding: 0.625rem 5.625rem;
+  display: block;
+  margin: 1.875rem auto;
+  background: #fff;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-upload-picture:hover {
+  color: #fff;
+  background: #E72020;
+  border: 0.0625rem solid #E72020;
+}

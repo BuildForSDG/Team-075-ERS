@@ -1,0 +1,40 @@
+.feedback{
+  padding-top: 3.125rem;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.875rem;
+  line-height: 2.3125rem;;
+}
+
+.feedback-title{
+  padding: 0.9375rem 0rem 3.125rem 0rem ;
+}
+
+.feedback-body p{
+  padding-bottom: 1.875rem;
+  color: #2C2C2C;
+  font-weight: 600;
+  font-family: "Montserrat";
+  font-size: 0.9375rem;
+}
+
+.feedback-body h6{
+  color: #2C2C2C;
+  font-weight: 400;
+  font-family: "Montserrat";
+  font-size: 0.625rem;
+}
+
+.feedback-body {
+  padding: 2.5rem;
+  border: 0.0625rem solid rgba(54, 64, 74, 0.05);
+  -webkit-border-radius: 0.3125rem;
+  border-radius: 0.3125rem;
+  -moz-border-radius: 0.3125rem;
+  background-clip: padding-box;
+  margin: auto;
+  width: 25rem;
+  background-color: #ffffff;
+  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.06);
+}
