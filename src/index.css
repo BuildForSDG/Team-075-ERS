@@ -21,13 +21,7 @@ body {
 }
 
 code {
-  font-family: 
-  source-code-pro, 
-  Menlo, 
-  Monaco, 
-  Consolas, 
-  "Courier New",
-  monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 a {
@@ -166,7 +160,7 @@ header {
   .nav-link {
     padding: 13px;
   }
-  
+
   .report {
     width: 80vw;
   }

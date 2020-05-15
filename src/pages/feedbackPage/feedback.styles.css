@@ -20,9 +20,9 @@
 }
 
 .feedback-body h6 {
-  color: #2C2C2C;
+  color: #2c2c2c;
   font-weight: 400;
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   font-size: 0.625rem;
 }
 

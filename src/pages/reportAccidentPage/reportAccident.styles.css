@@ -9,12 +9,12 @@ fieldset {
 }
 
 option:hover {
-  background-color: #E72020;
+  background-color: #e72020;
   color: #fff;
 }
 
 .report-title {
-  color: #2C2C2C;
+  color: #2c2c2c;
   font-size: 1.875rem;
   font-weight: 700;
   font-family: 'Montserrat', sans-serif;
@@ -42,7 +42,7 @@ option:hover {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 textarea {
