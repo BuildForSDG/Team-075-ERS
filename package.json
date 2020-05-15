@@ -24,7 +24,7 @@
   "resolutions": {
     "babel-jest": "^24.9.0"
   },
-  "eslintConfig": {
+  "eslint-config-react-app": {
     "extends": "react-app"
   },
   "browserslist": {
