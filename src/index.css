@@ -21,8 +21,13 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: 
+  source-code-pro, 
+  Menlo, 
+  Monaco, 
+  Consolas, 
+  "Courier New",
+  monospace;
 }
 
 a {
@@ -42,13 +47,14 @@ a {
 }
 
 header {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ddd;
 }
+
 .nav {
   display: flex;
   justify-content: flex-end;
   padding: 8px 50px;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .nav-link {
@@ -93,7 +99,7 @@ header {
 }
 
 .mail {
-  color: #aaaaaa;
+  color: #aaa;
   padding-bottom: 10px;
   font-size: 13.5px;
   margin: 0;
@@ -104,7 +110,7 @@ header {
 }
 
 .report {
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   width: 400px;
   margin: 0 auto;
   padding: 15px 0;
@@ -114,8 +120,9 @@ header {
 .report p {
   padding: 5px 0;
   font-size: 14px;
-  color: #aaaaaa;
+  color: #aaa;
 }
+
 .report span {
   font-size: 18px;
 }
@@ -153,12 +160,13 @@ header {
   }
 
   .show-menu {
-    display: flex !important;
+    display: flex;
   }
 
   .nav-link {
     padding: 13px;
   }
+  
   .report {
     width: 80vw;
   }

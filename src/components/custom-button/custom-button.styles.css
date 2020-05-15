@@ -6,7 +6,7 @@
   width: 150px;
   border: none;
   border-radius: 100%;
-  background: #E72020;
+  background: #e72020;
   font-size: 20px;
   color: white;
   cursor: pointer;
@@ -18,7 +18,7 @@
 }
 
 .custom-button:active {
-  background-color: #E72020;
+  background-color: #e72020;
   box-shadow: 0 5px rgba(231, 32, 32, 0.2);
   transform: translateY(4px);
 }
@@ -74,7 +74,7 @@
 @keyframes ripple {
   from {
     opacity: 1;
-    transform: scale3d(1.0, 1.0, 1);
+    transform: scale3d(1, 1, 1);
   }
 
   to {

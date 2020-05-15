@@ -21,10 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "resolutions": {
-    "babel-jest": "^24.9.0"
-  },
-  "eslint-config-react-app": {
+  "eslintconfig": {
     "extends": "react-app"
   },
   "browserslist": {

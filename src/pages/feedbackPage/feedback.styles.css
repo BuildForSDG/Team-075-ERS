@@ -1,25 +1,25 @@
-.feedback{
+.feedback {
   padding-top: 3.125rem;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: bold;
   font-size: 1.875rem;
-  line-height: 2.3125rem;;
+  line-height: 2.3125rem;
 }
 
-.feedback-title{
-  padding: 0.9375rem 0rem 3.125rem 0rem ;
+.feedback-title {
+  padding: 0.9375rem 0 3.125rem 0;
 }
 
-.feedback-body p{
+.feedback-body p {
   padding-bottom: 1.875rem;
-  color: #2C2C2C;
+  color: #2c2c2c;
   font-weight: 600;
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   font-size: 0.9375rem;
 }
 
-.feedback-body h6{
+.feedback-body h6 {
   color: #2C2C2C;
   font-weight: 400;
   font-family: "Montserrat";
@@ -35,6 +35,6 @@
   background-clip: padding-box;
   margin: auto;
   width: 25rem;
-  background-color: #ffffff;
-  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.06);
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.06);
 }

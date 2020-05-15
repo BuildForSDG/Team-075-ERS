@@ -1,6 +1,6 @@
 #additional-details {
-  width: 19.4375rem ;
-  height: 3.3125rem ;
+  width: 19.4375rem;
+  height: 3.3125rem;
   margin: auto;
 }
 
@@ -8,10 +8,11 @@ fieldset {
   border: 0;
 }
 
-option:hover{
+option:hover {
   background-color: #E72020;
   color: #fff;
 }
+
 .report-title {
   color: #2C2C2C;
   font-size: 1.875rem;
@@ -20,42 +21,42 @@ option:hover{
 }
 
 .report-desc {
-  color: #2C2C2C;
-  padding: 0.9375rem 0rem 1.875rem 0rem;
+  color: #2c2c2c;
+  padding: 0.9375rem 0 1.875rem 0;
   font-family: 'Montserrat', sans-serif;
 }
+
 .form-group {
-  margin: 1rem 0rem;
+  margin: 1rem 0;
 }
 
 .form-control {
   display: block;
   width: 100%;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.5;
-  color: #030F25;
+  color: #030f25;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
 }
 
-textarea{
-  width: 19.4375rem !important;
+textarea {
+  width: 19.4375rem;
   margin: auto;
   font-family: 'Montserrat', sans-serif;
 }
 
-.form-control:focus{
+.form-control:focus {
   border: 0.0625rem solid #000;
-  
 }
 
-.btn-send{
-  background-color: #E72020;
+.btn-send {
+  background-color: #e72020;
   padding: 0.625rem 8.125rem;
   display: block;
   margin: auto;
@@ -69,13 +70,13 @@ textarea{
 }
 
 .btn-send:hover {
-  color: #E72020;
-  background: #ffffff;
-  border: 0.0625rem solid #E72020;
+  color: #e72020;
+  background: #fff;
+  border: 0.0625rem solid #e72020;
 }
 
 .btn-upload-picture {
-  border: 0.0625rem solid #E72020;
+  border: 0.0625rem solid #e72020;
   padding: 0.625rem 5.625rem;
   display: block;
   margin: 1.875rem auto;
@@ -86,8 +87,9 @@ textarea{
   text-decoration: none;
   cursor: pointer;
 }
+
 .btn-upload-picture:hover {
   color: #fff;
-  background: #E72020;
-  border: 0.0625rem solid #E72020;
+  background: #e72020;
+  border: 0.0625rem solid #e72020;
 }

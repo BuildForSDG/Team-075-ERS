@@ -6,14 +6,17 @@ import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendH
 import './homePage.styles.css';
 import CustomButton from '../../components/custom-button/custom-button.component';
 
+
 class HomePage extends React.Component {
+  
+
   componentDidMount() {
     const { sendHelp } = this.props;
     if ('geolocation' in navigator) {
-      window.navigator.geolocation.getCurrentPosition((success) => {
-        const lat = success.coords.latitude;
-        const lng = success.coords.longitude;
-        sendHelp({ lat, lng });
+      window.navigator.geolocation.getCurrentPosition(success => {
+        const lat =  success.coords.latitude
+        const lng =  success.coords.longitude
+        sendHelp({lat, lng})
       });
       console.log('Available');
     } else {
@@ -34,14 +37,14 @@ class HomePage extends React.Component {
         <div className="div1">
           <h1>Have you been involved in an ACCIDENT?</h1>
           <p>
-            Press the help button and help will reach you soon. If you are reporting as an eye witness please make use
+            Press the help button and help will reach you soon. 
+            If you are reporting as an eye witness please make use
             of the Eye witness button
           </p>
         </div>
         <div className="div2">
           <CustomButton className="custom-button" onClick={this.sendHelp}>
-            {' '}
-            Help me!{' '}
+            {' '} Help me! {' '}
           </CustomButton>
         </div>
         {/* <Link to='/report-accident'><CustomButton className='custom-button'>Report Accident</CustomButton></Link> */}
@@ -53,15 +56,14 @@ class HomePage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   help: state.help
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  sendHelp: (location) => dispatch(sendHelp(location)),
+const mapDispatchToProps = dispatch => ({
+  sendHelp: location => dispatch(sendHelp(location)),
   helpSent: () => dispatch(helpSent()),
-  postUserDetailsStartAsync: (lat, lng, phoneNo, userId) =>
-    dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId))
+  postUserDetailsStartAsync: (lat, lng, phoneNo, userId) => dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
