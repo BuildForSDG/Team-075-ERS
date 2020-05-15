@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import HomePage from '../src/pages/homepage/homePage.component';
 import UserProfile from './pages/userProfile/userProfile.component';
 import ReportAccident from './pages/reportAccidentPage/reportAccident.component';
+import Feedback from './pages/feedbackPage/feedback.component';
 import Navbar from './components/nav-bar/navbar.component';
 
 
@@ -20,9 +21,10 @@ class App extends React.Component {
           <Navbar />
           <div className="container">
             <Switch>
-              <Route exact path="/" render={() => (this.props.sent ? (<Redirect to='/report-accident' />) : (<HomePage />))} />
+              <Route exact path="/" render={() => (this.props.sent ? (<Redirect to='/feedback' />) : (<HomePage />))} />
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
+              <Route exact path="/feedback" component={Feedback} />
             </Switch>
           </div>
         </div>
