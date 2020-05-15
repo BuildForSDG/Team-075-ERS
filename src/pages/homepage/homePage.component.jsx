@@ -20,7 +20,7 @@ class HomePage extends React.Component {
       });
       console.log('Available');
     } else {
-      console.log('Not Available');
+      alert('Location unavailable.');
     }
   }
 
