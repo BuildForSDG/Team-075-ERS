@@ -16,7 +16,7 @@ export const config = {
 firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
-  
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
   const userRef = await firestore.doc(`users/${userAuth.uid}`);
