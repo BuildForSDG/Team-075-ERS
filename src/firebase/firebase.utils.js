@@ -12,7 +12,7 @@ export const config = {
   appId: '1:586593674371:web:9b1caf0a333583f123a7b6',
   measurementId: 'G-2DV41ZDD3S'
 };
-  
+
 firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
