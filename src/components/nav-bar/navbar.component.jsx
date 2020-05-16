@@ -21,7 +21,7 @@ class Navbar extends Component {
     return (
       <header>
         <Link to="/">
-          <img src="images/logo.svg" alt="help logo" id="logo" onClick={() => this.props.helpSent()}/>
+          <img src="images/logo.svg" alt="help logo" id="logo" onClick={() => this.props.helpSent(false)}/>
         </Link>
         <nav className={`nav ${this.state.showMenu ? "show-menu" : ""}`}>
           <Link className="nav-link" to="/login">
@@ -49,7 +49,7 @@ class Navbar extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  helpSent: () => dispatch(helpSent())
+  helpSent: (value) => dispatch(helpSent(value))
 })
 
 export default connect(null, mapDispatchToProps)(Navbar);
