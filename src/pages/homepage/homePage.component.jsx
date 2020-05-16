@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendHelp/sendHelp.actions';
 
-import { setCurrentUser } from '../../redux/user/user.actions';
+import setCurrentUser  from '../../redux/user/user.actions';
 
 import './homePage.styles.css';
 import CustomButton from '../../components/custom-button/custom-button.component';

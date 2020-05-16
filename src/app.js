@@ -15,14 +15,13 @@ import './App.css';
 class App extends React.Component {
 
   render() {
-    const { sent } = this.props;
     return (
       <Router>
         <div className="App">
           <Navbar />
           <div className="container">
             <Switch>
-              <Route exact path="/"  render={() => ( sent ? (<Redirect to='/feedback' />) : (<HomePage />))} />
+              <Route exact path="/"  render={() => (this.props.sent ? (<Redirect to='/feedback' />) : (<HomePage />))} />
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
               <Route exact path="/feedback" component={Feedback} />
