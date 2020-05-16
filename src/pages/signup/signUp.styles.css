@@ -6,7 +6,6 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-
 }
 
 .signup-title {
@@ -28,9 +27,9 @@ a {
 .user-details {
   display: block;
   width: 326.61px;
-  padding: 0.500rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   margin-bottom: 0.5rem;
-  font-size: 0.90rem;
+  font-size: 0.9rem;
   line-height: 1.5;
   color: #030f25;
   background-color: #fff;
@@ -121,11 +120,11 @@ a {
 
 .prompt-msg {
   padding: 70px 0;
-  color: 2c2c2c;
+  color: #2c2c2c;
 }
 
 .prompt-msg a {
-  color: 2c2c2c;
+  color: #2c2c2c;
 }
 
 .forgot-psw {
