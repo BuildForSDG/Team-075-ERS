@@ -5,7 +5,7 @@ export const sendHelp = (location) => ({
   payload: location
 });
 
-export const helpSent = (value) => ({ 
+export const helpSent = (value) => ({
   type: ConstantsActionTypes.SENT_USER_LOCATION,
   payload: value
 });
