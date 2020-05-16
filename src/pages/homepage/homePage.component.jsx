@@ -2,21 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendHelp/sendHelp.actions';
 
-import setCurrentUser  from '../../redux/user/user.actions';
-
 import './homePage.styles.css';
 import CustomButton from '../../components/custom-button/custom-button.component';
 
-
 class HomePage extends React.Component {
-
   componentDidMount() {
     const { sendHelp } = this.props;
     if ('geolocation' in navigator) {
-      window.navigator.geolocation.getCurrentPosition(success => {
-        const lat =  success.coords.latitude
-        const lng =  success.coords.longitude
-        sendHelp({lat, lng})
+      window.navigator.geolocation.getCurrentPosition((success) => {
+        const lat = success.coords.latitude;
+        const lng = success.coords.longitude;
+        sendHelp({ lat, lng });
       });
       console.log('Available');
     } else {
@@ -32,6 +28,7 @@ class HomePage extends React.Component {
   };
 
   render() {
+
     return (
       <div className="homepage">
         <div className="div1">
@@ -44,7 +41,8 @@ class HomePage extends React.Component {
         </div>
         <div className="div2">
           <CustomButton className="custom-button" onClick={() => this.sendHelp()}>
-            {' '} Help me! {' '}
+            {' '}
+            Help me!{' '}
           </CustomButton>
         </div>
         <div className="div3">
@@ -55,16 +53,16 @@ class HomePage extends React.Component {
   }
 }
 
+
 const mapStateToProps = state => ({
   help: state.help,
   user: state.user
 });
 
-const mapDispatchToProps = dispatch => ({
-  sendHelp: location => dispatch(sendHelp(location)),
+const mapDispatchToProps = (dispatch) => ({
+  sendHelp: (location) => dispatch(sendHelp(location)),
   helpSent: (value) => dispatch(helpSent(value)),
   postUserDetailsStartAsync: (lat, lng, phoneNo, userId) => dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId)),
-  setCurrentUser: (user) => dispatch(setCurrentUser(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
