@@ -20,7 +20,7 @@ const sendHelpReducer = (state = INITIAL_STATE, action) => {
     case ConstantsActionTypes.SENT_USER_LOCATION:
       return {
         ...state,
-        sent: !state.sent
+        sent: action.payload
       };
     case ConstantsActionTypes.POST_USER_DETAILS_START:
       return {

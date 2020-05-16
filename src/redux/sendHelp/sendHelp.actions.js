@@ -5,7 +5,10 @@ export const sendHelp = (location) => ({
   payload: location
 });
 
-export const helpSent = () => ({ type: ConstantsActionTypes.SENT_USER_LOCATION });
+export const helpSent = (value) => ({
+  type: ConstantsActionTypes.SENT_USER_LOCATION,
+  payload: value
+});
 
 export const postUserDetailsStart = () => ({ type: ConstantsActionTypes.POST_USER_DETAILS_START });
 
