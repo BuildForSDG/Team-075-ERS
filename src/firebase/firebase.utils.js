@@ -11,7 +11,7 @@ export const config = {
   messagingSenderId: '586593674371',
   appId: '1:586593674371:web:9b1caf0a333583f123a7b6',
   measurementId: 'G-2DV41ZDD3S'
-  };
+};
   
 firebase.initializeApp(config);
 export const auth = firebase.auth();
@@ -26,7 +26,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       displayName, email, photoURL, phoneNumber
     } = userAuth;
     const createdAt = new Date();
-    
+
     try {
       await userRef.set({
         displayName,
@@ -37,10 +37,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData
       });
     } catch (error) {
-      return ('error creating user!', error.message);
+      // return ('error creating user!', error.message);
     }
   }
-  return userRef;
+  // return userRef;
 };
 
 //  google authentication.
