@@ -3,6 +3,13 @@ import CustomButton from '../../components/custom-button/CustomButton';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUserStartAsync } from '../../redux/user/user.actions';
+import { ReactComponent as Line } from '../../assets/images/Line.svg';
+import { ReactComponent as Girl } from '../../assets/images/girl.svg';
+import { ReactComponent as Google } from '../../assets/images/google.svg';
+import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
+
+
+
 import '../signup/sign-up.css';
 
 class Login extends React.Component {
@@ -75,9 +82,9 @@ class Login extends React.Component {
   
           <div className="middle">
 
-            <img src="images/line.svg" alt="line" className="divider" />
+            <Line className="divider"/>
             <p>Or</p>
-            <img src="images/line.svg" alt="line" className="divider" />
+            <Line className="divider"/>
           </div>
   
           <div className="right">
@@ -85,19 +92,19 @@ class Login extends React.Component {
             <p>Sign up with one of your social accounts</p>
 
             <CustomButton className="soc-btn">
-              <img src="images/facebook.svg" alt="facebook icon" id="facebook" />
+              <Facebook id="facebook"/>
               <span>sign in with facebook</span>
             </CustomButton>
 
             <CustomButton className="soc-btn">
               <img src="images/google.svg" alt="google icon" id="google" />
+              {/* <Google id="google"/> */}
               <span>sign in with google</span>
             </CustomButton>
 
           </div>
 
-          <img src="images/girl.svg" alt="girl" id="girl" />
-
+          <Girl id='girl'/>
         </div>
 
         <p className="prompt-msg">

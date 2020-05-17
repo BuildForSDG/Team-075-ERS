@@ -13,18 +13,19 @@ import './App.css';
 
 class App extends React.Component {
   render() {
+    const { user } = this.props;
     return (
       <Router>
         <div className="App">
-          <Navbar pending={this.props.pending}/>
+          <Navbar login={this.props.user}/>
           <div className="container">
             <Switch>
               <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
               <Route exact path="/feedback" component={Feedback} />
-              <Route exact path="/login" render={() => (!this.props.pending ? <Redirect to="/" /> : <Login />)} />
-              <Route exact path="/sign-up" component={SignUp} />
+              <Route exact path="/login" render={() => (user.login === 200 ? <Redirect to="/" /> : <Login />)} />
+              <Route exact path="/sign-up" render={() => (user.login === 200 ? <Redirect to="/" /> : <SignUp />)} />
             </Switch>
           </div>
         </div>
@@ -35,7 +36,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => ({
   sent: state.help.sent,
-  pending: state.user.pending
+  pending: state.user.pending,
+  user: state.user
 });
 
 export default connect(mapStateToProps, null)(App);

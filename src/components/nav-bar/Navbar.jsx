@@ -19,7 +19,8 @@ class Navbar extends Component {
   };
 
   render() {
-    const { pending } = this.props;
+    console.log(this.props.login)
+    const { login } = this.props.login;
     return (
       <header>
         <Link to="/">
@@ -28,7 +29,7 @@ class Navbar extends Component {
         <nav className={`nav ${this.state.showMenu ? "show-menu" : ""}`}>
 
           {
-            !pending ? 
+            login === 200 ? 
 
             (<Link className='nav-link' to='/login' onClick={this.props.logoutUser}>Logout</Link>) 
             

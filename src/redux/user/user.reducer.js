@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   currentUser: null,
   login: null,
   signup: null,
-  pending: false
+  pending: true
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -51,7 +51,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case ConstantsActionTypes.LOGOUT_USER:
       return ({
         ...state,
-        pending: action.payload
+        pending: action.payload,
+        login: null
       });
     default:
       return state;

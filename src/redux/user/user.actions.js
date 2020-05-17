@@ -16,7 +16,7 @@ export const loginUserSuccess = (message) => ({
 });
 export const loginUserStartAsync = (email, password) => (dispatch) => {
   dispatch(loginUserStart());
-  fetch('http://localhost:3001/api/login', {
+  fetch('http://localhost:3001/api/auth/login', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -25,7 +25,7 @@ export const loginUserStartAsync = (email, password) => (dispatch) => {
     })
   })
     .then((data) => {
-      dispatch(loginUserSuccess(data));
+      dispatch(loginUserSuccess(data.status));
     })
     .catch((error) => {
       dispatch(loginUserFailed(error.message));
@@ -49,7 +49,7 @@ export const signUpUserSuccess = (message) => ({
 export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName,
   emergencyContactPhoneNo, password) => (dispatch) => {
   dispatch(signUpUserStart);
-  fetch('http://localhost:3001/api/signup', {
+  fetch('http://localhost:3001/api/auth/signup', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -64,7 +64,7 @@ export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName,
     })
   })
     .then((data) => {
-      dispatch(signUpUserSuccess(data));
+      dispatch(signUpUserSuccess(data.status));
     })
     .catch((error) => {
       dispatch(signUpUserFailed(error.message));
