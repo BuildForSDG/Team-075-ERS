@@ -39,11 +39,12 @@
   position: absolute;
   top: 70vh;
   background-color: white;
-  padding: 0.625rem 7.125rem;
+  padding: 0.625rem 3.125rem;
   display: block;
   margin: auto;
-  color: #e72020;
+  color: #2c2c2c;
   border: 2px solid #e72020;
+  border-radius: 5px;
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   text-align: center;

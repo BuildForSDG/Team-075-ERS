@@ -42,7 +42,7 @@ class HomePage extends React.Component {
             <CustomButton className="custom-button" onClick={() => this.sendHelp()}>
               Help me!
             </CustomButton>
-            <CustomButton className="btn-witness">Eye witness</CustomButton>
+            <CustomButton className="btn-witness">Report as an eye witness</CustomButton>
           </div>
           <div className="div3">
             <img src="images/accident.svg" alt="accident vector illustration" id="accident" />
