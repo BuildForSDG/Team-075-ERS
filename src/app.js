@@ -16,14 +16,14 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <Navbar />
+          <Navbar pending={this.props.pending}/>
           <div className="container">
             <Switch>
               <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
               <Route exact path="/feedback" component={Feedback} />
-              <Route exact path="/login" component={Login} />
+              <Route exact path="/login" render={() => (!this.props.pending ? <Redirect to="/" /> : <Login />)} />
               <Route exact path="/sign-up" component={SignUp} />
             </Switch>
           </div>
@@ -34,7 +34,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  sent: state.help.sent
+  sent: state.help.sent,
+  pending: state.user.pending
 });
 
 export default connect(mapStateToProps, null)(App);

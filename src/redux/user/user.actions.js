@@ -1,8 +1,72 @@
 import ConstantsActionTypes from './user.constants';
 
-const setCurrentUser = (user) => ({
+export const setCurrentUser = (user) => ({
   type: ConstantsActionTypes.SET_CURRENT_USER,
   payload: user
 });
 
-export default setCurrentUser;
+export const loginUserStart = () => ({ type: ConstantsActionTypes.LOGIN_USER_SUCCESS});
+export const loginUserFailed = (error) => ({
+  type: ConstantsActionTypes.LOGIN_USER_FAILED,
+  payload: error.message
+});
+export const loginUserSuccess = (message) => ({
+  type: ConstantsActionTypes.LOGIN_USER_SUCCESS,
+  payload: message
+});
+export const loginUserStartAsync = (email, password) => (dispatch) => {
+  dispatch(loginUserStart());
+  fetch('http://localhost:3001/api/login', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email,
+      password
+    })
+  })
+    .then((data) => {
+      dispatch(loginUserSuccess(data));
+    })
+    .catch((error) => {
+      dispatch(loginUserFailed(error.message));
+    });
+}
+
+export const logoutUser = () => ({
+  type: ConstantsActionTypes.LOGOUT_USER,
+  payload: true
+})
+
+export const signUpUserStart = () => ({ type: ConstantsActionTypes.SIGN_UP_USER_START });
+export const signUpUserFailed = (error) => ({
+  type: ConstantsActionTypes.SIGN_UP_USER_FAILED,
+  payload: error.message
+});
+export const signUpUserSuccess = (message) => ({
+  type: ConstantsActionTypes.SIGN_UP_USER_SUCCESS,
+  payload: message
+})
+export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName, emergencyContactPhoneNo, password) => (dispatch) => {
+  dispatch(signUpUserStart);
+  fetch('http://localhost:3001/api/signup', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name,
+      email,
+      phoneNo,
+      emergencyContact: {
+          name: emergencyContactName,
+          phoneNo: emergencyContactPhoneNo
+        },
+      password
+    })
+  })
+    .then((data) => {
+      dispatch(signUpUserSuccess(data));
+    })
+    .catch((error) => {
+      dispatch(signUpUserFailed(error.message));
+    });
+}
+
