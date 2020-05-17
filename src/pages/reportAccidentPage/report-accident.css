@@ -69,8 +69,13 @@ textarea {
   cursor: pointer;
 }
 
+.btn-send:focus {
+  outline: none;
+}
+
 .btn-send:hover {
   color: #e72020;
+  padding: 0.5625rem 8.0625rem;
   background: #fff;
   border: 0.0625rem solid #e72020;
 }

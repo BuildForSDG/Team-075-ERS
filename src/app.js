@@ -17,16 +17,16 @@ class App extends React.Component {
       <Router>
         <div className="App">
           <Navbar />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+          <Switch>
+            <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+            <div className="container">
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/sign-up" component={SignUp} />
-            </Switch>
-          </div>
+            </div>
+          </Switch>
         </div>
       </Router>
     );

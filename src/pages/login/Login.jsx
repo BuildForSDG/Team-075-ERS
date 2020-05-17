@@ -2,7 +2,7 @@ import React from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
 import { Link } from 'react-router-dom';
 import '../signup/sign-up.css';
-// import '.login.styles.css';
+//custom button component reused from report accident component
 
 export default function Login() {
   return (
@@ -18,7 +18,7 @@ export default function Login() {
               <p className="forgot-psw">
                 <b>Forgot password?</b>
               </p>
-              <CustomButton className="btn-send register-btn">Register</CustomButton>
+              <CustomButton className="btn-send register-btn">Login</CustomButton>
             </div>
           </fieldset>
         </form>

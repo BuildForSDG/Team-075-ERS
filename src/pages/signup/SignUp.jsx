@@ -2,6 +2,7 @@ import React from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
 import { Link } from 'react-router-dom';
 import './sign-up.css';
+//custom button component reused from report accident component
 
 export default function SignUp() {
   return (
@@ -18,7 +19,7 @@ export default function SignUp() {
               <CustomButton className="btn-send register-btn">Register</CustomButton>
 
               <div className="policy">
-                <input type="checkbox" id="checkbox" name="terms" value="terms" />
+                <input type="checkbox" id="checkbox" name="terms" />
                 <label>
                   By clicking continue you agree to our
                   <br />
@@ -28,13 +29,11 @@ export default function SignUp() {
             </div>
           </fieldset>
         </form>
-
         <div className="middle">
           <img src="images/line.svg" alt="line" className="divider" />
           <p>Or</p>
           <img src="images/line.svg" alt="line" className="divider" />
         </div>
-
         <div className="right">
           <p>Sign up with one of your social accounts</p>
           <CustomButton className="soc-btn">

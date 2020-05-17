@@ -29,22 +29,24 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div className="homepage">
-        <div className="div1">
-          <h1>Have you been involved in an ACCIDENT?</h1>
-          <p>
-            Press the help button and help will reach you soon. If you are reporting as an eye witness please make use
-            of the Eye witness button
-          </p>
-        </div>
-        <div className="div2">
-          <CustomButton className="custom-button" onClick={() => this.sendHelp()}>
-            {' '}
-            Help me!{' '}
-          </CustomButton>
-        </div>
-        <div className="div3">
-          <img src="images/accident.svg" alt="accident vector illustration" id="accident" />
+      <div className="container-home">
+        <div className="homepage">
+          <div className="div1">
+            <h1>Have you been involved in an ACCIDENT?</h1>
+            <p>
+              Press the help button and help will reach you soon. If you are reporting as an eye witness please make use
+              of the Eye witness button
+            </p>
+          </div>
+          <div className="div2">
+            <CustomButton className="custom-button" onClick={() => this.sendHelp()}>
+              Help me!
+            </CustomButton>
+            <CustomButton className="btn-witness">Eye witness</CustomButton>
+          </div>
+          <div className="div3">
+            <img src="images/accident.svg" alt="accident vector illustration" id="accident" />
+          </div>
         </div>
       </div>
     );
