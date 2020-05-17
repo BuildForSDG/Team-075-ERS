@@ -5,7 +5,7 @@ export const setCurrentUser = (user) => ({
   payload: user
 });
 
-export const loginUserStart = () => ({ type: ConstantsActionTypes.LOGIN_USER_SUCCESS});
+export const loginUserStart = () => ({ type: ConstantsActionTypes.LOGIN_USER_SUCCESS });
 export const loginUserFailed = (error) => ({
   type: ConstantsActionTypes.LOGIN_USER_FAILED,
   payload: error.message
@@ -45,8 +45,9 @@ export const signUpUserFailed = (error) => ({
 export const signUpUserSuccess = (message) => ({
   type: ConstantsActionTypes.SIGN_UP_USER_SUCCESS,
   payload: message
-})
-export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName, emergencyContactPhoneNo, password) => (dispatch) => {
+});
+export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName, 
+  emergencyContactPhoneNo, password) => (dispatch) => {
   dispatch(signUpUserStart);
   fetch('http://localhost:3001/api/signup', {
     method: 'post',
@@ -56,9 +57,9 @@ export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName,
       email,
       phoneNo,
       emergencyContact: {
-          name: emergencyContactName,
-          phoneNo: emergencyContactPhoneNo
-        },
+        name: emergencyContactName,
+        phoneNo: emergencyContactPhoneNo
+      },
       password
     })
   })
@@ -68,5 +69,5 @@ export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName,
     .catch((error) => {
       dispatch(signUpUserFailed(error.message));
     });
-}
+};
 

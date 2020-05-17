@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   currentUser: null,
   login: null,
   signup: null,
-  pending: false 
+  pending: false
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
