@@ -1,19 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import HomePage from './pages/homepage/homePage.component';
+import HomePage from './pages/homepage/HomePage';
 import UserProfile from './pages/userProfile/userProfile.component';
-import ReportAccident from './pages/reportAccidentPage/reportAccident.component';
-import Feedback from './pages/feedbackPage/feedback.component';
-import Login from './pages/login/login.component';
-import SignUp from './pages/signup/signUp.component';
-import Navbar from './components/nav-bar/navbar.component';
+import ReportAccident from './pages/reportAccidentPage/ReportAccident';
+import Feedback from './pages/feedbackPage/Feedback';
+import Login from './pages/login/Login';
+import SignUp from './pages/signup/SignUp';
+import Navbar from './components/nav-bar/Navbar';
 
 import './App.css';
 
 class App extends React.Component {
-
-
   render() {
     return (
       <Router>
@@ -21,7 +19,7 @@ class App extends React.Component {
           <Navbar />
           <div className="container">
             <Switch>
-              <Route exact path="/"  render={() => (this.props.sent ? (<Redirect to='/feedback' />) : (<HomePage />))} />
+              <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
               <Route exact path="/feedback" component={Feedback} />
@@ -38,7 +36,5 @@ class App extends React.Component {
 const mapStateToProps = (state) => ({
   sent: state.help.sent
 });
-
-
 
 export default connect(mapStateToProps, null)(App);

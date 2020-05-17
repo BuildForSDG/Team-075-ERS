@@ -1,24 +1,30 @@
 import React from 'react';
-import CustomButton from '../../components/custom-button/custom-button.component';
+import CustomButton from '../../components/custom-button/CustomButton';
 import { Link } from 'react-router-dom';
-import '../signup/signUp.styles.css';
-// import '.login.styles.css';
+import './sign-up.css';
 
-export default function Login() {
+export default function SignUp() {
   return (
     <section>
-      <h2 className="login-title">Hello</h2>
-      <p id="sub-heading">Please sign in to your account</p>
+      <h2 className="signup-title">Create An Account</h2>
       <div className="login-section">
         <form id="login" action="/login">
           <fieldset>
             <div className="left">
+              <input name="name" type="text" className="user-details" placeholder="Name" />
+              <input name="phoneNo" type="number" className="user-details" placeholder="Phone number" />
               <input name="email" type="email" className="user-details" placeholder="Email address" />
               <input name="password" type="password" className="user-details" placeholder="Password" />
-              <p className="forgot-psw">
-                <b>Forgot password?</b>
-              </p>
               <CustomButton className="btn-send register-btn">Register</CustomButton>
+
+              <div className="policy">
+                <input type="checkbox" id="checkbox" name="terms" value="terms" />
+                <label>
+                  By clicking continue you agree to our
+                  <br />
+                  <b>Terms of Service and Privacy Policy</b>
+                </label>
+              </div>
             </div>
           </fieldset>
         </form>
@@ -43,9 +49,9 @@ export default function Login() {
         <img src="images/girl.svg" alt="girl" id="girl" />
       </div>
       <p className="prompt-msg">
-        Don't an account?
-        <Link to="/login">
-          <b>Sign Up</b>
+        Already have an account?
+        <Link to="/sign-up">
+          <b>Log In</b>
         </Link>
       </p>
     </section>

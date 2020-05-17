@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendHelp/sendHelp.actions';
 
-import './homePage.styles.css';
-import CustomButton from '../../components/custom-button/custom-button.component';
+import './home-page.css';
+import CustomButton from '../../components/custom-button/CustomButton';
 
 class HomePage extends React.Component {
   componentDidMount() {
@@ -28,14 +28,12 @@ class HomePage extends React.Component {
   };
 
   render() {
-
     return (
       <div className="homepage">
         <div className="div1">
           <h1>Have you been involved in an ACCIDENT?</h1>
           <p>
-            Press the help button and help will reach you soon. 
-            If you are reporting as an eye witness please make use
+            Press the help button and help will reach you soon. If you are reporting as an eye witness please make use
             of the Eye witness button
           </p>
         </div>
@@ -53,8 +51,7 @@ class HomePage extends React.Component {
   }
 }
 
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   help: state.help,
   user: state.user
 });
@@ -62,7 +59,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => ({
   sendHelp: (location) => dispatch(sendHelp(location)),
   helpSent: (value) => dispatch(helpSent(value)),
-  postUserDetailsStartAsync: (lat, lng, phoneNo, userId) => dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId)),
+  postUserDetailsStartAsync: (lat, lng, phoneNo, userId) =>
+    dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
