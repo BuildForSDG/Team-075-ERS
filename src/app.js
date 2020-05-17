@@ -13,7 +13,6 @@ import './App.css';
 
 class App extends React.Component {
   render() {
-    const { user } = this.props;
     return (
       <Router>
         <div className="App">
@@ -24,8 +23,8 @@ class App extends React.Component {
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
               <Route exact path="/feedback" component={Feedback} />
-              <Route exact path="/login" render={() => (user.login === 200 ? <Redirect to="/" /> : <Login />)} />
-              <Route exact path="/sign-up" render={() => (user.login === 200 ? <Redirect to="/" /> : <SignUp />)} />
+              <Route exact path="/login" render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)} />
+              <Route exact path="/sign-up" render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <SignUp />)} />
             </Switch>
           </div>
         </div>
