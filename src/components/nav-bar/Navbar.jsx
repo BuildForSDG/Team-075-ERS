@@ -19,8 +19,8 @@ class Navbar extends Component {
   };
 
   render() {
-    console.log(this.props.login)
     const { login } = this.props.login;
+    const { signup } = this.props.signup;
     return (
       <header>
         <Link to="/">
@@ -29,7 +29,7 @@ class Navbar extends Component {
         <nav className={`nav ${this.state.showMenu ? "show-menu" : ""}`}>
 
           {
-            login === 200 ? 
+            (login === 200 || signup === 201) ? 
 
             (<Link className='nav-link' to='/login' onClick={this.props.logoutUser}>Logout</Link>) 
             

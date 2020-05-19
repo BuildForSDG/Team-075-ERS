@@ -13,13 +13,14 @@ import './App.css';
 
 class App extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <Router>
         <div className="App">
-          <Navbar login={this.props.user} />
+          <Navbar login={this.props.user} signup={this.props.user} />
           <Switch>
-            <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
-            <div className="container">
+            <React.Fragment>
+              <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
               <Route exact path="/feedback" component={Feedback} />
@@ -31,9 +32,9 @@ class App extends React.Component {
               <Route
                 exact
                 path="/sign-up"
-                render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <SignUp />)}
+                render={() => (this.props.user.signup === 201 ? <Redirect to="/" /> : <SignUp />)}
               />
-            </div>
+            </React.Fragment>
           </Switch>
         </div>
       </Router>

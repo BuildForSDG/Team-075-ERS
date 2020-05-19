@@ -52,7 +52,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return ({
         ...state,
         pending: action.payload,
-        login: null
+        login: null,
+        signup: null
       });
     default:
       return state;
