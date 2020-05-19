@@ -16,17 +16,25 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <Navbar login={this.props.user}/>
-          <div className="container">
-            <Switch>
-              <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+          <Navbar login={this.props.user} />
+          <Switch>
+            <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+            <div className="container">
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
               <Route exact path="/feedback" component={Feedback} />
-              <Route exact path="/login" render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)} />
-              <Route exact path="/sign-up" render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <SignUp />)} />
-            </Switch>
-          </div>
+              <Route
+                exact
+                path="/login"
+                render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
+              />
+              <Route
+                exact
+                path="/sign-up"
+                render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <SignUp />)}
+              />
+            </div>
+          </Switch>
         </div>
       </Router>
     );
