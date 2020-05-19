@@ -41,6 +41,11 @@ a {
 
 .register-btn {
   margin-right: 0;
+  width: 326.61px;
+}
+
+.register-btn:focus {
+  outline: none;
 }
 
 .policy {
@@ -135,4 +140,8 @@ a {
 #sub-heading {
   padding-top: 10px;
   padding-bottom: 60px;
+}
+
+.link {
+  margin: 5px;
 }
