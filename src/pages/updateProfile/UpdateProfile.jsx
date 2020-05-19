@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CustomButton from '../../components/custom-button'
+import CustomButton from '../../components/custom-button/CustomButton';
 import './update-profile.css';
 
 class UpdateProfile extends Component{
@@ -30,4 +30,4 @@ class UpdateProfile extends Component{
     );
   }
 }
-export default UpdateProfile
+export default UpdateProfile;
