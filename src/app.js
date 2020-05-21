@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import HomePage from './pages/homepage/HomePage';
 import UserProfile from './pages/userProfile/userProfile.component';
 import ReportAccident from './pages/reportAccidentPage/ReportAccident';
+import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import Feedback from './pages/feedbackPage/Feedback';
 import Login from './pages/login/Login';
 import SignUp from './pages/signup/SignUp';
@@ -23,6 +24,7 @@ class App extends React.Component {
               <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
               <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/report-accident" component={ReportAccident} />
+              <Route exact path="/update-profile" component={UpdateProfile} />
               <Route exact path="/feedback" component={Feedback} />
               <Route
                 exact
