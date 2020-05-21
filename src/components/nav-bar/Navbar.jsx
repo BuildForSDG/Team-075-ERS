@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { helpSent } from '../../redux/sendHelp/sendHelp.actions';
 import { logoutUser } from "../../redux/user/user.actions";
+import CustomButton from "../custom-button/CustomButton";
 
 class Navbar extends Component {
   constructor(props) {
@@ -19,8 +20,8 @@ class Navbar extends Component {
   };
 
   render() {
-    const { login } = this.props.login;
-    const { signup } = this.props.signup;
+    console.log('currentUser--->', this.props)
+    const { login, currentUser } = this.props.user;
     return (
       <header>
         <Link to="/">
@@ -29,9 +30,21 @@ class Navbar extends Component {
         <nav className={`nav ${this.state.showMenu ? "show-menu" : ""}`}>
 
           {
-            (login === 200 || signup === 201) ? 
+            (login === 200 ) ? 
 
-            (<Link className='nav-link' to='/login' onClick={this.props.logoutUser}>Logout</Link>) 
+          (<>
+            <Link className='nav-link' to='/profile'>{`Welcome, ${currentUser ? currentUser.userId.name : null }`} </Link>
+            <Link className="nav-link" to="/how-it-works">
+            How it works
+          </Link>
+          <Link className="nav-link" to="/faq">
+            FAQ
+          </Link>
+            <Link className='nav-link' to='/login' onClick={this.props.logoutUser}>
+              <CustomButton className='custom-square-button' >Logout</CustomButton>
+            </Link>
+            </>
+            ) 
             
             : 
             <>
@@ -41,14 +54,15 @@ class Navbar extends Component {
               <Link className="nav-link" to="/sign-up">
                 Sign Up
               </Link>
-            </>
-          }
-          <Link className="nav-link" to="/how-it-works">
+              <Link className="nav-link" to="/how-it-works">
             How it works
           </Link>
           <Link className="nav-link" to="/faq">
             FAQ
           </Link>
+            </>
+          }
+          
         </nav>
         <img
           src="images/bars.svg"
@@ -66,5 +80,9 @@ const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser())
 })
 
+const mapStateToProps = (state) => ({
+  user: state.user
+})
 
-export default connect(null, mapDispatchToProps)(Navbar);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

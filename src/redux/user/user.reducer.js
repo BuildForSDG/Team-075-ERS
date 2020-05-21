@@ -4,8 +4,9 @@ const INITIAL_STATE = {
   currentUser: null,
   login: null,
   signup: null,
-  pending: true
+  pending: true,
 };
+
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -17,6 +18,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case ConstantsActionTypes.LOGIN_USER_START:
       return ({
         ...state,
+        currentUser: null,
+        login: null,
+        signup: null,
         pending: true
       });
     case ConstantsActionTypes.LOGIN_USER_SUCCESS:
@@ -34,13 +38,16 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case ConstantsActionTypes.SIGN_UP_USER_START:
       return ({
         ...state,
-        pending: true
+        pending: true,
+        login: null,
+        currentUser: null
       });
     case ConstantsActionTypes.SIGN_UP_USER_SUCCESS:
       return ({
         ...state,
         signup: action.payload,
-        pending: false
+        pending: false,
+        login: null
       });
     case ConstantsActionTypes.SIGN_UP_USER_FAILED:
       return ({
@@ -53,7 +60,14 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         pending: action.payload,
         login: null,
-        signup: null
+        signup: null,
+        currentUser: null
+      });
+    case ConstantsActionTypes.LOAD_USER:
+      return ({
+        ...state,
+        pending: false,
+        currentUser: action.payload
       });
     default:
       return state;
