@@ -19,7 +19,7 @@ class HomePage extends React.Component {
         const lng = success.coords.longitude;
         sendHelp({ lat, lng });
       });
-      console.log('Available');
+      // console.log('Available');
     } else {
       alert('Location unavailable.');
     }

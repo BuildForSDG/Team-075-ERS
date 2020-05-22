@@ -14,11 +14,11 @@ import './App.css';
 
 class App extends React.Component {
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <Router>
         <div className="App">
-          <Navbar login={this.props.user} signup={this.props.user} />
+          <Navbar/>
           <Switch>
             <React.Fragment>
               <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
@@ -34,7 +34,7 @@ class App extends React.Component {
               <Route
                 exact
                 path="/sign-up"
-                render={() => (this.props.user.signup === 201 ? <Redirect to="/" /> : <SignUp />)}
+                render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
               />
             </React.Fragment>
           </Switch>
