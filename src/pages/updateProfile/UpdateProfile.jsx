@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
 import './update-profile.css';
+import { connect } from 'react-redux';
 
 class UpdateProfile extends Component{
   render(){
+    const { userId } = this.props.user;
     return(
       <section>
         <h4>Update Profile</h4>
@@ -11,26 +13,26 @@ class UpdateProfile extends Component{
 
         <img src="images/profilePicture.svg" alt="profile-pic" width="150px" height="150px"/>
 
-        <h5>Johnson Pearson</h5>
-        <p>+234 803 1234 5678</p>
-        <p>johnson@mail.com</p>
+        <h5>{userId.name}</h5>
+        <p>{userId.phoneNo}</p>
+        <p>{userId.email}</p>
 
         <form id="update-profile" action="/update-profile">
           <fieldset>
             <div className="form-group">
-              <input type="text" className="form-control" placeholder="Name"/>
+              <input type="text" className="form-control" placeholder={userId.name}/>
             </div>
 
            <div className="form-group">
-             <input type="text" className="form-control" placeholder="Phone number"/>
+             <input type="text" className="form-control" placeholder={userId.phoneNo}/>
            </div>
 
           <div className="form-group">
-            <input type="text" className="form-control" placeholder="Emergency contact name"/>
+            <input type="text" className="form-control" placeholder={userId.emergencyContact.name}/>
           </div>
 
           <div className="form-group">
-            <input type="text" className="form-control" placeholder="Emergency contact number"/>
+            <input type="text" className="form-control" placeholder={userId.emergencyContact.phoneNo}/>
           </div>
 
             <CustomButton className="btn-send">
@@ -44,4 +46,9 @@ class UpdateProfile extends Component{
     );
   }
 }
-export default UpdateProfile;
+
+const mapStateToProps = (state) => ({
+  user: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(UpdateProfile);
