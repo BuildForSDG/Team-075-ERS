@@ -17,7 +17,7 @@ h4 {
   margin-bottom: 1.25rem;
 }
 
-h4>p {
+h4 > p {
   color: #2c2c2c;
   padding: 0.9375rem 0 1.875rem 0;
   font-family: inherit;
