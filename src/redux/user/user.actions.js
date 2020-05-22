@@ -5,17 +5,12 @@ export const setCurrentUser = (user) => ({
   payload: user
 });
 
-export const loginUserStart = () => ({ type: ConstantsActionTypes.LOGIN_USER_SUCCESS });
-export const loginUserFailed = (error) => ({
-  type: ConstantsActionTypes.LOGIN_USER_FAILED,
-  payload: error.message
-});
-export const loginUserSuccess = (message) => ({
-  type: ConstantsActionTypes.LOGIN_USER_SUCCESS,
-  payload: message
-});
 export const loginUserStartAsync = (email, password) => (dispatch) => {
-  dispatch(loginUserStart());
+  dispatch({
+    type: ConstantsActionTypes.LOGIN_USER_START,
+    payload: true
+  });
+
   fetch('http://localhost:3001/api/auth/login', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
@@ -24,11 +19,23 @@ export const loginUserStartAsync = (email, password) => (dispatch) => {
       password
     })
   })
-    .then((data) => {
-      dispatch(loginUserSuccess(data.status));
+    .then((response) => {
+      dispatch({
+        type: ConstantsActionTypes.LOGIN_USER_SUCCESS,
+        payload: response.status
+      });
+      return response.json();
+    }).then((data) => {
+      dispatch({
+        type: ConstantsActionTypes.LOAD_USER,
+        payload: data
+      });
     })
     .catch((error) => {
-      dispatch(loginUserFailed(error.message));
+      dispatch({
+        type: ConstantsActionTypes.LOGIN_USER_FAILED,
+        payload: error.message
+      });
     });
 };
 
@@ -37,18 +44,15 @@ export const logoutUser = () => ({
   payload: true
 });
 
-export const signUpUserStart = () => ({ type: ConstantsActionTypes.SIGN_UP_USER_START });
-export const signUpUserFailed = (error) => ({
-  type: ConstantsActionTypes.SIGN_UP_USER_FAILED,
-  payload: error.message
-});
-export const signUpUserSuccess = (message) => ({
-  type: ConstantsActionTypes.SIGN_UP_USER_SUCCESS,
-  payload: message
-});
-export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName,
-  emergencyContactPhoneNo, password) => (dispatch) => {
-  dispatch(signUpUserStart);
+
+export const signUpUserStartAsync = (
+  name, email, phoneNo, emergencyContactName, emergencyContactPhoneNo, password
+) => (dispatch) => {
+  dispatch({
+    type: ConstantsActionTypes.SIGN_UP_USER_START,
+    payload: true
+  });
+
   fetch('http://localhost:3001/api/auth/signup', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
@@ -64,9 +68,21 @@ export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName,
     })
   })
     .then((data) => {
-      dispatch(signUpUserSuccess(data.status));
+      dispatch({
+        type: ConstantsActionTypes.SIGN_UP_USER_SUCCESS,
+        payload: data.status
+      });
+      return data.json();
+    }).then((user) => {
+      dispatch({
+        type: ConstantsActionTypes.LOAD_USER,
+        payload: user
+      });
     })
     .catch((error) => {
-      dispatch(signUpUserFailed(error.message));
+      dispatch({
+        type: ConstantsActionTypes.SIGN_UP_USER_FAILED,
+        payload: error.message
+      });
     });
 };

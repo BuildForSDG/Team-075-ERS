@@ -11,41 +11,49 @@ import SignUp from './pages/signup/SignUp';
 import Navbar from './components/nav-bar/Navbar';
 
 import './App.css';
+import WithSpinner from './components/with-spinner/with-spinner';
 
 class App extends React.Component {
   render() {
-    return (
-      <Router>
-        <div className="App">
-          <Navbar login={this.props.user} />
-          <Switch>
-            <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
-            <div className="container">
-              <Route exact path="/profile" component={UserProfile} />
-              <Route exact path="/report-accident" component={ReportAccident} />
-              <Route exact path="/update-profile" component={UpdateProfile} />
-              <Route exact path="/feedback" component={Feedback} />
-              <Route
-                exact
-                path="/login"
-                render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
-              />
-              <Route
-                exact
-                path="/sign-up"
-                render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <SignUp />)}
-              />
-            </div>
-          </Switch>
-        </div>
-      </Router>
-    );
+    // console.log(this.props)
+
+    if (!this.props.isLoading){
+
+      return (
+        <Router>
+          <div className="App">
+            <Navbar/>
+            <Switch>
+              <React.Fragment>
+                <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+                <Route exact path="/profile" component={UserProfile} />
+                <Route exact path="/report-accident" component={ReportAccident} />
+                <Route exact path="/update-profile" component={UpdateProfile} />
+                <Route exact path="/feedback" component={Feedback} />
+                  <Route
+                    exact
+                    path="/login"
+                    render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
+                  />
+                  <Route
+                    exact
+                    path="/sign-up"
+                    render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
+                  />
+              </React.Fragment>
+            </Switch>
+          </div>
+        </Router>
+      );
+    }
+
+    return <WithSpinner></WithSpinner>
   }
 }
 
 const mapStateToProps = (state) => ({
   sent: state.help.sent,
-  pending: state.user.pending,
+  isLoading: state.user.isLoading,
   user: state.user
 });
 

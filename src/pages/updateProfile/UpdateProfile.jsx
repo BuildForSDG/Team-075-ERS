@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
 import './update-profile.css';
+import { connect } from 'react-redux';
 
 class UpdateProfile extends Component{
   render(){
+    const { userId } = this.props.user;
     return(
       <div className="container">
 
@@ -11,33 +13,34 @@ class UpdateProfile extends Component{
           <h4>Update Profile</h4>
           <p>Update your profile information</p>
 
+
           <img src="images/profilePicture.svg" alt="profile-pic" />
 
-          <h5>Johnson Pearson</h5>
-          <p>+234 803 1234 5678</p>
-          <p>johnson@mail.com</p>
+                <h5>{userId.name}</h5>
+                <p>{userId.phoneNo}</p>
+                <p>{userId.email}</p>
 
           <form id="update-profile" action="/update-profile">
             <fieldset>
-              <div className="form-group">
-                <input type="text" className="form-control" placeholder="Name"/>
-              </div>
+                <div className="form-group">
+                  <input type="text" className="form-control" placeholder={userId.name} />
+                </div>
 
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="Phone number"/>
-            </div>
+                <div className="form-group">
+                  <input type="text" className="form-control" placeholder={userId.phoneNo} />
+                </div>
 
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="Emergency contact name"/>
-            </div>
+                <div className="form-group">
+                  <input type="text" className="form-control" placeholder={userId.emergencyContact.name} />
+                </div>
 
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="Emergency contact number"/>
-            </div>
+                <div className="form-group">
+                  <input type="text" className="form-control" placeholder={userId.emergencyContact.phoneNo} />
+                </div>
 
-              <CustomButton className="btn-send">
-                Update
-              </CustomButton>
+                <CustomButton className="btn-send">
+                  Update
+                </CustomButton>
             </fieldset>
           </form>
 
@@ -47,4 +50,9 @@ class UpdateProfile extends Component{
     );
   }
 }
-export default UpdateProfile;
+
+const mapStateToProps = (state) => ({
+  user: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(UpdateProfile);
