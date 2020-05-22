@@ -52,7 +52,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         signup: action.payload,
         pending: false,
         login: null,
-        isLoading:false
+        isLoading: false
       });
     case ConstantsActionTypes.SIGN_UP_USER_FAILED:
       return ({
