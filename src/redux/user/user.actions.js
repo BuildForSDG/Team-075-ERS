@@ -47,7 +47,7 @@ export const logoutUser = () => ({
 
 export const signUpUserStartAsync = (
   name, email, phoneNo, emergencyContactName, emergencyContactPhoneNo, password
-  ) => (dispatch) => {
+) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SIGN_UP_USER_START,
     payload: true
