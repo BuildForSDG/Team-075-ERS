@@ -11,12 +11,11 @@
 .modal-main {
   position: fixed;
   background: white;
-  width: 40%;
-  height: 400px;
+  max-width: 400px;
+  min-height: 400px;
   padding: 20px;
   top: 50%;
   left: 50%;
-  text-align: center;
   transform: translate(-50%, -50%);
 }
 
@@ -26,4 +25,67 @@
 
 .display-none {
   display: none;
+}
+
+.heading,
+.sub-message {
+  text-align: center;
+  padding: 5px;
+  color: #2c2c2c;
+}
+
+.main-content {
+  display: flex;
+}
+
+.left-div {
+  padding-left: 30px;
+  width: 50px;
+}
+
+.circle {
+  border: 1px solid #8b8a8a;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+}
+
+.line {
+  height: 37px;
+  width: 0;
+  border: 1px solid #8b8a8a;
+  margin-left: 5px;
+}
+
+.line2 {
+  height: 50px;
+}
+
+.right-div {
+  padding-right: 30px;
+  max-width: 300px;
+}
+
+.right-div p {
+  padding-bottom: 18px;
+}
+
+.btn-close {
+  background-color: #e72020;
+  padding: 0.625rem 5.125rem;
+  display: block;
+  margin: auto;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  background-color: white;
+  color: #e72020;
+  border: 1px solid #e72020;
 }

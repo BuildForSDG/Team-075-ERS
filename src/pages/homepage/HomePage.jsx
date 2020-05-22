@@ -7,6 +7,10 @@ import CustomButton from '../../components/custom-button/CustomButton';
 import Modal from '../../components/modal/Modal';
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { show: false };
+  }
   componentDidMount() {
     const { sendHelp } = this.props;
     if ('geolocation' in navigator) {
@@ -25,10 +29,9 @@ class HomePage extends React.Component {
     const { lat, lng, phoneNo, userId } = this.props.help.location;
     const { helpSent, postUserDetailsStartAsync } = this.props;
     postUserDetailsStartAsync(lat, lng, phoneNo, userId);
-    helpSent(true);
+    // helpSent(true);
+    this.showModal();
   };
-
-  state = { show: false };
 
   showModal = () => {
     this.setState({ show: true });
@@ -50,11 +53,38 @@ class HomePage extends React.Component {
             </p>
           </div>
           <div className="div2">
-            <Modal show={this.state.show} handleClose={this.hideModal} />
-            <CustomButton className="custom-button" onClick={() => this.sendHelp()}>
+            <Modal show={this.state.show} handleClose={this.hideModal}>
+              <h2 className="heading">Help request Sent</h2>
+              <p className="sub-message">
+                Please Stay Calm!
+                <br />
+                Help will reach out to you soon
+              </p>
+              <div className="main-content">
+                <div className="left-div">
+                  <div className="circle"></div>
+                  <div className="line"></div>
+                  <div className="circle"></div>
+                  <div className="line line2"></div>
+                  <div className="circle"></div>
+                </div>
+                <div className="right-div">
+                  <div>
+                    <p>You will recieve a feedback sms</p>
+                  </div>
+                  <div>
+                    <p>Response team will reach your location</p>
+                  </div>
+                  <div>
+                    <p>Response team will help get you out of the situation and take necessary actions</p>
+                  </div>
+                </div>
+              </div>
+            </Modal>
+            <CustomButton className="custom-button" onClick={this.sendHelp}>
               Help me!
             </CustomButton>
-            <CustomButton className="btn-witness" onClick={this.showModal}>
+            <CustomButton className="btn-witness" onClick={this.sendHelp}>
               Report as an eye witness
             </CustomButton>
           </div>
