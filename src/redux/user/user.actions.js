@@ -34,7 +34,7 @@ export const loginUserStartAsync = (email, password) => (dispatch) => {
     .catch((error) => {
       dispatch({
         type: ConstantsActionTypes.LOGIN_USER_FAILED,
-        payload: error.message 
+        payload: error.message
       });
     });
 };
@@ -45,7 +45,9 @@ export const logoutUser = () => ({
 });
 
 
-export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName, emergencyContactPhoneNo, password) => (dispatch) => {
+export const signUpUserStartAsync = (
+  name, email, phoneNo, emergencyContactName, emergencyContactPhoneNo, password
+  ) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SIGN_UP_USER_START,
     payload: true
