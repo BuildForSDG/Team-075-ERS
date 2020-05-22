@@ -4,6 +4,7 @@ import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendH
 
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
+import Modal from '../../components/modal/Modal';
 
 class HomePage extends React.Component {
   componentDidMount() {
@@ -27,6 +28,16 @@ class HomePage extends React.Component {
     helpSent(true);
   };
 
+  state = { show: false };
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+
   render() {
     return (
       <div className="container-home">
@@ -39,10 +50,13 @@ class HomePage extends React.Component {
             </p>
           </div>
           <div className="div2">
+            <Modal show={this.state.show} handleClose={this.hideModal} />
             <CustomButton className="custom-button" onClick={() => this.sendHelp()}>
               Help me!
             </CustomButton>
-            <CustomButton className="btn-witness">Report as an eye witness</CustomButton>
+            <CustomButton className="btn-witness" onClick={this.showModal}>
+              Report as an eye witness
+            </CustomButton>
           </div>
           <div className="div3">
             <img src="images/accident.svg" alt="accident vector illustration" id="accident" />
