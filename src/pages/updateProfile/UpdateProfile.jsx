@@ -5,11 +5,11 @@ import './update-profile.css';
 class UpdateProfile extends Component{
   render(){
     return(
-      <section>
+      <section className="update-profile">
         <h4>Update Profile</h4>
         <p>Update your profile information</p>
 
-        <img src="images/profilePicture.svg" alt="profile-pic" width="150px" height="150px"/>
+        <img src="images/profilePicture.svg" alt="profile-pic" />
 
         <h5>Johnson Pearson</h5>
         <p>+234 803 1234 5678</p>
