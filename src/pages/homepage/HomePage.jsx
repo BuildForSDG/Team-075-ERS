@@ -4,7 +4,7 @@ import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendH
 
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
-import MessageModal from './MessageModal';
+import MessageModal from '../../components/modal/MessageModal';
 
 class HomePage extends React.Component {
   constructor(props) {
