@@ -8,7 +8,12 @@ export const setCurrentUser = (user) => ({
 
 export const loginUserStartAsync = (email, password) => (dispatch) => {
 
-  dispatch({type: ConstantsActionTypes.LOGIN_USER_START});
+
+  dispatch({
+    type: ConstantsActionTypes.LOGIN_USER_START,
+    payload: true
+  });
+
 
   fetch('http://localhost:3001/api/auth/login', {
     method: 'post',
@@ -32,7 +37,7 @@ export const loginUserStartAsync = (email, password) => (dispatch) => {
     })
     .catch((error) => {
       dispatch({
-        type: ConstantsActionTypes.loginUserFailed,
+        type: ConstantsActionTypes.LOGIN_USER_FAILED,
         payload: error.message});
     });
 };
@@ -46,7 +51,10 @@ export const logoutUser = () => ({
 export const signUpUserStartAsync = (name, email, phoneNo, emergencyContactName,
   emergencyContactPhoneNo, password) => (dispatch) => {
 
-  dispatch({ type: ConstantsActionTypes.SIGN_UP_USER_START });
+  dispatch({
+    type: ConstantsActionTypes.SIGN_UP_USER_START,
+    payload: true
+  });
 
   fetch('http://localhost:3001/api/auth/signup', {
     method: 'post',
