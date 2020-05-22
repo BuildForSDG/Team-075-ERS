@@ -4,7 +4,7 @@ import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendH
 
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
-import Modal from '../../components/modal/Modal';
+import MessageModal from './MessageModal';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -53,34 +53,7 @@ class HomePage extends React.Component {
             </p>
           </div>
           <div className="div2">
-            <Modal show={this.state.show} handleClose={this.hideModal}>
-              <h2 className="heading">Help request Sent</h2>
-              <p className="sub-message">
-                Please Stay Calm!
-                <br />
-                Help will reach out to you soon
-              </p>
-              <div className="main-content">
-                <div className="left-div">
-                  <div className="circle"></div>
-                  <div className="line"></div>
-                  <div className="circle"></div>
-                  <div className="line line2"></div>
-                  <div className="circle"></div>
-                </div>
-                <div className="right-div">
-                  <div>
-                    <p>You will recieve a feedback sms</p>
-                  </div>
-                  <div>
-                    <p>Response team will reach your location</p>
-                  </div>
-                  <div>
-                    <p>Response team will help get you out of the situation and take necessary actions</p>
-                  </div>
-                </div>
-              </div>
-            </Modal>
+            <MessageModal show={this.state.show} hideModal={this.hideModal} />
             <CustomButton className="custom-button" onClick={this.sendHelp}>
               Help me!
             </CustomButton>
