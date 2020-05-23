@@ -22,7 +22,7 @@ fieldset {
   margin-bottom: 1.25rem;
 }
 
-.update-profile h4>p {
+.update-profile h4 > p {
   color: #2c2c2c;
   padding: 0.9375rem 0 1.875rem 0;
   font-family: inherit;
