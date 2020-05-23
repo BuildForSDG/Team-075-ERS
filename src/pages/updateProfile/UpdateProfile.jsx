@@ -7,41 +7,45 @@ class UpdateProfile extends Component{
   render(){
     const { userId } = this.props.user;
     return(
-      <section>
-        <h4>Update Profile</h4>
-        <p>Update your profile information</p>
+      <div className="container">
 
-        <img src="images/profilePicture.svg" alt="profile-pic" width="150px" height="150px"/>
+        <section className="update-profile">
+          <h4>Update Profile</h4>
+          <p>Update your profile information</p>
 
-        <h5>{userId.name}</h5>
-        <p>{userId.phoneNo}</p>
-        <p>{userId.email}</p>
 
-        <form id="update-profile" action="/update-profile">
-          <fieldset>
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder={userId.name}/>
-            </div>
+          <img src="images/profilePicture.svg" alt="profile-pic" />
 
-           <div className="form-group">
-             <input type="text" className="form-control" placeholder={userId.phoneNo}/>
-           </div>
+                <h5>{userId.name}</h5>
+                <p>{userId.phoneNo}</p>
+                <p>{userId.email}</p>
 
-          <div className="form-group">
-            <input type="text" className="form-control" placeholder={userId.emergencyContact.name}/>
-          </div>
+          <form id="update-profile" action="/update-profile">
+            <fieldset>
+                <div className="form-group">
+                  <input type="text" className="form-control" placeholder={userId.name} />
+                </div>
 
-          <div className="form-group">
-            <input type="text" className="form-control" placeholder={userId.emergencyContact.phoneNo}/>
-          </div>
+                <div className="form-group">
+                  <input type="text" className="form-control" placeholder={userId.phoneNo} />
+                </div>
 
-            <CustomButton className="btn-send">
-              Update
-            </CustomButton>
-          </fieldset>
-        </form>
+                <div className="form-group">
+                  <input type="text" className="form-control" placeholder={userId.emergencyContact.name} />
+                </div>
 
-      </section>
+                <div className="form-group">
+                  <input type="text" className="form-control" placeholder={userId.emergencyContact.phoneNo} />
+                </div>
+
+                <CustomButton className="btn-send">
+                  Update
+                </CustomButton>
+            </fieldset>
+          </form>
+
+        </section>
+      </div>
 
     );
   }
