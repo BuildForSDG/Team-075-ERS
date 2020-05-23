@@ -20,7 +20,7 @@ class Navbar extends Component {
   };
 
   render() {
-    console.log('currentUser--->', this.props)
+    // console.log('currentUser--->', this.props)
     const { login, currentUser } = this.props.user;
     return (
       <header>
@@ -31,7 +31,6 @@ class Navbar extends Component {
 
           {
             (login === 200 ) ? 
-
           (<>
             <Link className='nav-link' to='/profile'>{`Welcome, ${currentUser ? currentUser.userId.name : null }`} </Link>
             <Link className="nav-link" to="/how-it-works">
