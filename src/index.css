@@ -45,6 +45,7 @@ a {
   width: 45px;
   left: 50px;
   top: 25px;
+  z-index: 1;
 }
 
 header {

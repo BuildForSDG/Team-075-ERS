@@ -33,8 +33,8 @@ class Navbar extends Component {
             (login === 200 ) ? 
           (<>
             <Link className='nav-link' to='/profile'>{`Welcome, ${currentUser ? currentUser.userId.name : null }`} </Link>
-            <Link className="nav-link" to="/how-it-works">
-            How it works
+            <Link className="nav-link" to="/ers">
+            ERS
           </Link>
           <Link className="nav-link" to="/faq">
             FAQ
@@ -53,8 +53,8 @@ class Navbar extends Component {
               <Link className="nav-link" to="/sign-up">
                 Sign Up
               </Link>
-              <Link className="nav-link" to="/how-it-works">
-            How it works
+              <Link className="nav-link" to="/ers">
+            ERS
           </Link>
           <Link className="nav-link" to="/faq">
             FAQ
