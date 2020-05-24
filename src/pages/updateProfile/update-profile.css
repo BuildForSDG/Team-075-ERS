@@ -8,7 +8,12 @@ fieldset {
   border: 0;
 }
 
-h4 {
+.update-profile img {
+  width: 150px;
+  height: 150px;
+}
+
+.update-profile h4 {
   color: #2c2c2c;
   font-size: 1.875rem;
   font-weight: 700;
@@ -17,13 +22,13 @@ h4 {
   margin-bottom: 1.25rem;
 }
 
-h4 > p {
+.update-profile h4 > p {
   color: #2c2c2c;
   padding: 0.9375rem 0 1.875rem 0;
   font-family: inherit;
 }
 
-h5 {
+.update-profile h5 {
   color: #2c2c2c;
   font-size: 1.625rem;
   font-weight: 500;
@@ -32,29 +37,29 @@ h5 {
   margin-bottom: 0.625rem;
 }
 
-h5 p{
+.update-profile h5 p {
   font-weight: 700;
 }
 
-p:first-of-type{
+.update-profile p:first-of-type {
   margin-bottom: 0.625rem;
 }
 
-p:nth-last-of-type(2){
+.update-profile p:nth-last-of-type(2) {
   color: #2c2c2c;
   font-size: 1.0625rem;
   font-family: inherit;
   line-height: 1.3125rem;
 }
 
-p:last-of-type{
-  color: #AAAAAA;
+.update-profile p:last-of-type {
+  color: #aaa;
   font-size: 0.9375rem;
   font-family: inherit;
   line-height: 1.125rem;
 }
 
-.form-control {
+.update-profile .form-control {
   display: block;
   width: 100%;
   margin: 1.25rem auto;
@@ -69,10 +74,44 @@ p:last-of-type{
   border-radius: 0.25rem;
 }
 
-.form-control:focus {
+.update-profile .form-control:focus {
   border: 0.0625rem solid #000;
 }
 
-.btn-send{
-  margin: 1.25rem 0rem;
+.update-profile .btn-send {
+  margin: 1.25rem 0;
+}
+
+@media (max-device-width: 320px) {
+  .update-profile .form-control {
+    width: 90%;
+  }
+
+  .update-profile img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .update-profile h4 {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .update-profile h5 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .update-profile .btn-send {
+    padding: 0.6rem 7.2rem;
+    margin: auto auto 2rem auto;
+  }
+
+  .update-profile p:nth-last-of-type(2) {
+    font-size: 0.9rem;
+  }
+
+  .update-profile p:last-of-type {
+    font-size: 0.85rem;
+  }
 }
