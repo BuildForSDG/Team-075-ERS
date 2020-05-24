@@ -4,8 +4,13 @@ import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendH
 
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
+import MessageModal from '../../components/modal/MessageModal';
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { show: false };
+  }
   componentDidMount() {
     const { sendHelp } = this.props;
     if ('geolocation' in navigator) {
@@ -24,7 +29,16 @@ class HomePage extends React.Component {
     const { lat, lng, phoneNo, userId } = this.props.help.location;
     const { helpSent, postUserDetailsStartAsync } = this.props;
     postUserDetailsStartAsync(lat, lng, phoneNo, userId);
-    helpSent(true);
+    // helpSent(true);
+    this.showModal();
+  };
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
   };
 
   render() {
@@ -39,10 +53,13 @@ class HomePage extends React.Component {
             </p>
           </div>
           <div className="div2">
-            <CustomButton className="custom-button" onClick={() => this.sendHelp()}>
+            <MessageModal show={this.state.show} hideModal={this.hideModal} />
+            <CustomButton className="custom-button" onClick={this.sendHelp}>
               Help me!
             </CustomButton>
-            <CustomButton className="btn-witness">Report as an eye witness</CustomButton>
+            <CustomButton className="btn-witness" onClick={this.sendHelp}>
+              Report as an eye witness
+            </CustomButton>
           </div>
           <div className="div3">
             <img src="images/accident.svg" alt="accident vector illustration" id="accident" />
