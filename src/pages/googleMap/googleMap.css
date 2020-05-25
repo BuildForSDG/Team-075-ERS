@@ -1,18 +1,18 @@
 .map-container {
-    position: static;
-    width: 100%;
-    margin-top: 30px;
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: static;
+  width: 100%;
+  margin-top: 30px;
+  /* margin-left: 10px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .map-card {
-    margin-left: auto;
-    border: 1px solid black;
-    overflow-y: hidden; 
-    overflow-y: auto; 
-    height: 500px;
+  margin-left: auto;
+  width: 20%;
+  border: 1px solid #aaaaaa;
+  position: relative;
+  overflow-y: scroll;
+  height: 500px;
 }
-
