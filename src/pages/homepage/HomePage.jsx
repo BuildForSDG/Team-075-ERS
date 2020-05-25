@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendHelp/sendHelp.actions';
-
+import { sendReportAsync } from '../../redux/report/report.actions';
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
 import MessageModal from '../../components/modal/MessageModal';
@@ -19,18 +19,19 @@ class HomePage extends React.Component {
         const lng = success.coords.longitude;
         sendHelp({ lat, lng });
       });
-      // console.log('Available');
     } else {
       alert('Location unavailable.');
     }
   }
 
   sendHelp = () => {
-    const { lat, lng, phoneNo, userId } = this.props.help.location;
-    const { helpSent, postUserDetailsStartAsync } = this.props;
-    postUserDetailsStartAsync(lat, lng, phoneNo, userId);
+    const { lat, lng } = this.props.help.location;
+    const { token, userId } = this.props.user.currentUser;
+    const { helpSent, postUserDetailsStartAsync, sendReportAsync } = this.props;
+    sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
+    // postUserDetailsStartAsync(lat, lng, phoneNo, userId);
     // helpSent(true);
-    this.showModal();
+    // this.showModal();
   };
 
   showModal = () => {
@@ -53,7 +54,6 @@ class HomePage extends React.Component {
             </p>
           </div>
           <div className="div2">
-            <MessageModal show={this.state.show} hideModal={this.hideModal} />
             <CustomButton className="custom-button" onClick={this.sendHelp}>
               Help me!
             </CustomButton>
@@ -72,14 +72,17 @@ class HomePage extends React.Component {
 
 const mapStateToProps = (state) => ({
   help: state.help,
-  user: state.user
+  user: state.user,
+  report: state.report
 });
 
 const mapDispatchToProps = (dispatch) => ({
   sendHelp: (location) => dispatch(sendHelp(location)),
   helpSent: (value) => dispatch(helpSent(value)),
   postUserDetailsStartAsync: (lat, lng, phoneNo, userId) =>
-    dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId))
+    dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId)),
+  sendReportAsync: (userId, phoneNo, latitude, longitude, token) =>
+    dispatch(sendReportAsync(userId, phoneNo, latitude, longitude, token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
