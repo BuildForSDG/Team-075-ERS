@@ -2,7 +2,6 @@
   position: static;
   width: 100%;
   margin-top: 30px;
-  /* margin-left: 10px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11,7 +10,7 @@
 .map-card {
   margin-left: auto;
   width: 20%;
-  border: 1px solid #aaaaaa;
+  border: 1px solid #aaa;
   position: relative;
   overflow-y: scroll;
   height: 500px;
