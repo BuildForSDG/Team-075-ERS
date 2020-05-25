@@ -70,8 +70,6 @@
   width: 100%;
 }
 
-
-
 @media screen and (max-width: 640px) {
   .homepage {
     flex-direction: column;
@@ -102,7 +100,7 @@
   }
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 320px) {
   .homepage {
     flex-direction: column;
   }
@@ -122,13 +120,11 @@
     font-size: 20px;
     line-height: 25px;
     padding: 0px;
-  
   }
 
   .div1 p {
     font-size: 10px;
     padding: 0px;
-  
   }
 
   .div2 {
