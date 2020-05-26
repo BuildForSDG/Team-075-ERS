@@ -46,41 +46,6 @@ a {
   z-index: 1;
 }
 
-.main-heading {
-  padding-bottom: 10px;
-}
-
-.sub-heading {
-  font-size: 15px;
-  padding-bottom: 5px;
-}
-
-#profile-pic {
-  padding: 5px 0 0 0;
-  width: 100px;
-}
-
-.profile-name {
-  font-weight: 500;
-}
-
-.phone-number {
-  font-weight: 400;
-  font-size: 13.5px;
-  padding: 3px 0;
-}
-
-.mail {
-  color: #aaa;
-  padding-bottom: 10px;
-  font-size: 13.5px;
-  margin: 0;
-}
-
-.report-heading {
-  margin: 25px 0 10px 0;
-}
-
 .report {
   border: 1px solid #ddd;
   width: 400px;
