@@ -26,3 +26,35 @@ header {
   width: 25px;
   display: none;
 }
+
+@media screen and (max-width: 640px) {
+  #hamburger-icon {
+    display: block;
+    position: absolute;
+    top: 13px;
+    right: 5%;
+  }
+
+  header {
+    height: 50px;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 100vw;
+    padding: 8px 40px;
+    background-color: white;
+  }
+
+  .show-menu {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 13px;
+  }
+}

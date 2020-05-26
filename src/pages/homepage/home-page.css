@@ -7,23 +7,24 @@
 .container-home {
   padding: 30px 0 0 0;
   min-height: calc(100vh - 50px);
-  overflow-y: hidden;
   background-color: #fffbfb;
 }
 
 .div1 {
   width: 33.3%;
-  margin: 5% 0 0 5%;
+  padding: 5% 0 0 5%;
 }
 
 .div1 h1 {
   line-height: 50px;
-  font-size: 50px;
+  font-size: 49px;
   padding: 20px 0 30px 0;
 }
 
 .div1 p {
   line-height: 23px;
+  font-size: 20px;
+  text-align: justify;
 }
 
 .div2 {
@@ -39,13 +40,13 @@
   position: absolute;
   top: 70vh;
   background-color: white;
-  padding: 0.625rem 3.125rem;
+  padding: 0.625rem 2.125rem;
   display: block;
   margin: auto;
   color: #2c2c2c;
   border: 1px solid #e72020;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   text-decoration: none;
@@ -80,27 +81,34 @@
   }
 
   .div1 {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
-    padding-bottom: 50px;
+    padding: 0 15px 50px 15px;
   }
 
   .div1 h1 {
-    font-size: 30px;
-    line-height: 35px;
+    font-size: 20px;
+    line-height: 25px;
+    padding-bottom: 10px;
   }
 
   .div1 p {
-    font-size: 13px;
+    font-size: 11px;
+    text-align: center;
   }
 
   .div2 {
     width: 100%;
   }
+
+  .btn-witness {
+    position: fixed;
+    top: 90%;
+  }
 }
 
-@media screen and (max-width: 320px) {
+/* @media screen and (max-width: 320px) {
   .homepage {
     flex-direction: column;
   }
@@ -130,4 +138,4 @@
   .div2 {
     width: 5 0%;
   }
-}
+} */

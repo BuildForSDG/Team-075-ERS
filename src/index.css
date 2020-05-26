@@ -74,36 +74,6 @@ a {
 }
 
 @media screen and (max-width: 640px) {
-  #hamburger-icon {
-    display: block;
-    position: absolute;
-    top: 2%;
-    right: 5%;
-  }
-
-  header {
-    height: 50px;
-  }
-
-  .nav {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    width: 100vw;
-    padding: 8px 40px;
-    background-color: white;
-  }
-
-  .show-menu {
-    display: flex;
-  }
-
-  .nav-link {
-    padding: 13px;
-  }
-
   .report {
     width: 80vw;
   }
