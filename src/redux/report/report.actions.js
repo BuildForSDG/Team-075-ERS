@@ -1,11 +1,11 @@
 import ConstantsActionTypes from './report.constants';
 
-export const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => (dispatch) => {
+const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SEND_REPORT_START,
     payload: true
   });
-  const bearer = 'Bearer ' + token
+  const bearer = `Bearer  ${token}`;
   fetch('http://localhost:3001/api/report', {
     method: 'post',
     headers: {
@@ -13,15 +13,15 @@ export const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => 
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      reporter: { 
+      reporter: {
         userId,
         phoneNo
       },
-    location:{
-      latitude: latitude.toString(),
-      longitude: longitude.toString()
-    },
-    imageUrl: 'https://jkjuurrr.com'
+      location: {
+        latitude: latitude.toString(),
+        longitude: longitude.toString()
+      },
+      imageUrl: 'https://jkjuurrr.com'
     })
   })
     .then((response) => {
@@ -38,4 +38,4 @@ export const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => 
       });
     });
 };
-  
+export default sendReportAsync;

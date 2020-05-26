@@ -3,8 +3,8 @@ import ConstantsActionTypes from './report.constants';
 const INITIAL_STATE = {
   reportMessage: null,
   isPending: false,
-  errorMessage: null,
-}
+  errorMessage: null
+};
 
 const reportReducer = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
