@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendHelp/sendHelp.actions';
-import { sendReportAsync } from '../../redux/report/report.actions';
+import  sendReportAsync  from '../../redux/report/report.actions';
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
-import MessageModal from '../../components/modal/MessageModal';
+// import MessageModal from '../../components/modal/MessageModal';
+// import Modal from '../../components/modal/Modal';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -29,7 +30,6 @@ class HomePage extends React.Component {
     const { token, userId } = this.props.user.currentUser;
     const { helpSent, postUserDetailsStartAsync, sendReportAsync } = this.props;
     sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
-    // postUserDetailsStartAsync(lat, lng, phoneNo, userId);
     // helpSent(true);
     // this.showModal();
   };

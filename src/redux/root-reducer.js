@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import userReducer from './user/user.reducer';
 import sendHelpReducer from './sendHelp/sendHelp-reducer';
 import reportReducer from './report/report.reducer';
+import modalReducer from './modal/modal.reducer';
 
 
 const persistConfig = {
@@ -15,7 +16,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   help: sendHelpReducer,
-  report: reportReducer
+  report: reportReducer,
+  modal: modalReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

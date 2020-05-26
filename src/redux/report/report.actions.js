@@ -5,11 +5,11 @@ const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => (dispat
     type: ConstantsActionTypes.SEND_REPORT_START,
     payload: true
   });
-  const bearer = `Bearer  ${token}`;
+  const bearer = `Bearer ${token}`;
   fetch('http://localhost:3001/api/report', {
     method: 'post',
     headers: {
-      'Authorization': bearer,
+      Authorization: bearer,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({

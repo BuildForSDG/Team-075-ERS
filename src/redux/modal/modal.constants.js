@@ -1,0 +1,7 @@
+const ConstantsActionTypes = {
+  SHOW_FEEDBACK_SUCCESS: 'SHOW_FEEDBACK_SUCCESS',
+  SHOW_USER_PROFILE: 'SHOW_USER_PROFILE',
+  SHOW_VICTIMS_INFO: 'SHOW_VICTIMS_INFO'
+};
+
+export default ConstantsActionTypes;

@@ -49,7 +49,7 @@ a {
 }
 
 .policy {
-  display: flex;
+  /* display: flex; */
   font-size: 15px;
   word-spacing: 2px;
   width: 326.61px;
