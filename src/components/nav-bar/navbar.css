@@ -3,6 +3,14 @@ header {
   border-bottom: 1px solid #ddd;
 }
 
+#logo {
+  position: absolute;
+  width: 45px;
+  left: 50px;
+  top: 25px;
+  z-index: 1;
+}
+
 .nav {
   display: flex;
   justify-content: flex-end;
@@ -37,6 +45,10 @@ header {
 
   header {
     height: 50px;
+  }
+
+  #logo {
+    left: 30px;
   }
 
   .nav {
