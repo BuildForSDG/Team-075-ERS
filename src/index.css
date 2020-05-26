@@ -46,35 +46,6 @@ a {
   z-index: 1;
 }
 
-header {
-  position: relative;
-  border-bottom: 1px solid #ddd;
-}
-
-.nav {
-  display: flex;
-  justify-content: flex-end;
-  padding: 8px 50px;
-  border-bottom: 1px solid #ddd;
-}
-
-.nav-link {
-  padding: 7px 20px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgb(3, 3, 3);
-}
-
-.nav-link:hover {
-  cursor: pointer;
-  color: #e72020;
-}
-
-#hamburger-icon {
-  width: 25px;
-  display: none;
-}
-
 .main-heading {
   padding-bottom: 10px;
 }

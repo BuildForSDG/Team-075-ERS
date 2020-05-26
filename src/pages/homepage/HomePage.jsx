@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendHelp/sendHelp.actions';
-
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
 import MessageModal from '../../components/modal/MessageModal';
