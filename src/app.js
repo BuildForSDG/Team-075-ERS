@@ -25,25 +25,27 @@ class App extends React.Component {
           <div className="App">
             <Navbar />
             <Switch>
-              <React.Fragment>
-                <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
-                <Route exact path="/profile" component={UserProfile} />
-                <Route exact path="/report-accident" component={ReportAccident} />
-                <Route exact path="/update-profile" component={UpdateProfile} />
-                <Route exact path="/feedback" component={Feedback} />
-                <Route exact path="/google-map" component={GoogleMap} />
+              {/* <React.Fragment> */}
+              <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+              <Route exact path="/profile" component={UserProfile} />
+              <Route exact path="/report-accident" component={ReportAccident} />
+              <Route exact path="/update-profile" component={UpdateProfile} />
+              <Route exact path="/feedback" component={Feedback} />
+              <Route exact path="/google-map" component={GoogleMap} />
+              <div className="ers-container">
                 <Route exact path="/ers" component={ResponseUnitHomePage} />
-                <Route
-                  exact
-                  path="/login"
-                  render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
-                />
-                <Route
-                  exact
-                  path="/sign-up"
-                  render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
-                />
-              </React.Fragment>
+              </div>
+              <Route
+                exact
+                path="/login"
+                render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
+              />
+              <Route
+                exact
+                path="/sign-up"
+                render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
+              />
+              {/* </React.Fragment> */}
             </Switch>
           </div>
         </Router>
