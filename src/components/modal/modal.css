@@ -89,3 +89,35 @@
   color: #e72020;
   border: 1px solid #e72020;
 }
+
+@media screen and (max-width: 640px) {
+  .modal-main {
+    min-height: 300px;
+  }
+  .heading {
+    font-size: 20px;
+  }
+  .sub-message {
+    font-size: 12px;
+  }
+  .main-content {
+    padding: 10px 0;
+  }
+
+  .left-div {
+    padding-left: 0;
+  }
+
+  .right-div {
+    padding-right: 0;
+  }
+
+  .right-div p {
+    font-size: 12px;
+    padding-bottom: 18px;
+  }
+
+  .line2 {
+    height: 35px;
+  }
+}

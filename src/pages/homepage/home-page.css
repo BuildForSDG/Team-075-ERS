@@ -71,6 +71,32 @@
   width: 100%;
 }
 
+@media screen and (max-width: 1024px) {
+  .div1 h1 {
+    font-size: 30px;
+    line-height: 30px;
+    padding-bottom: 15px;
+  }
+
+  .div1 p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .div1 h1 {
+    font-size: 24px;
+    line-height: 30px;
+    padding-bottom: 15px;
+  }
+
+  .div1 p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .homepage {
     flex-direction: column;
@@ -88,25 +114,26 @@
   }
 
   .div1 h1 {
-    font-size: 7vw;
+    font-size: 22px;
     line-height: 25px;
     padding-bottom: 15px;
   }
 
   .div1 p {
-    font-size: 4vw;
+    font-size: 18x;
     text-align: center;
     line-height: 20px;
   }
 
   .div2 {
     position: absolute;
-    top: 45%;
+    top: 50%;
     width: 100%;
   }
 
   .btn-witness {
     position: fixed;
+    align-self: center;
     top: 90%;
   }
 }
