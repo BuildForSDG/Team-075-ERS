@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 };
 
 
-const updateReducer = (state = INITIAL_STATE,  action = {}) => {
+const updateReducer = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case ConstantsActionTypes.UPDATE_USER_PROFILE_START:
       return ({

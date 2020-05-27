@@ -1,15 +1,17 @@
 import ConstantsActionTypes from './updateProfile.constants';
 
-const updateUserProfileAsync = (name, phoneNo, emergencyName, emergencyPhone, id, token) => (dispatch) => {
+const updateUserProfileAsync = (name, phoneNo, emergencyName, emergencyPhone, id, token) => 
+(dispatch) => {
   dispatch({
     type: ConstantsActionTypes.UPDATE_USER_PROFILE_START
   });
   const bearer = `Bearer ${token}`;
   fetch(`https://emresys.herokuapp.com/api/auth/profile/${id}`, {
     method: 'post',
-    headers: { 
+    headers: {
       Authorization: bearer,
-      'Content-Type': 'application/json' },
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
       name,
       phoneNo,
