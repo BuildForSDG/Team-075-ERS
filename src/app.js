@@ -32,9 +32,9 @@ class App extends React.Component {
                 <Route exact path="/update-profile" component={UpdateProfile} />
                 <Route exact path="/feedback" component={Feedback} />
                 <Route exact path="/google-map" component={GoogleMap} />
-                <div className="ers-container">
+                {/* <div className="ers-container"> */}
                   <Route exact path="/ers" component={ResponseUnitHomePage} />
-                </div>
+                {/* </div> */}
                 <Route
                   exact
                   path="/login"

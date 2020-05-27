@@ -24,7 +24,7 @@ export const postUserDetailsFailed = (message) => ({
 
 export const postUserDetailsStartAsync = (lat, lng, phoneNo, userId) => (dispatch) => {
   dispatch(postUserDetailsStart());
-  fetch('http://localhost:3001/api/report', {
+  fetch('https://emresys.herokuapp.com/api/report', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

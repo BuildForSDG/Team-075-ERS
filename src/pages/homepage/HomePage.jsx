@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { sendHelp, helpSent, postUserDetailsStartAsync } from '../../redux/sendHelp/sendHelp.actions';
+import { sendHelp  } from '../../redux/sendHelp/sendHelp.actions';
 import  sendReportAsync  from '../../redux/report/report.actions';
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
@@ -28,7 +28,7 @@ class HomePage extends React.Component {
   sendHelp = () => {
     const { lat, lng } = this.props.help.location;
     const { token, userId } = this.props.user.currentUser;
-    const { helpSent, postUserDetailsStartAsync, sendReportAsync } = this.props;
+    const { sendReportAsync } = this.props;
     sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
     // helpSent(true);
     // this.showModal();
@@ -78,9 +78,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   sendHelp: (location) => dispatch(sendHelp(location)),
-  helpSent: (value) => dispatch(helpSent(value)),
-  postUserDetailsStartAsync: (lat, lng, phoneNo, userId) =>
-    dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId)),
+  // helpSent: (value) => dispatch(helpSent(value)),
+  // postUserDetailsStartAsync: (lat, lng, phoneNo, userId) =>
+  //   dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId)),
   sendReportAsync: (userId, phoneNo, latitude, longitude, token) =>
     dispatch(sendReportAsync(userId, phoneNo, latitude, longitude, token))
 });
