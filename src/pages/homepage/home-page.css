@@ -70,6 +70,7 @@
   display: block;
   width: 100%;
 }
+
 @media screen and (max-width: 1440px) {
   .div1 {
     display: flex;
@@ -89,6 +90,7 @@
     line-height: 22px;
   }
 }
+
 @media screen and (max-width: 1024px) {
   .div1 h1 {
     font-size: 30px;
@@ -138,7 +140,7 @@
   }
 
   .div1 p {
-    font-size: 18x;
+    font-size: 18px;
     text-align: center;
     line-height: 20px;
   }

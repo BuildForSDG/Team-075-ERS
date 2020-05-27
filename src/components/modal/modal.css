@@ -94,12 +94,15 @@
   .modal-main {
     min-height: 300px;
   }
+
   .heading {
     font-size: 20px;
   }
+
   .sub-message {
     font-size: 12px;
   }
+
   .main-content {
     padding: 10px 0;
   }
