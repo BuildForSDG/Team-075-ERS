@@ -2,11 +2,8 @@ import ConstantsActionTypes from './sendHelp.constants';
 
 const INITIAL_STATE = {
   location: null,
-  phoneNo: '',
-  userId: '',
   sent: false,
-  isSending: false,
-  message: undefined
+  isSending: false
 };
 
 

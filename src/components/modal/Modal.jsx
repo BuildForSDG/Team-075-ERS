@@ -1,6 +1,7 @@
 import React from 'react';
 import './modal.css';
 import CustomButton from '../custom-button/CustomButton';
+import { connect } from 'react-redux';
 
 const Modal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
@@ -17,4 +18,8 @@ const Modal = ({ handleClose, show, children }) => {
   );
 };
 
-export default Modal;
+const mapStateToProps = (state) => ({
+  modal: state.modal
+});
+
+export default connect(mapStateToProps)(Modal);
