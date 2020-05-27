@@ -2,8 +2,38 @@ import React, {Component} from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
 import './update-profile.css';
 import { connect } from 'react-redux';
+import updateUserProfileAsync  from '../../redux/updateProfile/updateProfile.actions';
 
-class UpdateProfile extends Component{
+class UpdateProfile extends Component {
+  constructor(){
+    super();
+    this.state = {
+      name: '',
+      phoneNo: '',
+      emergencyContactName: '',
+      emergencyContactPhoneNo: ''
+
+    }
+  }
+
+  componentDidMount() {
+    console.log(this.props.user)
+  }
+
+  setupdateDetails = (event) => {
+    const { name, value } = event.target;
+    this.setState((prevState, PrevProps) => ({ [name]: value }));
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { name, phoneNo, emergencyContactName, emergencyContactPhoneNo } = this.state;
+    const { updateUserProfileAsync } = this.props;
+    const { token, userId } = this.props.user;
+    const { _id } = userId;
+    updateUserProfileAsync(name, phoneNo, emergencyContactName, emergencyContactPhoneNo, _id, token);
+    
+  };
   render(){
     const { userId } = this.props.user;
     return(
@@ -20,22 +50,46 @@ class UpdateProfile extends Component{
                 <p>{userId.phoneNo}</p>
                 <p>{userId.email}</p>
 
-          <form id="update-profile" action="/update-profile">
+          <form id="update-profile" onSubmit={this.handleSubmit}>
             <fieldset>
                 <div className="form-group">
-                  <input type="text" className="form-control" placeholder={userId.name} />
+                  <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder={userId.name}
+                    onChange={this.setupdateDetails}
+                    required
+                    />
                 </div>
 
                 <div className="form-group">
-                  <input type="text" className="form-control" placeholder={userId.phoneNo} />
+                  <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder={userId.phoneNo}
+                    onChange={this.setupdateDetails}
+                    required
+                    />
                 </div>
 
                 <div className="form-group">
-                  <input type="text" className="form-control" placeholder={userId.emergencyContact.name} />
+                  <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder={userId.emergencyContact.name}
+                    onChange={this.setupdateDetails}
+                    required
+                    />
                 </div>
 
                 <div className="form-group">
-                  <input type="text" className="form-control" placeholder={userId.emergencyContact.phoneNo} />
+                  <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder={userId.emergencyContact.phoneNo}
+                    onChange={this.setupdateDetails}
+                    required
+                    />
                 </div>
 
                 <CustomButton className="btn-send">
@@ -55,4 +109,9 @@ const mapStateToProps = (state) => ({
   user: state.user.currentUser
 });
 
-export default connect(mapStateToProps)(UpdateProfile);
+const mapDispatchToProps = (dispatch) => ({
+  updateUserProfileAsync: (name, phoneNo, emergencyName, emergencyPhone, id) => 
+    dispatch(updateUserProfileAsync(name, phoneNo, emergencyName, emergencyPhone, id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateProfile);
