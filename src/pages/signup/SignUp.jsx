@@ -128,8 +128,7 @@ class SignUp extends React.Component {
                 <CustomButton className="btn-send register-btn">Register</CustomButton>
 
                 <div className="policy">
-                  <input type="checkbox" id="checkbox" name="terms" onChange={this.setLoginDetails} />
-
+                  <input type='checkbox' id="checkbox" name="terms" onChange={this.setLoginDetails}/>
                   <label>
                     By clicking continue you agree to our
                     <br />
