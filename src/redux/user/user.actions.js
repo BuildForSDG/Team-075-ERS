@@ -11,7 +11,7 @@ export const loginUserStartAsync = (email, password) => (dispatch) => {
     payload: true
   });
 
-  fetch('http://localhost:3001/api/auth/login', {
+  fetch('https://emresys.herokuapp.com/api/auth/login', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -53,7 +53,7 @@ export const signUpUserStartAsync = (
     payload: true
   });
 
-  fetch('http://localhost:3001/api/auth/signup', {
+  fetch('https://emresys.herokuapp.com/api/auth/signup', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

@@ -6,7 +6,7 @@ const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => (dispat
     payload: true
   });
   const bearer = `Bearer ${token}`;
-  fetch('http://localhost:3001/api/report', {
+  fetch('https://emresys.herokuapp.com/api/report', {
     method: 'post',
     headers: {
       Authorization: bearer,
