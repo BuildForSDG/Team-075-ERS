@@ -49,6 +49,7 @@ class App extends React.Component {
                 </React.Fragment>
               </Switch>
             </HandleError>
+
           </div>
         </Router>
       );
