@@ -29,8 +29,7 @@ class Navbar extends Component {
         <Link to="/">
           <img src="images/logo.svg" alt="help logo" id="logo" onClick={() => {
             return (
-              this.props.helpSent(false),
-              this.props.showUserProfile()
+              this.props.helpSent(false)
             )
             }} />
         </Link>

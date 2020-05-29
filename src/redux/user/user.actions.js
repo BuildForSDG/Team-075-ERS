@@ -86,3 +86,37 @@ export const signUpUserStartAsync = (
       });
     });
 };
+
+export const getUserProfile = (id, token) => (dispatch) => {
+  dispatch({
+    type: ConstantsActionTypes.GET_USER_PROFILE_START
+  });
+
+  const bearer = `Bearer ${token}`;
+  fetch(`https://emresys.herokuapp.com/api/auth/profile/${id}`, {
+    method: 'get',
+    headers: {
+      Authorization: bearer,
+      'Content-Type': 'application/json'
+    },
+  })
+    .then((response) => {
+      dispatch({
+        type: ConstantsActionTypes.GET_USER_PROFILE_SUCCESS,
+        payload: response.status
+      });
+      return response.json();
+    })
+    .then(data => {
+      dispatch({
+        type: ConstantsActionTypes.LOAD_USER,
+        payload: data
+      })
+    })
+    .catch((error) => {
+      dispatch({
+        type: ConstantsActionTypes.GET_USER_PROFILE_FAILED,
+        payload: error.message
+      });
+    });
+};
