@@ -17,10 +17,6 @@ class UpdateProfile extends Component {
     }
   }
 
-  componentDidMount() {
-    console.log(this.props)
-  }
-
   setupdateDetails = (event) => {
     const { name, value } = event.target;
     this.setState((prevState, PrevProps) => ({ [name]: value }));

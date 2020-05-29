@@ -98,7 +98,7 @@ export const getUserProfile = (id, token) => (dispatch) => {
     headers: {
       Authorization: bearer,
       'Content-Type': 'application/json'
-    },
+    }
   })
     .then((response) => {
       dispatch({
@@ -107,11 +107,11 @@ export const getUserProfile = (id, token) => (dispatch) => {
       });
       return response.json();
     })
-    .then(data => {
+    .then((data) => {
       dispatch({
         type: ConstantsActionTypes.LOAD_USER,
         payload: data
-      })
+      });
     })
     .catch((error) => {
       dispatch({
