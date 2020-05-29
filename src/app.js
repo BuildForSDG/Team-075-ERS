@@ -10,7 +10,7 @@ import Login from './pages/login/Login';
 import SignUp from './pages/signup/SignUp';
 import Navbar from './components/nav-bar/Navbar';
 import GoogleMap from './pages/googleMap/googleMap';
-
+import HandleError from './components/handleError/handleError';
 import './App.css';
 import WithSpinner from './components/with-spinner/with-spinner';
 import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
@@ -24,27 +24,29 @@ class App extends React.Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Switch>
-              <React.Fragment>
-                <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
-                <Route exact path="/profile" component={UserProfile} />
-                <Route exact path="/report-accident" component={ReportAccident} />
-                <Route exact path="/update-profile" component={UpdateProfile} />
-                <Route exact path="/feedback" component={Feedback} />
-                <Route exact path="/google-map" component={GoogleMap} />
-                <Route exact path="/ers" component={ResponseUnitHomePage} />
-                <Route
-                  exact
-                  path="/login"
-                  render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
-                />
-                <Route
-                  exact
-                  path="/sign-up"
-                  render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
-                />
-              </React.Fragment>
-            </Switch>
+            <HandleError>
+              <Switch>
+                <React.Fragment>
+                  <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+                  <Route exact path="/profile" component={UserProfile} />
+                  <Route exact path="/report-accident" component={ReportAccident} />
+                  <Route exact path="/update-profile" component={UpdateProfile} />
+                  <Route exact path="/feedback" component={Feedback} />
+                  <Route exact path="/google-map" component={GoogleMap} />
+                  <Route exact path="/ers" component={ResponseUnitHomePage} />
+                  <Route
+                    exact
+                    path="/login"
+                    render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
+                  />
+                  <Route
+                    exact
+                    path="/sign-up"
+                    render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
+                  />
+                </React.Fragment>
+              </Switch>
+            </HandleError>
           </div>
         </Router>
       );

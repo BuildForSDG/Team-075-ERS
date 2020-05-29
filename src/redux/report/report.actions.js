@@ -1,6 +1,8 @@
 import ConstantsActionTypes from './report.constants';
 
-const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => (dispatch) => {
+export const resetError = () => ({ type: ConstantsActionTypes.RESET_ERROR_MESSAGE });
+
+export const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SEND_REPORT_START,
     payload: true
@@ -38,4 +40,3 @@ const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => (dispat
       });
     });
 };
-export default sendReportAsync;

@@ -25,6 +25,12 @@ const reportReducer = (state = INITIAL_STATE, action = {}) => {
         isPending: false,
         errorMessage: action.payload
       });
+    case ConstantsActionTypes.RESET_ERROR_MESSAGE:
+      return ({
+        ...state,
+        errorMessage: null,
+        reportMessage: null
+      });
     default:
       return state;
   }
