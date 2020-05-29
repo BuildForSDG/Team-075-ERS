@@ -22,19 +22,19 @@ const updateUserProfileAsync = (
       }
     })
   })
-  .then((response) => {
-    dispatch({
-      type: ConstantsActionTypes.UPDATE_USER_PROFILE_SUCCESS,
-      payload: response.status
+    .then((response) => {
+      dispatch({
+        type: ConstantsActionTypes.UPDATE_USER_PROFILE_SUCCESS,
+        payload: response.status
+      });
+      return response.json();
+    })
+    .catch((error) => {
+      dispatch({
+        type: ConstantsActionTypes.UPDATE_USER_PROFILE_FAILED,
+        payload: error.message
+      });
     });
-    return response.json();
-  })
-  .catch((error) => {
-    dispatch({
-      type: ConstantsActionTypes.UPDATE_USER_PROFILE_FAILED,
-      payload: error.message
-    });
-  });
 };
 
 export default updateUserProfileAsync;
