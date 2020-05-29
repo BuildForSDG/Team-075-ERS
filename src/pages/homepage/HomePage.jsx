@@ -29,13 +29,16 @@ class HomePage extends React.Component {
   }
 
   sendHelp = () => {
-    const { lat, lng } = this.props.help.location;
-    const { token, userId } = this.props.user.currentUser;
-    const { sendReportAsync } = this.props;
-    sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
-    // helpSent(true);
-    // this.showModal();
-    this.props.showFeedbackSuccess();
+    if (this.props.user.currentUser){
+      const { lat, lng } = this.props.help.location;
+      const { token, userId } = this.props.user.currentUser;
+      const { sendReportAsync } = this.props;
+      sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
+      this.props.showFeedbackSuccess();
+    }
+    if (!this.props.user.currentUser) {
+      alert('Please, login to continue.');
+    }
   };
 
 
@@ -43,6 +46,7 @@ class HomePage extends React.Component {
     const { showFeedback, showProfile, showVictims } = this.props.modal;
     const { isPending, errorMessage, reportMessage } = this.props.report;
     // const { reportMessage } = this.props.report;
+    
     if (errorMessage || reportMessage === 401) {
       return (
         <Modal>
