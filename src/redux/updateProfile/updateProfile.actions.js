@@ -6,7 +6,6 @@ const updateUserProfileAsync = (
   dispatch({
     type: ConstantsActionTypes.UPDATE_USER_PROFILE_START
   });
-  console.log(token)
   const bearer = `Bearer ${token}`;
   fetch(`https://emresys.herokuapp.com/api/auth/profile/${id}`, {
     method: 'post',
