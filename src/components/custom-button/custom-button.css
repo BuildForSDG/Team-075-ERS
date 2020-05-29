@@ -17,7 +17,7 @@
   z-index: 1;
   position: relative;
   margin: 0 auto;
-  height: 25px;
+  height: 30px;
   width: 150px;
   border: none;
   background: #e72020;
@@ -25,6 +25,12 @@
   color: rgb(255, 255, 255);
   cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.custom-square-button:hover {
+  color: #e72020;
+  background-color: #fff;
+  border: 1px solid #e72020;
 }
 
 .custom-button:focus {
