@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { sendHelp  } from '../../redux/sendHelp/sendHelp.actions';
 import { showFeedbackSuccess } from '../../redux/modal/modal.actions';
-import  sendReportAsync  from '../../redux/report/report.actions';
+import  { sendReportAsync }  from '../../redux/report/report.actions';
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
 import MessageModal from '../../components/modal/MessageModal';
 import UserViewProfile from '../userProfile/userProfile.component';
 import Modal from '../../components/modal/Modal';
+import WithSpinner from '../../components/with-spinner/with-spinner';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -40,7 +41,20 @@ class HomePage extends React.Component {
 
   render() {
     const { showFeedback, showProfile, showVictims } = this.props.modal;
+    const { isPending, errorMessage, reportMessage } = this.props.report;
     // const { reportMessage } = this.props.report;
+    if (errorMessage || reportMessage === 401) {
+      return (
+        <Modal>
+          <h1>Error!</h1>
+        </Modal>
+      );
+    }
+    if (isPending) {
+      return (
+        <WithSpinner></WithSpinner>
+      );
+    }
     if (showFeedback) {
       return (
         <Modal>

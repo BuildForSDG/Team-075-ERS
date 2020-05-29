@@ -3,6 +3,7 @@ import './modal.css';
 import CustomButton from '../custom-button/CustomButton';
 import { connect } from 'react-redux';
 import { showFeedbackSuccess, showUserProfile, showVictimsInfo } from '../../redux/modal/modal.actions';
+import { resetError } from '../../redux/report/report.actions';
 
 class Modal extends React.Component {
 
@@ -20,7 +21,7 @@ class Modal extends React.Component {
           {this.props.children}
           <CustomButton className="btn-close" onClick={() => {
             if (showFeedback){
-              return this.props.showFeedbackSuccess();
+              return (this.props.showFeedbackSuccess(), this.props.resetError());
             }
             if ( showProfile) {
               return this.props.showUserProfile();
@@ -44,7 +45,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   showFeedbackSuccess: () => dispatch(showFeedbackSuccess()),
   showUserProfile: () => dispatch(showUserProfile()),
-  showVictimsInfo: () => dispatch(showVictimsInfo())
+  showVictimsInfo: () => dispatch(showVictimsInfo()),
+  resetError: () => dispatch(resetError())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
