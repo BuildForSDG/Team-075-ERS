@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { helpSent } from '../../redux/sendHelp/sendHelp.actions';
 import { logoutUser } from '../../redux/user/user.actions';
+import { showUserProfile } from '../../redux/modal/modal.actions';
 import CustomButton from '../custom-button/CustomButton';
 import './navbar.css';
 
@@ -26,14 +27,18 @@ class Navbar extends Component {
     return (
       <header>
         <Link to="/">
-          <img src="images/logo.svg" alt="help logo" id="logo" onClick={() => this.props.helpSent(false)} />
+          <img src="images/logo.svg" alt="help logo" id="logo" onClick={() => {
+            return (
+              this.props.helpSent(false)
+            )
+            }} />
         </Link>
         <nav className={`nav ${this.state.showMenu ? 'show-menu' : ''}`}>
           {login === 200 ? (
             <>
-              <Link className="nav-link" to="/profile">
+              <p className="nav-link" onClick={this.props.showUserProfile}>
                 {`Welcome, ${currentUser ? currentUser.userId.name : null}`}{' '}
-              </Link>
+              </p>
               <Link className="nav-link" to="/ers">
                 ERS
               </Link>
@@ -69,7 +74,8 @@ class Navbar extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   helpSent: (value) => dispatch(helpSent(value)),
-  logoutUser: () => dispatch(logoutUser())
+  logoutUser: () => dispatch(logoutUser()),
+  showUserProfile: () => dispatch(showUserProfile())
 });
 
 const mapStateToProps = (state) => ({
