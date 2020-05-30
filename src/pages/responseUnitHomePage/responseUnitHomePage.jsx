@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../../components/card/card';
 import data from '../../utils/data';
-
+import './response-unit-homepage.css';
 const ResponseUnitHomePage = () => (
   <div className="ers-container">
     {data.map((victim) => (
