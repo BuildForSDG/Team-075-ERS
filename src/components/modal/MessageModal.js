@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Modal from './Modal';
 
 export default function MessageModal(props) {
   return (
-    <Modal show={props.show} handleClose={props.hideModal}>
+    <Fragment>
       <h2 className="heading">Help request Sent</h2>
       <p className="sub-message">
         Please Stay Calm!
@@ -30,6 +30,6 @@ export default function MessageModal(props) {
           </div>
         </div>
       </div>
-    </Modal>
+    </Fragment>
   );
 }
