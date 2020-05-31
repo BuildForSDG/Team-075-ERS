@@ -35,6 +35,7 @@
 }
 
 .main-content {
+  margin-top: 15px;
   display: flex;
 }
 
@@ -51,23 +52,24 @@
 }
 
 .line {
-  height: 37px;
+  height: 35px;
   width: 0;
   border: 1px solid #8b8a8a;
   margin-left: 5px;
 }
 
 .line2 {
-  height: 50px;
+  height: 55px;
 }
 
 .right-div {
+  text-align: left;
   padding-right: 30px;
   max-width: 300px;
 }
 
 .right-div p {
-  padding-bottom: 18px;
+  padding-bottom: 27px;
 }
 
 .btn-close {

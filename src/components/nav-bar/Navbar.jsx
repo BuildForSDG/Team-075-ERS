@@ -45,7 +45,7 @@ class Navbar extends Component {
               <Link className="nav-link" to="/faq">
                 FAQ
               </Link>
-              <Link className="nav-link" to="/login" onClick={this.props.logoutUser}>
+              <Link className="nav-link no-padding" to="/login" onClick={this.props.logoutUser}>
                 <CustomButton className="custom-square-button">Logout</CustomButton>
               </Link>
             </>

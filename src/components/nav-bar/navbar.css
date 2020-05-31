@@ -35,6 +35,10 @@ header {
   display: none;
 }
 
+.no-padding {
+  padding: 0;
+}
+
 @media screen and (max-width: 640px) {
   #hamburger-icon {
     display: block;
