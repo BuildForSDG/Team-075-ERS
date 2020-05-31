@@ -6,6 +6,7 @@ import sendHelpReducer from './sendHelp/sendHelp-reducer';
 import reportReducer from './report/report.reducer';
 import modalReducer from './modal/modal.reducer';
 import updateReducer from './updateProfile/updateProfile.reducer';
+import responseReducer from './response/response.reducer';
 
 
 const persistConfig = {
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   help: sendHelpReducer,
   report: reportReducer,
   modal: modalReducer,
-  update: updateReducer
+  update: updateReducer,
+  response: responseReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

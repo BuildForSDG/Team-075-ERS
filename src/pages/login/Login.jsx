@@ -80,10 +80,9 @@ class Login extends React.Component {
   
             <div className="right">
               <p>Sign up with one of your social accounts</p>
-  
               <CustomButton className="soc-btn">
-                <Facebook id="facebook" />
-                <span>sign in with facebook</span>
+                  <Facebook id="facebook" />
+                  <span>sign in with facebook</span>
               </CustomButton>
   
               <CustomButton className="soc-btn">
