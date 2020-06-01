@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 };
 
 const modalReducer = (state = INITIAL_STATE, action = {}) => {
-  console.log(action.payload)
   switch (action.type) {
     case ConstantsActionTypes.SHOW_FEEDBACK_SUCCESS:
       return ({
