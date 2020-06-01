@@ -16,7 +16,7 @@ class Modal extends React.Component {
       ) ? 'modal display-block' : 'modal display-none';
   
     return (
-      <div className={showHideClassName}>
+      <div className={`${showHideClassName}`} >
         <section className="modal-main">
           {this.props.children}
           <CustomButton className="btn-close" onClick={() => {
