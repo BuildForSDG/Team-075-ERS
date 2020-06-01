@@ -57,7 +57,7 @@ class ResponseUnitHomePage extends React.Component {
                   phoneNo={victim.phoneNo}
                   latitude={victim.location.latitude}
                   longitude={victim.location.longitude}
-                  imageURL={`https://robohash.org/set_set5/${victim.name}?size=50x50`}
+                  imageURL={`https://robohash.org/set_set5/${victim._id}?size=50x50`}
                   status={victim.status}
                 />
               </div>
