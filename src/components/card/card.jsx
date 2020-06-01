@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { showVictimsInfo } from '../../redux/modal/modal.actions';
 import CustomButton from '../custom-button/CustomButton';
 import './card.css';
 
-const Card = ({ name, latitude,longitude, phoneNo, imageURL, status }) => (
+const Card = ({ name, latitude,longitude, phoneNo, imageURL, status, showVictimsInfo }) => (
   <div className='card-container'>
     <div className='card'>
       <img src={imageURL} alt="victim" className='img'/>
@@ -26,10 +28,19 @@ const Card = ({ name, latitude,longitude, phoneNo, imageURL, status }) => (
         </div>
       </div>
       <Link to='/google-map'>
-        <CustomButton className='custom-square-button card-btn'>{ `${latitude}, ${longitude}` }</CustomButton>
+        <CustomButton 
+          className='custom-square-button card-btn'
+          onClick={showVictimsInfo}
+        >
+          { `${latitude}, ${longitude}` }
+        </CustomButton>
       </Link>
     </div>
   </div>
 );
 
-export default Card;
+const mapDispatchToProps = (dispatch) => ({
+  showVictimsInfo: () => dispatch(showVictimsInfo())
+});
+
+export default connect(null, mapDispatchToProps)(Card);

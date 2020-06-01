@@ -14,7 +14,7 @@ class ResponseUnitHomePage extends React.Component {
     this.props.getAllVictims(token);
   }
   render(){
-    let idx;
+    // let idx;
     if (this.props.modal.showVictims ) {
       const { reports } = this.props.response.victims;
       const { index } = this.props.modal;
