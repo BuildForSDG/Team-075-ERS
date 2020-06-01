@@ -27,7 +27,6 @@ class GoogleMap extends React.Component {
   displayMarkers = () => {
     const { reports } = this.props.response.victims;
     if (reports) {
-      console.log(reports)
       return reports.map((store, index) => {
         return (
           <Marker
