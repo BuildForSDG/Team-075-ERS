@@ -1,0 +1,8 @@
+const ConstantsActionTypes = {
+  GET_VICTIMS_START: 'GET_VICTIMS_START',
+  GET_VICTIMS_SUCCESS: 'GET_VICTIMS_SUCCESS',
+  LOAD_VICTIMS: 'LOAD_VICTIMS',
+  GET_VICTIMS_FAILED: 'GET_VICTIMS_FAILED'
+};
+
+export default ConstantsActionTypes;

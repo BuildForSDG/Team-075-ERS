@@ -2,7 +2,6 @@ import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { connect } from 'react-redux';
 import Card from '../../components/card/card';
-import data from '../../utils/data';
 import './googleMap.css';
 
 const mapStyles = {
@@ -26,23 +25,28 @@ class GoogleMap extends React.Component {
   }
 
   displayMarkers = () => {
-    return this.state.stores.map((store, index) => {
-      return (
-        <Marker
-          key={index}
-          id={index}
-          position={{
-            lat: store.latitude,
-            lng: store.longitude
-          }}
-          onClick={() => console.log('You clicked me!')}
-        />
-      );
-    });
+    const { reports } = this.props.response.victims;
+    if (reports) {
+      console.log(reports)
+      return reports.map((store, index) => {
+        return (
+          <Marker
+            key={index}
+            id={index}
+            position={{
+              lat: store.location.latitude,
+              lng: store.location.longitude
+            }}
+            onClick={() => console.log('You clicked me!')}
+          />
+        );
+      });
+    }
   };
 
   render() {
     const { lat, lng } = this.props.help.location;
+    const { reports } = this.props.response.victims;
     return (
       <div className="map-container">
         <div className="map">
@@ -52,17 +56,20 @@ class GoogleMap extends React.Component {
           </Map>
         </div>
         <div className="map-card">
-          {data.map((victim) => (
-            <Card
-              key={victim.id}
-              name={victim.name}
-              phoneNo={victim.phoneNo}
-              latitude={victim.location.latitude}
-              longitude={victim.location.longitude}
-              imageURL={victim.imageURL}
-              status={victim.status}
-            />
-          ))}
+          {
+            reports ? 
+            reports.map((victim) => (
+              <Card
+                key={victim.id}
+                name={victim.name}
+                phoneNo={victim.phoneNo}
+                latitude={victim.location.latitude}
+                longitude={victim.location.longitude}
+                imageURL={victim.imageURL}
+                status={victim.status}
+              />
+            )) : null
+          }
         </div>
       </div>
     );
@@ -70,7 +77,8 @@ class GoogleMap extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  help: state.help
+  help: state.help,
+  response: state.response
 });
 
 export default GoogleApiWrapper({
