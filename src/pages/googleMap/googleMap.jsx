@@ -5,8 +5,8 @@ import Card from '../../components/card/card';
 import './googleMap.css';
 
 const mapStyles = {
-  width: '80%',
-  height: '80%'
+  width: '100%',
+  height: '100%'
 };
 
 class GoogleMap extends React.Component {
@@ -27,7 +27,7 @@ class GoogleMap extends React.Component {
   displayMarkers = () => {
     const { reports } = this.props.response.victims;
     if (reports) {
-      console.log(reports)
+      console.log(reports);
       return reports.map((store, index) => {
         return (
           <Marker
@@ -56,20 +56,19 @@ class GoogleMap extends React.Component {
           </Map>
         </div>
         <div className="map-card">
-          {
-            reports ? 
-            reports.map((victim) => (
-              <Card
-                key={victim.id}
-                name={victim.name}
-                phoneNo={victim.phoneNo}
-                latitude={victim.location.latitude}
-                longitude={victim.location.longitude}
-                imageURL={victim.imageURL}
-                status={victim.status}
-              />
-            )) : null
-          }
+          {reports
+            ? reports.map((victim) => (
+                <Card
+                  key={victim.id}
+                  name={victim.name}
+                  phoneNo={victim.phoneNo}
+                  latitude={victim.location.latitude}
+                  longitude={victim.location.longitude}
+                  imageURL={victim.imageURL}
+                  status={victim.status}
+                />
+              ))
+            : null}
         </div>
       </div>
     );
