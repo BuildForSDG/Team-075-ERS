@@ -47,7 +47,7 @@ class GoogleMap extends React.Component {
           {reports
             ? reports.map((victim) => (
                 <Card
-                  key={victim.id}
+                  key={victim._id}
                   name={victim.name}
                   phoneNo={victim.phoneNo}
                   latitude={victim.location.latitude}
