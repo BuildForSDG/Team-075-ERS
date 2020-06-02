@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendHelp  } from '../../redux/sendHelp/sendHelp.actions';
-import { showFeedbackSuccess } from '../../redux/modal/modal.actions';
+import { showFeedbackSuccess, promptLogIn } from '../../redux/modal/modal.actions';
 import  { sendReportAsync }  from '../../redux/report/report.actions';
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
@@ -9,6 +9,7 @@ import MessageModal from '../../components/modal/MessageModal';
 import UserViewProfile from '../userProfile/userProfile.component';
 import Modal from '../../components/modal/Modal';
 import WithSpinner from '../../components/with-spinner/with-spinner';
+import ModalLogin from '../../components/modalLogin/modal-login';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -37,15 +38,21 @@ class HomePage extends React.Component {
       this.props.showFeedbackSuccess();
     }
     if (!this.props.user.currentUser) {
-      alert('Please, login to continue.');
+      this.props.promptLogIn();
+      // alert('Please, login to continue.');
     }
   };
 
 
   render() {
-    const { showFeedback, showProfile, showVictims } = this.props.modal;
+    const { showFeedback, showProfile, showVictims, promptLogIn } = this.props.modal;
     const { isPending, errorMessage, reportMessage } = this.props.report;
     // const { reportMessage } = this.props.report;
+    if (!this.props.user.currentUser && promptLogIn) {
+      return (
+        <ModalLogin></ModalLogin>
+      );
+    }
     
     if (errorMessage || reportMessage === 401) {
       return (
@@ -120,12 +127,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   sendHelp: (location) => dispatch(sendHelp(location)),
-  // helpSent: (value) => dispatch(helpSent(value)),
-  // postUserDetailsStartAsync: (lat, lng, phoneNo, userId) =>
-  //   dispatch(postUserDetailsStartAsync(lat, lng, phoneNo, userId)),
   sendReportAsync: (userId, phoneNo, latitude, longitude, token) =>
     dispatch(sendReportAsync(userId, phoneNo, latitude, longitude, token)),
-    showFeedbackSuccess: () => dispatch(showFeedbackSuccess())
+  showFeedbackSuccess: () => dispatch(showFeedbackSuccess()),
+  promptLogIn: () => dispatch(promptLogIn())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

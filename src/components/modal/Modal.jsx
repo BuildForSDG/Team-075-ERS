@@ -2,22 +2,23 @@ import React from 'react';
 import './modal.css';
 import CustomButton from '../custom-button/CustomButton';
 import { connect } from 'react-redux';
-import { showFeedbackSuccess, showUserProfile, showVictimsInfo } from '../../redux/modal/modal.actions';
+import { showFeedbackSuccess, showUserProfile, showVictimsInfo, promptLogIn } from '../../redux/modal/modal.actions';
 import { resetError } from '../../redux/report/report.actions';
 
 class Modal extends React.Component {
 
   render() {
-    const { showFeedback, showProfile, showVictims } = this.props.modal;
+    const { showFeedback, showProfile, showVictims, promptLogIn} = this.props.modal;
     const showHideClassName = (
       showFeedback 
       || showProfile 
       || showVictims
+      || promptLogIn
       ) ? 'modal display-block' : 'modal display-none';
   
     return (
       <div className={`${showHideClassName}`} >
-        <section className="modal-main">
+        <section className="modal-main" >
           {this.props.children}
           <CustomButton className="btn-close" onClick={() => {
             if (showFeedback){
@@ -28,6 +29,9 @@ class Modal extends React.Component {
             }
             if (showVictims) {
               return this.props.showVictimsInfo();
+            }
+            if (promptLogIn) {
+              return this.props.promptLogIn();
             }
             }}>
             Close
@@ -46,7 +50,8 @@ const mapDispatchToProps = (dispatch) => ({
   showFeedbackSuccess: () => dispatch(showFeedbackSuccess()),
   showUserProfile: () => dispatch(showUserProfile()),
   showVictimsInfo: () => dispatch(showVictimsInfo()),
-  resetError: () => dispatch(resetError())
+  resetError: () => dispatch(resetError()),
+  promptLogIn: () => dispatch(promptLogIn())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

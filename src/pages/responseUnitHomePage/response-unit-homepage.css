@@ -13,3 +13,7 @@
 .victim-card:hover {
   cursor: pointer;
 }
+
+.victim-tel:hover {
+  color: red;
+}
