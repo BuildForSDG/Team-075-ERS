@@ -14,10 +14,10 @@ const Card = ({ name, latitude,longitude, phoneNo, imageURL, status, showVictims
         <span className='card-mobile'>{ phoneNo }</span>
         <div className='card-state'>
           {
-            status ? 
+            status === 'accepted and en-route' ? 
             <>
               <div className='card-status-route'/>
-              <span>route</span>
+              <span>accepted and en-route</span>
             </>
             :
             <>

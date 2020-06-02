@@ -10,19 +10,7 @@ const mapStyles = {
 };
 
 class GoogleMap extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stores: [
-        { lat: 47.49855629475769, lng: -122.14184416996333 },
-        { latitude: 47.359423, longitude: -122.021071 },
-        { latitude: 47.2052192687988, longitude: -121.988426208496 },
-        { latitude: 47.6307081, longitude: -122.1434325 },
-        { latitude: 47.3084488, longitude: -122.2140121 },
-        { latitude: 47.5524695, longitude: -122.0425407 }
-      ]
-    };
-  }
+  
 
   displayMarkers = () => {
     const { reports } = this.props.response.victims;
@@ -30,7 +18,7 @@ class GoogleMap extends React.Component {
       return reports.map((store, index) => {
         return (
           <Marker
-            key={index}
+            key={store._id}
             id={index}
             position={{
               lat: store.location.latitude,
@@ -46,6 +34,7 @@ class GoogleMap extends React.Component {
   render() {
     const { lat, lng } = this.props.help.location;
     const { reports } = this.props.response.victims;
+    console.log(reports)
     return (
       <div className="map-container">
         <div className="map">

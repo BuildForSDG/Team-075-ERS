@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   showFeedback: false,
   showProfile: false,
   showVictims: false,
+  promptLogIn: false,
   index: undefined
 };
 
@@ -24,6 +25,20 @@ const modalReducer = (state = INITIAL_STATE, action = {}) => {
         ...state,
         showVictims: !state.showVictims,
         index: action.payload
+      });
+    case ConstantsActionTypes.PROMPT_LOGIN:
+      return ({
+        ...state,
+        promptLogIn: !state.promptLogIn
+      });
+    case ConstantsActionTypes.CLOSE_ALL_MODAL:
+      return ({
+        ...state,
+        showFeedback: false,
+        showProfile: false,
+        showVictims: false,
+        promptLogIn: false,
+        index: undefined
       });
     default:
       return state;
