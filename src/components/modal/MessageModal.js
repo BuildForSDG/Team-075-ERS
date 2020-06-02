@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Modal from './Modal';
+// import Modal from './Modal';
 
 export default function MessageModal(props) {
   return (

@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import ReportHistory from '../../components/history/History';
 import { connect } from 'react-redux';
+import { showVictimsInfo, showUserProfile } from '../../redux/modal/modal.actions';
+import ReportHistory from '../../components/history/History';
 import CustomButton from '../../components/custom-button/CustomButton';
 import './user-profile.css';
 
@@ -17,7 +18,12 @@ class UserViewProfile extends React.Component {
         <p className="phone-number">{userId.phoneNo}</p>
         <p className="mail">{userId.email}</p>
         <Link to="/update-profile">
-          <CustomButton className="custom-square-button">Update Profile</CustomButton>
+          <CustomButton 
+            className="custom-square-button"
+            onClick={this.props.showUserProfile}
+          >
+            Update Profile
+          </CustomButton>
         </Link>
         <h5 className="report-heading">Report History</h5>
         <ReportHistory />
@@ -30,4 +36,9 @@ const mapStateToProps = (state) => ({
   user: state.user.currentUser
 });
 
-export default connect(mapStateToProps)(UserViewProfile);
+const mapDispatchToProps = (dispatch) => ({
+  showVictimsInfo: () => dispatch(showVictimsInfo()),
+  showUserProfile: () => dispatch(showUserProfile())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserViewProfile);
