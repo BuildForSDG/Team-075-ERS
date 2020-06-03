@@ -135,6 +135,7 @@ a {
 .forgot-psw {
   font-size: 13px;
   padding-bottom: 50px;
+  text-align: right;
 }
 
 #sub-heading {
@@ -144,4 +145,14 @@ a {
 
 .link {
   margin: 5px;
+}
+
+.login {
+  width: 19.4375rem;
+  height: 3.3125rem;
+  margin: auto;
+}
+
+.login-title {
+  padding-top: 1.25rem
 }
