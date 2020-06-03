@@ -62,11 +62,11 @@ class Login extends React.Component {
                     placeholder={this.state.password}
                     onChange={this.setLoginDetails}
                   />
-
-                  <p className="forgot-psw">
-                    <b>Forgot password?</b>
-                  </p>
-
+                  <div id="align-psw">
+                    <p className="forgot-psw">
+                      <b>Forgot password?</b>
+                    </p>
+                  </div>
                   <CustomButton className="btn-send register-btn">Login</CustomButton>
                 </div>
               </fieldset>

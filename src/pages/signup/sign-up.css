@@ -92,7 +92,7 @@ a {
 }
 
 .soc-btn {
-  width: 270px;
+  width: 280px;
   padding: 0.5rem 0.75rem;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
@@ -157,7 +157,7 @@ a {
   }
 
   .register-btn {
-    margin: 20px 0 0 0;
+    /* margin: 20px 0 0 0; */
     width: 300px;
   }
 
@@ -170,7 +170,9 @@ a {
   }
 
   .right {
-    padding-top: 10%;
+    width: 100vw;
+    position: absolute;
+    bottom: 7%;
     align-items: center;
   }
 
@@ -187,7 +189,19 @@ a {
   }
 
   .prompt-msg {
-    padding: 50px 0 0 0;
-    color: #2c2c2c;
+    width: 100vw;
+    position: absolute;
+    margin-top: 10px;
+    bottom: 3%;
+  }
+
+  #align-psw {
+    width: 300px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .forgot-psw {
+    padding-bottom: 20px;
   }
 }
