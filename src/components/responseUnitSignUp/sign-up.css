@@ -9,7 +9,7 @@ a {
 }
 
 .signup-title {
-  padding-bottom: 50px;
+  padding: 20px 0 50px 0;
 }
 
 .login-section {
@@ -24,11 +24,11 @@ a {
   width: 45vw;
 }
 
-.user-details {
+.response-unit-details {
   display: block;
   width: 326.61px;
   padding: 0.5rem 0.75rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-size: 0.9rem;
   line-height: 1.5;
   color: #030f25;
@@ -40,7 +40,7 @@ a {
 }
 
 .register-btn {
-  margin-right: 0;
+  margin: 15px 0 0 0;
   width: 326.61px;
 }
 
@@ -144,4 +144,10 @@ a {
 
 .link {
   margin: 5px;
+}
+
+.register {
+  width: 19.4375rem;
+  height: 3.3125rem;
+  margin: auto;
 }

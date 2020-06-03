@@ -14,7 +14,7 @@ import HandleError from './components/handleError/handleError';
 import './App.css';
 import WithSpinner from './components/with-spinner/with-spinner';
 import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
-import ResponseUnitSignUp from './pages/responseUnit/signUp/SignUp';
+import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
 
 class App extends React.Component {
   render() {
