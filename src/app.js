@@ -38,7 +38,7 @@ class App extends React.Component {
                     <Route exact path="/feedback" component={Feedback} />
                     <Route exact path="/google-map" component={GoogleMap} />
                     <Route exact path="/ers" component={ResponseUnitHomePage} />
-                    <Route exact path="/ers/sign-up" component={ResponseUnitSignUp} />
+                    <Route exact path="/ers-sign-up" component={ResponseUnitSignUp} />
                     <Route
                       exact
                       path="/login"
