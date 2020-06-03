@@ -39,9 +39,9 @@ class ResponseUnitSignUp extends React.Component {
     event.preventDefault();
     const { name, email, password, contact } = this.state;
     const { signUpUserStartAsync } = this.props;
-    if (password === confirmPassword && terms === 'on') {
-      signUpUserStartAsync(name, email, phoneNo, password);
-    }
+    // if (password === confirmPassword && terms === 'on') {
+    //   signUpUserStartAsync(name, email, phoneNo, password);
+    // }
     this.setState((prevState, prevProps) => ({
       name: '',
       email: '',
