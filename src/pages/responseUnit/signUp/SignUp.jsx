@@ -1,18 +1,18 @@
 import React from 'react';
-import CustomButton from '../../components/custom-button/CustomButton';
+import CustomButton from '../../../components/custom-button/CustomButton';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signUpUserStartAsync } from '../../redux/user/user.actions';
+import { signUpUserStartAsync } from '../../../redux/user/user.actions';
 
-import { ReactComponent as Line } from '../../assets/images/Line.svg';
+import { ReactComponent as Line } from '../../../assets/images/Line.svg';
 // import { ReactComponent as Girl } from '../../assets/images/girl.svg';
 // import { ReactComponent as Google } from '../../assets/images/google.svg';
-import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
+import { ReactComponent as Facebook } from '../../../assets/images/facebook.svg';
 
 import './sign-up.css';
 //custom button component reused from report accident component
 
-class SignUp extends React.Component {
+class ResponseUnitSignUp extends React.Component {
   constructor() {
     super();
 
@@ -156,4 +156,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(signUpUserStartAsync(name, email, phoneNo, emergencyContactName, emergencyContactPhoneNo, password))
 });
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(null, mapDispatchToProps)(ResponseUnitSignUp);
