@@ -8,7 +8,7 @@ import { signUpUserStartAsync } from '../../redux/user/user.actions';
 // import { ReactComponent as Google } from '../../assets/images/google.svg';
 // import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
 
-import './sign-up.css';
+import '../../pages/signup/sign-up.css';
 //custom button component reused from report accident component
 
 class ResponseUnitSignUp extends React.Component {
@@ -153,14 +153,6 @@ class ResponseUnitSignUp extends React.Component {
           <div className="register">
              <CustomButton className="btn-send register-btn">Register</CustomButton>
           </div>
-
-        {/* <p className="prompt-msg">
-          Already have an account?
-          <Link to="/login" className="link">
-            {' '}
-            <b>Log In</b>{' '}
-          </Link>
-        </p> */}
       </section>
     );
   }
