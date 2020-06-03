@@ -148,8 +148,6 @@ class ResponseUnitSignUp extends React.Component {
 
 
           </div>
-
-          <img src="../images/girl.svg" alt="girl" id="girl" />
         </div>
 
           <div className="register">
