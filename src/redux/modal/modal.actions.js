@@ -6,3 +6,5 @@ export const showVictimsInfo = (index) => ({
   type: ConstantsActionTypes.SHOW_VICTIMS_INFO,
   payload: index
 });
+export const promptLogIn = () => ({ type: ConstantsActionTypes.PROMPT_LOGIN });
+export const closeAllModal = () => ({ type: ConstantsActionTypes.CLOSE_ALL_MODAL });

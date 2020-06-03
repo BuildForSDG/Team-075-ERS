@@ -23,7 +23,9 @@ class ResponseUnitHomePage extends React.Component {
           <div className='victim-info'>
             <p>Id: {reports[index]._id}</p>
             <br></br>
-            <p>Reporter Phone No: {reports[index].reporter.phoneNo}</p>
+            <p>Reporter Phone No: <span></span>
+              <a className='victim-tel' href={`tel:${reports[index].reporter.phoneNo}`}>{reports[index].reporter.phoneNo}</a>
+            </p>
             <br></br>
             <p>Reporter userid: {reports[index].reporter.userId}</p>
             <br></br>
@@ -49,7 +51,7 @@ class ResponseUnitHomePage extends React.Component {
         <div className="ers-container">
           {
             reports.map((victim, index) => {
-              // console.log(index)
+              console.log(victim.response.status)
               return (
               <div className="response-homepage victim-card" key={victim._id} onClick={() => this.props.showVictimsInfo(index)}>
                 <Card
@@ -58,7 +60,7 @@ class ResponseUnitHomePage extends React.Component {
                   latitude={victim.location.latitude}
                   longitude={victim.location.longitude}
                   imageURL={`https://robohash.org/set_set5/${victim._id}?size=50x50`}
-                  status={victim.status}
+                  status={victim.response.status}
                 />
               </div>
             )})
