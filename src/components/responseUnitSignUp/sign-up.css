@@ -3,13 +3,8 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
 .signup-title {
-  padding: 20px 0 50px 0;
+  padding: 1.25rem 0 3.125rem 0;
 }
 
 .login-section {
@@ -26,7 +21,7 @@ a {
 
 .response-unit-details {
   display: block;
-  width: 326.61px;
+  width: 20.413125rem;
   padding: 0.5rem 0.75rem;
   margin-bottom: 1rem;
   font-size: 0.9rem;
@@ -34,14 +29,14 @@ a {
   color: #030f25;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 0.0625rem solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .register-btn {
-  margin: 15px 0 0 0;
-  width: 326.61px;
+  margin: 0.9375rem 0 0 0;
+  width: 20.413125rem;
 }
 
 .register-btn:focus {
@@ -53,17 +48,17 @@ a {
   flex-direction: column;
   align-items: flex-start;
   width: 45vw;
-  margin-left: 72px;
+  margin-left: 4.5rem;
 }
 
 .right p {
-  padding: 10px 0;
+  padding: 0.625rem 0;
 }
 
 #girl {
   position: absolute;
   left: 0;
-  width: 300px;
+  width: 18.75rem;
   bottom: 0;
 }
 
