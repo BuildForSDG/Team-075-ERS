@@ -36,13 +36,13 @@ class Login extends React.Component {
   };
 
   render() {
-    
-      return (
+    return (
+      <div className="container">
         <section>
           <h2 className="login-title">Hello</h2>
-  
+
           <p id="sub-heading">Please sign in to your account</p>
-  
+
           <div className="login-section">
             <form id="login" onSubmit={this.handleSubmit}>
               <fieldset>
@@ -54,7 +54,7 @@ class Login extends React.Component {
                     placeholder={this.state.email}
                     onChange={this.setLoginDetails}
                   />
-  
+
                   <input
                     name="password"
                     type="password"
@@ -62,49 +62,48 @@ class Login extends React.Component {
                     placeholder={this.state.password}
                     onChange={this.setLoginDetails}
                   />
-  
+
                   <p className="forgot-psw">
                     <b>Forgot password?</b>
                   </p>
-  
+
                   <CustomButton className="btn-send register-btn">Login</CustomButton>
                 </div>
               </fieldset>
             </form>
-  
+
             <div className="middle">
               <Line className="divider" />
               <p>Or</p>
               <Line className="divider" />
             </div>
-  
+
             <div className="right">
               <p>Sign up with one of your social accounts</p>
               <CustomButton className="soc-btn">
-                  <Facebook id="facebook" />
-                  <span>sign in with facebook</span>
+                <Facebook id="facebook" />
+                <span>sign in with facebook</span>
               </CustomButton>
-  
+
               <CustomButton className="soc-btn">
                 <img src="images/google.svg" alt="google icon" id="google" />
                 {/* <Google id="google"/> */}
                 <span>sign in with google</span>
               </CustomButton>
             </div>
-  
+
             <Girl id="girl" />
           </div>
-  
+
           <p className="prompt-msg">
             Don't an account?
             <Link to="/sign-up" className="link">
-              {' '}
-              <b>Sign Up</b>{' '}
+              <b>Sign Up</b>
             </Link>
           </p>
         </section>
-      );
-    
+      </div>
+    );
   }
 }
 
@@ -114,6 +113,6 @@ const mapDispatchToprops = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   isLoading: state.user.isLoading
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToprops)(Login);
