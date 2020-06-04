@@ -7,6 +7,8 @@ import { signUpUserStartAsync } from '../../redux/user/user.actions';
 import { ReactComponent as Line } from '../../assets/images/Line.svg';
 import Toast from '../../components/toast/toast';
 import { toast } from 'react-toastify';
+import { ReactComponent as Girl } from '../../assets/images/girl.svg';
+// import { ReactComponent as Google } from '../../assets/images/google.svg';
 import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
 
 import './sign-up.css';
@@ -112,43 +114,43 @@ class SignUp extends React.Component {
                     <br />
                     <b>Terms of Service and Privacy Policy</b>
                   </label>
+
                 </div>
-              </div>
-            </fieldset>
-          </form>
+              </fieldset>
+            </form>
 
-          <div className="middle">
-            <Line className="divider" />
-            <p>Or</p>
-            <Line className="divider" />
+            <div className="middle">
+              <Line className="divider" />
+              <p>Or</p>
+              <Line className="divider" />
+            </div>
+
+            <div className="right">
+              <p>Sign up with one of your social accounts</p>
+
+              <CustomButton className="soc-btn">
+                <Facebook id="facebook" />
+                <span>sign in with facebook</span>
+              </CustomButton>
+
+              <CustomButton className="soc-btn">
+                {/* <Google id="google"/> */}
+                <img src="images/google.svg" alt="google icon" id="google" />
+                <span>sign in with google</span>
+              </CustomButton>
+            </div>
+
+            <Girl id="girl" />
           </div>
 
-          <div className="right">
-            <p>Sign up with one of your social accounts</p>
-
-            <CustomButton className="soc-btn">
-              <Facebook id="facebook" />
-              <span>sign in with facebook</span>
-            </CustomButton>
-
-            <CustomButton className="soc-btn">
-              {/* <Google id="google"/> */}
-              <img src="images/google.svg" alt="google icon" id="google" />
-              <span>sign in with google</span>
-            </CustomButton>
-          </div>
-
-          <img src="images/girl.svg" alt="girl" id="girl" />
-        </div>
-
-        <p className="prompt-msg">
-          Already have an account?
-          <Link to="/login" className="link">
-            {' '}
-            <b>Log In</b>{' '}
-          </Link>
-        </p>
-      </section>
+          <p className="prompt-msg">
+            Already have an account?
+            <Link to="/login" className="link">
+              <b>Log In</b>
+            </Link>
+          </p>
+        </section>
+      </div>
     );
   }
 }

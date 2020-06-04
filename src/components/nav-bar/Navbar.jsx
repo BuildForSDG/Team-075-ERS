@@ -27,11 +27,14 @@ class Navbar extends Component {
     return (
       <header>
         <Link to="/">
-          <img src="images/logo.svg" alt="help logo" id="logo" onClick={() => {
-            return (
-              this.props.helpSent(false)
-            )
-            }} />
+          <img
+            src="images/logo.svg"
+            alt="help logo"
+            id="logo"
+            onClick={() => {
+              return this.props.helpSent(false);
+            }}
+          />
         </Link>
         <nav className={`nav ${this.state.showMenu ? 'show-menu' : ''}`}>
           {login === 200 ? (
@@ -42,10 +45,10 @@ class Navbar extends Component {
               <Link className="nav-link" to="/ers">
                 ERS
               </Link>
-              <Link className="nav-link" to="/faq">
+              <Link className="nav-link last-link" to="/faq">
                 FAQ
               </Link>
-              <Link className="nav-link no-padding" to="/login" onClick={this.props.logoutUser}>
+              <Link className="no-padding" to="/login" onClick={this.props.logoutUser}>
                 <CustomButton className="custom-square-button">Logout</CustomButton>
               </Link>
             </>
