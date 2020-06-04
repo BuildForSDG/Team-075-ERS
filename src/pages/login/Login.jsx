@@ -11,7 +11,6 @@ import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
 import { toast } from 'react-toastify';
 
 import '../signup/sign-up.css';
-import withSpinner from '../../components/with-spinner/with-spinner';
 
 class Login extends React.Component {
   constructor() {
