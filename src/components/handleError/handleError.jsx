@@ -16,7 +16,7 @@ class HandleError extends React.Component {
     if (this.state.hasError){
       return (
         <div>
-          <h1>Oops! Something went wrong.</h1>
+          <p>Oops! Something went wrong.</p>
         </div>
       );
     }

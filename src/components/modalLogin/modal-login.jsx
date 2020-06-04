@@ -22,6 +22,9 @@ class ModalLogin extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
+    if (!email || !password) {
+      return;
+    }
     const { loginUserStartAsync } = this.props;
     loginUserStartAsync(email, password);
     this.setState((prevState, prevProps) => ({

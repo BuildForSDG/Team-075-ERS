@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { signUpUserStartAsync } from '../../redux/user/user.actions';
 
 import { ReactComponent as Line } from '../../assets/images/Line.svg';
-// import { ReactComponent as Girl } from '../../assets/images/girl.svg';
-// import { ReactComponent as Google } from '../../assets/images/google.svg';
+import Toast from '../../components/toast/toast';
+import { toast } from 'react-toastify';
 import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
 
 import './sign-up.css';
@@ -22,7 +22,8 @@ class SignUp extends React.Component {
       phoneNo: '',
       password: '',
       confirmPassword: '',
-      terms: ''
+      terms: '',
+      status: 'Submiting'
     };
   }
 
@@ -50,6 +51,7 @@ class SignUp extends React.Component {
   render() {
     return (
       <section>
+        <Toast></Toast>
         <h2 className="signup-title">Create An Account</h2>
 
         <div className="login-section">
@@ -101,7 +103,7 @@ class SignUp extends React.Component {
                   onChange={this.setLoginDetails}
                 />
 
-                <CustomButton className="btn-send register-btn">Register</CustomButton>
+                <CustomButton className="btn-send register-btn" onClick={() => toast.current = toast(this.state.status)}>Register</CustomButton>
 
                 <div className="policy">
                   <input type='checkbox' id="checkbox" name="terms" onChange={this.setLoginDetails}/>
