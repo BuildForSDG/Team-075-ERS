@@ -35,6 +35,12 @@
   text-align: left;
 }
 
+@media screen and (max-width: 640px) {
+  .sidebar-container {
+    width: 50px;
+  }
+}
+
 .icon {
   margin: 0 20px;
   height: 20px;
