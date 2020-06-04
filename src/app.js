@@ -12,10 +12,10 @@ import Navbar from './components/nav-bar/Navbar';
 import GoogleMap from './pages/googleMap/googleMap';
 import HandleError from './components/handleError/handleError';
 import './App.css';
-// import Toast from './components/with-spinner/with-spinner';
 import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
 // import Toast from './components/toast/toast';
 import WithSpinner from './components/with-spinner/with-spinner';
+import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
 
 class App extends React.Component {
   render() {
@@ -26,7 +26,7 @@ class App extends React.Component {
         <div className="App">
           <Navbar />
           {
-  
+
             (!this.props.isLoading) ?
             (
               <HandleError>
@@ -39,6 +39,7 @@ class App extends React.Component {
                     <Route exact path="/feedback" component={Feedback} />
                     <Route exact path="/google-map" component={GoogleMap} />
                     <Route exact path="/ers" component={ResponseUnitHomePage} />
+                    <Route exact path="/ers-sign-up" component={ResponseUnitSignUp} />
                     <Route
                       exact
                       path="/login"

@@ -43,16 +43,13 @@ class Login extends React.Component {
   };
 
   render() {
-    console.log(this.props.user)
-      return ( 
+    return (
+      <div className="container">
         <section>
           <h2 className="login-title">Hello</h2>
-          {/* <Toast></Toast> */}
-          {
-            this.props.user.isLoading ? <withSpinner></withSpinner> : null
-          }
+
           <p id="sub-heading">Please sign in to your account</p>
-          
+
           <div className="login-section">
             <form id="login" onSubmit={this.handleSubmit}>
               <fieldset>
@@ -65,7 +62,7 @@ class Login extends React.Component {
                     onChange={this.setLoginDetails}
                     required
                   />
-  
+
                   <input
                     name="password"
                     type="password"
@@ -74,11 +71,11 @@ class Login extends React.Component {
                     onChange={this.setLoginDetails}
                     required
                   />
-  
-                  <p className="forgot-psw">
-                    <b>Forgot password?</b>
-                  </p>
-        
+                  <div id="align-psw">
+                    <p className="forgot-psw">
+                      <b>Forgot password?</b>
+                    </p>
+                  </div>
                   <CustomButton className="btn-send register-btn" onClick={() => toast.current = toast(this.state.status)}>Login</CustomButton>
                 </div>
               </fieldset>
@@ -93,8 +90,8 @@ class Login extends React.Component {
             <div className="right">
               <p>Sign up with one of your social accounts</p>
               <CustomButton className="soc-btn">
-                  <Facebook id="facebook" />
-                  <span>sign in with facebook</span>
+                <Facebook id="facebook" />
+                <span>sign in with facebook</span>
               </CustomButton>
 
               <CustomButton className="soc-btn">
@@ -110,13 +107,12 @@ class Login extends React.Component {
           <p className="prompt-msg">
             Don't an account?
             <Link to="/sign-up" className="link">
-              {' '}
-              <b>Sign Up</b>{' '}
+              <b>Sign Up</b>
             </Link>
           </p>
         </section>
-      );
-    
+      </div>
+    );
   }
 }
 
@@ -125,7 +121,7 @@ const mapDispatchToprops = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  user: state.user.isLoading
-})
+  isLoading: state.user.isLoading
+});
 
 export default connect(mapStateToProps, mapDispatchToprops)(Login);
