@@ -3,7 +3,7 @@
 }
 
 .sub-heading {
-  font-size: 15px;
+  font-size: 0.95rem;
   padding-bottom: 5px;
 }
 
@@ -18,14 +18,14 @@
 
 .phone-number {
   font-weight: 400;
-  font-size: 13.5px;
-  padding: 3px 0;
+  font-size: 0.85rem;
+  padding: 8px 0;
 }
 
 .mail {
   color: #aaa;
   padding-bottom: 10px;
-  font-size: 13.5px;
+  font-size: 0.85rem;
   margin: 0;
 }
 
