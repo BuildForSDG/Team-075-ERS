@@ -8,6 +8,7 @@ import './dashboard.css';
 import { Route, Switch } from 'react-router-dom';
 import Admin from '../../pages/adminPanel/Admin';
 import GoogleMap from '../../pages/googleMap/googleMap';
+
 class Dashboard extends Component {
   render() {
     return (
@@ -30,7 +31,7 @@ class Dashboard extends Component {
               icon: <Active className="icon" />
             },
             {
-              title: 'Location',
+              title: 'Locations',
               route: 'dashboard/map',
               icon: <Location className="icon" />
             }
@@ -39,6 +40,7 @@ class Dashboard extends Component {
         <div className="content-container">
           <Switch>
             <Route exact path={this.props.match.url + '/'} component={Admin} />
+
             {/* GoogleMap component for testing routes on dashboard */}
             <Route exact path={this.props.match.url + '/report-units'} component={GoogleMap} />
           </Switch>

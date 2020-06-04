@@ -23,6 +23,10 @@
   width: 100%;
 }
 
+.sidebar-menu-item:hover {
+  opacity: 0.5;
+}
+
 .sidebar-menu-item p {
   color: #fff;
   font-size: 1.1rem;
