@@ -8,13 +8,18 @@ import CustomButton from '../../components/custom-button/CustomButton';
 import MessageModal from '../../components/modal/MessageModal';
 import UserViewProfile from '../userProfile/userProfile.component';
 import Modal from '../../components/modal/Modal';
-import WithSpinner from '../../components/with-spinner/with-spinner';
 import ModalLogin from '../../components/modalLogin/modal-login';
+import { toast } from 'react-toastify';
+import Toast from '../../components/toast/toast';
+import WithSpinner from '../../components/with-spinner/with-spinner';
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { show: false };
+    this.state = { 
+      show: false,
+      status: 'Report sent' 
+    };
   }
   componentDidMount() {
     const { sendHelp } = this.props;
@@ -35,8 +40,12 @@ class HomePage extends React.Component {
       const { token, userId } = this.props.user.currentUser;
       const { sendReportAsync } = this.props;
       sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
+      toast(this.state.status)
+    }
+    if (this.props.report.isPending) {
       this.props.showFeedbackSuccess();
     }
+
     if (!this.props.user.currentUser) {
       this.props.promptLogIn();
       // alert('Please, login to continue.');
@@ -47,7 +56,6 @@ class HomePage extends React.Component {
   render() {
     const { showFeedback, showProfile, showVictims, promptLogIn } = this.props.modal;
     const { isPending, errorMessage, reportMessage } = this.props.report;
-    // const { reportMessage } = this.props.report;
     if (!this.props.user.currentUser && promptLogIn) {
       return (
         <ModalLogin></ModalLogin>
@@ -61,11 +69,7 @@ class HomePage extends React.Component {
         </Modal>
       );
     }
-    if (isPending) {
-      return (
-        <WithSpinner></WithSpinner>
-      );
-    }
+    
     if (showFeedback) {
       return (
         <Modal>
@@ -98,10 +102,18 @@ class HomePage extends React.Component {
                 of the Eye witness button
               </p>
             </div>
+
+            {
+              isPending ? <WithSpinner></WithSpinner> : null
+            }
+
+            {
+              reportMessage === 200 ? <Toast></Toast> : null
+            }
             
             <div className="div2">
               <CustomButton className="custom-button" onClick={() => {
-                return this.sendHelp()
+                return this.sendHelp();
                 }}>
                 Help me!
               </CustomButton>

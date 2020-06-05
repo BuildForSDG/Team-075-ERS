@@ -7,6 +7,8 @@ import { ReactComponent as Line } from '../../assets/images/Line.svg';
 import { ReactComponent as Girl } from '../../assets/images/girl.svg';
 // import { ReactComponent as Google } from '../../assets/images/google.svg';
 import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
+// import Toast from '../../components/toast/toast';
+import { toast } from 'react-toastify';
 
 import '../signup/sign-up.css';
 
@@ -14,8 +16,9 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      password: 'Password',
-      email: 'Email address'
+      password: null,
+      email: null,
+      status: 'Loading...'
     };
   }
 
@@ -27,6 +30,9 @@ class Login extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
+    if(!email || !password) {
+      return;
+    }
     const { loginUserStartAsync } = this.props;
     loginUserStartAsync(email, password);
     this.setState((prevState, prevProps) => ({
@@ -53,6 +59,7 @@ class Login extends React.Component {
                     className="user-details"
                     placeholder={this.state.email}
                     onChange={this.setLoginDetails}
+                    required
                   />
 
                   <input
@@ -61,13 +68,14 @@ class Login extends React.Component {
                     className="user-details"
                     placeholder={this.state.password}
                     onChange={this.setLoginDetails}
+                    required
                   />
                   <div id="align-psw">
                     <p className="forgot-psw">
                       <b>Forgot password?</b>
                     </p>
                   </div>
-                  <CustomButton className="btn-send register-btn">Login</CustomButton>
+                  <CustomButton className="btn-send register-btn" onClick={() => toast.current = toast(this.state.status)}>Login</CustomButton>
                 </div>
               </fieldset>
             </form>

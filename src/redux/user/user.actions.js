@@ -60,10 +60,10 @@ export const signUpUserStartAsync = (
       name,
       email,
       phoneNo,
-      emergencyContact: {
-        name: emergencyContactName,
-        phoneNo: emergencyContactPhoneNo
-      },
+      // emergencyContact: {
+      //   name: emergencyContactName,
+      //   phoneNo: emergencyContactPhoneNo
+      // },
       password
     })
   })
