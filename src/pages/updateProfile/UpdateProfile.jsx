@@ -25,6 +25,8 @@ class UpdateProfile extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { name, phoneNo, emergencyContactName, emergencyContactPhoneNo } = this.state;
+    if (!name || !phoneNo || !emergencyContactName || !emergencyContactPhoneNo) return;
+    // if (typeof(name) !== 'string' || typeof(emergencyContactName) !== 'string') return;
     const { updateUserProfileAsync } = this.props;
     const { token, userId } = this.props.user.currentUser;
     const { _id } = userId;

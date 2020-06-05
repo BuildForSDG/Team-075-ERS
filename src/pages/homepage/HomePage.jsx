@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendHelp  } from '../../redux/sendHelp/sendHelp.actions';
-import { showFeedbackSuccess, promptLogIn } from '../../redux/modal/modal.actions';
+import { showFeedbackSuccess, promptLogIn, eyeWitness } from '../../redux/modal/modal.actions';
 import  { sendReportAsync }  from '../../redux/report/report.actions';
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
 import MessageModal from '../../components/modal/MessageModal';
-import UserViewProfile from '../userProfile/userProfile.component';
 import Modal from '../../components/modal/Modal';
 import ModalLogin from '../../components/modalLogin/modal-login';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import Toast from '../../components/toast/toast';
 import WithSpinner from '../../components/with-spinner/with-spinner';
+import ReportAccident from '../../pages/reportAccidentPage/ReportAccident';
+import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class HomePage extends React.Component {
       const { token, userId } = this.props.user.currentUser;
       const { sendReportAsync } = this.props;
       sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
-      toast(this.state.status)
+      // toast.error(this.state.status)
     }
     if (this.props.report.isPending) {
       this.props.showFeedbackSuccess();
@@ -54,7 +55,7 @@ class HomePage extends React.Component {
 
 
   render() {
-    const { showFeedback, showProfile, showVictims, promptLogIn } = this.props.modal;
+    const { showFeedback, showVictims, eyeWitness, promptLogIn } = this.props.modal;
     const { isPending, errorMessage, reportMessage } = this.props.report;
     if (!this.props.user.currentUser && promptLogIn) {
       return (
@@ -77,17 +78,19 @@ class HomePage extends React.Component {
         </Modal>
       );
     }
-    if (showProfile) {
-      return (
-        <Modal>
-          <UserViewProfile />
-        </Modal>
-      );
-    }
+    
     if (showVictims) {
       return (
         <Modal>
           <h1>Victim</h1>
+        </Modal>
+      );
+    }
+
+    if (eyeWitness) {
+      return (
+        <Modal>
+          <ReportAccident />
         </Modal>
       );
     }
@@ -117,9 +120,11 @@ class HomePage extends React.Component {
                 }}>
                 Help me!
               </CustomButton>
-              <CustomButton className="btn-witness" onClick={this.sendHelp}>
+              
+              <Link to='/report-accident' className="btn-witness" >
                 Report as an eye witness
-              </CustomButton>
+              </Link>
+              
             </div>
             <div className="div3">
               <img src="images/accident.svg" alt="accident vector illustration" id="accident" />
@@ -142,7 +147,8 @@ const mapDispatchToProps = (dispatch) => ({
   sendReportAsync: (userId, phoneNo, latitude, longitude, token) =>
     dispatch(sendReportAsync(userId, phoneNo, latitude, longitude, token)),
   showFeedbackSuccess: () => dispatch(showFeedbackSuccess()),
-  promptLogIn: () => dispatch(promptLogIn())
+  promptLogIn: () => dispatch(promptLogIn()),
+  eyeWitness: () => dispatch(eyeWitness())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
