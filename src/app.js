@@ -18,21 +18,37 @@ import './App.css';
 import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
 import WithSpinner from './components/with-spinner/with-spinner';
 import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
+import ModalLogin from './components/modalLogin/modal-login';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      toastId: {
+        current: null
+      }
+    }
+  }
+  
   render() {
     // console.log(this.props)
+    const { toastId } = this.state;
+    const notify = (message) => toastId.current = toast.error(message, { autoClose: 2000 });
     if (this.props.report.isPending) {
-      toast.error('Sending report...', { autoClose: false });
+      notify("Report sent");
     }
-    if (this.props.report.reportMessage === 200) {
-      // toast.update(toast.error('Sending report...', { autoClose: false }), { type: toast.TYPE.INFO, autoClose: 4000 })
+    if (!this.props.help.location) {
+      notify("Can't send report");
     }
     return (
 
       <Router>
         <div className="App">
           <Navbar />
+          {
+            !this.props.user.currentUser && this.props.modal.promptLogIn ?
+             <Modal><ModalLogin></ModalLogin></Modal> : null
+          }
           {
             this.props.modal.showProfile ? 
             (
@@ -112,7 +128,8 @@ const mapStateToProps = (state) => ({
   isLoading: state.user.isLoading,
   user: state.user,
   modal: state.modal,
-  report: state.report
+  report: state.report,
+  help: state.help
 });
 
 export default connect(mapStateToProps, null)(App);

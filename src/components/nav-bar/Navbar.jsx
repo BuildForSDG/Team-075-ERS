@@ -40,7 +40,7 @@ class Navbar extends Component {
           {login === 200 ? (
             <>
               <p className="nav-link" onClick={this.props.showUserProfile}>
-                {`Welcome, ${currentUser ? currentUser.userId.name : null}`}{' '}
+                {`Welcome, ${currentUser ? currentUser.user.name : null}`}{' '}
               </p>
               <Link className="nav-link" to="/ers-sign-up">
                 ERS

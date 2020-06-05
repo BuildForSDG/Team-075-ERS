@@ -27,10 +27,18 @@ export const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => 
     })
   })
     .then((response) => {
-      dispatch({
-        type: ConstantsActionTypes.SEND_REPORT_SUCCESS,
-        payload: response.status
-      });
+      if (response.status === 200) {
+        dispatch({
+          type: ConstantsActionTypes.SEND_REPORT_SUCCESS,
+          payload: response.status
+        });
+      }
+      if (response.status === 422) {
+        dispatch({
+          type: ConstantsActionTypes.SEND_REPORT_FAILED,
+          payload: response.status
+        });
+      }
       return response.json();
     })
     .catch((error) => {

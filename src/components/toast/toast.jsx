@@ -11,15 +11,18 @@ function Toast({ user, report }){
   // const dismiss = () =>  toast.dismiss(toastId.current);
 
   // const dismissAll = () =>  toast.dismiss();
-  console.log(user.isLoading)
+  // console.log(user.isLoading, report.reportMessage, report.isPending)
   return (
     <div>
       <div>
 
        {
-         user.isLoading || report.isPending || (report.reportMessage === 200) ?
+         (user.isLoading || 
+         report.isPending || 
+         (report.reportMessage === 200) ||
+         (report.errorMessage === 422)) ?
           <ToastContainer 
-          position="top-center"
+          position="top-right"
           autoClose={user.isLoading ? 5000 : report.isPending ? 5000 : 5000}
           hideProgressBar={true}
           transition={Slide}

@@ -28,19 +28,19 @@ class UpdateProfile extends Component {
     if (!name || !phoneNo || !emergencyContactName || !emergencyContactPhoneNo) return;
     // if (typeof(name) !== 'string' || typeof(emergencyContactName) !== 'string') return;
     const { updateUserProfileAsync } = this.props;
-    const { token, userId } = this.props.user.currentUser;
-    const { _id } = userId;
+    const { token, user } = this.props.user.currentUser;
+    const { _id } = user;
     console.log(this.state)
     updateUserProfileAsync(name, phoneNo, emergencyContactName, emergencyContactPhoneNo, _id,   token);
   };
   render(){
-    const { userId } = this.props.user.currentUser;
+    const { user } = this.props.user.currentUser;
     if (this.props.update.isPending) {
       return (
         <WithSpinner></WithSpinner>
       );
     }
-    if (userId) {
+    if (user) {
       return(
         <div className="container">
   
@@ -51,9 +51,9 @@ class UpdateProfile extends Component {
   
             <img src="images/profilePicture.svg" alt="profile-pic" />
   
-                  <h5>{userId.name}</h5>
-                  <p>{userId.phoneNo}</p>
-                  <p>{userId.email}</p>
+                  <h5>{user.name}</h5>
+                  <p>{user.phoneNo}</p>
+                  <p>{user.email}</p>
   
             <form id="update-profile" onSubmit={this.handleSubmit}>
               <fieldset>
@@ -62,7 +62,7 @@ class UpdateProfile extends Component {
                       name="name"
                       type="text" 
                       className="form-control" 
-                      placeholder={userId.name}
+                      placeholder={user.name}
                       onChange={this.setupdateDetails}
                       required
                       />
@@ -73,7 +73,7 @@ class UpdateProfile extends Component {
                       name="phoneNo"
                       type="text" 
                       className="form-control" 
-                      placeholder={userId.phoneNo}
+                      placeholder={user.phoneNo}
                       onChange={this.setupdateDetails}
                       required
                       />
@@ -84,7 +84,7 @@ class UpdateProfile extends Component {
                       name="emergencyContactName"
                       type="text" 
                       className="form-control" 
-                      placeholder={userId.emergencyContact.name}
+                      placeholder={user.emergencyContact.name}
                       onChange={this.setupdateDetails}
                       required
                       />
@@ -95,7 +95,7 @@ class UpdateProfile extends Component {
                       name="emergencyContactPhoneNo"
                       type="text" 
                       className="form-control" 
-                      placeholder={userId.emergencyContact.phoneNo}
+                      placeholder={user.emergencyContact.phoneNo}
                       onChange={this.setupdateDetails}
                       required
                       />
