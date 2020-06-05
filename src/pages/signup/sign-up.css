@@ -125,6 +125,7 @@ a {
 .forgot-psw {
   font-size: 13px;
   padding-bottom: 50px;
+  text-align: right;
 }
 
 #sub-heading {
@@ -205,6 +206,7 @@ a {
     padding-bottom: 20px;
   }
 }
+
     
 /* response unit */
 .response-unit-details {
@@ -228,6 +230,10 @@ a {
   margin: auto;
 }
 
+.login-title {
+  padding-top: 1.25rem;
+}
+
 /* Extra small devices (phones, 600px and down) */
  @media only screen and (max-width: 600px) {
   .login-section {
@@ -241,4 +247,4 @@ a {
     width: 19.4375rem;
   }
 
-} 
+}
