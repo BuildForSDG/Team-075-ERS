@@ -1,0 +1,7 @@
+.dashboard-container {
+  display: flex;
+}
+
+.content-container {
+  width: calc(100vw - 270px);
+}
