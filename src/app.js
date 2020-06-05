@@ -17,8 +17,10 @@ import UserViewProfile from './pages/userProfile/userProfile.component';
 import './App.css';
 import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
 import WithSpinner from './components/with-spinner/with-spinner';
+import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
 import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
 import ModalLogin from './components/modalLogin/modal-login';
+import Dashboard from './components/dashboard/Dashboard';
 
 class App extends React.Component {
   constructor() {
@@ -41,7 +43,6 @@ class App extends React.Component {
       notify("Can't send report");
     }
     return (
-
       <Router>
         <div className="App">
           <Navbar />
@@ -110,7 +111,7 @@ class App extends React.Component {
                       path="/sign-up"
                       render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
                     />
-                    
+                    <Route path="/dashboard" component={Dashboard} />
                      <WithSpinner></WithSpinner>
                   </React.Fragment>
                 </Switch>
@@ -121,6 +122,7 @@ class App extends React.Component {
           </Router>
       );
     }
+
 }
 
 const mapStateToProps = (state) => ({
