@@ -15,7 +15,6 @@ import HandleError from './components/handleError/handleError';
 import Modal from './components/modal/Modal';
 import UserViewProfile from './pages/userProfile/userProfile.component';
 import './App.css';
-import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
 import WithSpinner from './components/with-spinner/with-spinner';
 import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
 import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
