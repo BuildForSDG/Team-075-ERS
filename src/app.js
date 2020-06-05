@@ -19,7 +19,7 @@ import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomeP
 import WithSpinner from './components/with-spinner/with-spinner';
 import ResponseUnitLogin from './pages/responseUnit/login/Login';
 import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
-
+import Dashboard from './components/dashboard/Dashboard';
 
 class App extends React.Component {
   render() {
@@ -31,7 +31,6 @@ class App extends React.Component {
       // toast.update(toast.error('Sending report...', { autoClose: false }), { type: toast.TYPE.INFO, autoClose: 4000 })
     }
     return (
-
       <Router>
         <div className="App">
           <Navbar />

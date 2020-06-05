@@ -5,6 +5,8 @@ import { helpSent } from '../../redux/sendHelp/sendHelp.actions';
 import { logoutUser } from '../../redux/user/user.actions';
 import { showUserProfile } from '../../redux/modal/modal.actions';
 import CustomButton from '../custom-button/CustomButton';
+
+import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import './navbar.css';
 
 class Navbar extends Component {
@@ -27,8 +29,7 @@ class Navbar extends Component {
     return (
       <header>
         <Link to="/">
-          <img
-            src="images/logo.svg"
+          <Logo
             alt="help logo"
             id="logo"
             onClick={() => {

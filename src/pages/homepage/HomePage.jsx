@@ -13,6 +13,9 @@ import Toast from '../../components/toast/toast';
 import WithSpinner from '../../components/with-spinner/with-spinner';
 import ReportAccident from '../../pages/reportAccidentPage/ReportAccident';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Toast from '../../components/toast/toast';
+import WithSpinner from '../../components/with-spinner/with-spinner';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -41,7 +44,7 @@ class HomePage extends React.Component {
       const { token, userId } = this.props.user.currentUser;
       const { sendReportAsync } = this.props;
       sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
-      // toast.error(this.state.status)
+
     }
     if (this.props.report.isPending) {
       this.props.showFeedbackSuccess();
