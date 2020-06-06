@@ -15,12 +15,14 @@ import HandleError from './components/handleError/handleError';
 import Modal from './components/modal/Modal';
 import UserViewProfile from './pages/userProfile/userProfile.component';
 import './App.css';
-import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
 import WithSpinner from './components/with-spinner/with-spinner';
-import ResponseUnitLogin from './pages/responseUnit/login/Login';
-import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
+import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
+// import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
 import ModalLogin from './components/modalLogin/modal-login';
 import Dashboard from './components/dashboard/Dashboard';
+import ResponseUnitLogin from './pages/responseUnit/login/Login';
+// import Logout from './components/logout/Logout';
+
 
 class App extends React.Component {
   constructor() {
@@ -41,88 +43,85 @@ class App extends React.Component {
       // toast.update(toast.error('Sending report...', { autoClose: false }), { type: toast.TYPE.INFO, autoClose: 4000 })
 
     }
-    return (
-      <Router>
-        <div className="App">
-          <Navbar />
-          {
-
-            !this.props.user.currentUser && this.props.modal.promptLogIn ?
-             <Modal><ModalLogin></ModalLogin></Modal> : null
-          }
-          {
-            this.props.modal.showProfile ? 
-            (
-              <Modal>
-                <UserViewProfile />
-              </Modal>
-            )
-            : null
-          }
-          {
-
-            (!this.props.isLoading) ?
-            (
-              <HandleError>
-                <Switch>
-                  <React.Fragment>
-                    <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
-                    <Route exact path="/profile" component={UserProfile} />
-                    <Route exact path="/report-accident" component={ReportAccident} />
-                    <Route exact path="/update-profile" component={UpdateProfile} />
-                    <Route exact path="/feedback" component={Feedback} />
-                    <Route exact path="/google-map" component={GoogleMap} />
-                    <Route exact path="/ers" component={ResponseUnitHomePage} />
-                    <Route exact path="/ers-login" component={ResponseUnitLogin} />
-
-                    <Route exact path="/ers-sign-up" component={ResponseUnitSignUp} />
-                    <Route
-                      exact
-                      path="/login"
-                      render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
-                    />
-                    <Route
-                      exact
-                      path="/sign-up"
-                      render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
-                    />
-                  </React.Fragment>
-                </Switch>
-              </HandleError>
-            )
-            :
-
-            (
-              <HandleError>
-                <Switch>
-                  <React.Fragment>
-                    <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
-                    <Route exact path="/profile" component={UserProfile} />
-                    <Route exact path="/report-accident" component={ReportAccident} />
-                    <Route exact path="/update-profile" component={UpdateProfile} />
-                    <Route exact path="/feedback" component={Feedback} />
-                    <Route exact path="/google-map" component={GoogleMap} />
-                    <Route exact path="/ers" component={ResponseUnitHomePage} />
-                    <Route
-                      exact
-                      path="/login"
-                      render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
-                    />
-                    <Route
-                      exact
-                      path="/sign-up"
-                      render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
-                    />
-
-                    <Route path="/dashboard" component={Dashboard} />
-                     <WithSpinner></WithSpinner>
-                  </React.Fragment>
-                </Switch>
-              </HandleError>
-            )
-          }
-            </div>
-          </Router>
+      return (
+        <Router>
+          <div className="App">
+            <Navbar />
+            {
+              !this.props.user.currentUser && this.props.modal.promptLogIn ?
+                <Modal><ModalLogin></ModalLogin></Modal> : null
+            }
+            {
+              this.props.modal.showProfile ? 
+              (
+                <Modal>
+                  <UserViewProfile />
+                </Modal>
+              )
+              : null
+            }
+            {
+  
+              (!this.props.isLoading) ?
+              (
+                <HandleError>
+                  <Switch>
+                    <React.Fragment>
+                      <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+                      <Route exact path="/profile" component={UserProfile} />
+                      <Route exact path="/report-accident" component={ReportAccident} />
+                      <Route exact path="/update-profile" component={UpdateProfile} />
+                      <Route exact path="/feedback" component={Feedback} />
+                      <Route exact path="/google-map" component={GoogleMap} />
+                      <Route exact path="/ers" component={ResponseUnitHomePage} />
+                      <Route exact path="/ers-login" render={() => (this.props.response.currentUser) ? <Redirect to='/dashboard' /> : <ResponseUnitLogin />} />
+                      <Route
+                        exact
+                        path="/login"
+                        render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
+                      />
+                      <Route
+                        exact
+                        path="/sign-up"
+                        render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
+                      />
+                      <Route path="/dashboard" component={Dashboard} />
+                    </React.Fragment>
+                  </Switch>
+                </HandleError>
+              )
+              :
+              (
+                <HandleError>
+                  <Switch>
+                    <React.Fragment>
+                      <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+                      <Route exact path="/profile" component={UserProfile} />
+                      <Route exact path="/report-accident" component={ReportAccident} />
+                      <Route exact path="/update-profile" component={UpdateProfile} />
+                      <Route exact path="/feedback" component={Feedback} />
+                      <Route exact path="/google-map" component={GoogleMap} />
+                      <Route exact path="/ers" component={ResponseUnitHomePage} />
+                      <Route
+                        exact
+                        path="/login"
+                        render={() => (this.props.user.login === 200 ? <Redirect to="/" /> : <Login />)}
+                      />
+                      <Route
+                        exact
+                        path="/sign-up"
+                        render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
+                      />
+                      <Route path="/dashboard" component={Dashboard} />
+                      
+                      <WithSpinner></WithSpinner>
+                    </React.Fragment>
+                  </Switch>
+                </HandleError>
+              )
+            }
+              </div>
+            </Router>
       );
     }
 
@@ -135,7 +134,8 @@ const mapStateToProps = (state) => ({
   modal: state.modal,
 
   report: state.report,
-  help: state.help
+  help: state.help,
+  response: state.response
 });
 
 export default connect(mapStateToProps, null)(App);

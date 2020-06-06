@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './sidebar.css';
 import { Link } from 'react-router-dom';
 class Sidebar extends Component {
-  constructor(props) {
-    super(props);
-  }
+  
   render() {
     return (
       <div className="sidebar-container">

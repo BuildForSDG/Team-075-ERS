@@ -7,12 +7,7 @@ import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
 import MessageModal from '../../components/modal/MessageModal';
 import Modal from '../../components/modal/Modal';
-import ModalLogin from '../../components/modalLogin/modal-login';
-// import { toast } from 'react-toastify';
-import Toast from '../../components/toast/toast';
-import WithSpinner from '../../components/with-spinner/with-spinner';
-import ReportAccident from '../../pages/reportAccidentPage/ReportAccident';
-import { Link } from 'react-router-dom';
+// import ModalLogin from '../../components/modalLogin/modal-login';
 import { toast } from 'react-toastify';
 import Toast from '../../components/toast/toast';
 import WithSpinner from '../../components/with-spinner/with-spinner';
@@ -75,8 +70,8 @@ class HomePage extends React.Component {
 
 
   render() {
-    const { showFeedback, showVictims, eyeWitness, promptLogIn } = this.props.modal;
-    const { isPending, errorMessage, reportMessage } = this.props.report;
+    const { showFeedback, showVictims, eyeWitness } = this.props.modal;
+    const { isPending } = this.props.report;
     // if (this.props.report.errorMessage || this.props.reportMessage !== 200) {
     //   toast('error')
     // }

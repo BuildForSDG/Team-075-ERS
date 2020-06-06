@@ -27,7 +27,7 @@ const Card = ({ name, latitude,longitude, phoneNo, imageURL, status, showVictims
           }
         </div>
       </div>
-      <Link to='/google-map'>
+      <Link to='/dashboard/report-units'>
         <CustomButton 
           className='custom-square-button card-btn'
           onClick={showVictimsInfo}

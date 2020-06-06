@@ -4,11 +4,32 @@ const INITIAL_STATE = {
     victims: [],
     isPending: false,
     errorMessage: null,
-    message: null
+    message: null,
+    currentUser: null
 }
 
 const responseReducer = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
+    case ConstantsActionTypes.LOGIN_RESPONSE_UNIT_START:
+      return ({
+        ...state,
+        isPending: true
+      });
+    case ConstantsActionTypes.LOGIN_RESPONSE_UNIT_SUCCESS:
+      return ({
+        ...state,
+        isPending: false
+      });
+    case ConstantsActionTypes.LOAD_RESPONSE_UNIT:
+      return ({
+        ...state,
+        currentUser: action.payload
+      });
+    case ConstantsActionTypes.LOGIN_RESPONSE_UNIT_FAILED:
+      return ({
+        ...state,
+        errorMessage: action.payload
+      });
     case ConstantsActionTypes.GET_VICTIMS_START:
       return ({
         ...state,
@@ -31,6 +52,15 @@ const responseReducer = (state = INITIAL_STATE, action = {}) => {
         ...state,
         isPending: false,
         errorMessage: action.payload
+      });
+    case ConstantsActionTypes.LOGOUT_RESPONSE_UNIT:
+      return ({
+        ...state,
+        victims: [],
+        isPending: false,
+        errorMessage: null,
+        message: null,
+        currentUser: null
       });
     default:
       return state;

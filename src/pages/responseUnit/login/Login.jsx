@@ -1,17 +1,19 @@
 import React from 'react';
 import CustomButton from '../../../components/custom-button/CustomButton';
 import { connect } from 'react-redux';
-import { loginUserStartAsync } from '../../../redux/user/user.actions';
+import { loginResponseUnitAsync } from '../../../redux/response/response.actions';
 import { ReactComponent as Girl } from '../../../assets/images/girl.svg';
-
 import '../../signup/sign-up.css';
+import { logoutUser } from '../../../redux/user/user.actions';
+
 
 class ResponseUnitLogin extends React.Component {
   constructor() {
     super();
     this.state = {
-      password: 'Password',
-      email: 'Email address'
+      password: undefined,
+      email: undefined
+
     };
   }
 
@@ -23,11 +25,16 @@ class ResponseUnitLogin extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    const { loginUserStartAsync } = this.props;
-    loginUserStartAsync(email, password);
+    if (!email || !password) return;
+    console.log(email, password)
+    const { loginResponseUnitAsync, logoutUser } = this.props;
+    const api = `api/response-unit/login`
+    loginResponseUnitAsync(email, password, api);
+    logoutUser();
     this.setState((prevState, prevProps) => ({
-      password: 'Password',
-      email: 'Email address'
+      password: undefined,
+      email: undefined
+
     }));
   };
 
@@ -74,7 +81,9 @@ class ResponseUnitLogin extends React.Component {
 }
 
 const mapDispatchToprops = (dispatch) => ({
-  loginUserStartAsync: (email, password) => dispatch(loginUserStartAsync(email, password))
+  loginResponseUnitAsync: (email, password, api) => dispatch(loginResponseUnitAsync(email, password, api)),
+  logoutUser: () => dispatch(logoutUser())
+
 });
 
 const mapStateToProps = (state) => ({

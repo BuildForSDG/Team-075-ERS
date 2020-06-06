@@ -82,11 +82,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case ConstantsActionTypes.LOGOUT_USER:
       return ({
         ...state,
-        pending: action.payload,
+        currentUser: null,
         login: null,
         signup: null,
-        currentUser: null,
-        isLoading: false
+        isLoading: false,
+        getError: null
       });
     case ConstantsActionTypes.LOAD_USER:
       return ({

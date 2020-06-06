@@ -33,8 +33,9 @@ class Login extends React.Component {
     if(!email || !password) {
       return;
     }
+    const api = `api/auth/login`
     const { loginUserStartAsync } = this.props;
-    loginUserStartAsync(email, password);
+    loginUserStartAsync(email, password, api);
     this.setState((prevState, prevProps) => ({
       password: 'Password',
       email: 'Email address'
@@ -116,7 +117,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToprops = (dispatch) => ({
-  loginUserStartAsync: (email, password) => dispatch(loginUserStartAsync(email, password))
+  loginUserStartAsync: (email, password, api) => dispatch(loginUserStartAsync(email, password, api))
 });
 
 const mapStateToProps = (state) => ({

@@ -227,6 +227,7 @@ a {
   .forgot-psw {
     padding-bottom: 20px;
   }
+
 }
 
     
@@ -246,10 +247,9 @@ a {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.register {
-  width: 19.4375rem;
-  height: 3.3125rem;
-  margin: auto;
+  .login-title {
+    padding-top: 1.25rem;
+  }
 }
 
   .login-title {
