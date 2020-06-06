@@ -15,8 +15,9 @@ import HandleError from './components/handleError/handleError';
 import Modal from './components/modal/Modal';
 import UserViewProfile from './pages/userProfile/userProfile.component';
 import './App.css';
-import WithSpinner from './components/with-spinner/with-spinner';
 import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomePage';
+import WithSpinner from './components/with-spinner/with-spinner';
+import ResponseUnitLogin from './pages/responseUnit/login/Login';
 import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
 import ModalLogin from './components/modalLogin/modal-login';
 import Dashboard from './components/dashboard/Dashboard';
@@ -33,19 +34,19 @@ class App extends React.Component {
   
   render() {
     // console.log(this.props)
-    const { toastId } = this.state;
-    const notify = (message) => toastId.current = toast.error(message, { autoClose: 2000 });
     if (this.props.report.isPending) {
-      notify("Report sent");
+      toast.error('Sending report...', { autoClose: false });
     }
-    if (!this.props.help.location) {
-      notify("Can't send report");
+    if (this.props.report.reportMessage === 200) {
+      // toast.update(toast.error('Sending report...', { autoClose: false }), { type: toast.TYPE.INFO, autoClose: 4000 })
+
     }
     return (
       <Router>
         <div className="App">
           <Navbar />
           {
+
             !this.props.user.currentUser && this.props.modal.promptLogIn ?
              <Modal><ModalLogin></ModalLogin></Modal> : null
           }
@@ -72,6 +73,8 @@ class App extends React.Component {
                     <Route exact path="/feedback" component={Feedback} />
                     <Route exact path="/google-map" component={GoogleMap} />
                     <Route exact path="/ers" component={ResponseUnitHomePage} />
+                    <Route exact path="/ers-login" component={ResponseUnitLogin} />
+
                     <Route exact path="/ers-sign-up" component={ResponseUnitSignUp} />
                     <Route
                       exact
@@ -110,6 +113,7 @@ class App extends React.Component {
                       path="/sign-up"
                       render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
                     />
+
                     <Route path="/dashboard" component={Dashboard} />
                      <WithSpinner></WithSpinner>
                   </React.Fragment>
@@ -129,6 +133,7 @@ const mapStateToProps = (state) => ({
   isLoading: state.user.isLoading,
   user: state.user,
   modal: state.modal,
+
   report: state.report,
   help: state.help
 });

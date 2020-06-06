@@ -8,6 +8,11 @@ import CustomButton from '../../components/custom-button/CustomButton';
 import MessageModal from '../../components/modal/MessageModal';
 import Modal from '../../components/modal/Modal';
 import ModalLogin from '../../components/modalLogin/modal-login';
+// import { toast } from 'react-toastify';
+import Toast from '../../components/toast/toast';
+import WithSpinner from '../../components/with-spinner/with-spinner';
+import ReportAccident from '../../pages/reportAccidentPage/ReportAccident';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Toast from '../../components/toast/toast';
 import WithSpinner from '../../components/with-spinner/with-spinner';
@@ -52,8 +57,12 @@ class HomePage extends React.Component {
       const { lat, lng } = this.props.help.location;
       const { token, user } = this.props.user.currentUser;
       const { sendReportAsync } = this.props;
-      console.log(lat, lng)
-      sendReportAsync(user._id, user.phoneNo, lat, lng, token);
+      sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
+
+    }
+    if (this.props.report.isPending) {
+      this.props.showFeedbackSuccess();
+
     }
       // if (this.props.report.isPending) {
       //   this.props.showFeedbackSuccess();

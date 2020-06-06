@@ -227,6 +227,30 @@ a {
   .forgot-psw {
     padding-bottom: 20px;
   }
+}
+
+    
+/* response unit */
+.response-unit-details {
+  display: block;
+  width: 20.413125rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #030f25;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 0.0625rem solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.register {
+  width: 19.4375rem;
+  height: 3.3125rem;
+  margin: auto;
+}
 
   .login-title {
     padding-top: 1.25rem;
