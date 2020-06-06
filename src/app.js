@@ -23,6 +23,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import ResponseUnitLogin from './pages/responseUnit/login/Login';
 // import Logout from './components/logout/Logout';
 
+
 class App extends React.Component {
   constructor() {
     super();
@@ -35,15 +36,13 @@ class App extends React.Component {
   
   render() {
     // console.log(this.props)
-    const { toastId } = this.state;
-    const notify = (message) => toastId.current = toast.error(message, { autoClose: 2000 });
     if (this.props.report.isPending) {
-      notify("Report sent");
+      toast.error('Sending report...', { autoClose: false });
     }
-    if (!this.props.help.location) {
-      notify("Can't send report");
-    }
+    if (this.props.report.reportMessage === 200) {
+      // toast.update(toast.error('Sending report...', { autoClose: false }), { type: toast.TYPE.INFO, autoClose: 4000 })
 
+    }
       return (
         <Router>
           <div className="App">
@@ -125,6 +124,7 @@ class App extends React.Component {
             </Router>
       );
     }
+
 }
 
 const mapStateToProps = (state) => ({
@@ -132,6 +132,7 @@ const mapStateToProps = (state) => ({
   isLoading: state.user.isLoading,
   user: state.user,
   modal: state.modal,
+
   report: state.report,
   help: state.help,
   response: state.response

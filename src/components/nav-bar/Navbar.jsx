@@ -39,6 +39,7 @@ class Navbar extends Component {
               );
               }
             }>
+
                 <CustomButton className="custom-square-button">Logout</CustomButton>
             </Link>
           )

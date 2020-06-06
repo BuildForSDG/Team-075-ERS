@@ -20,6 +20,7 @@ class Dashboard extends Component {
   }
   render() {
     const { reports } = this.props.response.victims;
+
     return (
       <div className="dashboard-container">
         <Sidebar
@@ -59,6 +60,7 @@ class Dashboard extends Component {
             />
          )) : null
         }
+
         <div className="content-container">
           <Switch>
             <Route exact path={this.props.match.url + '/'} component={Admin} />
@@ -81,3 +83,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+
