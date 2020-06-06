@@ -19,9 +19,19 @@ import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomeP
 import WithSpinner from './components/with-spinner/with-spinner';
 import ResponseUnitLogin from './pages/responseUnit/login/Login';
 import ResponseUnitSignUp from './components/responseUnitSignUp/SignUp';
+import ModalLogin from './components/modalLogin/modal-login';
 import Dashboard from './components/dashboard/Dashboard';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      toastId: {
+        current: null
+      }
+    }
+  }
+  
   render() {
     // console.log(this.props)
     if (this.props.report.isPending) {
@@ -29,11 +39,17 @@ class App extends React.Component {
     }
     if (this.props.report.reportMessage === 200) {
       // toast.update(toast.error('Sending report...', { autoClose: false }), { type: toast.TYPE.INFO, autoClose: 4000 })
+
     }
     return (
       <Router>
         <div className="App">
           <Navbar />
+          {
+
+            !this.props.user.currentUser && this.props.modal.promptLogIn ?
+             <Modal><ModalLogin></ModalLogin></Modal> : null
+          }
           {
             this.props.modal.showProfile ? 
             (
@@ -58,6 +74,7 @@ class App extends React.Component {
                     <Route exact path="/google-map" component={GoogleMap} />
                     <Route exact path="/ers" component={ResponseUnitHomePage} />
                     <Route exact path="/ers-login" component={ResponseUnitLogin} />
+
                     <Route exact path="/ers-sign-up" component={ResponseUnitSignUp} />
                     <Route
                       exact
@@ -96,7 +113,8 @@ class App extends React.Component {
                       path="/sign-up"
                       render={() => (this.props.user.signup === 201 ? <Redirect to="/login" /> : <SignUp />)}
                     />
-                    
+
+                    <Route path="/dashboard" component={Dashboard} />
                      <WithSpinner></WithSpinner>
                   </React.Fragment>
                 </Switch>
@@ -107,6 +125,7 @@ class App extends React.Component {
           </Router>
       );
     }
+
 }
 
 const mapStateToProps = (state) => ({
@@ -114,7 +133,9 @@ const mapStateToProps = (state) => ({
   isLoading: state.user.isLoading,
   user: state.user,
   modal: state.modal,
-  report: state.report
+
+  report: state.report,
+  help: state.help
 });
 
 export default connect(mapStateToProps, null)(App);

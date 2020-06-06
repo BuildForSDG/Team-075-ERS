@@ -17,6 +17,7 @@ const reportReducer = (state = INITIAL_STATE, action = {}) => {
       return ({
         ...state,
         isPending: false,
+        errorMessage: null,
         reportMessage: action.payload
       });
     case ConstantsActionTypes.SEND_REPORT_FAILED:

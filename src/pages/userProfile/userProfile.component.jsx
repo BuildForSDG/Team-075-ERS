@@ -8,15 +8,15 @@ import './user-profile.css';
 
 class UserViewProfile extends React.Component {
   render() {
-    const { userId } = this.props.user;
+    const { user } = this.props.user;
     return (
       <Fragment>
         <h2 className="main-heading">Welcome</h2>
         <p className="sub-heading">Profile information</p>
         <img src="images/profilePicture.svg" alt="profile-pic" id="profile-pic" />
-        <h4 className="profile-name">{userId.name}</h4>
-        <p className="phone-number">{userId.phoneNo}</p>
-        <p className="mail">{userId.email}</p>
+        <h4 className="profile-name">{user.name}</h4>
+        <p className="phone-number">{user.phoneNo}</p>
+        <p className="mail">{user.email}</p>
         <Link to="/update-profile">
           <CustomButton 
             className="custom-square-button"

@@ -16,6 +16,8 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Toast from '../../components/toast/toast';
 import WithSpinner from '../../components/with-spinner/with-spinner';
+import ReportAccident from '../../pages/reportAccidentPage/ReportAccident';
+import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -31,28 +33,43 @@ class HomePage extends React.Component {
       window.navigator.geolocation.getCurrentPosition((success) => {
         const lat = success.coords.latitude;
         const lng = success.coords.longitude;
-        sendHelp({ lat, lng });
+        if (!success.coords.latitude || !success.coords.longitude) {
+          console.log(lat, lng)
+          toast('no location')
+          return;
+        } else {
+          sendHelp({ lat, lng });
+        }
       });
-    } else {
-      alert('Location unavailable.');
     }
+    
+    // if (this.props.report.errorMessage || this.props.reportMessage !== 200) {
+    //   toast('error')
+    // }
   }
 
   sendHelp = () => {
     if (this.props.user.currentUser){
+      if (!this.props.help.location) {
+        toast('no location')
+        return;
+      }
       const { lat, lng } = this.props.help.location;
-      const { token, userId } = this.props.user.currentUser;
+      const { token, user } = this.props.user.currentUser;
       const { sendReportAsync } = this.props;
       sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
 
     }
     if (this.props.report.isPending) {
       this.props.showFeedbackSuccess();
+
     }
+      // if (this.props.report.isPending) {
+      //   this.props.showFeedbackSuccess();
+      // }
 
     if (!this.props.user.currentUser) {
       this.props.promptLogIn();
-      // alert('Please, login to continue.');
     }
   };
 
@@ -60,20 +77,19 @@ class HomePage extends React.Component {
   render() {
     const { showFeedback, showVictims, eyeWitness, promptLogIn } = this.props.modal;
     const { isPending, errorMessage, reportMessage } = this.props.report;
-    if (!this.props.user.currentUser && promptLogIn) {
-      return (
-        <ModalLogin></ModalLogin>
-      );
-    }
-    
-    if (errorMessage || reportMessage === 401) {
-      return (
-        <Modal>
-          <h1>Error!</h1>
-        </Modal>
-      );
-    }
-    
+    // if (this.props.report.errorMessage || this.props.reportMessage !== 200) {
+    //   toast('error')
+    // }
+    // if (errorMessage === 422 || reportMessage === 401) {
+    //   return (
+    //     <Modal>
+    //       <h1>Error!</h1>
+    //     </Modal>
+    //   );
+    // }
+    // if (!('geolocation' in navigator)) {
+    //   alert('Allow GPS')
+    // }
     if (showFeedback) {
       return (
         <Modal>
@@ -113,10 +129,10 @@ class HomePage extends React.Component {
               isPending ? <WithSpinner></WithSpinner> : null
             }
 
-            {
+            {/* {
               reportMessage === 200 ? <Toast></Toast> : null
-            }
-            
+            } */}
+            <Toast></Toast>            
             <div className="div2">
               <CustomButton className="custom-button" onClick={() => {
                 return this.sendHelp();
