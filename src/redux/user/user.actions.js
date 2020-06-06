@@ -5,13 +5,12 @@ export const setCurrentUser = (user) => ({
   payload: user
 });
 
-export const loginUserStartAsync = (email, password) => (dispatch) => {
+export const loginUserStartAsync = (email, password, api) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.LOGIN_USER_START,
     payload: true
   });
-
-  fetch('https://emresys.herokuapp.com/api/auth/login', {
+  fetch(`https://emresys.herokuapp.com/${api}`, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -30,6 +29,7 @@ export const loginUserStartAsync = (email, password) => (dispatch) => {
         type: ConstantsActionTypes.LOAD_USER,
         payload: data
       });
+      return data;
     })
     .catch((error) => {
       dispatch({

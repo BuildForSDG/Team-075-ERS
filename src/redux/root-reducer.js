@@ -12,7 +12,7 @@ import responseReducer from './response/response.reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'help']
+  whitelist: ['user', 'help', 'report', 'modal', 'update', 'response']
 };
 
 const rootReducer = combineReducers({
