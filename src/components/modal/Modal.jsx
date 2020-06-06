@@ -2,18 +2,19 @@ import React from 'react';
 import './modal.css';
 import CustomButton from '../custom-button/CustomButton';
 import { connect } from 'react-redux';
-import { showFeedbackSuccess, showUserProfile, showVictimsInfo, promptLogIn } from '../../redux/modal/modal.actions';
+import { showFeedbackSuccess, showUserProfile, showVictimsInfo, eyeWitness, promptLogIn } from '../../redux/modal/modal.actions';
 import { resetError } from '../../redux/report/report.actions';
 
 class Modal extends React.Component {
 
   render() {
-    const { showFeedback, showProfile, showVictims, promptLogIn} = this.props.modal;
+    const { showFeedback, showProfile, showVictims, eyeWitness, promptLogIn} = this.props.modal;
     const showHideClassName = (
       showFeedback 
       || showProfile 
       || showVictims
       || promptLogIn
+      || eyeWitness
       ) ? 'modal display-block' : 'modal display-none';
   
     return (
@@ -33,6 +34,9 @@ class Modal extends React.Component {
             if (promptLogIn) {
               return this.props.promptLogIn();
             }
+            if (eyeWitness) {
+              return this.props.eyeWitness();
+            }
             }}>
             Close
           </CustomButton>
@@ -51,7 +55,8 @@ const mapDispatchToProps = (dispatch) => ({
   showUserProfile: () => dispatch(showUserProfile()),
   showVictimsInfo: () => dispatch(showVictimsInfo()),
   resetError: () => dispatch(resetError()),
-  promptLogIn: () => dispatch(promptLogIn())
+  promptLogIn: () => dispatch(promptLogIn()),
+  eyeWitness: () => dispatch(eyeWitness())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
