@@ -46,8 +46,7 @@ export const logoutUser = () => ({
 
 
 export const signUpUserStartAsync = (
-  name, email, phoneNo, emergencyContactName, emergencyContactPhoneNo, password
-) => (dispatch) => {
+name, email, phoneNo, password) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SIGN_UP_USER_START,
     payload: true
@@ -57,14 +56,10 @@ export const signUpUserStartAsync = (
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name,
-      email,
-      phoneNo,
-      // emergencyContact: {
-      //   name: emergencyContactName,
-      //   phoneNo: emergencyContactPhoneNo
-      // },
-      password
+      name: name.toString(),
+      email: email.toString(),
+      phoneNo: phoneNo.toString(),
+      password: password.toString()
     })
   })
     .then((data) => {

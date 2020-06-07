@@ -19,12 +19,12 @@ class SignUp extends React.Component {
     super();
 
     this.state = {
-      name: '',
-      email: '',
-      phoneNo: '',
-      password: '',
-      confirmPassword: '',
-      terms: '',
+      name: undefined,
+      email: undefined,
+      phoneNo: undefined,
+      password: undefined,
+      confirmPassword: undefined,
+      terms: undefined,
       status: 'Submiting'
     };
   }
@@ -37,16 +37,18 @@ class SignUp extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { name, email, phoneNo, password, confirmPassword, terms } = this.state;
+    if (!name || !email || !phoneNo || !password) return;
     const { signUpUserStartAsync } = this.props;
     if (password === confirmPassword && terms === 'on') {
+      console.log(name, email, phoneNo, password);
       signUpUserStartAsync(name, email, phoneNo, password);
     }
     this.setState((prevState, prevProps) => ({
-      name: '',
-      email: '',
-      phoneNo: '',
-      password: '',
-      terms: ''
+      name: undefined,
+      email: undefined,
+      phoneNo: undefined,
+      password: undefined,
+      terms: undefined
     }));
   };
 
@@ -72,7 +74,7 @@ class SignUp extends React.Component {
 
                   <input
                     name="phoneNo"
-                    type="number"
+                    type="text"
                     className="user-details"
                     required
                     placeholder="Phone number"
