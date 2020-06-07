@@ -230,8 +230,33 @@ a {
 
 }
 
-    
+
 /* response unit */
+
+/* login */
+.ers-login {
+  width: 19.4375rem;
+  height: 3.3125rem;
+  margin: auto;
+}
+
+.ers-title{
+  padding-top: 1.25rem;
+}
+
+.ers-register-btn {
+  width: 300px;
+}
+
+.ers-forgot-psw {
+  font-size: 13px;
+  padding-bottom: 50px;
+  text-align: right;
+  cursor: pointer;
+}
+
+/* signup */
+
 .response-unit-details {
   display: block;
   width: 20.413125rem;
@@ -245,16 +270,6 @@ a {
   border: 0.0625rem solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-  .login-title {
-    padding-top: 1.25rem;
-  }
-}
-
-  .login-title {
-    padding-top: 1.25rem;
-  }
 }
 
 /* Extra small devices (phones, 600px and down) */

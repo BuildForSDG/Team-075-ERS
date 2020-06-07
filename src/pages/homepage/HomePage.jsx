@@ -17,9 +17,9 @@ import { Link } from 'react-router-dom';
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       show: false,
-      status: 'Report sent' 
+      status: 'Report sent'
     };
   }
   componentDidMount() {
@@ -37,7 +37,7 @@ class HomePage extends React.Component {
         }
       });
     }
-    
+
     // if (this.props.report.errorMessage || this.props.reportMessage !== 200) {
     //   toast('error')
     // }
@@ -52,7 +52,7 @@ class HomePage extends React.Component {
       const { lat, lng } = this.props.help.location;
       const { token, user } = this.props.user.currentUser;
       const { sendReportAsync } = this.props;
-      sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
+      sendReportAsync(user._id, user.phoneNo, lat, lng, token);
 
     }
     if (this.props.report.isPending) {
@@ -92,7 +92,7 @@ class HomePage extends React.Component {
         </Modal>
       );
     }
-    
+
     if (showVictims) {
       return (
         <Modal>
@@ -108,7 +108,7 @@ class HomePage extends React.Component {
         </Modal>
       );
     }
-      
+
       return (
         <div className="container-home">
           <div className="homepage">
@@ -127,18 +127,18 @@ class HomePage extends React.Component {
             {/* {
               reportMessage === 200 ? <Toast></Toast> : null
             } */}
-            <Toast></Toast>            
+            <Toast></Toast>
             <div className="div2">
               <CustomButton className="custom-button" onClick={() => {
                 return this.sendHelp();
                 }}>
                 Help me!
               </CustomButton>
-              
+
               <Link to='/report-accident' className="btn-witness" >
                 Report as an eye witness
               </Link>
-              
+
             </div>
             <div className="div3">
               <img src="images/accident.svg" alt="accident vector illustration" id="accident" />

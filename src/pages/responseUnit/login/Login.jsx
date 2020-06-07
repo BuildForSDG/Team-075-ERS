@@ -42,11 +42,11 @@ class ResponseUnitLogin extends React.Component {
 
       return (
         <section>
-          <h2 className="login-title">Hello</h2>
+          <h2 className="ers-title">Hello</h2>
 
           <p id="sub-heading">Please sign in to your account</p>
 
-          <div className="login">
+          <div className="ers-login">
             <form id="login" onSubmit={this.handleSubmit}>
               <fieldset>
                   <input
@@ -65,11 +65,11 @@ class ResponseUnitLogin extends React.Component {
                     onChange={this.setLoginDetails}
                   />
 
-                  <p className="forgot-psw">
+                  <p className="ers-forgot-psw">
                     <b>Forgot password?</b>
                   </p>
 
-                  <CustomButton className="btn-send register-btn">Login</CustomButton>
+                  <CustomButton className="btn-send ers-register-btn">Login</CustomButton>
               </fieldset>
             </form>
 
