@@ -47,17 +47,17 @@ class Dashboard extends Component {
           ]}
         />
         {
-         reports ? reports.map((victim) => (
-            <Card
-            key={victim._id}
-            name={victim._id}
-            latitude={victim.location.latitude}
-            longitude={victim.location.longitude}
-            phoneNo={victim.reporter.phoneNo}
-            imageURL={`https://robohash.org/set_set5/${victim._id}?size=50x50`}
-            status={victim.response.status}
-            />
-         )) : null
+        //  reports ? reports.map((victim) => (
+        //     <Card
+        //     key={victim._id}
+        //     name={victim._id}
+        //     latitude={victim.location.latitude}
+        //     longitude={victim.location.longitude}
+        //     phoneNo={victim.reporter.phoneNo}
+        //     imageURL={`https://robohash.org/set_set5/${victim._id}?size=50x50`}
+        //     status={victim.response.status}
+        //     />
+        //  )) : null
         }
         <div className="content-container">
           <Switch>
