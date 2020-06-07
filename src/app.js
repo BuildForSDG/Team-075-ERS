@@ -21,6 +21,7 @@ import ResponseUnitHomePage from './pages/responseUnitHomePage/responseUnitHomeP
 import ModalLogin from './components/modalLogin/modal-login';
 import Dashboard from './components/dashboard/Dashboard';
 import ResponseUnitLogin from './pages/responseUnit/login/Login';
+import Logout from './components/logout/Logout';
 // import Logout from './components/logout/Logout';
 
 
@@ -50,6 +51,10 @@ class App extends React.Component {
             {
               !this.props.user.currentUser && this.props.modal.promptLogIn ?
                 <Modal><ModalLogin></ModalLogin></Modal> : null
+            }
+            {
+              this.props.modal.showLogout ?
+              <Logout/> : null
             }
             {
               this.props.modal.showProfile ? 

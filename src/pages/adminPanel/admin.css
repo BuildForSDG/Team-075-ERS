@@ -2,3 +2,9 @@
   color: #e72020;
   font-size: 2rem;
 }
+
+.card-wrap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

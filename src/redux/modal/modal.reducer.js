@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   showVictims: false,
   promptLogIn: false,
   eyeWitness: false,
+  showLogout: false,
   index: undefined
 };
 
@@ -37,6 +38,11 @@ const modalReducer = (state = INITIAL_STATE, action = {}) => {
         ...state,
         eyeWitness: !state.eyeWitness
       });
+    case ConstantsActionTypes.SHOW_LOGOUT_MODAL:
+      return ({
+        ...state,
+        showLogout: !state.showLogout
+      });
     case ConstantsActionTypes.CLOSE_ALL_MODAL:
       return ({
         ...state,
@@ -45,6 +51,7 @@ const modalReducer = (state = INITIAL_STATE, action = {}) => {
         showVictims: false,
         promptLogIn: false,
         eyeWitness: false,
+        showLogout: false,
         index: undefined
       });
     default:

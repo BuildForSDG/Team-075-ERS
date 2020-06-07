@@ -9,3 +9,4 @@ export const showVictimsInfo = (index) => ({
 export const promptLogIn = () => ({ type: ConstantsActionTypes.PROMPT_LOGIN });
 export const closeAllModal = () => ({ type: ConstantsActionTypes.CLOSE_ALL_MODAL });
 export const eyeWitness = () => ({ type: ConstantsActionTypes.EYE_WITNESS });
+export const showLogoutModal = () => ({ type: ConstantsActionTypes.SHOW_LOGOUT_MODAL })

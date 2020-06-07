@@ -1,11 +1,16 @@
 .card-container {
+  width: 14vw;
   padding-top: 20px;
   margin: 10px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   min-height: 180px;
   -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card-heading {
+  font-size: 0.8rem;
 }
 
 .card {
@@ -42,8 +47,8 @@
 }
 
 .card-btn {
-  width: 90%;
+  width: 100%;
   height: 35px;
   margin-bottom: 5px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
