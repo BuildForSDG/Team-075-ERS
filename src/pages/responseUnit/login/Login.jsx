@@ -3,9 +3,9 @@ import CustomButton from '../../../components/custom-button/CustomButton';
 import { connect } from 'react-redux';
 import { loginResponseUnitAsync } from '../../../redux/response/response.actions';
 import { ReactComponent as Girl } from '../../../assets/images/girl.svg';
-
 import '../../signup/sign-up.css';
 import { logoutUser } from '../../../redux/user/user.actions';
+
 
 class ResponseUnitLogin extends React.Component {
   constructor() {
@@ -13,6 +13,7 @@ class ResponseUnitLogin extends React.Component {
     this.state = {
       password: undefined,
       email: undefined
+
     };
   }
 
@@ -33,6 +34,7 @@ class ResponseUnitLogin extends React.Component {
     this.setState((prevState, prevProps) => ({
       password: undefined,
       email: undefined
+
     }));
   };
 
@@ -81,6 +83,7 @@ class ResponseUnitLogin extends React.Component {
 const mapDispatchToprops = (dispatch) => ({
   loginResponseUnitAsync: (email, password, api) => dispatch(loginResponseUnitAsync(email, password, api)),
   logoutUser: () => dispatch(logoutUser())
+
 });
 
 const mapStateToProps = (state) => ({
