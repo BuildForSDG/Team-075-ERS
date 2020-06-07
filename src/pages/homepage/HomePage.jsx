@@ -44,6 +44,10 @@ class HomePage extends React.Component {
   }
 
   sendHelp = () => {
+    if (!this.props.currentUser) {
+      this.props.promptLogIn();
+      return;
+    }
     if (this.props.user.currentUser){
       if (!this.props.help.location) {
         toast('no location')
@@ -59,13 +63,7 @@ class HomePage extends React.Component {
       this.props.showFeedbackSuccess();
 
     }
-      // if (this.props.report.isPending) {
-      //   this.props.showFeedbackSuccess();
-      // }
-
-    if (!this.props.user.currentUser) {
-      this.props.promptLogIn();
-    }
+    
   };
 
 
