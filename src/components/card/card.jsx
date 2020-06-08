@@ -5,8 +5,8 @@ import { showVictimsInfo } from '../../redux/modal/modal.actions';
 import CustomButton from '../custom-button/CustomButton';
 import './card.css';
 
-const Card = ({ name, latitude,longitude, phoneNo, imageURL, status, showVictimsInfo }) => (
-  <div className='card-container'>
+const Card = ({ name, latitude,longitude, phoneNo, imageURL, status, index, key, showVictimsInfo }) => (
+  <div className='card-container' >
     <div className='card'>
       <img src={imageURL} alt="victim" className='img'/>
       <div className='card-info'>
@@ -38,6 +38,7 @@ const Card = ({ name, latitude,longitude, phoneNo, imageURL, status, showVictims
     </div>
   </div>
 );
+
 
 const mapDispatchToProps = (dispatch) => ({
   showVictimsInfo: () => dispatch(showVictimsInfo())

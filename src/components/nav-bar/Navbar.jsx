@@ -35,7 +35,7 @@ class Navbar extends Component {
 
           (
             <>
-            <Link to="/">
+            <Link to={this.props.response.currentUser ? `/dashboard` : `/`}>
               <Logo
                 alt="help logo"
                 id="logo"
