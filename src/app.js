@@ -56,6 +56,10 @@ class App extends React.Component {
               this.props.modal.showLogout ?
               <Logout/> : null
             }
+            {/* {
+              this.props.modal.showVictims ? 
+              <Modal><ResponseUnitHomePage /></Modal> : null
+            } */}
             {
               this.props.modal.showProfile ? 
               (
@@ -72,7 +76,12 @@ class App extends React.Component {
                 <HandleError>
                   <Switch>
                     <React.Fragment>
-                      <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+                    <Route exact path="/" render={() => {
+                        if (!this.props.response.currentUser) {
+                          return (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)
+                        }
+                        return (this.props.response.currentUser ? <Redirect to="/dashboard" /> : <Dashboard />)
+                        }} />
                       <Route exact path="/profile" component={UserProfile} />
                       <Route exact path="/report-accident" component={ReportAccident} />
                       <Route exact path="/update-profile" component={UpdateProfile} />
@@ -100,7 +109,12 @@ class App extends React.Component {
                 <HandleError>
                   <Switch>
                     <React.Fragment>
-                      <Route exact path="/" render={() => (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)} />
+                      <Route exact path="/" render={() => {
+                        if (!this.props.response.currentUser) {
+                          return (this.props.sent ? <Redirect to="/feedback" /> : <HomePage />)
+                        }
+                        return (this.props.response.currentUser ? <Redirect to="/dashboard" /> : <Dashboard />)
+                        }} />
                       <Route exact path="/profile" component={UserProfile} />
                       <Route exact path="/report-accident" component={ReportAccident} />
                       <Route exact path="/update-profile" component={UpdateProfile} />

@@ -7,9 +7,9 @@ class Sidebar extends Component {
     return (
       <div className="sidebar-container">
         <ul className="sidebar-menu">
-          {this.props.links.map((link) => (
+          {this.props.links.map((link, index) => (
             <li className="sidebar-menu-item">
-              <Link to={link.route}>
+              <Link key={index} to={link.route}>
                 {link.icon}
                 {link.title}
               </Link>

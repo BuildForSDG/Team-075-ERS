@@ -9,12 +9,12 @@ import CustomButton from '../../components/custom-button/CustomButton';
 import './response-unit-homepage.css';
 
 class ResponseUnitHomePage extends React.Component {
-  componentDidMount() {
-    const { token } = this.props.user.currentUser;
-    this.props.getAllVictims(token);
-  }
+  // componentDidMount() {
+  //   const { token } = this.props.user.currentUser;
+  //   this.props.getAllVictims(token);
+  // }
   render(){
-    // let idx;
+    console.log(this.props);
     if (this.props.modal.showVictims ) {
       const { reports } = this.props.response.victims;
       const { index } = this.props.modal;
@@ -45,17 +45,16 @@ class ResponseUnitHomePage extends React.Component {
       );
     }
     if (this.props.response.victims.reports) {
-      // console.log(this.props.response.victims);
+      console.log(this.props.response.victims);
       const { reports } = this.props.response.victims;
       return (
         <div className="ers-container">
           {
             reports.map((victim, index) => {
-              console.log(victim.response.status)
               return (
               <div className="response-homepage victim-card" key={victim._id} onClick={() => this.props.showVictimsInfo(index)}>
                 <Card
-                  name={victim.name}
+                  name={victim._id}
                   phoneNo={victim.phoneNo}
                   latitude={victim.location.latitude}
                   longitude={victim.location.longitude}

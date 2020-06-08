@@ -68,3 +68,58 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
       });
     });
 };
+
+export const signupResponseUnit = (
+name,
+email,
+password,
+primaryPhoneNo,
+secondaryPhoneNo,
+primaryAddress,
+SecondaryAddress,
+website,
+api,
+token
+) => (dispatch) => {
+  dispatch({
+    type: ConstantsActionTypes.SIGNUP_RESPONSE_UNIT_START,
+    payload: true
+  });
+  const bearer = `Bearer ${token}`;
+  fetch(`https://emresys.herokuapp.com/${api}`, {
+    method: 'post',
+    headers: { 
+      Authorization: bearer,
+      'Content-Type': 'application/json' 
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      primaryPhoneNo,
+      secondaryPhoneNo,
+      primaryAddress,
+      SecondaryAddress,
+      website,
+      password
+    })
+  })
+    .then((response) => {
+      dispatch({
+        type: ConstantsActionTypes.SIGNUP_RESPONSE_UNIT_SUCCESS,
+        payload: response.status
+      });
+      return response.json();
+    }).then((data) => {
+      dispatch({
+        type: ConstantsActionTypes.RESPONSE_UNIT_MESSAGE,
+        payload: data
+      });
+      return data;
+    })
+    .catch((error) => {
+      dispatch({
+        type: ConstantsActionTypes.SIGNUP_RESPONSE_UNIT_FAILED,
+        payload: error.message
+      });
+    });
+};

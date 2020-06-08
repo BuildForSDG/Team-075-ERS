@@ -16,32 +16,7 @@ class ReportAccident extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
-    const { lat, lng, phoneNo, userId } = this.state;
-    fetch('http://localhost:3001/api/report', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        location: {
-          latitude: lat.toString(),
-          longitude: lng.toString()
-        },
-        reporter: {
-          phoneNo,
-          userId
-        }
-      })
-    })
-      .then((data) => console.log)
-      .catch((error) => console.log);
-
-    this.setState({
-      phoneNo: 0,
-      typeOfAccident: '',
-      noOfPersons: 0,
-      description: '',
-      filename: ''
-    });
+    console.log('Working on it!')    
   };
 
   handleChange = (event) => {

@@ -9,10 +9,10 @@ class UpdateProfile extends Component {
   constructor(){
     super();
     this.state = {
-      name: '',
-      phoneNo: '',
-      emergencyContactName: '',
-      emergencyContactPhoneNo: ''
+      name: undefined,
+      phoneNo: undefined,
+      emergencyContactName: undefined,
+      emergencyContactPhoneNo: undefined
 
     }
   }
@@ -26,7 +26,6 @@ class UpdateProfile extends Component {
     event.preventDefault();
     const { name, phoneNo, emergencyContactName, emergencyContactPhoneNo } = this.state;
     if (!name || !phoneNo || !emergencyContactName || !emergencyContactPhoneNo) return;
-    // if (typeof(name) !== 'string' || typeof(emergencyContactName) !== 'string') return;
     const { updateUserProfileAsync } = this.props;
     const { token, user } = this.props.user.currentUser;
     const { _id } = user;
@@ -34,13 +33,14 @@ class UpdateProfile extends Component {
     updateUserProfileAsync(name, phoneNo, emergencyContactName, emergencyContactPhoneNo, _id,   token);
   };
   render(){
-    const { user } = this.props.user.currentUser;
+    
     if (this.props.update.isPending) {
       return (
         <WithSpinner></WithSpinner>
       );
     }
-    if (user) {
+    if (this.props.user.currentUser) {
+      const { user } = this.props.user.currentUser;
       return(
         <div className="container">
   
@@ -112,12 +112,86 @@ class UpdateProfile extends Component {
   
       );
     }
+    if (this.props.response.currentUser) {
+      const { currentUser } = this.props.response;
+      return(
+        <div className="container">
+  
+          <section className="update-profile">
+            <h4>Update Profile</h4>
+            <p>Update your profile information</p>
+  
+  
+            <img src="images/profilePicture.svg" alt="profile-pic" />
+  
+                  <h5>{currentUser.responseUnit.name}</h5>
+                  <p>{currentUser.responseUnit.contact.primaryPhoneNo}</p>
+                  <p>{currentUser.responseUnit.email}</p>
+  
+            <form id="update-profile" onSubmit={this.handleSubmit}>
+              <fieldset>
+                  <div className="form-group">
+                    <input 
+                      name="name"
+                      type="text" 
+                      className="form-control" 
+                      placeholder={currentUser.responseUnit.name}
+                      onChange={this.setupdateDetails}
+                      required
+                      />
+                  </div>
+  
+                  <div className="form-group">
+                    <input
+                      name="phoneNo"
+                      type="text" 
+                      className="form-control" 
+                      placeholder={currentUser.responseUnit.contact.primaryPhoneNo}
+                      onChange={this.setupdateDetails}
+                      required
+                      />
+                  </div>
+  
+                  <div className="form-group">
+                    <input
+                      name="emergencyContactName"
+                      type="text" 
+                      className="form-control" 
+                      placeholder={currentUser.responseUnit.name}
+                      onChange={this.setupdateDetails}
+                      required
+                      />
+                  </div>
+  
+                  <div className="form-group">
+                    <input
+                      name="emergencyContactPhoneNo"
+                      type="text" 
+                      className="form-control" 
+                      placeholder={currentUser.responseUnit.name}
+                      onChange={this.setupdateDetails}
+                      required
+                      />
+                  </div>
+  
+                  <CustomButton className="btn-send">
+                    Update
+                  </CustomButton>
+              </fieldset>
+            </form>
+  
+          </section>
+        </div>
+  
+      );
+    }
   }
 }
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  update: state.update 
+  update: state.update,
+  response: state.response
 });
 
 const mapDispatchToProps = (dispatch) => ({

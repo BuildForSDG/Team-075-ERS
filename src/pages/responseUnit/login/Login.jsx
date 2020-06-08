@@ -3,8 +3,9 @@ import CustomButton from '../../../components/custom-button/CustomButton';
 import { connect } from 'react-redux';
 import { loginResponseUnitAsync } from '../../../redux/response/response.actions';
 import { ReactComponent as Girl } from '../../../assets/images/girl.svg';
-import '../../signup/sign-up.css';
 import { logoutUser } from '../../../redux/user/user.actions';
+import WithSpinner from '../../../components/with-spinner/with-spinner';
+import '../../signup/sign-up.css';
 
 
 class ResponseUnitLogin extends React.Component {
@@ -26,7 +27,6 @@ class ResponseUnitLogin extends React.Component {
     event.preventDefault();
     const { email, password } = this.state;
     if (!email || !password) return;
-    console.log(email, password)
     const { loginResponseUnitAsync, logoutUser } = this.props;
     const api = `api/response-unit/login`
     loginResponseUnitAsync(email, password, api);
@@ -39,6 +39,7 @@ class ResponseUnitLogin extends React.Component {
   };
 
   render() {
+    if (!this.props.response.isPending) {
 
       return (
         <section>
@@ -77,6 +78,8 @@ class ResponseUnitLogin extends React.Component {
           </div>
         </section>
       );
+    }
+    return <WithSpinner></WithSpinner>
   }
 }
 
@@ -87,7 +90,7 @@ const mapDispatchToprops = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  isLoading: state.user.isLoading
+  response: state.response
 })
 
 export default connect(mapStateToProps, mapDispatchToprops)(ResponseUnitLogin);
