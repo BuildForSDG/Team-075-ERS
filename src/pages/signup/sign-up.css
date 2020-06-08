@@ -247,15 +247,15 @@ a {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-  .login-title {
-    padding-top: 1.25rem;
-  }
+.login-title {
+  padding-top: 1.25rem;
 }
 
-  .login-title {
-    padding-top: 1.25rem;
-  }
+
+.login-title {
+  padding-top: 1.25rem;
 }
+
 
 /* Extra small devices (phones, 600px and down) */
 /* @media only screen and (max-width: 600px) {
