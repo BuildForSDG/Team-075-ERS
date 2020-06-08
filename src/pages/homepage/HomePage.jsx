@@ -56,7 +56,7 @@ class HomePage extends React.Component {
       const { lat, lng } = this.props.help.location;
       const { token, user } = this.props.user.currentUser;
       const { sendReportAsync } = this.props;
-      sendReportAsync(userId._id, userId.phoneNo, lat, lng, token);
+      sendReportAsync(user._id, user.phoneNo, lat, lng, token);
 
     }
     if (this.props.report.isPending) {
