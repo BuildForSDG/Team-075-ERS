@@ -70,16 +70,16 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
 };
 
 export const signupResponseUnit = (
-name,
-email,
-password,
-primaryPhoneNo,
-secondaryPhoneNo,
-primaryAddress,
-SecondaryAddress,
-website,
-api,
-token
+  name,
+  email,
+  password,
+  primaryPhoneNo,
+  secondaryPhoneNo,
+  primaryAddress,
+  SecondaryAddress,
+  website,
+  api,
+  token
 ) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SIGNUP_RESPONSE_UNIT_START,
@@ -88,9 +88,9 @@ token
   const bearer = `Bearer ${token}`;
   fetch(`https://emresys.herokuapp.com/${api}`, {
     method: 'post',
-    headers: { 
+    headers: {
       Authorization: bearer,
-      'Content-Type': 'application/json' 
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       name,
