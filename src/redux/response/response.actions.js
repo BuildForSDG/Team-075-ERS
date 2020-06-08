@@ -47,21 +47,21 @@ export const getAllUnits = (token) => (dispatch) => {
   })
   .then((response) => {
     dispatch({
-      type: ConstantsActionTypes.GET_RESPONSE_UNITS_SUCCESS,
-      payload: response.message
+        type: ConstantsActionTypes.GET_RESPONSE_UNITS_SUCCESS,
+        payload: response.message
     });
     return response.json();
   })
   .then((data) => {
     dispatch({
-      type: ConstantsActionTypes.LOAD_ALL_UNITS,
-      payload: data
+        type: ConstantsActionTypes.LOAD_ALL_UNITS,
+        payload: data
     });
   })
   .catch((error) => {
     dispatch({
-      type: ConstantsActionTypes.GET_RESPONSE_UNITS_FAILED,
-      payload: error.message
+        type: ConstantsActionTypes.GET_RESPONSE_UNITS_FAILED,
+        payload: error.message
     });
   })
 };

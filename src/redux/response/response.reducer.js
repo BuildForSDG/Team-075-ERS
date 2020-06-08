@@ -1,12 +1,12 @@
 import ConstantsActionTypes from './response.constants';
 
 const INITIAL_STATE = {
-    victims: [],
-    units: [],
-    isPending: false,
-    errorMessage: null,
-    message: null,
-    currentUser: null
+  victims: [],
+  units: [],
+  isPending: false,
+  errorMessage: null,
+  message: null,
+  currentUser: null
 }
 
 const responseReducer = (state = INITIAL_STATE, action = {}) => {
