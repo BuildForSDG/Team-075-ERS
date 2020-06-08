@@ -23,6 +23,11 @@
   cursor: pointer;
 }
 
+.modal-close {
+  float: right;
+  font-weight: 700;
+  font-size: 18px;
+}
 .display-block {
   display: block;
 }
