@@ -24,6 +24,7 @@ a {
   width: 45vw;
 }
 
+
 .user-details {
   display: block;
   width: 300px;
@@ -57,6 +58,17 @@ a {
 
 .policy label {
   margin-left: 10px;
+  font-size: 12px;
+}
+
+
+.policy span {
+  margin-left: 40px;
+}
+
+input[name="terms"] {
+   margin-right: 20px;
+
 }
 
 .middle {
@@ -182,6 +194,7 @@ a {
   .register-btn {
     /* margin: 20px 0 0 0; */
     width: 300px;
+    margin-top: 10px;
   }
 
   .middle {
@@ -197,6 +210,11 @@ a {
     position: absolute;
     bottom: 7%;
     align-items: center;
+    top: 26.25rem;
+  }
+
+  .social-accounts {
+    top: 36.25rem !important;
   }
 
   .right p {
@@ -230,8 +248,33 @@ a {
 
 }
 
-    
+
 /* response unit */
+
+/* login */
+.ers-login {
+  width: 19.4375rem;
+  height: 3.3125rem;
+  margin: auto;
+}
+
+.ers-title{
+  padding-top: 1.25rem;
+}
+
+.ers-register-btn {
+  width: 300px;
+}
+
+.ers-forgot-psw {
+  font-size: 13px;
+  padding-bottom: 50px;
+  text-align: right;
+  cursor: pointer;
+}
+
+/* signup */
+
 .response-unit-details {
   display: block;
   width: 20.413125rem;
@@ -250,12 +293,6 @@ a {
 .login-title {
   padding-top: 1.25rem;
 }
-
-
-.login-title {
-  padding-top: 1.25rem;
-}
-
 
 /* Extra small devices (phones, 600px and down) */
 /* @media only screen and (max-width: 600px) {

@@ -108,16 +108,16 @@ class SignUp extends React.Component {
                     onChange={this.setLoginDetails}
                   />
 
-                  <CustomButton className="btn-send register-btn" onClick={() => toast.current = toast(this.state.status)}>Register</CustomButton>
-
                   <div className="policy">
                     <input type="checkbox" id="checkbox" name="terms" onChange={this.setLoginDetails} />
-                    <label>
+                    <label htmlFor = "checkbox">
                       By clicking continue you agree to our
                       <br />
-                      <b>Terms of Service and Privacy Policy</b>
+                      <span><b>Terms of Service and Privacy Policy</b></span>
                     </label>
                   </div>
+
+                  <CustomButton className="btn-send register-btn" onClick={() => toast.current = toast(this.state.status)}>Register</CustomButton>
                 </div>
               </fieldset>
             </form>
@@ -128,7 +128,7 @@ class SignUp extends React.Component {
               <Line className="divider" />
             </div>
 
-            <div className="right">
+            <div className="right social-accounts">
               <p>Sign up with one of your social accounts</p>
 
               <CustomButton className="soc-btn">
