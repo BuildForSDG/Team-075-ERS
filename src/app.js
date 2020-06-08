@@ -49,7 +49,7 @@ class App extends React.Component {
           <div className="App">
             <Navbar />
             {
-              !this.props.user.currentUser && this.props.modal.promptLogIn ?
+              this.props.user.login !== 200 && this.props.modal.promptLogIn ?
                 <Modal><ModalLogin></ModalLogin></Modal> : null
             }
             {

@@ -4,7 +4,6 @@ export const getAllVictims = (token) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.GET_VICTIMS_START
   });
-  console.log(token)
   const bearer = `Bearer ${token}`;
   fetch('https://emresys.herokuapp.com/api/report/', {
     method: 'get',
