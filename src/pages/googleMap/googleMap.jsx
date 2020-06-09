@@ -43,6 +43,31 @@ class GoogleMap extends React.Component {
     }
   };
 
+  displayResponseMarkers = () => {
+    const { locations } = this.props.response.units;
+    if (locations) {
+      return locations.map((store, index) => {
+        return (
+          <Marker
+            key={store._id}
+            id={index}
+            position={{
+              lat: store.location.latitude,
+              lng: store.location.longitude
+            }}
+            icon={{
+              
+              url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png',
+              scaledSize: new this.props.google.maps.Size(25,48)
+              
+            }}
+            onClick={() => console.log('You clicked me!')}
+          />
+        );
+      });
+    }
+  };
+
   
 
   render() {
@@ -55,6 +80,7 @@ class GoogleMap extends React.Component {
         <div className="map">
           <Map google={this.props.google} zoom={15} style={mapStyles} initialCenter={{ lat, lng }}>
             {this.displayMarkers()}
+            {this.displayResponseMarkers()}
             <Marker 
               position={{ lat, lng }}
               

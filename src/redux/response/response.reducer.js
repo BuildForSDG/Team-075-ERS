@@ -1,11 +1,12 @@
 import ConstantsActionTypes from './response.constants';
 
 const INITIAL_STATE = {
-    victims: [],
-    isPending: false,
-    errorMessage: null,
-    message: null,
-    currentUser: null
+  victims: [],
+  units: [],
+  isPending: false,
+  errorMessage: null,
+  message: null,
+  currentUser: null
 }
 
 const responseReducer = (state = INITIAL_STATE, action = {}) => {
@@ -78,6 +79,29 @@ const responseReducer = (state = INITIAL_STATE, action = {}) => {
         errorMessage: null,
         message: null,
         currentUser: null
+      });
+    case ConstantsActionTypes.GET_RESPONSE_UNITS_START:
+      return ({
+        ...state,
+        isPending: true
+      });
+    case ConstantsActionTypes.GET_RESPONSE_UNITS_SUCCESS:
+      return ({
+        ...state,
+        isPending: false,
+        message: action.payload
+      });
+    case ConstantsActionTypes.GET_RESPONSE_UNITS_FAILED:
+      return ({
+        ...state,
+        isPending: false,
+        errorMessage: action.payload
+      });
+    case ConstantsActionTypes.LOAD_ALL_UNITS:
+      return ({
+        ...state,
+        isPending: false,
+        units: action.payload
       });
     default:
       return state;

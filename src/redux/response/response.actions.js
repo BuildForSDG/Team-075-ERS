@@ -33,6 +33,39 @@ export const getAllVictims = (token) => (dispatch) => {
   })
 };
 
+export const getAllUnits = (token) => (dispatch) => {
+  dispatch({
+    type: ConstantsActionTypes.GET_RESPONSE_UNITS_START
+  });
+  const bearer = `Bearer ${token}`;
+  fetch('https://emresys.herokuapp.com/api/response-unit/location', {
+    method: 'get',
+    headers: {
+      Authorization: bearer,
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((response) => {
+    dispatch({
+        type: ConstantsActionTypes.GET_RESPONSE_UNITS_SUCCESS,
+        payload: response.message
+    });
+    return response.json();
+  })
+  .then((data) => {
+    dispatch({
+        type: ConstantsActionTypes.LOAD_ALL_UNITS,
+        payload: data
+    });
+  })
+  .catch((error) => {
+    dispatch({
+        type: ConstantsActionTypes.GET_RESPONSE_UNITS_FAILED,
+        payload: error.message
+    });
+  })
+};
+
 export const logoutResponseUnit = () => ({ type: ConstantsActionTypes.LOGOUT_RESPONSE_UNIT });
 
 export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
