@@ -10,14 +10,16 @@ import Admin from '../../pages/adminPanel/Admin';
 import GoogleMap from '../../pages/googleMap/googleMap';
 // import Card from '../card/card';
 import { connect } from 'react-redux';
-import { getAllVictims } from '../../redux/response/response.actions';
+import { getAllVictims, getAllUnits } from '../../redux/response/response.actions';
 import ResponseUnitSignUp from '../../components/responseUnitSignUp/SignUp';
+import ResponseUnits from '../../components/responseUnits/response-units';
 
 class Dashboard extends Component {
   componentDidMount(){
-    const { getAllVictims } = this.props;
+    const { getAllVictims, getAllUnits } = this.props;
     const { currentUser } = this.props.response;
     getAllVictims(currentUser.token);
+    getAllUnits(currentUser.token);
   }
   render() {
     // const { reports } = this.props.response.victims;
@@ -47,7 +49,7 @@ class Dashboard extends Component {
             },
             {
               title: 'Active Response Units',
-              route: '/dashboard/pending-issues',
+              route: '/dashboard/display-units',
               icon: <Active className="icon" />,
               key: 4
             },
@@ -59,7 +61,7 @@ class Dashboard extends Component {
             },
             {
               title: 'Signup Response Unit',
-              route: '/dashboard/response-unit',
+              route: '/dashboard/signup-response-unit',
               icon: <Location className="icon" />,
               key: 6
             }
@@ -68,7 +70,8 @@ class Dashboard extends Component {
         <div className="content-container">
           <Switch>
             <Route exact path={this.props.match.url + '/'} component={Admin} />
-            <Route exact path={this.props.match.url + '/response-unit' } component={ResponseUnitSignUp}/>
+            <Route exact path={this.props.match.url + '/signup-response-unit' } component={ResponseUnitSignUp}/>
+            <Route exact path={this.props.match.url + '/display-units' } component={ResponseUnits}/>
             {/* GoogleMap component for testing routes on dashboard */}
             <Route exact path={this.props.match.url + '/report-units'} component={GoogleMap} />
           </Switch>
@@ -83,7 +86,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllVictims: (token) => dispatch(getAllVictims(token))
+  getAllVictims: (token) => dispatch(getAllVictims(token)),
+  getAllUnits: (token) => dispatch(getAllUnits(token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
