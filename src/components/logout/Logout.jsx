@@ -7,22 +7,22 @@ import { logoutResponseUnit } from '../../redux/response/response.actions';
 import { closeAllModal } from '../../redux/modal/modal.actions';
 import { Link } from 'react-router-dom';
 
-const Logout = ({logoutUser, logoutResponseUnit, closeAllModal}) => (
-  <div className='modal display-block'>
+import { ReactComponent as Image } from '../../assets/images/Logout.svg';
+import './logout.css';
+
+const Logout = ({ logoutUser, logoutResponseUnit, closeAllModal }) => (
+  <div className="modal display-block">
     <section className="modal-main">
-      Logout to continue
-      <Link to='/ers-login'>
-        <CustomButton 
-          className="btn-send register-btn"
+      <Image className="logout-img" />
+      <h3>Please logout to continue</h3>
+      <Link to="/ers-login">
+        <CustomButton
+          className="btn-send register-btn logout"
           onClick={() => {
-            return (
-              logoutUser(),
-              logoutResponseUnit(),
-              closeAllModal()
-            );
+            return logoutUser(), logoutResponseUnit(), closeAllModal();
           }}
-          >
-            Logout
+        >
+          Logout
         </CustomButton>
       </Link>
     </section>
@@ -33,6 +33,6 @@ const mapDispatchToProps = (dispatch) => ({
   logoutUser: () => dispatch(logoutUser()),
   logoutResponseUnit: () => dispatch(logoutResponseUnit()),
   closeAllModal: () => dispatch(closeAllModal())
-})
+});
 
 export default connect(null, mapDispatchToProps)(Logout);

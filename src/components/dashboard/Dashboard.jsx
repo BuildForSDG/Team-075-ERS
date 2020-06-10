@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Sidebar from '../sidebar/Sidebar';
 import { ReactComponent as Wait } from '../../assets/images/wait.svg';
+import { ReactComponent as Teams } from '../../assets/images/team.svg';
+import { ReactComponent as CreateUser } from '../../assets/images/add-user.svg';
 import { ReactComponent as Active } from '../../assets/images/correct.svg';
 import { ReactComponent as Location } from '../../assets/images/pin.svg';
 import { ReactComponent as Units } from '../../assets/images/customer-service.svg';
@@ -11,11 +13,11 @@ import GoogleMap from '../../pages/googleMap/googleMap';
 // import Card from '../card/card';
 import { connect } from 'react-redux';
 import { getAllVictims, getAllUnits } from '../../redux/response/response.actions';
-import ResponseUnitSignUp from '../../components/responseUnitSignUp/SignUp';
+import ResponseUnitSignUp from '../../components/responseUnitSignUp/ResponseUnitSignUp';
 import ResponseUnits from '../../components/responseUnits/response-units';
 
 class Dashboard extends Component {
-  componentDidMount(){
+  componentDidMount() {
     const { getAllVictims, getAllUnits } = this.props;
     const { currentUser } = this.props.response;
     getAllVictims(currentUser.token);
@@ -38,7 +40,7 @@ class Dashboard extends Component {
             {
               title: 'Response Units',
               route: '/dashboard/report-units',
-              icon: <Units className="icon" />,
+              icon: <Teams className="icon" />,
               key: 2
             },
             {
@@ -60,9 +62,9 @@ class Dashboard extends Component {
               key: 5
             },
             {
-              title: 'Signup Response Unit',
+              title: 'Create Response Unit',
               route: '/dashboard/signup-response-unit',
-              icon: <Location className="icon" />,
+              icon: <CreateUser className="icon" />,
               key: 6
             }
           ]}
@@ -70,8 +72,8 @@ class Dashboard extends Component {
         <div className="content-container">
           <Switch>
             <Route exact path={this.props.match.url + '/'} component={Admin} />
-            <Route exact path={this.props.match.url + '/signup-response-unit' } component={ResponseUnitSignUp}/>
-            <Route exact path={this.props.match.url + '/display-units' } component={ResponseUnits}/>
+            <Route exact path={this.props.match.url + '/signup-response-unit'} component={ResponseUnitSignUp} />
+            <Route exact path={this.props.match.url + '/display-units'} component={ResponseUnits} />
             {/* GoogleMap component for testing routes on dashboard */}
             <Route exact path={this.props.match.url + '/report-units'} component={GoogleMap} />
           </Switch>
@@ -83,12 +85,11 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => ({
   response: state.response
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getAllVictims: (token) => dispatch(getAllVictims(token)),
   getAllUnits: (token) => dispatch(getAllUnits(token))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-

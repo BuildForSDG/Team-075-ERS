@@ -6,7 +6,7 @@ import { loginUserStartAsync } from '../../redux/user/user.actions';
 import { ReactComponent as Line } from '../../assets/images/Line.svg';
 import { ReactComponent as Girl } from '../../assets/images/girl.svg';
 // import { ReactComponent as Google } from '../../assets/images/google.svg';
-import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
+// import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
 // import Toast from '../../components/toast/toast';
 import { toast } from 'react-toastify';
 
@@ -30,10 +30,10 @@ class Login extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    if(!email || !password) {
+    if (!email || !password) {
       return;
     }
-    const api = `api/auth/login`
+    const api = `api/auth/login`;
     const { loginUserStartAsync } = this.props;
     loginUserStartAsync(email, password, api);
     this.setState((prevState, prevProps) => ({
@@ -76,7 +76,12 @@ class Login extends React.Component {
                       <b>Forgot password?</b>
                     </p>
                   </div>
-                  <CustomButton className="btn-send register-btn" onClick={() => toast.current = toast(this.state.status)}>Login</CustomButton>
+                  <CustomButton
+                    className="btn-send register-btn"
+                    onClick={() => (toast.current = toast(this.state.status))}
+                  >
+                    Login
+                  </CustomButton>
                 </div>
               </fieldset>
             </form>
@@ -90,12 +95,12 @@ class Login extends React.Component {
             <div className="right">
               <p>Sign up with one of your social accounts</p>
               <CustomButton className="soc-btn">
-                <Facebook id="facebook" />
+                <img src="images/facebook.svg" id="facebook" alt="facebook login" />
                 <span>sign in with facebook</span>
               </CustomButton>
 
               <CustomButton className="soc-btn">
-                <img src="images/google.svg" alt="google icon" id="google" />
+                <img src="images/google.svg" alt="google login" id="google" />
                 {/* <Google id="google"/> */}
                 <span>sign in with google</span>
               </CustomButton>

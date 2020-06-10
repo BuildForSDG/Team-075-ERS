@@ -29,10 +29,9 @@ class ResponseUnitSignUp extends React.Component {
     this.setState((prevState, PrevProps) => ({ [name]: value }));
   };
 
-
   handleSubmit = (event) => {
     event.preventDefault();
-    const api = 'api/response-unit/signup'
+    const api = 'api/response-unit/signup';
     const { name, email, password, contact } = this.state;
     const { currentUser } = this.props.response;
     if (
@@ -43,9 +42,10 @@ class ResponseUnitSignUp extends React.Component {
       !contact.secondaryPhoneNo ||
       !contact.primaryAddress ||
       !contact.secondaryAddress ||
-      !contact.website) return;
-      
-    
+      !contact.website
+    )
+      return;
+
     const { signupResponseUnit } = this.props;
     signupResponseUnit(
       name,
@@ -58,7 +58,7 @@ class ResponseUnitSignUp extends React.Component {
       contact.website,
       api,
       currentUser.token
-      )
+    );
 
     this.setState((prevState, prevProps) => ({
       name: undefined,
@@ -119,7 +119,6 @@ class ResponseUnitSignUp extends React.Component {
                   onChange={this.setLoginDetails}
                 />
 
-
                 {/* <div className="policy">
                   <input type='checkbox' id="checkbox" name="terms" onChange={this.setLoginDetails}/>
                   <label htmlFor = "checkbox">
@@ -128,50 +127,49 @@ class ResponseUnitSignUp extends React.Component {
                     <b>Terms of Service and Privacy Policy</b>
                   </label>
                 </div> */}
-              </div>
-                  <div className="right">
-                    <input
-                      name="primaryAddress"
-                      type="text"
-                      className="response-unit-details"
-                      required
-                      placeholder="Primary address"
-                      onChange={this.setLoginDetails}
-                    />
+                {/* </div> */}
+                {/* <div className="right"> */}
+                <input
+                  name="primaryAddress"
+                  type="text"
+                  className="response-unit-details"
+                  required
+                  placeholder="Primary address"
+                  onChange={this.setLoginDetails}
+                />
 
-                    <input
-                      name="secondaryAddress"
-                      type="text"
-                      className="response-unit-details"
-                      required
-                      placeholder="Secondary address"
-                      onChange={this.setLoginDetails}
-                    />
+                <input
+                  name="secondaryAddress"
+                  type="text"
+                  className="response-unit-details"
+                  required
+                  placeholder="Secondary address"
+                  onChange={this.setLoginDetails}
+                />
 
-                    <input
-                      name="website"
-                      type="text"
-                      className="response-unit-details"
-                      required
-                      placeholder="Website"
-                      onChange={this.setLoginDetails}
-                    />
+                <input
+                  name="website"
+                  type="text"
+                  className="response-unit-details"
+                  required
+                  placeholder="Website"
+                  onChange={this.setLoginDetails}
+                />
 
-                    <input
-                      name="password"
-                      type="password"
-                      className="response-unit-details"
-                      required
-                      placeholder="Password"
-                      onChange={this.setLoginDetails}
-                    />
+                <input
+                  name="password"
+                  type="password"
+                  className="response-unit-details"
+                  required
+                  placeholder="Password"
+                  onChange={this.setLoginDetails}
+                />
               </div>
               <div className="register">
-             <CustomButton className="btn-send register-btn">Register</CustomButton>
-          </div>
+                <CustomButton className="btn-send register-btn">Register</CustomButton>
+              </div>
             </fieldset>
           </form>
-         
         </div>
       </section>
     );
@@ -192,18 +190,21 @@ const mapDispatchToProps = (dispatch) => ({
     password,
     api,
     token
-  ) => dispatch(signupResponseUnit(
-    name,
-    email,
-    primaryPhoneNo,
-    secondaryPhoneNo,
-    primaryAddress,
-    SecondaryAddress,
-    website,
-    password,
-    api,
-    token
-  ))
+  ) =>
+    dispatch(
+      signupResponseUnit(
+        name,
+        email,
+        primaryPhoneNo,
+        secondaryPhoneNo,
+        primaryAddress,
+        SecondaryAddress,
+        website,
+        password,
+        api,
+        token
+      )
+    )
 });
 
 const mapStateToProps = (state) => ({

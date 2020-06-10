@@ -1,0 +1,8 @@
+#notification-box {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  background-color: #e72020;
+  width: 250px;
+  height: 100px;
+}
