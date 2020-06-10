@@ -8,27 +8,42 @@ class ReportAccident extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phoneNo: undefined,
-      typeOfAccident: undefined,
-      noOfPersons: undefined,
-      description: undefined,
-      filename: null
-    };
+      phoneNo: '',
+      typeOfAccident: '',
+      noOfPersons: '',
+      description: '',
+      file: ''
+    }
   }
 
-  handleSubmit = (event) => {
+  onSubmitHandler = (event) => {
     event.preventDefault();
-    const { phoneNo, typeOfAccident, noOfPersons, description, filename } = this.state; 
+
+    const { phoneNo, typeOfAccident, noOfPersons, description, file } = this.state;
+
     if (
       !phoneNo ||
       !typeOfAccident ||
       !noOfPersons
     ) return;
+
     if (!this.props.user.currentUser) return;
     if (!this.props.help.location) return;
+
     const { user } = this.props.user.currentUser;
     const { location } = this.props.help;
-    console.log('Token---->', this.props.user.currentUser.token)
+
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.set('report', JSON.stringify({
+      ...this.state,
+      reporter: {
+        userId: user._id,
+        phoneNo: user.phoneNo
+      },
+      location
+    }));
+
     this.props.reportAccident(
       user._id,
       phoneNo,
@@ -37,31 +52,30 @@ class ReportAccident extends Component {
       typeOfAccident,
       noOfPersons,
       description,
-      filename,
+      formData,
       this.props.user.currentUser.token
     );
+
     this.setState((prevState, prevProps) => ({
       phoneNo: undefined,
       typeOfAccident: undefined,
       noOfPersons: undefined,
       description: undefined,
-      filename: undefined
+      file: undefined
     }));
   };
 
-  handleChange = (event) => {
+  onChangeHandler = (event) => {
     const { value, name } = event.target;
     this.setState({ [name]: value });
   };
 
   //This uploads the file
   uploadFile = (event) => {
-    event.preventDefault();
-    this.setState((prevState, prevprops) => ({
-      filename: event.target.files[0]
-    }));
-    const data = new FormData()
-    data.append('file', this.state.filename)
+    console.log(event.target.files[0]);
+    this.setState({
+      file: event.target.files[0]
+    });
   }
 
   render() {
@@ -70,7 +84,7 @@ class ReportAccident extends Component {
         <h4 className="report-title">Additional Details</h4>
         <p className="report-desc">Please provide the following additional details</p>
 
-        <form id="additional-details" onSubmit={this.handleSubmit}>
+        <form id="additional-details" onSubmit={this.onSubmitHandler}>
           <fieldset>
             <div className="form-group">
               <input
@@ -79,23 +93,23 @@ class ReportAccident extends Component {
                 className="form-control"
                 placeholder="Phone number *"
                 required
-                onChange={this.handleChange}
+                onChange={this.onChangeHandler}
               />
             </div>
 
             <div className="form-group">
-              <select name="typeOfAccident" id="type-of-accident" required className="form-control" onChange={this.handleChange}>
+              <select name="typeOfAccident" id="type-of-accident" required className="form-control" onChange={this.onChangeHandler}>
                 <option value="">Type of Accident</option>
                 <option value="Motor Accident">Motor Accident</option>
                 <option value="Fire Accident">Fire Accident</option>
-                <option value="Building collaps">Building collapse</option>
+                <option value="Building collapse">Building collapse</option>
                 <option value="Construction Accident">Construction Accident</option>
                 <option value="other">other</option>
               </select>
             </div>
 
             <div className="form-group">
-              <select name="noOfPersons" id="type-of-accident" required className="form-control" onChange={this.handleChange}>
+              <select name="noOfPersons" id="noOfPersons" required className="form-control" onChange={this.onChangeHandler}>
                 <option value="">Number of Persons Involved</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -113,13 +127,13 @@ class ReportAccident extends Component {
                 rows="5"
                 placeholder="Description"
                 className="form-control"
-                onChange={this.handleChange}
+                onChange={this.onChangeHandler}
               ></textarea>
             </div>
 
             <div className="form-group">
               {/* This handles the file */}
-              <input name="filename" type="file" className="form-control" onChange={this.uploadFile} />
+              <input name="image" type="file" className="form-control" onChange={this.uploadFile} />
             </div>
 
             <CustomButton className="btn-send">

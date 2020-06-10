@@ -49,35 +49,21 @@ export const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => 
     });
 };
 
-export const reportAccident = (//action
-  userId, phoneNo, latitude, longitude, type, personsInvolved, description, imageUrl, token
+export const reportAccident = (
+  userId, phoneNo, latitude, longitude, type, personsInvolved, description, formData, token
 ) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.REPORT_ACCIDENT_START,
     payload: true
   });
-  console.log(token)
+
   const bearer = `Bearer ${token}`;
   fetch('http://localhost:3001/api/report/eye-witness', {
     method: 'post',
     headers: {
-      Authorization: bearer,
-      'Content-Type': 'application/json'
+      Authorization: bearer
     },
-    body: JSON.stringify({
-      reporter: {
-        userId,
-        phoneNo
-      },
-      location: {
-        latitude: latitude.toString(),
-        longitude: longitude.toString()
-      },
-      type,
-      personsInvolved,
-      description,
-      imageUrl: imageUrl.toString()
-    })
+    body: formData
   })
     .then((response) => {
       if (response.status === 200) {
@@ -87,11 +73,11 @@ export const reportAccident = (//action
         });
         return;
       }
-        dispatch({
-          type: ConstantsActionTypes.REPORT_ACCIDENT_FAILED,
-          payload: response.status
-        });
-      return response.json();
+      dispatch({
+        type: ConstantsActionTypes.REPORT_ACCIDENT_FAILED,
+        payload: response.status
+      });
+      console.log(response.json());
     })
     .catch((error) => {
       dispatch({
