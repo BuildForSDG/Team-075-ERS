@@ -46,6 +46,7 @@ class ResponseUnitLogin extends React.Component {
 
           <div className="ers-login">
             <form id="login" onSubmit={this.handleSubmit}>
+              <Status />
               <fieldset>
                 <input
                   name="email"
@@ -72,7 +73,6 @@ class ResponseUnitLogin extends React.Component {
             </form>
 
             <Girl id="girl" />
-            <Status />
           </div>
         </section>
       );
