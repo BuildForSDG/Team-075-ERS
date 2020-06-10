@@ -9,7 +9,7 @@ export const subscribeUnit = (
     type: ConstantsActionTypes.SUBSCRIBE_USER_START
   });
   const bearer = `Bearer ${token}`;
-  fetch('http://localhost:3001/api/subscribe', {
+  fetch('https://emresys.herokuapp.com/api/subscribe', {
     method: 'post',
     headers: {
       Authorization: bearer,

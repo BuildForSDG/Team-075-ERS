@@ -18,7 +18,7 @@ class Sidebar extends Component {
               </Link>
             </li>
           ))}
-          <CustomButton 
+          {/* <CustomButton 
             className='custom-square-button card-btn'
             onClick={() => {
               if (this.props.response.currentUser) {
@@ -31,7 +31,7 @@ class Sidebar extends Component {
             }}
           >
             { !this.props.subscribe.message ? `Subcribe` : `Subscribed`}
-          </CustomButton>
+          </CustomButton> */}
         </ul>
       </div>
     );

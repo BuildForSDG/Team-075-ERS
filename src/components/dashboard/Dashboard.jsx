@@ -11,15 +11,31 @@ import GoogleMap from '../../pages/googleMap/googleMap';
 // import Card from '../card/card';
 import { connect } from 'react-redux';
 import { getAllVictims, getAllUnits } from '../../redux/response/response.actions';
+import { subscribeUnit } from '../../redux/subscription/subscription.actions';
 import ResponseUnitSignUp from '../../components/responseUnitSignUp/SignUp';
 import ResponseUnits from '../../components/responseUnits/response-units';
 
 class Dashboard extends Component {
   componentDidMount(){
+    const isPushNotificationSupported = () => (
+      "serviceWorker" in navigator && "PushManager" in window
+    );
+    if (isPushNotificationSupported()) {
+       const askUserPermission = async () => {
+        return await Notification.requestPermission();
+      }
+      askUserPermission();
+      const { currentUser } = this.props.response;
+      const endpoint = "https://emresys.herokuapp.com/api/report/"
+      this.props.subscribeUnit(endpoint, currentUser.responseUnit._id, currentUser.token )
+    }
+
     const { getAllVictims, getAllUnits } = this.props;
-    const { currentUser } = this.props.response;
-    getAllVictims(currentUser.token);
-    getAllUnits(currentUser.token);
+    if (this.props.response.currentUser) {
+      const { currentUser } = this.props.response;
+      getAllVictims(currentUser.token);
+      getAllUnits(currentUser.token);
+    }
   }
   render() {
     // const { reports } = this.props.response.victims;
@@ -87,7 +103,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAllVictims: (token) => dispatch(getAllVictims(token)),
-  getAllUnits: (token) => dispatch(getAllUnits(token))
+  getAllUnits: (token) => dispatch(getAllUnits(token)),
+  subscribeUnit: (endpoint, userId, token) => dispatch(subscribeUnit(endpoint, userId, token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
