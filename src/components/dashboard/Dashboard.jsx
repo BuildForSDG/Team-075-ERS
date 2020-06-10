@@ -16,6 +16,16 @@ import ResponseUnits from '../../components/responseUnits/response-units';
 
 class Dashboard extends Component {
   componentDidMount(){
+    const isPushNotificationSupported = () => (
+      "serviceWorker" in navigator && "PushManager" in window
+    );
+    console.log(isPushNotificationSupported());
+    if (isPushNotificationSupported()) {
+      async function askUserPermission() {
+        return await Notification.requestPermission();
+      }
+      askUserPermission();
+    }
     const { getAllVictims, getAllUnits } = this.props;
     const { currentUser } = this.props.response;
     getAllVictims(currentUser.token);

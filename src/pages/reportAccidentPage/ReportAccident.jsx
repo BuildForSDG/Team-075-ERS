@@ -45,13 +45,6 @@ class ReportAccident extends Component {
     }));
 
     this.props.reportAccident(
-      user._id,
-      phoneNo,
-      location.lat,
-      location.lng,
-      typeOfAccident,
-      noOfPersons,
-      description,
       formData,
       this.props.user.currentUser.token
     );
@@ -72,7 +65,6 @@ class ReportAccident extends Component {
 
   //This uploads the file
   uploadFile = (event) => {
-    console.log(event.target.files[0]);
     this.setState({
       file: event.target.files[0]
     });
@@ -153,27 +145,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  reportAccident: (
-    userId,
-    phoneNo,
-    latitude,
-    longitude,
-    type,
-    personsInvolved,
-    description,
-    imageUrl,
-    token
-  ) => dispatch(reportAccident(
-    userId,
-    phoneNo,
-    latitude,
-    longitude,
-    type,
-    personsInvolved,
-    description,
-    imageUrl,
-    token
-  ))
+  reportAccident: (imageUrl, token) => dispatch(reportAccident(imageUrl, token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportAccident);

@@ -58,7 +58,7 @@ export const reportAccident = (
   });
 
   const bearer = `Bearer ${token}`;
-  fetch('http://localhost:3001/api/report/eye-witness', {
+  fetch('https://emresys.herokuapp.com/api/report/eye-witness', {
     method: 'post',
     headers: {
       Authorization: bearer
