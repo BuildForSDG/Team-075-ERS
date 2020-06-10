@@ -9,12 +9,8 @@ import CustomButton from '../../components/custom-button/CustomButton';
 import './response-unit-homepage.css';
 
 class ResponseUnitHomePage extends React.Component {
-  // componentDidMount() {
-  //   const { token } = this.props.user.currentUser;
-  //   this.props.getAllVictims(token);
-  // }
+
   render(){
-    console.log(this.props);
     if (this.props.modal.showVictims ) {
       const { reports } = this.props.response.victims;
       const { index } = this.props.modal;

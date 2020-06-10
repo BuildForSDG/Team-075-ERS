@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './sidebar.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { subscribeUnit } from '../../redux/subscription/subscription.actions';
+import CustomButton from '../custom-button/CustomButton';
 class Sidebar extends Component {
   
   render() {
@@ -15,9 +18,33 @@ class Sidebar extends Component {
               </Link>
             </li>
           ))}
+          <CustomButton 
+            className='custom-square-button card-btn'
+            onClick={() => {
+              if (this.props.response.currentUser) {
+                const endpoint = "https://emresys.herokuapp.com/api/report/"
+                const { token, responseUnit } = this.props.response.currentUser;
+                return (
+                  this.props.subscribeUnit(endpoint, responseUnit._id, token )
+                );
+              }
+            }}
+          >
+            { !this.props.subscribe.message ? `Subcribe` : `Subscribed`}
+          </CustomButton>
         </ul>
       </div>
     );
   }
 }
-export default Sidebar;
+
+const mapStateToProps = (state) => ({
+  response: state.response,
+  subscribe: state.subscribe
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  subscribeUnit: (endpoint, userId, token) => dispatch(subscribeUnit(endpoint, userId, token))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
