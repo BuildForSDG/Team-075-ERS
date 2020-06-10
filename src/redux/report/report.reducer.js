@@ -26,6 +26,25 @@ const reportReducer = (state = INITIAL_STATE, action = {}) => {
         isPending: false,
         errorMessage: action.payload
       });
+    case ConstantsActionTypes.REPORT_ACCIDENT_START:
+      return ({
+        ...state,
+        isPending: true
+      });
+    case ConstantsActionTypes.REPORT_ACCIDENT_SUCCESS:
+      return ({
+        ...state,
+        isPending: false,
+        errorMessage: null,
+        reportMessage: action.payload
+      });
+    case ConstantsActionTypes.REPORT_ACCIDENT_FAILED:
+      return ({
+        ...state,
+        isPending: false,
+        errorMessage: action.payload,
+        reportMessage: null
+      });
     case ConstantsActionTypes.RESET_ERROR_MESSAGE:
       return ({
         ...state,

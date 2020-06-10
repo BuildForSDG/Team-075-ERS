@@ -7,12 +7,13 @@ import reportReducer from './report/report.reducer';
 import modalReducer from './modal/modal.reducer';
 import updateReducer from './updateProfile/updateProfile.reducer';
 import responseReducer from './response/response.reducer';
+import subcriptionReducer from './subscription/subscription.reducer';
 
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'help', 'report', 'modal', 'update', 'response']
+  whitelist: ['user', 'help', 'report', 'modal', 'update', 'response', 'subscribe']
 };
 
 const rootReducer = combineReducers({
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   report: reportReducer,
   modal: modalReducer,
   update: updateReducer,
-  response: responseReducer
+  response: responseReducer,
+  subscribe: subcriptionReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
