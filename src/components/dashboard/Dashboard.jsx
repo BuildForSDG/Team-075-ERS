@@ -30,6 +30,7 @@ class Dashboard extends Component {
       this.props.subscribeUnit(endpoint, currentUser.responseUnit._id, currentUser.token )
     }
 
+
     const { getAllVictims, getAllUnits } = this.props;
     if (this.props.response.currentUser) {
       const { currentUser } = this.props.response;
