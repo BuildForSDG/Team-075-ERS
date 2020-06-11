@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { reportAccident } from '../../redux/report/report.actions';
 import CustomButton from '../../components/custom-button/CustomButton';
 import './report-accident.css';
 
@@ -6,23 +8,67 @@ class ReportAccident extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phoneNo: 0,
+      phoneNo: '',
       typeOfAccident: '',
-      noOfPersons: 0,
+      noOfPersons: '',
       description: '',
-      filename: ''
-    };
+      file: ''
+    }
   }
 
-  handleSubmit = (event) => {
+  onSubmitHandler = (event) => {
     event.preventDefault();
-    console.log('Working on it!')    
+
+    const { phoneNo, typeOfAccident, noOfPersons, description, file } = this.state;
+
+    if (
+      !phoneNo ||
+      !typeOfAccident ||
+      !noOfPersons
+    ) return;
+
+    if (!this.props.user.currentUser) return;
+    if (!this.props.help.location) return;
+
+    const { user } = this.props.user.currentUser;
+    const { location } = this.props.help;
+
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.set('report', JSON.stringify({
+      ...this.state,
+      reporter: {
+        userId: user._id,
+        phoneNo: user.phoneNo
+      },
+      location
+    }));
+
+    this.props.reportAccident(
+      formData,
+      this.props.user.currentUser.token
+    );
+
+    this.setState((prevState, prevProps) => ({
+      phoneNo: undefined,
+      typeOfAccident: undefined,
+      noOfPersons: undefined,
+      description: undefined,
+      file: undefined
+    }));
   };
 
-  handleChange = (event) => {
+  onChangeHandler = (event) => {
     const { value, name } = event.target;
     this.setState({ [name]: value });
   };
+
+  //This uploads the file
+  uploadFile = (event) => {
+    this.setState({
+      file: event.target.files[0]
+    });
+  }
 
   render() {
     return (
@@ -30,7 +76,7 @@ class ReportAccident extends Component {
         <h4 className="report-title">Additional Details</h4>
         <p className="report-desc">Please provide the following additional details</p>
 
-        <form id="additional-details" action="/report-accident">
+        <form id="additional-details" onSubmit={this.onSubmitHandler}>
           <fieldset>
             <div className="form-group">
               <input
@@ -38,29 +84,30 @@ class ReportAccident extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Phone number *"
-                onChange={this.handleChange}
+                required
+                onChange={this.onChangeHandler}
               />
             </div>
 
             <div className="form-group">
-              <select name="typeOfAccident" id="type-of-accident" className="form-control" onChange={this.handleChange}>
+              <select name="typeOfAccident" id="type-of-accident" required className="form-control" onChange={this.onChangeHandler}>
                 <option value="">Type of Accident</option>
-                <option value="1">Motor Accident</option>
-                <option value="2">Fire Accident</option>
-                <option value="3">Building collapse</option>
-                <option value="4">Construction Accident</option>
-                <option value="5">other</option>
+                <option value="Motor Accident">Motor Accident</option>
+                <option value="Fire Accident">Fire Accident</option>
+                <option value="Building collapse">Building collapse</option>
+                <option value="Construction Accident">Construction Accident</option>
+                <option value="other">other</option>
               </select>
             </div>
 
             <div className="form-group">
-              <select name="noOfPersons" id="type-of-accident" className="form-control" onChange={this.handleChange}>
+              <select name="noOfPersons" id="noOfPersons" required className="form-control" onChange={this.onChangeHandler}>
                 <option value="">Number of Persons Involved</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-                <option value="5">4</option>
-                <option value="5">other</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </select>
             </div>
 
@@ -72,15 +119,16 @@ class ReportAccident extends Component {
                 rows="5"
                 placeholder="Description"
                 className="form-control"
-                onChange={this.handleChange}
+                onChange={this.onChangeHandler}
               ></textarea>
             </div>
 
             <div className="form-group">
-              <input name="filename" type="file" className="form-control" onChange={this.handleChange} />
+              {/* This handles the file */}
+              <input name="image" type="file" className="form-control" onChange={this.uploadFile} />
             </div>
 
-            <CustomButton className="btn-send" onClick={this.handleSubmit}>
+            <CustomButton className="btn-send">
               Send
             </CustomButton>
           </fieldset>
@@ -89,4 +137,15 @@ class ReportAccident extends Component {
     );
   }
 }
-export default ReportAccident;
+
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+  help: state.help
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  reportAccident: (imageUrl, token) => dispatch(reportAccident(imageUrl, token))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReportAccident);

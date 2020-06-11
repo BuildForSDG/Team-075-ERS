@@ -9,12 +9,8 @@ import CustomButton from '../../components/custom-button/CustomButton';
 import './response-unit-homepage.css';
 
 class ResponseUnitHomePage extends React.Component {
-  // componentDidMount() {
-  //   const { token } = this.props.user.currentUser;
-  //   this.props.getAllVictims(token);
-  // }
+
   render(){
-    console.log(this.props);
     if (this.props.modal.showVictims ) {
       const { reports } = this.props.response.victims;
       const { index } = this.props.modal;
@@ -51,6 +47,10 @@ class ResponseUnitHomePage extends React.Component {
         <div className="ers-container">
           {
             reports.map((victim, index) => {
+              if (index === 26) {
+                console.log(victim.imageURL)
+              }
+              // image = victim.imageURL.json()
               return (
               <div className="response-homepage victim-card" key={victim._id} onClick={() => this.props.showVictimsInfo(index)}>
                 <Card
@@ -58,7 +58,7 @@ class ResponseUnitHomePage extends React.Component {
                   phoneNo={victim.phoneNo}
                   latitude={victim.location.latitude}
                   longitude={victim.location.longitude}
-                  imageURL={`https://robohash.org/set_set5/${victim._id}?size=50x50`}
+                  imageURL={ `https://robohash.org/set_set5/${victim._id}?size=50x50`}
                   status={victim.response.status}
                 />
               </div>
