@@ -19,6 +19,11 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0"
   },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
