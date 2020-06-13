@@ -1,15 +1,20 @@
 import ConstantsActionTypes from './subscription.constants';
 
-export const subscribeUnit = (
-  endpoint='https://emresys.herokuapp.com/api/report/',
-  userId,
+/**
+ * Create a subscripotion in the database
+ *
+ * @param {Subscription Object} subscription
+ * @param {String} token
+ */
+export const createSubscription = (
+  subscription,
   token
 ) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SUBSCRIBE_USER_START
   });
   const bearer = `Bearer ${token}`;
-  fetch('https://emresys.herokuapp.com/api/subscribe', {
+  fetch(`${process.env.REACT_APP_API_URL}/subscribe`, {
     method: 'post',
     headers: {
       Authorization: bearer,
@@ -17,57 +22,99 @@ export const subscribeUnit = (
     },
 
     body: JSON.stringify({
-      endpoint,
-      userId,
-      token
+      subscription
     })
   })
-  .then((response) => {
-    dispatch({
-      type: ConstantsActionTypes.SUBSCRIBE_USER_SUCCESS,
-      payload: response.status
+    .then((response) => {
+      console.log(response);
+      dispatch({
+        type: ConstantsActionTypes.SUBSCRIBE_USER_SUCCESS,
+        payload: response.status
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch({
+        type: ConstantsActionTypes.SUBSCRIBE_USER_FAILED,
+        payload: error.message
+      });
     });
-    return;
-  })
-  .catch((error) => {
-    dispatch({
-      type: ConstantsActionTypes.SUBSCRIBE_USER_FAILED,
-      payload: error.message
-    });
-  })
-}
+};
 
-export const getSubscription = (userId) => (dispatch) => {
+/**
+ * Get a subscription
+ *
+ * @param {Subscription Object} subscription
+ */
+export const getSubscription = (subscription) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.GET_SUBSCRIPTION_START
   });
-  fetch(`http://localhost:3001/api/subscribe/${userId}`, {
+  fetch(`${process.env.REACT_APP_API_URL}/subscribe/${subscription.endpoint}`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json'
     }
   })
-  .then((response) => {
-    dispatch({
-      type: ConstantsActionTypes.SUBSCRIBE_USER_SUCCESS,
-      payload: response
+    .then((response) => {
+      console.log(response);
+      dispatch({
+        type: ConstantsActionTypes.SUBSCRIBE_USER_SUCCESS,
+        payload: response
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch({
+        type: ConstantsActionTypes.SUBSCRIBE_USER_FAILED,
+        payload: error.message
+      });
     });
-    return;
-  })
-  .catch((error) => {
-    dispatch({
-      type: ConstantsActionTypes.SUBSCRIBE_USER_FAILED,
-      payload: error.message
-    });
-  })
-}
+};
 
-export const updateSubscription = (endpoint, userId, token) => (dispatch) => {
+/**
+ * Get all subscriptions for a userId
+ *
+ * @param {Subscription Object} subscription
+ */
+export const getAllUsersSubscription = (userId) => (dispatch) => {
+  dispatch({
+    type: ConstantsActionTypes.GET_SUBSCRIPTION_START
+  });
+  fetch(`${process.env.REACT_APP_API_URL}/subscribe/${userId}`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((subscriptions) => {
+      console.log(subscriptions);
+      dispatch({
+        type: ConstantsActionTypes.SUBSCRIBE_USER_SUCCESS,
+        payload: subscriptions
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch({
+        type: ConstantsActionTypes.SUBSCRIBE_USER_FAILED,
+        payload: error.message
+      });
+    });
+};
+
+/**
+ * Update a Subscription
+ *
+ * @param {Subscription Object} subscription
+ * @param {String} token
+ */
+export const updateSubscription = (subscription, token) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SUBSCRIBE_USER_START
   });
   const bearer = `Bearer ${token}`;
-  fetch(`http://localhost:3001/api/subscribe/${userId}`, {
+  fetch(`${process.env.REACT_APP_API_URL}/${subscription.endpoint}`, {
     method: 'put',
     headers: {
       Authorization: bearer,
@@ -75,22 +122,21 @@ export const updateSubscription = (endpoint, userId, token) => (dispatch) => {
     },
 
     body: JSON.stringify({
-      endpoint,
-      userId,
-      token
+      subscription
     })
   })
-  .then((response) => {
-    dispatch({
-      type: ConstantsActionTypes.SUBSCRIBE_USER_SUCCESS,
-      payload: response
+    .then((response) => {
+      console.log(response);
+      dispatch({
+        type: ConstantsActionTypes.SUBSCRIBE_USER_SUCCESS,
+        payload: response
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch({
+        type: ConstantsActionTypes.SUBSCRIBE_USER_FAILED,
+        payload: error.message
+      });
     });
-    return;
-  })
-  .catch((error) => {
-    dispatch({
-      type: ConstantsActionTypes.SUBSCRIBE_USER_FAILED,
-      payload: error.message
-    });
-  })
-}
+};

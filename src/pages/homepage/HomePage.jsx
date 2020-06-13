@@ -12,7 +12,9 @@ import { toast } from 'react-toastify';
 import Toast from '../../components/toast/toast';
 import WithSpinner from '../../components/with-spinner/with-spinner';
 import ReportAccident from '../../pages/reportAccidentPage/ReportAccident';
+import { createSubscription } from '../../redux/subscription/subscription.actions';
 import { Link } from 'react-router-dom';
+import subscribeUser from '../../pushSubscription';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -23,6 +25,11 @@ class HomePage extends React.Component {
     };
   }
   componentDidMount() {
+    if(this.props.user.currentUser) {
+      console.log('Componenet did mount');
+      subscribeUser(this.props.user.currentUser.user._id);
+    }
+
     const { sendHelp } = this.props;
     if ('geolocation' in navigator) {
       window.navigator.geolocation.getCurrentPosition((success) => {
@@ -58,14 +65,14 @@ class HomePage extends React.Component {
       this.props.showFeedbackSuccess();
 
     }
-    
+
   };
 
 
   render() {
     const { showFeedback, showVictims, eyeWitness } = this.props.modal;
     const { isPending } = this.props.report;
-   
+
     if (showFeedback) {
       return (
         <Modal>
@@ -105,7 +112,7 @@ class HomePage extends React.Component {
               isPending ? <WithSpinner></WithSpinner> : null
             }
 
-            <Toast></Toast>            
+            <Toast></Toast>
 
             <div className="div2">
               <CustomButton className="custom-button" onClick={() => {
@@ -141,7 +148,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(sendReportAsync(userId, phoneNo, latitude, longitude, token)),
   showFeedbackSuccess: () => dispatch(showFeedbackSuccess()),
   promptLogIn: () => dispatch(promptLogIn()),
-  eyeWitness: () => dispatch(eyeWitness())
+  eyeWitness: () => dispatch(eyeWitness()),
+  createSubscription: (subscription, token) => dispatch(createSubscription(subscription, token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

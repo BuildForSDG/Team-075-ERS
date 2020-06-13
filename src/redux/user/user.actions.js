@@ -10,7 +10,7 @@ export const loginUserStartAsync = (email, password, api) => (dispatch) => {
     type: ConstantsActionTypes.LOGIN_USER_START,
     payload: true
   });
-  fetch(`https://emresys.herokuapp.com/${api}`, {
+  fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -46,13 +46,14 @@ export const logoutUser = () => ({
 
 
 export const signUpUserStartAsync = (
-name, email, phoneNo, password) => (dispatch) => {
+  name, email, phoneNo, password
+) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SIGN_UP_USER_START,
     payload: true
   });
 
-  fetch('https://emresys.herokuapp.com/api/auth/signup', {
+  fetch(`${process.env.REACT_APP_API_URL}/auth/signup`, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -88,7 +89,7 @@ export const getUserProfile = (id, token) => (dispatch) => {
   });
 
   const bearer = `Bearer ${token}`;
-  fetch(`https://emresys.herokuapp.com/api/auth/profile/${id}`, {
+  fetch(`${process.env.REACT_APP_API_URL}/auth/profile/${id}`, {
     method: 'get',
     headers: {
       Authorization: bearer,
