@@ -8,7 +8,7 @@ export const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => 
     payload: true
   });
   const bearer = `Bearer ${token}`;
-  fetch('https://emresys.herokuapp.com/api/report', {
+  fetch(`${process.env.REACT_APP_API_URL}/report`, {
     method: 'post',
     headers: {
       Authorization: bearer,
@@ -23,7 +23,7 @@ export const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => 
         latitude: latitude.toString(),
         longitude: longitude.toString()
       },
-      imageUrl: 'https://jkjuurrr.com'
+      imageUrl: 'https://'
     })
   })
     .then((response) => {
@@ -50,7 +50,7 @@ export const sendReportAsync = (userId, phoneNo, latitude, longitude, token) => 
 };
 
 export const reportAccident = (
-  userId, phoneNo, latitude, longitude, type, personsInvolved, description, formData, token
+  formData, token
 ) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.REPORT_ACCIDENT_START,
@@ -58,7 +58,7 @@ export const reportAccident = (
   });
 
   const bearer = `Bearer ${token}`;
-  fetch('https://emresys.herokuapp.com/api/report/eye-witness', {
+  fetch(`${process.env.REACT_APP_API_URL}/report/eye-witness`, {
     method: 'post',
     headers: {
       Authorization: bearer
