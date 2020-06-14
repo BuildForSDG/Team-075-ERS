@@ -80,7 +80,7 @@ class GoogleMap extends React.Component {
                   phoneNo={victim.phoneNo}
                   latitude={victim.location.latitude}
                   longitude={victim.location.longitude}
-                  imageURL={victim.imageURL}
+                  imageURL={victim.imageUrl}
                   status={victim.status}
                 />
               ))

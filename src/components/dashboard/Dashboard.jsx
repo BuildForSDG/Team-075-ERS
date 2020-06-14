@@ -14,7 +14,7 @@ import GoogleMap from '../../pages/googleMap/googleMap';
 import { connect } from 'react-redux';
 import { getAllVictims, getAllUnits } from '../../redux/response/response.actions';
 import { createSubscription } from '../../redux/subscription/subscription.actions';
-import ResponseUnitSignUp from '../../components/responseUnitSignUp/SignUp';
+import ResponseUnitSignUp from '../../components/responseUnitSignUp/ResponseUnitSignUp';
 import ResponseUnits from '../../components/responseUnits/response-units';
 import subscribeUser from '../../pushSubscription';
 

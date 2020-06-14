@@ -33,10 +33,6 @@ class Login extends React.Component {
     if (!email || !password) {
       return;
     }
-<<<<<<< HEAD
-    const api = `api/auth/login`;
-=======
->>>>>>> develop
     const { loginUserStartAsync } = this.props;
     loginUserStartAsync(email, password);
     this.setState((prevState, prevProps) => ({
