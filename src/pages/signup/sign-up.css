@@ -17,13 +17,17 @@ a {
   flex-direction: row;
 }
 
+#response-login-container {
+  padding: 50px 0 0 0;
+  min-height: 100vh;
+}
+
 .left {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   width: 45vw;
 }
-
 
 .user-details {
   display: block;
@@ -61,14 +65,12 @@ a {
   font-size: 12px;
 }
 
-
 .policy span {
   margin-left: 40px;
 }
 
-input[name="terms"] {
-   margin-right: 20px;
-
+input[name='terms'] {
+  margin-right: 20px;
 }
 
 .middle {
@@ -245,9 +247,7 @@ input[name="terms"] {
   .forgot-psw {
     padding-bottom: 20px;
   }
-
 }
-
 
 /* response unit */
 
@@ -258,7 +258,7 @@ input[name="terms"] {
   margin: auto;
 }
 
-.ers-title{
+.ers-title {
   padding-top: 1.25rem;
 }
 

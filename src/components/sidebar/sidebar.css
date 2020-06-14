@@ -1,5 +1,7 @@
 .sidebar-container {
-  min-height: calc(100vh - 50px);
+  position: fixed;
+  padding-top: 50px;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -34,15 +36,25 @@
   font-weight: 500;
   text-align: left;
 }
+.icon {
+  margin: 0 20px;
+  height: 20px;
+  width: 20px;
+}
 
 @media screen and (max-width: 640px) {
   .sidebar-container {
     width: 50px;
   }
-}
 
-.icon {
-  margin: 0 20px;
-  height: 20px;
-  width: 20px;
+  .sidebar-menu-item {
+    justify-content: center;
+  }
+
+  .sidebar-menu-item span {
+    display: none;
+  }
+  .icon {
+    margin: 0;
+  }
 }

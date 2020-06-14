@@ -36,37 +36,37 @@ class Dashboard extends Component {
           key={this.props.key}
           links={[
             {
-              title: 'Dashboard',
+              title: <span>Dashboard</span>,
               route: '/dashboard',
               icon: <Units className="icon" />,
               key: 1
             },
             {
-              title: 'Response Units',
+              title: <span>Response Units</span>,
               route: '/dashboard/report-units',
               icon: <Teams className="icon" />,
               key: 2
             },
             {
-              title: 'Pending Issues',
+              title: <span>Pending Issues</span>,
               route: '/dashboard/pending-issues',
               icon: <Wait className="icon" />,
               key: 3
             },
             {
-              title: 'Active Response Units',
+              title: <span>Active Response Units</span>,
               route: '/dashboard/display-units',
               icon: <Active className="icon" />,
               key: 4
             },
             {
-              title: 'Locations',
+              title: <span>Locations</span>,
               route: '/dashboard/map',
               icon: <Location className="icon" />,
               key: 5
             },
             {
-              title: 'Create Response Unit',
+              title: <span>Create Response Unit</span>,
               route: '/dashboard/signup-response-unit',
               icon: <CreateUser className="icon" />,
               key: 6
@@ -78,7 +78,6 @@ class Dashboard extends Component {
             <Route exact path={this.props.match.url + '/'} component={Admin} />
             <Route exact path={this.props.match.url + '/signup-response-unit'} component={ResponseUnitSignUp} />
             <Route exact path={this.props.match.url + '/display-units'} component={ResponseUnits} />
-            {/* GoogleMap component for testing routes on dashboard */}
             <Route exact path={this.props.match.url + '/report-units'} component={GoogleMap} />
           </Switch>
         </div>

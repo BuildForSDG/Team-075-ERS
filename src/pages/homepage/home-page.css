@@ -5,7 +5,7 @@
 }
 
 .container-home {
-  padding: 30px 0 0 0;
+  margin: 50px 0 0 0;
   min-height: calc(100vh - 50px);
   background-color: #fffbfb;
 }

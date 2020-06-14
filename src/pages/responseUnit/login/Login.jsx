@@ -39,7 +39,7 @@ class ResponseUnitLogin extends React.Component {
   render() {
     if (!this.props.response.isPending) {
       return (
-        <section>
+        <section id="response-login-container">
           <h2 className="ers-title">Hello</h2>
 
           <p id="sub-heading">Please sign in to your account</p>
