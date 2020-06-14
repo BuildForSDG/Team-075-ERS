@@ -25,10 +25,7 @@ class HomePage extends React.Component {
     };
   }
   componentDidMount() {
-    if(this.props.user.currentUser) {
-      console.log('Componenet did mount');
-      subscribeUser(this.props.user.currentUser.user._id);
-    }
+    
 
     const { sendHelp } = this.props;
     if ('geolocation' in navigator) {
@@ -42,6 +39,12 @@ class HomePage extends React.Component {
           sendHelp({ lat, lng });
         }
       });
+    }
+
+    if(!this.props.currentUser) return;
+    if(this.props.user.currentUser) {
+      console.log('Componenet did mount');
+      subscribeUser(this.props.user.currentUser.user._id);
     }
 
   }
@@ -61,10 +64,10 @@ class HomePage extends React.Component {
       sendReportAsync(user._id, user.phoneNo, lat, lng, token);
 
     }
-    if (this.props.report.isPending) {
-      this.props.showFeedbackSuccess();
+    // if (this.props.report.isPending) {
+    //   this.props.showFeedbackSuccess();
 
-    }
+    // }
 
   };
 
