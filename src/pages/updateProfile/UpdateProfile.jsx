@@ -84,7 +84,7 @@ class UpdateProfile extends Component {
                       name="emergencyContactName"
                       type="text" 
                       className="form-control" 
-                      placeholder={user.emergencyContact.name}
+                      placeholder={user.emergencyContact ? user.emergencyContact.name : ''}
                       onChange={this.setupdateDetails}
                       required
                       />
@@ -95,7 +95,7 @@ class UpdateProfile extends Component {
                       name="emergencyContactPhoneNo"
                       type="text" 
                       className="form-control" 
-                      placeholder={user.emergencyContact.phoneNo}
+                      placeholder={user.emergencyContact ? user.emergencyContact.phoneNo : ''}
                       onChange={this.setupdateDetails}
                       required
                       />
