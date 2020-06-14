@@ -5,6 +5,7 @@ import { helpSent } from '../../redux/sendHelp/sendHelp.actions';
 import { logoutUser } from '../../redux/user/user.actions';
 import { logoutResponseUnit } from '../../redux/response/response.actions';
 import { showUserProfile, closeAllModal, showLogoutModal } from '../../redux/modal/modal.actions';
+import { resetError } from '../../redux/report/report.actions';
 import CustomButton from '../custom-button/CustomButton';
 
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
@@ -40,7 +41,7 @@ class Navbar extends Component {
                 alt="help logo"
                 id="logo"
                 onClick={() => {
-                  return this.props.helpSent(false);
+                  return (this.props.helpSent(false), this.props.resetError());
                 }}
               />
             </Link>
@@ -64,14 +65,15 @@ class Navbar extends Component {
                     >
                     ERS
                   </p>
-                  <Link className="nav-link last-link" to="/faq">
-                    FAQ
+                  <Link className="nav-link last-link" to="/feedback">
+                    Feedback
                   </Link>
-                  <Link className="no-padding" to="/login" onClick={() => {
+                  <Link className="no-padding" to="/feedback" onClick={() => {
                     return (
                       this.props.logoutUser(),
                       this.props.logoutResponseUnit(),
-                      this.props.closeAllModal()
+                      this.props.closeAllModal(),
+                      this.props.resetError()
                       )}}>
                     <CustomButton className="custom-square-button">Logout</CustomButton>
                   </Link>
@@ -110,7 +112,8 @@ const mapDispatchToProps = (dispatch) => ({
   showUserProfile: () => dispatch(showUserProfile()),
   logoutResponseUnit: () => dispatch(logoutResponseUnit()),
   closeAllModal: () => dispatch(closeAllModal()),
-  showLogoutModal: () => dispatch(showLogoutModal())
+  showLogoutModal: () => dispatch(showLogoutModal()),
+  resetError: () => dispatch(resetError())
 });
 
 const mapStateToProps = (state) => ({

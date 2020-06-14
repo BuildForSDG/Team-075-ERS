@@ -102,6 +102,7 @@ class GoogleMap extends React.Component {
               ))
             : null}
         </div>
+        <script type="text/javascript" src={`//maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API}`}></script>
       </div>
     );
   }
