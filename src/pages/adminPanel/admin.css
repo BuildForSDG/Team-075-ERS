@@ -1,10 +1,5 @@
 .main-heading {
-  color: #e72020;
+  color: #252529;
   font-size: 2rem;
-}
-
-.card-wrap {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  padding: 20px 0;
 }
