@@ -19,17 +19,14 @@ class ResponseUnitHomePage extends React.Component {
           <div className='victim-info'>
             <p>Id: {reports[index]._id}</p>
             <br></br>
+            <strong>Name: {reports[index].reporter.userId.name}</strong>
             <p>Reporter Phone No: <span></span>
-              <a className='victim-tel' href={`tel:${reports[index].reporter.phoneNo}`}>{reports[index].reporter.phoneNo}</a>
+              <a className='victim-tel' href={`tel:${reports[index].reporter.userId.phoneNo}`}>{reports[index].reporter.userId.phoneNo}</a>
             </p>
-            <br></br>
-            <p>Reporter userid: {reports[index].reporter.userId}</p>
+            <p>Reporter userid: {reports[index].reporter.userId._id}</p>
             <br></br>
             <p>Latitude: {reports[index].location.latitude}</p>
-            <br></br>
             <p>Longitude: {reports[index].location.longitude}</p>
-            <br></br>
-            <p>Latitude: {reports[index].location.latitude}</p>
             <br></br>
             <p>Status: {reports[index].response.status}</p><CustomButton>Deploy Personnel</CustomButton>
             <br></br>
@@ -41,7 +38,6 @@ class ResponseUnitHomePage extends React.Component {
       );
     }
     if (this.props.response.victims.reports) {
-      console.log(this.props.response.victims);
       const { reports } = this.props.response.victims;
       return (
         <div className="ers-container">
@@ -54,11 +50,11 @@ class ResponseUnitHomePage extends React.Component {
               return (
               <div className="response-homepage victim-card" key={victim._id} onClick={() => this.props.showVictimsInfo(index)}>
                 <Card
-                  name={victim._id}
+                  name={victim.reporter.userId.name}
                   phoneNo={victim.phoneNo}
                   latitude={victim.location.latitude}
                   longitude={victim.location.longitude}
-                  imageURL={ `https://robohash.org/set_set5/${victim._id}?size=50x50`}
+                  imageURL={ `https://robohash.org/set_set5/${victim.reporter.userId.name}?size=50x50`}
                   status={victim.response.status}
                 />
               </div>

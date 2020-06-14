@@ -65,7 +65,7 @@ class GoogleMap extends React.Component {
     return (
       <div className="map-container">
         <div className="map">
-          <Map google={this.props.google} zoom={15} style={mapStyles} initialCenter={{ lat, lng }}>
+          <Map google={this.props.google} zoom={6} style={mapStyles} initialCenter={{ lat, lng }}>
             {this.displayMarkers()}
             {this.displayResponseMarkers()}
             <Marker position={{ lat, lng }} />
@@ -86,6 +86,7 @@ class GoogleMap extends React.Component {
               ))
             : null}
         </div>
+        <script type="text/javascript" src={`//maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API}`}></script>
       </div>
     );
   }
