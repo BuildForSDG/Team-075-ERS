@@ -12,9 +12,17 @@ a {
   padding: 1.25rem 0 3.125rem 0;
 }
 
+.response-login-title {
+  padding: 1.25rem 0 2.125rem 0;
+}
+
 .login-section {
   display: flex;
   flex-direction: row;
+}
+
+.response-login-section {
+  justify-content: center;
 }
 
 #response-login-container {

@@ -77,12 +77,12 @@ class ResponseUnitSignUp extends React.Component {
   render() {
     return (
       <section>
-        <h2 className="signup-title">Create An Account</h2>
+        <h2 className="response-login-title">Create A Response Unit</h2>
 
-        <div className="login-section">
+        <div className="login-section response-login-section">
           <form id="login" onSubmit={this.handleSubmit}>
             <fieldset>
-              <div className="left">
+              <div>
                 <input
                   name="name"
                   type="text"
@@ -165,8 +165,8 @@ class ResponseUnitSignUp extends React.Component {
                   onChange={this.setLoginDetails}
                 />
               </div>
-              <div className="register">
-                <CustomButton className="btn-send register-btn">Register</CustomButton>
+              <div>
+                <CustomButton className="btn-send">Register</CustomButton>
               </div>
             </fieldset>
           </form>
