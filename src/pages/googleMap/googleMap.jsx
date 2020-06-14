@@ -9,14 +9,8 @@ const mapStyles = {
   height: '100%'
 };
 
-
 class GoogleMap extends React.Component {
-
-
-  componentDidMount() {
-    
-  }
-  
+  componentDidMount() {}
 
   displayMarkers = () => {
     const { reports } = this.props.response.victims;
@@ -31,10 +25,8 @@ class GoogleMap extends React.Component {
               lng: store.location.longitude
             }}
             icon={{
-              
               url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png',
-              scaledSize: new this.props.google.maps.Size(25,48)
-              
+              scaledSize: new this.props.google.maps.Size(25, 48)
             }}
             onClick={() => console.log('You clicked me!')}
           />
@@ -56,10 +48,8 @@ class GoogleMap extends React.Component {
               lng: store.location.longitude
             }}
             icon={{
-              
               url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png',
-              scaledSize: new this.props.google.maps.Size(25,48)
-              
+              scaledSize: new this.props.google.maps.Size(25, 48)
             }}
             onClick={() => console.log('You clicked me!')}
           />
@@ -68,23 +58,17 @@ class GoogleMap extends React.Component {
     }
   };
 
-  
-
   render() {
-    
     const { lat, lng } = this.props.help.location;
     const { reports } = this.props.response.victims;
-    console.log(reports)
+    console.log(reports);
     return (
       <div className="map-container">
         <div className="map">
           <Map google={this.props.google} zoom={15} style={mapStyles} initialCenter={{ lat, lng }}>
             {this.displayMarkers()}
             {this.displayResponseMarkers()}
-            <Marker 
-              position={{ lat, lng }}
-              
-            />
+            <Marker position={{ lat, lng }} />
           </Map>
         </div>
         <div className="map-card">

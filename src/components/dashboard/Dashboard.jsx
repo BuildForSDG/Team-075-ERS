@@ -13,23 +13,19 @@ import GoogleMap from '../../pages/googleMap/googleMap';
 // import Card from '../card/card';
 import { connect } from 'react-redux';
 import { getAllVictims, getAllUnits } from '../../redux/response/response.actions';
-import ResponseUnitSignUp from '../../components/responseUnitSignUp/ResponseUnitSignUp';
+import { createSubscription } from '../../redux/subscription/subscription.actions';
+import ResponseUnitSignUp from '../../components/responseUnitSignUp/SignUp';
 import ResponseUnits from '../../components/responseUnits/response-units';
+import subscribeUser from '../../pushSubscription';
 
 class Dashboard extends Component {
   componentDidMount() {
-    const isPushNotificationSupported = () => 'serviceWorker' in navigator && 'PushManager' in window;
-    console.log(isPushNotificationSupported());
-    if (isPushNotificationSupported()) {
-      async function askUserPermission() {
-        return await Notification.requestPermission();
-      }
-      askUserPermission();
-    }
     const { getAllVictims, getAllUnits } = this.props;
-    const { currentUser } = this.props.response;
-    getAllVictims(currentUser.token);
-    getAllUnits(currentUser.token);
+    if (this.props.response.currentUser) {
+      const { currentUser } = this.props.response;
+      getAllVictims(currentUser.token);
+      getAllUnits(currentUser.token);
+    }
   }
   render() {
     // const { reports } = this.props.response.victims;
@@ -97,7 +93,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAllVictims: (token) => dispatch(getAllVictims(token)),
-  getAllUnits: (token) => dispatch(getAllUnits(token))
+  getAllUnits: (token) => dispatch(getAllUnits(token)),
+  createSubscription: (subscription, token) => dispatch(createSubscription(subscription, token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

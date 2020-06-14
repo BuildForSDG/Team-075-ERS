@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './sidebar.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { subscribeUnit } from '../../redux/subscription/subscription.actions';
+import { createSubscription } from '../../redux/subscription/subscription.actions';
 import CustomButton from '../custom-button/CustomButton';
 class Sidebar extends Component {
-  
+
   render() {
     return (
       <div className="sidebar-container">
@@ -18,7 +18,7 @@ class Sidebar extends Component {
               </Link>
             </li>
           ))}
-          <CustomButton 
+          {/* <CustomButton
             className='custom-square-button card-btn'
             onClick={() => {
               if (this.props.response.currentUser) {
@@ -31,7 +31,7 @@ class Sidebar extends Component {
             }}
           >
             { !this.props.subscribe.message ? `Subcribe` : `Subscribed`}
-          </CustomButton>
+          </CustomButton> */}
         </ul>
       </div>
     );
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  subscribeUnit: (endpoint, userId, token) => dispatch(subscribeUnit(endpoint, userId, token))
+  createSubscription: (subscription, token) => dispatch(createSubscription(subscription, token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

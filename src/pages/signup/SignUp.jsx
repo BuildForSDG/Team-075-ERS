@@ -40,7 +40,6 @@ class SignUp extends React.Component {
     if (!name || !email || !phoneNo || !password) return;
     const { signUpUserStartAsync } = this.props;
     if (password === confirmPassword && terms === 'on') {
-      console.log(name, email, phoneNo, password);
       signUpUserStartAsync(name, email, phoneNo, password);
     }
     this.setState((prevState, prevProps) => ({
