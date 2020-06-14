@@ -46,7 +46,7 @@ class Navbar extends Component {
                 <>
                   <p className="nav-link" onClick={this.props.showUserProfile}>
                     {`Welcome, ${
-                      currentUser && !this.props.response.currentUser
+                      currentUser && !this.props.response.currentUser && currentUser.name
                         ? currentUser.user.name
                         : `${
                             this.props.response.currentUser ? this.props.response.currentUser.responseUnit.name : null
