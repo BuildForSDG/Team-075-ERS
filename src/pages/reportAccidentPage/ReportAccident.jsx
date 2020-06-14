@@ -145,7 +145,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  reportAccident: (imageUrl, token) => dispatch(reportAccident(imageUrl, token))
+  reportAccident: (formData, token) => dispatch(reportAccident(formData, token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportAccident);
