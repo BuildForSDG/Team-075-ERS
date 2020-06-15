@@ -57,7 +57,7 @@ class Login extends React.Component {
                     name="email"
                     type="email"
                     className="user-details"
-                    placeholder={this.state.email}
+                    placeholder='email'
                     onChange={this.setLoginDetails}
                     required
                   />
@@ -66,7 +66,7 @@ class Login extends React.Component {
                     name="password"
                     type="password"
                     className="user-details"
-                    placeholder={this.state.password}
+                    placeholder='password'
                     onChange={this.setLoginDetails}
                     required
                   />

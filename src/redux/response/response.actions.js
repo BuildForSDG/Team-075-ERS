@@ -1,4 +1,5 @@
 import ConstantsActionTypes from './response.constants';
+import subscribeUser from '../../pushSubscription';
 
 export const getAllVictims = (token) => (dispatch) => {
   dispatch({
@@ -92,6 +93,7 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
         type: ConstantsActionTypes.LOAD_RESPONSE_UNIT,
         payload: data
       });
+      subscribeUser();
       return data;
     })
     .catch((error) => {

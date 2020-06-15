@@ -22,7 +22,6 @@ import ModalLogin from './components/modalLogin/modal-login';
 import Dashboard from './components/dashboard/Dashboard';
 import ResponseUnitLogin from './pages/responseUnit/login/Login';
 import Logout from './components/logout/Logout';
-import subscribeUser from './pushSubscription';
 // import Logout from './components/logout/Logout';
 
 class App extends React.Component {
@@ -40,9 +39,7 @@ class App extends React.Component {
     if (this.props.report.isPending) {
       toast.error('Sending report...', { autoClose: false });
     }
-    if(this.props.user.currentUser) {
-      subscribeUser(this.props.user.currentUser.user._id);
-    }
+    
     if (this.props.report.reportMessage === 200) {
       // toast.update(toast.error('Sending report...', { autoClose: false }), { type: toast.TYPE.INFO, autoClose: 4000 })
     }

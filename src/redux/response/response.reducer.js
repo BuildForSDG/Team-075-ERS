@@ -6,7 +6,8 @@ const INITIAL_STATE = {
   isPending: false,
   errorMessage: null,
   message: null,
-  currentUser: null
+  currentUser: null,
+  subscriptionStatus: null
 }
 
 const responseReducer = (state = INITIAL_STATE, action = {}) => {

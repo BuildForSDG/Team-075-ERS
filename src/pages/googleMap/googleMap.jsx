@@ -29,6 +29,10 @@ class GoogleMap extends React.Component {
               url: 'https://banner2.cleanpng.com/20180607/bhy/kisspng-american-red-cross-international-red-cross-and-red-cruz-roja-5b19bb256ebed0.5601102915284129654536.jpg',
               scaledSize: new this.props.google.maps.Size(25, 20)
             }}
+            infowindow={ new this.props.google.maps.InfoWindow({
+                content: 'contentString'
+              })
+            }
             onClick={() => console.log('You clicked me!')}
           />
         );

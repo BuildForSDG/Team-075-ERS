@@ -1,9 +1,13 @@
 import ConstantsActionTypes from './user.constants';
+import subscribeUser from '../../pushSubscription';
+
 
 export const setCurrentUser = (user) => ({
   type: ConstantsActionTypes.SET_CURRENT_USER,
   payload: user
 });
+
+// export const subscriptionStatus = () => ({ type: ConstantsActionTypes.SUBSCRIPTION_STATUS });
 
 export const loginUserStartAsync = (email, password, api) => (dispatch) => {
   dispatch({
@@ -29,6 +33,7 @@ export const loginUserStartAsync = (email, password, api) => (dispatch) => {
         type: ConstantsActionTypes.LOAD_USER,
         payload: data
       });
+      subscribeUser();
       return data;
     })
     .catch((error) => {

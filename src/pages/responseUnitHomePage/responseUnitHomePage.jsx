@@ -6,15 +6,11 @@ import { showVictimsInfo } from '../../redux/modal/modal.actions';
 import WithSpinner from '../../components/with-spinner/with-spinner';
 import Modal from '../../components/modal/Modal';
 import CustomButton from '../../components/custom-button/CustomButton';
-import subscribeUser from '../../pushSubscription';
 import './response-unit-homepage.css';
 
 class ResponseUnitHomePage extends React.Component {
 
   render(){
-    if(this.props.response.currentUser) {
-      subscribeUser(this.props.response.currentUser.responseUnit._id);
-    }
     if (this.props.modal.showVictims ) {
       const { reports } = this.props.response.victims;
       const { index } = this.props.modal;
