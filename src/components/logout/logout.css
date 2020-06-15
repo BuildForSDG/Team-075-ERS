@@ -1,0 +1,15 @@
+.modal-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-main h3 {
+  padding: 50px 0 20px 0;
+}
+
+.logout-img {
+  width: 10rem;
+  height: 10rem;
+}

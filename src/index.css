@@ -34,8 +34,8 @@ button:focus {
 }
 
 .container {
-  padding: 30px 0 0 0;
-  min-height: calc(100vh - 50px);
+  padding: 50px 0 0 0;
+  min-height: 100vh;
   background-image: url('/images/background-rings.svg');
   width: 100%;
   background-position: center;

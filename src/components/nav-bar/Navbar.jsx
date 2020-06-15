@@ -7,6 +7,7 @@ import { logoutResponseUnit } from '../../redux/response/response.actions';
 import { showUserProfile, closeAllModal, showLogoutModal } from '../../redux/modal/modal.actions';
 import { resetError } from '../../redux/report/report.actions';
 import CustomButton from '../custom-button/CustomButton';
+import { ReactComponent as Hamburger } from '../../assets/images/bars.svg';
 
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import './navbar.css';
@@ -31,50 +32,51 @@ class Navbar extends Component {
     return (
       <header>
         {
-
-        
-
-          (
-            <>
+          <>
             <Link to={this.props.response.currentUser ? `/dashboard` : `/`}>
               <Logo
                 alt="help logo"
                 id="logo"
                 onClick={() => {
-                  return (this.props.helpSent(false), this.props.resetError());
+                  return this.props.helpSent(false), this.props.resetError();
                 }}
               />
             </Link>
             <nav className={`nav ${this.state.showMenu ? 'show-menu' : ''}`}>
-            {
-            
-              ((login === 200) || this.props.response.currentUser) ? (
+              {login === 200 || this.props.response.currentUser ? (
                 <>
                   <p className="nav-link" onClick={this.props.showUserProfile}>
-                    {`Welcome, ${(currentUser && !this.props.response.currentUser) ? currentUser.user.name : 
-                    
-                    `${ this.props.response.currentUser ? this.props.response.currentUser.responseUnit.name : null}`
-                    
+                    {`Welcome, ${
+                      currentUser && !this.props.response.currentUser && currentUser.name
+                        ? currentUser.user.name
+                        : `${
+                            this.props.response.currentUser ? this.props.response.currentUser.responseUnit.name : null
+                          }`
                     }`}{' '}
                   </p>
-                  
-                  <p 
-                    className="nav-link last-link" 
-                    // to="/ers-login" 
+
+                  <p
+                    className="nav-link last-link"
+                    // to="/ers-login"
                     onClick={this.props.showLogoutModal}
-                    >
+                  >
                     ERS
                   </p>
                   <Link className="nav-link last-link" to="/feedback">
                     Feedback
                   </Link>
-                  <Link className="no-padding" to="/feedback" onClick={() => {
-                    return (
-                      this.props.logoutUser(),
-                      this.props.logoutResponseUnit(),
-                      this.props.closeAllModal(),
-                      this.props.resetError()
-                      )}}>
+                  <Link
+                    className="no-padding"
+                    to="/feedback"
+                    onClick={() => {
+                      return (
+                        this.props.logoutUser(),
+                        this.props.logoutResponseUnit(),
+                        this.props.closeAllModal(),
+                        this.props.resetError()
+                      );
+                    }}
+                  >
                     <CustomButton className="custom-square-button">Logout</CustomButton>
                   </Link>
                 </>
@@ -93,13 +95,10 @@ class Navbar extends Component {
                     FAQ
                   </Link>
                 </>
-              )
-              }
-             
+              )}
             </nav>
-            <img src="images/bars.svg" alt="hamburger icon" id="hamburger-icon" onClick={this.showMenu} />
-            </>
-          )
+            <Hamburger alt="hamburger icon" id="hamburger-icon" onClick={this.showMenu} />
+          </>
         }
       </header>
     );

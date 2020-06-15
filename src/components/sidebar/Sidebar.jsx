@@ -3,7 +3,7 @@ import './sidebar.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createSubscription } from '../../redux/subscription/subscription.actions';
-import CustomButton from '../custom-button/CustomButton';
+// import CustomButton from '../custom-button/CustomButton';
 class Sidebar extends Component {
 
   render() {

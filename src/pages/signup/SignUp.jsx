@@ -9,7 +9,7 @@ import Toast from '../../components/toast/toast';
 import { toast } from 'react-toastify';
 import { ReactComponent as Girl } from '../../assets/images/girl.svg';
 // import { ReactComponent as Google } from '../../assets/images/google.svg';
-import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
+// import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
 
 import './sign-up.css';
 //custom button component reused from report accident component
@@ -55,7 +55,7 @@ class SignUp extends React.Component {
     return (
       <div className="container">
         <section>
-        <Toast></Toast>
+          <Toast></Toast>
           <h2 className="signup-title">Create An Account</h2>
 
           <div className="login-section">
@@ -109,14 +109,21 @@ class SignUp extends React.Component {
 
                   <div className="policy">
                     <input type="checkbox" id="checkbox" name="terms" onChange={this.setLoginDetails} />
-                    <label htmlFor = "checkbox">
+                    <label htmlFor="checkbox">
                       By clicking continue you agree to our
                       <br />
-                      <span><b>Terms of Service and Privacy Policy</b></span>
+                      <span>
+                        <b>Terms of Service and Privacy Policy</b>
+                      </span>
                     </label>
                   </div>
 
-                  <CustomButton className="btn-send register-btn" onClick={() => toast.current = toast(this.state.status)}>Register</CustomButton>
+                  <CustomButton
+                    className="btn-send register-btn"
+                    onClick={() => (toast.current = toast(this.state.status))}
+                  >
+                    Register
+                  </CustomButton>
                 </div>
               </fieldset>
             </form>
@@ -131,13 +138,13 @@ class SignUp extends React.Component {
               <p>Sign up with one of your social accounts</p>
 
               <CustomButton className="soc-btn">
-                <Facebook id="facebook" />
+                <img src="images/facebook.svg" id="facebook" alt="facebook login" />
                 <span>sign in with facebook</span>
               </CustomButton>
 
               <CustomButton className="soc-btn">
                 {/* <Google id="google"/> */}
-                <img src="images/google.svg" alt="google icon" id="google" />
+                <img src="images/google.svg" alt="google login" id="google" />
                 <span>sign in with google</span>
               </CustomButton>
             </div>

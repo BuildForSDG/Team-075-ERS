@@ -5,8 +5,8 @@
 }
 
 .container-home {
-  padding: 30px 0 0 0;
-  min-height: calc(100vh - 50px);
+  padding: 50px 0 0 0;
+  min-height: 100vh;
   background-color: #fffbfb;
 }
 
@@ -140,6 +140,17 @@
     position: fixed;
     align-self: center;
     top: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .div1 h1 {
+    font-size: 1.7rem;
+    line-height: 29px;
+  }
+
+  .div1 p {
+    font-size: 1rem;
   }
 }
 

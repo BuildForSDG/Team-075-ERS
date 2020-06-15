@@ -6,7 +6,7 @@ import { ReactComponent as Girl } from '../../../assets/images/girl.svg';
 import { logoutUser } from '../../../redux/user/user.actions';
 import WithSpinner from '../../../components/with-spinner/with-spinner';
 import '../../signup/sign-up.css';
-
+import Status from '../../../components/login-status/Status';
 
 class ResponseUnitLogin extends React.Component {
   constructor() {
@@ -14,7 +14,6 @@ class ResponseUnitLogin extends React.Component {
     this.state = {
       password: undefined,
       email: undefined
-
     };
   }
 
@@ -28,49 +27,48 @@ class ResponseUnitLogin extends React.Component {
     const { email, password } = this.state;
     if (!email || !password) return;
     const { loginResponseUnitAsync, logoutUser } = this.props;
-    const api = `api/response-unit/login`
+    const api = `api/response-unit/login`;
     loginResponseUnitAsync(email, password, api);
     logoutUser();
     this.setState((prevState, prevProps) => ({
       password: undefined,
       email: undefined
-
     }));
   };
 
   render() {
     if (!this.props.response.isPending) {
-
       return (
-        <section>
+        <section id="response-login-container">
           <h2 className="ers-title">Hello</h2>
 
           <p id="sub-heading">Please sign in to your account</p>
 
           <div className="ers-login">
             <form id="login" onSubmit={this.handleSubmit}>
+              <Status />
               <fieldset>
-                  <input
-                    name="email"
-                    type="email"
-                    className="user-details"
-                    placeholder={this.state.email}
-                    onChange={this.setLoginDetails}
-                  />
+                <input
+                  name="email"
+                  type="email"
+                  className="user-details"
+                  placeholder={this.state.email}
+                  onChange={this.setLoginDetails}
+                />
 
-                  <input
-                    name="password"
-                    type="password"
-                    className="user-details"
-                    placeholder={this.state.password}
-                    onChange={this.setLoginDetails}
-                  />
+                <input
+                  name="password"
+                  type="password"
+                  className="user-details"
+                  placeholder={this.state.password}
+                  onChange={this.setLoginDetails}
+                />
 
-                  <p className="ers-forgot-psw">
-                    <b>Forgot password?</b>
-                  </p>
+                <p className="ers-forgot-psw">
+                  <b>Forgot password?</b>
+                </p>
 
-                  <CustomButton className="btn-send ers-register-btn">Login</CustomButton>
+                <CustomButton className="btn-send ers-register-btn">Login</CustomButton>
               </fieldset>
             </form>
 
@@ -79,18 +77,17 @@ class ResponseUnitLogin extends React.Component {
         </section>
       );
     }
-    return <WithSpinner></WithSpinner>
+    return <WithSpinner></WithSpinner>;
   }
 }
 
 const mapDispatchToprops = (dispatch) => ({
   loginResponseUnitAsync: (email, password, api) => dispatch(loginResponseUnitAsync(email, password, api)),
   logoutUser: () => dispatch(logoutUser())
-
 });
 
 const mapStateToProps = (state) => ({
   response: state.response
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToprops)(ResponseUnitLogin);

@@ -4,4 +4,13 @@
 
 .content-container {
   width: calc(100vw - 270px);
+  margin-left: 270px;
+  padding-top: 50px;
+}
+
+@media screen and (max-width: 640px) {
+  .content-container {
+    width: calc(100vw - 50px);
+    margin-left: 50px;
+  }
 }
