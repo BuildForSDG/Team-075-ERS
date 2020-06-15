@@ -38,7 +38,7 @@ class Navbar extends Component {
                 alt="help logo"
                 id="logo"
                 onClick={() => {
-                  return this.props.helpSent(false), this.props.resetError();
+                  return (this.props.helpSent(false), this.props.resetError());
                 }}
               />
             </Link>

@@ -43,7 +43,7 @@ class GoogleMap extends React.Component {
       return locations.map((store, index) => {
         return (
           <Marker
-            key={store._id}
+            key={index}
             id={index}
             position={{
               lat: store.location.latitude,

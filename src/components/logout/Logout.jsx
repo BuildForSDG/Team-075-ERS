@@ -19,7 +19,7 @@ const Logout = ({ logoutUser, logoutResponseUnit, closeAllModal }) => (
         <CustomButton
           className="btn-send register-btn logout"
           onClick={() => {
-            return logoutUser(), logoutResponseUnit(), closeAllModal();
+            return (logoutUser(), logoutResponseUnit(), closeAllModal());
           }}
         >
           Logout
