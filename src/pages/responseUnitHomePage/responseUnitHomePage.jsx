@@ -13,7 +13,6 @@ class ResponseUnitHomePage extends React.Component {
   render(){
     
     const { index } = this.props.modal;
-      
     if (this.props.response.victims.reports) {
       const { reports } = this.props.response.victims;
       return (
