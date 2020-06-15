@@ -7,6 +7,7 @@ import { logoutResponseUnit } from '../../redux/response/response.actions';
 import { showUserProfile, closeAllModal, showLogoutModal } from '../../redux/modal/modal.actions';
 import { resetError } from '../../redux/report/report.actions';
 import CustomButton from '../custom-button/CustomButton';
+import { ReactComponent as Hamburger } from '../../assets/images/bars.svg';
 
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import './navbar.css';
@@ -96,7 +97,7 @@ class Navbar extends Component {
                 </>
               )}
             </nav>
-            <img src="images/bars.svg" alt="hamburger icon" id="hamburger-icon" onClick={this.showMenu} />
+            <Hamburger alt="hamburger icon" id="hamburger-icon" onClick={this.showMenu} />
           </>
         }
       </header>

@@ -143,6 +143,17 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .div1 h1 {
+    font-size: 1.7rem;
+    line-height: 29px;
+  }
+
+  .div1 p {
+    font-size: 1rem;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .div1 p {
     line-height: 15px;
