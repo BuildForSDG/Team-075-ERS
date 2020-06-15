@@ -5,8 +5,7 @@ const INITIAL_STATE = {
   login: null,
   signup: null,
   isLoading: false,
-  getError: null,
-  subscriptionStatus: null
+  getError: null
 };
 
 
@@ -17,7 +16,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         currentUser: action.payload
       });
-    case ConstantsActionTypes.LOGIN_USER_START:
+    case ConstantsActionTypes.LOGIN_USER_START || ConstantsActionTypes.FACEBOOK_LOGIN_START:
       return ({
         ...state,
         currentUser: null,
@@ -26,14 +25,14 @@ const userReducer = (state = INITIAL_STATE, action) => {
         pending: true,
         isLoading: action.payload
       });
-    case ConstantsActionTypes.LOGIN_USER_SUCCESS:
+    case ConstantsActionTypes.LOGIN_USER_SUCCESS || ConstantsActionTypes.FACEBOOK_LOGIN_SUCCESS:
       return ({
         ...state,
         login: action.payload,
         pending: false,
         isLoading: false
       });
-    case ConstantsActionTypes.LOGIN_USER_FAILED:
+    case ConstantsActionTypes.LOGIN_USER_FAILED || ConstantsActionTypes.GET_USER_PROFILE_FAILED:
       return ({
         ...state,
         login: action.payload,
@@ -55,7 +54,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
         pending: false,
         login: null,
         isLoading: false,
-        subscriptionStatus: true
       });
     case ConstantsActionTypes.SIGN_UP_USER_FAILED:
       return ({
@@ -99,7 +97,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case ConstantsActionTypes.SUBSCRIPTION_STATUS:
       return ({
         ...state,
-        subscriptionStatus: null
       });
     default:
       return state;

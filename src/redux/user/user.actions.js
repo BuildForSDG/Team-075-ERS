@@ -48,6 +48,41 @@ export const logoutUser = () => ({
   type: ConstantsActionTypes.LOGOUT_USER,
   payload: true
 });
+// /auth/facebook/https://emresys.herokuapp.com/api/auth/facebook/  ${process.env.REACT_APP_API_URL}/auth/facebook/
+export const facebookLogin = () => (dispatch) => {
+  dispatch({
+    type: ConstantsActionTypes.FACEBOOK_LOGIN_START,
+    payload: true
+  });
+  fetch(`https://emresys.herokuapp.com/api/auth/facebook/`, {
+    method: 'get',
+    headers: { 'Content-Type': 'application/json' }
+    // body: JSON.stringify({
+    //   email,
+    //   password
+    // })
+  })
+    .then((response) => {
+      dispatch({
+        type: ConstantsActionTypes.FACEBOOK_LOGIN_SUCCESS,
+        payload: response.status
+      });
+      return response.json();
+    }).then((data) => {
+      dispatch({
+        type: ConstantsActionTypes.LOAD_USER,
+        payload: data
+      });
+      // subscribeUser();
+      return data;
+    })
+    .catch((error) => {
+      dispatch({
+        type: ConstantsActionTypes.FACEBOOK_LOGIN_FAILED,
+        payload: error.message
+      });
+    });
+};
 
 
 export const signUpUserStartAsync = (
