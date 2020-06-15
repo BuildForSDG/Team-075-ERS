@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { connect } from 'react-redux';
+import { showVictimsInfo } from '../../redux/modal/modal.actions';
 import Card from '../../components/card/card';
 import './googleMap.css';
 
@@ -25,8 +26,8 @@ class GoogleMap extends React.Component {
               lng: store.location.longitude
             }}
             icon={{
-              url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png',
-              scaledSize: new this.props.google.maps.Size(25, 48)
+              url: 'https://banner2.cleanpng.com/20180607/bhy/kisspng-american-red-cross-international-red-cross-and-red-cruz-roja-5b19bb256ebed0.5601102915284129654536.jpg',
+              scaledSize: new this.props.google.maps.Size(25, 20)
             }}
             onClick={() => console.log('You clicked me!')}
           />
@@ -34,6 +35,7 @@ class GoogleMap extends React.Component {
       });
     }
   };
+  
 
   displayResponseMarkers = () => {
     const { locations } = this.props.response.units;
@@ -61,7 +63,6 @@ class GoogleMap extends React.Component {
   render() {
     const { lat, lng } = this.props.help.location;
     const { reports } = this.props.response.victims;
-    console.log(reports);
     return (
       <div className="map-container">
         <div className="map">
@@ -73,16 +74,18 @@ class GoogleMap extends React.Component {
         </div>
         <div className="map-card">
           {reports
-            ? reports.map((victim) => (
+            ? reports.map((victim, index) => (
+              <div className="response-homepage victim-card" key={victim._id} onClick={() => this.props.showVictimsInfo(index)}>
                 <Card
                   key={victim._id}
-                  name={victim.name}
+                  name={victim.reporter.userId.name}
                   phoneNo={victim.phoneNo}
                   latitude={victim.location.latitude}
                   longitude={victim.location.longitude}
-                  imageURL={victim.imageUrl}
+                  imageURL={ `https://robohash.org/set_set5/${victim.reporter.userId.name}?size=50x50`}
                   status={victim.status}
                 />
+              </div>
               ))
             : null}
         </div>
@@ -97,6 +100,10 @@ const mapStateToProps = (state) => ({
   response: state.response
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  showVictimsInfo: (index) => dispatch(showVictimsInfo(index))
+});
+
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GOOGLE_MAP_API
-})(connect(mapStateToProps)(GoogleMap));
+})(connect(mapStateToProps, mapDispatchToProps)(GoogleMap));

@@ -52,10 +52,10 @@ class App extends React.Component {
             </Modal>
           ) : null}
           {this.props.modal.showLogout ? <Logout /> : null}
-          {/* {
+          {
               this.props.modal.showVictims ? 
-              <Modal><ResponseUnitHomePage /></Modal> : null
-            } */}
+              <Modal></Modal> : null
+            }
           {this.props.modal.showProfile ? (
             <Modal>
               <UserViewProfile />
@@ -150,7 +150,6 @@ const mapStateToProps = (state) => ({
   isLoading: state.user.isLoading,
   user: state.user,
   modal: state.modal,
-
   report: state.report,
   help: state.help,
   response: state.response
