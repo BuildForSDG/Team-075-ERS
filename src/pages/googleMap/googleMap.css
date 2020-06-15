@@ -19,3 +19,14 @@
   position: relative;
   overflow-y: scroll;
 }
+
+@media screen and (max-width: 640px) {
+  .map-container {
+    flex-direction: column-reverse;
+  }
+
+  .map-card {
+    margin: 0 auto;
+    width: 90%;
+  }
+}
