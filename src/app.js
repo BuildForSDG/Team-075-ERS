@@ -53,10 +53,10 @@ class App extends React.Component {
             </Modal>
           ) : null}
           {this.props.modal.showLogout ? <Logout /> : null}
-          {
+          {/* {
               this.props.modal.showVictims ? 
               <Modal></Modal> : null
-            }
+            } */}
           {this.props.modal.showProfile ? (
             <Modal>
               <UserViewProfile />

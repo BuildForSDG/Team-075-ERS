@@ -5,45 +5,39 @@ import { getAllVictims } from '../../redux/response/response.actions';
 import { showVictimsInfo } from '../../redux/modal/modal.actions';
 import WithSpinner from '../../components/with-spinner/with-spinner';
 import Modal from '../../components/modal/Modal';
-import CustomButton from '../../components/custom-button/CustomButton';
 import './response-unit-homepage.css';
+import ShowVictimProfile from '../../components/show-victim-info/showVictimInfo';
 
 class ResponseUnitHomePage extends React.Component {
 
   render(){
-    if (this.props.modal.showVictims ) {
-      const { reports } = this.props.response.victims;
-      const { index } = this.props.modal;
-      return (
-        <Modal>
-          <div className='victim-info'>
-            <p>Id: {reports[index]._id}</p>
-            <br></br>
-            <strong>Name: {reports[index].reporter.userId.name}</strong>
-            <p>Reporter Phone No: <span></span>
-              <a className='victim-tel' href={`tel:${reports[index].reporter.userId.phoneNo}`}>{reports[index].reporter.userId.phoneNo}</a>
-            </p>
-            <p>Reporter userid: {reports[index].reporter.userId._id}</p>
-            <br></br>
-            <p>Latitude: {reports[index].location.latitude}</p>
-            <p>Longitude: {reports[index].location.longitude}</p>
-            <br></br>
-            <p>Status: {reports[index].response.status}</p><CustomButton>Deploy Personnel</CustomButton>
-            <br></br>
-            <p>Created At: {reports[index].createdAt}</p>
-            <br></br>
-            <p>Updated At: {reports[index].updatedAt}</p>
-          </div>
-        </Modal>
-      );
-    }
+    
+    const { index } = this.props.modal;
+      
     if (this.props.response.victims.reports) {
       const { reports } = this.props.response.victims;
       return (
         <div className="ers-container">
           {
+            this.props.modal.showVictims ?
+            <Modal>
+              <ShowVictimProfile
+                id={reports[index]._id}
+                name={reports[index].reporter.userId.name}
+                phone={reports[index].reporter.userId.phoneNo}
+                userId={reports[index].reporter.userId._id}
+                lat={reports[index].location.latitude}
+                lng={reports[index].location.longitude}
+                status={reports[index].response.status}
+                createdAt={reports[index].createdAt}
+                updatedAt={reports[index].updatedAt}
+              />
+            </Modal> : null
+          }
+          {
             reports.map((victim, index) => {
               return (
+                
               <div className="response-homepage victim-card" key={victim._id} onClick={() => this.props.showVictimsInfo(index)}>
                 <Card
                   name={victim.reporter.userId.name}

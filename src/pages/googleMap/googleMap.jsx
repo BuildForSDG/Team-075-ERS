@@ -3,6 +3,8 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { connect } from 'react-redux';
 import { showVictimsInfo } from '../../redux/modal/modal.actions';
 import Card from '../../components/card/card';
+import Modal from '../../components/modal/Modal';
+import ShowVictimProfile from '../../components/show-victim-info/showVictimInfo';
 import './googleMap.css';
 
 const mapStyles = {
@@ -67,9 +69,39 @@ class GoogleMap extends React.Component {
   render() {
     const { lat, lng } = this.props.help.location;
     const { reports } = this.props.response.victims;
+    //open or close modal
+    // I need to map the state of showVictims to this page (mapStateToProps allows you to tap from any part of the state simply by doing  this)
+    //first I need to check if showVictims is true or false
+    // Now in the component you get the state as props because it was mapped from state to props here
+    // if (this.props.modal.showVictims) { //that's we will use this.props.modal(if we want to use the response state it will be this.props.response)
+    // return (
+    //   <Modal>
+    //     info
+    //   </Modal>
+    //   );
+    // }
+    const { index } = this.props.modal;
+
     return (
       <div className="map-container">
         <div className="map">
+          {
+            this.props.modal.showVictims ? 
+              <Modal>
+                <ShowVictimProfile
+                  id={reports[index]._id}
+                  name={reports[index].reporter.userId.name}
+                  phone={reports[index].reporter.userId.phoneNo}
+                  userId={reports[index].reporter.userId._id}
+                  lat={reports[index].location.latitude}
+                  lng={reports[index].location.longitude}
+                  status={reports[index].response.status}
+                  createdAt={reports[index].createdAt}
+                  updatedAt={reports[index].updatedAt}
+                /> 
+              </Modal> 
+              : null
+          }
           <Map google={this.props.google} zoom={6} style={mapStyles} initialCenter={{ lat, lng }}>
             {this.displayMarkers()}
             {this.displayResponseMarkers()}
@@ -100,8 +132,9 @@ class GoogleMap extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  help: state.help,
-  response: state.response
+  help: state.help, //I have access to the help state
+  response: state.response, //I have access to the response state
+  modal: state.modal //I have access to the modal state <------------------this is what we need to show the modal and close
 });
 
 const mapDispatchToProps = (dispatch) => ({
