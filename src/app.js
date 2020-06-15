@@ -41,8 +41,6 @@ class App extends React.Component {
       toast.error('Sending report...', { autoClose: false });
     }
     if(this.props.user.currentUser) {
-      console.log('Componenet did mount');
-      console.log(this.props.user)
       subscribeUser(this.props.user.currentUser.user._id);
     }
     if (this.props.report.reportMessage === 200) {

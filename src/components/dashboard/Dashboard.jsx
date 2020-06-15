@@ -29,11 +29,6 @@ class Dashboard extends Component {
   }
   render() {
     // const { reports } = this.props.response.victims;
-    if(this.props.user.currentUser) {
-      console.log('Componenet did mount');
-      console.log(this.props.user)
-      subscribeUser(this.props.user.currentUser.user._id);
-    }
 
     return (
       <div className="dashboard-container">
