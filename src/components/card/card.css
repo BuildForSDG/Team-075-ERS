@@ -1,18 +1,23 @@
 .card-container {
   padding-top: 20px;
   min-height: 180px;
+  margin-bottom: 10px;
   -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
 }
 
+.card-container:hover {
+  transform: scale(1.05, 1.1);
+}
+
 .card-heading {
-  font-size: 0.7rem;
+  font-size: 1rem;
+  padding: 5px 0;
 }
 
 .card {
-  /* width: 15rem; */
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .card-state {
@@ -27,7 +32,7 @@
   border-radius: 100%;
   background-color: #f00;
   margin-right: 5px;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .card-status-route {
@@ -44,8 +49,6 @@
 }
 
 .card-btn {
-  /* width: 100%; */
+  width: 90%;
   height: 35px;
-  margin-bottom: 5px;
-  /* border-radius: 5px; */
 }

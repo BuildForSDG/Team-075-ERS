@@ -20,6 +20,12 @@
   overflow-y: scroll;
 }
 
+@media screen and (max-width: 1024px) {
+  .map {
+    width: 75%;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .map-container {
     flex-direction: column-reverse;
@@ -27,6 +33,10 @@
 
   .map-card {
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
+  }
+
+  .map {
+    width: 100%;
   }
 }
