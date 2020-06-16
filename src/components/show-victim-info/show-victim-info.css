@@ -6,7 +6,7 @@
 }
 
 .victim-info p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   padding: 5px 0;
 }
@@ -16,20 +16,21 @@
 }
 
 #deploy-button {
-  background-color: #fff;
   padding: 0.525rem 2rem;
   display: block;
   margin: 5px auto;
-  color: #e72020;
+  color: #fff;
+  background-color: #358f2d;
+  border: 0.1rem solid #358f2d;
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
-  border: 1px solid #e72020;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
 }
 
 #deploy-button:hover {
-  color: #fff;
-  background-color: #e72020;
+  background-color: #fff;
+  border: 0.1rem solid #358f2d;
+  color: #358f2d;
 }

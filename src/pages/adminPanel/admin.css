@@ -3,3 +3,9 @@
   font-size: 2rem;
   padding: 20px 0;
 }
+
+@media screen and (max-width: 640px) {
+  .main-heading {
+    font-size: 1.7rem;
+  }
+}

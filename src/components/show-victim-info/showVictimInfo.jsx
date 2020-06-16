@@ -5,13 +5,15 @@ import './show-victim-info.css';
 const ShowVictimProfile = ({ id, name, phoneNo, userId, lat, lng, status, createdAt, updatedAt }) => (
   <div className="victim-info">
     <p>
-      Name: <span>{name}</span>
+      Name: <br />
+      <span>{name}</span>
     </p>
     <p>
-      Id: <span>{id}</span>{' '}
+      Id: <br />
+      <span>{id}</span>{' '}
     </p>
     <p>
-      Reporter Phone No:{' '}
+      Reporter Phone No: <br />
       <span>
         <a className="victim-tel" href={`tel:${phoneNo}`}>
           {phoneNo}
@@ -19,23 +21,29 @@ const ShowVictimProfile = ({ id, name, phoneNo, userId, lat, lng, status, create
       </span>
     </p>
     <p>
-      Reporter userid: <span>{userId}</span>{' '}
+      Reporter userid: <br />
+      <span>{userId}</span>{' '}
     </p>
     <p>
-      Latitude: <span>{lat}</span>{' '}
+      Latitude: <br />
+      <span>{lat}</span>{' '}
     </p>
     <p>
-      Longitude: <span>{lng}</span>{' '}
+      Longitude: <br />
+      <span>{lng}</span>{' '}
     </p>
     <p>
-      Status: <span>{status}</span>{' '}
+      Status: <br />
+      <span>{status}</span>{' '}
     </p>
 
     <p>
-      Created At: <span>{createdAt}</span>
+      Created At: <br />
+      <span>{createdAt}</span>
     </p>
     <p>
-      Updated At: <span>{updatedAt}</span>{' '}
+      Updated At: <br />
+      <span>{updatedAt}</span>{' '}
     </p>
     <CustomButton id="deploy-button">Deploy Personnel</CustomButton>
   </div>

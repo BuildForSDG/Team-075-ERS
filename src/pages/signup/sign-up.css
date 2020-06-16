@@ -122,6 +122,10 @@ input[name='terms'] {
   cursor: pointer;
 }
 
+.soc-btn:hover {
+  background-color: rgba(245, 245, 245, 0.5);
+}
+
 #facebook,
 #google {
   width: 20px;
@@ -153,20 +157,6 @@ input[name='terms'] {
 }
 
 /* response unit */
-.response-unit-details {
-  display: block;
-  width: 20.413125rem;
-  padding: 0.5rem 0.75rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #030f25;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 0.0625rem solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
 
 .register {
   width: 19.4375rem;
@@ -203,7 +193,7 @@ input[name='terms'] {
   display: block;
   width: 20.413125rem;
   padding: 0.5rem 0.75rem;
-  margin-bottom: 1rem;
+  margin: 0.7rem auto;
   font-size: 0.9rem;
   line-height: 1.5;
   color: #030f25;
@@ -219,6 +209,18 @@ input[name='terms'] {
 }
 
 @media screen and (max-width: 1024px) {
+  .signup-title {
+    padding: 1.25rem 0;
+  }
+
+  #girl {
+    display: none;
+  }
+
+  .container {
+    background-image: none;
+    background-color: #fffbfb;
+  }
 }
 
 @media screen and (max-width: 640px) {
@@ -274,8 +276,16 @@ input[name='terms'] {
     display: none;
   }
 
+  .policy {
+    padding: 0;
+  }
+
   .soc-btn {
     width: 300px;
+  }
+
+  .soc-btn span {
+    font-size: 1rem;
   }
 
   .prompt-msg {
@@ -293,5 +303,13 @@ input[name='terms'] {
 
   .forgot-psw {
     padding-bottom: 20px;
+  }
+
+  .response-unit-details {
+    width: 16rem;
+  }
+
+  .btn-response-signup {
+    padding: 0.625rem 6.125rem;
   }
 }

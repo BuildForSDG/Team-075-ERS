@@ -166,7 +166,7 @@ class ResponseUnitSignUp extends React.Component {
                 />
               </div>
               <div>
-                <CustomButton className="btn-send">Register</CustomButton>
+                <CustomButton className="btn-send btn-response-signup">Register</CustomButton>
               </div>
             </fieldset>
           </form>
