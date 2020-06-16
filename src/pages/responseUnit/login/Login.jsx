@@ -39,42 +39,44 @@ class ResponseUnitLogin extends React.Component {
   render() {
     if (!this.props.response.isPending) {
       return (
-        <section id="response-login-container">
-          <h2 className="ers-title">Hello</h2>
+        <div className="container">
+          <section>
+            <h2 className="ers-title">Hello</h2>
 
-          <p id="sub-heading">Please sign in to your account</p>
+            <p id="sub-heading">Please sign in to your account</p>
 
-          <div className="ers-login">
-            <form id="login" onSubmit={this.handleSubmit}>
-              <Status />
-              <fieldset>
-                <input
-                  name="email"
-                  type="email"
-                  className="user-details"
-                  placeholder={this.state.email}
-                  onChange={this.setLoginDetails}
-                />
+            <div className="ers-login">
+              <form id="login" onSubmit={this.handleSubmit}>
+                <Status />
+                <fieldset>
+                  <input
+                    name="email"
+                    type="email"
+                    className="user-details"
+                    placeholder={this.state.email}
+                    onChange={this.setLoginDetails}
+                  />
 
-                <input
-                  name="password"
-                  type="password"
-                  className="user-details"
-                  placeholder={this.state.password}
-                  onChange={this.setLoginDetails}
-                />
+                  <input
+                    name="password"
+                    type="password"
+                    className="user-details"
+                    placeholder={this.state.password}
+                    onChange={this.setLoginDetails}
+                  />
 
-                <p className="ers-forgot-psw">
-                  <b>Forgot password?</b>
-                </p>
+                  <p className="ers-forgot-psw">
+                    <b>Forgot password?</b>
+                  </p>
 
-                <CustomButton className="btn-send ers-register-btn">Login</CustomButton>
-              </fieldset>
-            </form>
+                  <CustomButton className="btn-send ers-register-btn">Login</CustomButton>
+                </fieldset>
+              </form>
 
-            <Girl id="girl" />
-          </div>
-        </section>
+              <Girl id="girl" />
+            </div>
+          </section>
+        </div>
       );
     }
     return <WithSpinner></WithSpinner>;

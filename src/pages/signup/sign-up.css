@@ -9,7 +9,7 @@ a {
 }
 
 .signup-title {
-  padding: 1.25rem 0 3.125rem 0;
+  padding: 3.25rem 0;
 }
 
 .response-login-title {
@@ -18,23 +18,17 @@ a {
 
 .login-section {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
 }
 
 .response-login-section {
   justify-content: center;
 }
 
-#response-login-container {
-  padding: 50px 0 0 0;
-  min-height: 100vh;
-}
-
 .left {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 45vw;
 }
 
 .user-details {
@@ -114,12 +108,11 @@ input[name='terms'] {
 }
 
 .soc-btn {
-  width: 280px;
-  padding: 0.5rem 0.75rem;
+  width: 260px;
+  padding: 0.5rem 1.75rem;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   background-color: rgba(245, 245, 245, 0.2);
   color: #7f7f7f;
@@ -129,10 +122,14 @@ input[name='terms'] {
   cursor: pointer;
 }
 
+.soc-btn:hover {
+  background-color: rgba(245, 245, 245, 0.5);
+}
+
 #facebook,
 #google {
   width: 20px;
-  margin: 0 20px 0 0;
+  margin: 0 25px 0 0;
 }
 
 .prompt-msg {
@@ -151,8 +148,8 @@ input[name='terms'] {
 }
 
 #sub-heading {
-  padding-top: 10px;
-  padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 50px;
 }
 
 .link {
@@ -160,20 +157,6 @@ input[name='terms'] {
 }
 
 /* response unit */
-.response-unit-details {
-  display: block;
-  width: 20.413125rem;
-  padding: 0.5rem 0.75rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #030f25;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 0.0625rem solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
 
 .register {
   width: 19.4375rem;
@@ -181,93 +164,16 @@ input[name='terms'] {
   margin: auto;
 }
 
-@media screen and (max-width: 640px) {
-  .signup-title {
-    padding-bottom: 30px;
-  }
-
-  .login-section {
-    flex-direction: column;
-  }
-
-  .left {
-    align-items: center;
-    width: 100%;
-  }
-
-  .user-details {
-    padding: 0.7rem 0.75rem;
-    margin-bottom: 0.8rem;
-    font-size: 0.9rem;
-  }
-
-  .register-btn {
-    /* margin: 20px 0 0 0; */
-    width: 300px;
-    margin-top: 10px;
-  }
-
-  .middle {
-    display: none;
-  }
-
-  .divider {
-    display: none;
-  }
-
-  .right {
-    width: 100vw;
-    position: absolute;
-    bottom: 7%;
-    align-items: center;
-    top: 26.25rem;
-  }
-
-  .social-accounts {
-    top: 36.25rem !important;
-  }
-
-  .right p {
-    display: none;
-  }
-
-  #girl {
-    display: none;
-  }
-
-  .soc-btn {
-    width: 300px;
-  }
-
-  .prompt-msg {
-    width: 100vw;
-    position: absolute;
-    margin-top: 10px;
-    bottom: 3%;
-  }
-
-  #align-psw {
-    width: 300px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .forgot-psw {
-    padding-bottom: 20px;
-  }
-}
-
 /* response unit */
 
 /* login */
 .ers-login {
-  width: 19.4375rem;
-  height: 3.3125rem;
-  margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .ers-title {
-  padding-top: 1.25rem;
+  padding-top: 4.25rem;
 }
 
 .ers-register-btn {
@@ -287,7 +193,7 @@ input[name='terms'] {
   display: block;
   width: 20.413125rem;
   padding: 0.5rem 0.75rem;
-  margin-bottom: 1rem;
+  margin: 0.7rem auto;
   font-size: 0.9rem;
   line-height: 1.5;
   color: #030f25;
@@ -299,29 +205,110 @@ input[name='terms'] {
 }
 
 .login-title {
-  padding-top: 1.25rem;
+  padding-top: 4.25rem;
 }
 
-/* Extra small devices (phones, 600px and down) */
-/* @media only screen and (max-width: 600px) {
-  .login-section {
-    display: block;
-    width: 20.413125rem;
-    padding: 0.5rem 0.75rem;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #030f25;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 0.0625rem solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+@media screen and (max-width: 1024px) {
+  .signup-title {
+    padding: 1.25rem 0;
   }
 
-  .register {
-    width: 19.4375rem;
-    height: 3.3125rem;
-    margin: auto;
+  #girl {
+    display: none;
   }
-} */
+
+  .container {
+    background-image: none;
+    background-color: #fffbfb;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .signup-title {
+    padding: 1.25rem 0;
+  }
+
+  .login-title {
+    padding-top: 2.25rem;
+  }
+
+  .login-section {
+    flex-direction: column;
+  }
+
+  .left {
+    align-items: center;
+    width: 100%;
+  }
+
+  .user-details {
+    padding: 0.7rem 0.75rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .register-btn {
+    width: 300px;
+    margin-top: 10px;
+  }
+
+  .middle {
+    display: none;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .right {
+    align-items: center;
+  }
+
+  .prompt-msg,
+  .right {
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .prompt-msg {
+    padding: 0;
+  }
+
+  .right p {
+    display: none;
+  }
+
+  #girl {
+    display: none;
+  }
+
+  .policy {
+    padding: 0;
+  }
+
+  .soc-btn {
+    width: 300px;
+  }
+
+  .soc-btn span {
+    font-size: 1rem;
+  }
+
+  #align-psw {
+    width: 300px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .forgot-psw {
+    padding-bottom: 20px;
+  }
+
+  .response-unit-details {
+    width: 16rem;
+  }
+
+  .btn-response-signup {
+    padding: 0.625rem 6.125rem;
+  }
+}

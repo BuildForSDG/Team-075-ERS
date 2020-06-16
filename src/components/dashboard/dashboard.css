@@ -8,7 +8,14 @@
   padding-top: 50px;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 1024px) {
+  .content-container {
+    width: 100%;
+    margin-left: 240px;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .content-container {
     width: calc(100vw - 50px);
     margin-left: 50px;

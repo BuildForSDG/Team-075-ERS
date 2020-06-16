@@ -6,21 +6,22 @@ import './response-units.css';
 
 const ResponseUnits = ({ response }) => {
   return (
-    response.units.locations.map((unit, index) => (
-        <Card 
+    <div className="ers-container">
+      {response.units.locations.map((unit, index) => (
+        <Card
           key={index}
           name={unit.name}
           latitude={unit.location.latitude}
           longitude={unit.location.longitude}
           imageURL={`https://robohash.org/set_set5/${unit.name}?size=50x50`}
         />
-      )
-    )
+      ))}
+    </div>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
-    response: state.response
+  response: state.response
 });
 
 export default connect(mapStateToProps)(ResponseUnits);

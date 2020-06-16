@@ -1,0 +1,36 @@
+.victim-info {
+  text-align: left;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.victim-info p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 5px 0;
+}
+
+.victim-info p span {
+  font-weight: 400;
+}
+
+#deploy-button {
+  padding: 0.525rem 2rem;
+  display: block;
+  margin: 5px auto;
+  color: #fff;
+  background-color: #358f2d;
+  border: 0.1rem solid #358f2d;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#deploy-button:hover {
+  background-color: #fff;
+  border: 0.1rem solid #358f2d;
+  color: #358f2d;
+}
