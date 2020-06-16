@@ -2,7 +2,7 @@ import React from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUserStartAsync } from '../../redux/user/user.actions';
+import { loginUserStartAsync, facebookLogin } from '../../redux/user/user.actions';
 import { ReactComponent as Line } from '../../assets/images/Line.svg';
 import { ReactComponent as Girl } from '../../assets/images/girl.svg';
 // import { ReactComponent as Google } from '../../assets/images/google.svg';
@@ -57,7 +57,7 @@ class Login extends React.Component {
                     name="email"
                     type="email"
                     className="user-details"
-                    placeholder={this.state.email}
+                    placeholder='email'
                     onChange={this.setLoginDetails}
                     required
                   />
@@ -66,7 +66,7 @@ class Login extends React.Component {
                     name="password"
                     type="password"
                     className="user-details"
-                    placeholder={this.state.password}
+                    placeholder='password'
                     onChange={this.setLoginDetails}
                     required
                   />
@@ -93,7 +93,7 @@ class Login extends React.Component {
 
             <div className="right">
               <p>Sign up with one of your social accounts</p>
-              <CustomButton className="soc-btn">
+              <CustomButton className="soc-btn" onClick={this.props.facebookLogin}>
                 <img src="images/facebook.svg" id="facebook" alt="facebook login" />
                 <span>sign in with facebook</span>
               </CustomButton>
@@ -121,7 +121,8 @@ class Login extends React.Component {
 }
 
 const mapDispatchToprops = (dispatch) => ({
-  loginUserStartAsync: (email, password) => dispatch(loginUserStartAsync(email, password))
+  loginUserStartAsync: (email, password) => dispatch(loginUserStartAsync(email, password)),
+  facebookLogin: () => dispatch(facebookLogin())
 });
 
 const mapStateToProps = (state) => ({

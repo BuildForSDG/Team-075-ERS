@@ -19,7 +19,13 @@ class ReportAccident extends Component {
   onSubmitHandler = (event) => {
     event.preventDefault();
 
-    const { phoneNo, typeOfAccident, noOfPersons, description, file } = this.state;
+    const {
+      phoneNo,
+      typeOfAccident,
+      noOfPersons,
+      // description,
+      file
+    } = this.state;
 
     if (
       !phoneNo ||

@@ -44,6 +44,7 @@ class HomePage extends React.Component {
     if(!this.props.currentUser) return;
     if(this.props.user.currentUser) {
       console.log('Componenet did mount');
+      console.log(this.props.user)
       subscribeUser(this.props.user.currentUser.user._id);
     }
 
