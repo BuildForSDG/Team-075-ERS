@@ -19,15 +19,16 @@
   transform: translate(-50%, -50%);
 }
 
-.modal-close:hover {
-  cursor: pointer;
-}
-
 .modal-close {
   float: right;
   font-weight: 700;
   font-size: 18px;
 }
+
+.modal-close:hover {
+  cursor: pointer;
+}
+
 .display-block {
   display: block;
 }

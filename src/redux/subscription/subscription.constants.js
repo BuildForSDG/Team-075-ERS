@@ -11,7 +11,6 @@ const ConstantsActionTypes = {
   SEND_NOTIFICATION_START: 'SEND_NOTIFICATION_START',
   SEND_NOTIFICATION_SUCCESS: 'SEND_NOTIFICATION_SUCCESS',
   SEND_NOTIFICATION_FAILED: 'SEND_NOTIFICATION_FAILED'
-  };
-  
-  export default ConstantsActionTypes;
-  
+};
+
+export default ConstantsActionTypes;
