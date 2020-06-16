@@ -313,6 +313,3 @@ input[name='terms'] {
     padding: 0.625rem 6.125rem;
   }
 }
-
-@media screen and (max-width: 640px) {
-}
