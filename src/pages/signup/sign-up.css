@@ -262,10 +262,17 @@ input[name='terms'] {
   }
 
   .right {
-    width: 100vw;
-    position: absolute;
-    bottom: 6%;
     align-items: center;
+  }
+
+  .prompt-msg,
+  .right {
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .prompt-msg {
+    padding: 0;
   }
 
   .right p {
@@ -288,13 +295,6 @@ input[name='terms'] {
     font-size: 1rem;
   }
 
-  .prompt-msg {
-    width: 100vw;
-    position: absolute;
-    margin-top: 10px;
-    bottom: 3%;
-  }
-
   #align-psw {
     width: 300px;
     display: flex;
@@ -312,4 +312,7 @@ input[name='terms'] {
   .btn-response-signup {
     padding: 0.625rem 6.125rem;
   }
+}
+
+@media screen and (max-width: 640px) {
 }
