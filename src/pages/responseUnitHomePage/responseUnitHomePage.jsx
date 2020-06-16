@@ -23,7 +23,7 @@ class ResponseUnitHomePage extends React.Component {
               <ShowVictimProfile
                 id={reports[index]._id}
                 name={reports[index].reporter.userId.name}
-                phone={reports[index].reporter.userId.phoneNo}
+                phoneNo={reports[index].reporter.userId.phoneNo}
                 userId={reports[index].reporter.userId._id}
                 lat={reports[index].location.latitude}
                 lng={reports[index].location.longitude}
