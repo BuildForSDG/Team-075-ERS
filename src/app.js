@@ -39,6 +39,7 @@ class App extends React.Component {
     if (this.props.report.isPending) {
       toast.error('Sending report...', { autoClose: false });
     }
+    
     if (this.props.report.reportMessage === 200) {
       // toast.update(toast.error('Sending report...', { autoClose: false }), { type: toast.TYPE.INFO, autoClose: 4000 })
     }
@@ -52,10 +53,10 @@ class App extends React.Component {
             </Modal>
           ) : null}
           {this.props.modal.showLogout ? <Logout /> : null}
-          {
+          {/* {
               this.props.modal.showVictims ? 
               <Modal></Modal> : null
-            }
+            } */}
           {this.props.modal.showProfile ? (
             <Modal>
               <UserViewProfile />

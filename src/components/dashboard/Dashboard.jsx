@@ -16,7 +16,6 @@ import { getAllVictims, getAllUnits } from '../../redux/response/response.action
 import { createSubscription } from '../../redux/subscription/subscription.actions';
 import ResponseUnitSignUp from '../../components/responseUnitSignUp/ResponseUnitSignUp';
 import ResponseUnits from '../../components/responseUnits/response-units';
-import subscribeUser from '../../pushSubscription';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -87,7 +86,8 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  response: state.response
+  response: state.response,
+  user: state.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
