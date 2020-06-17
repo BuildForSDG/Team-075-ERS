@@ -12,7 +12,7 @@ import Admin from '../../pages/adminPanel/Admin';
 import GoogleMap from '../../pages/googleMap/googleMap';
 // import Card from '../card/card';
 import { connect } from 'react-redux';
-import { getAllVictims, getAllUnits } from '../../redux/response/response.actions';
+import { getAllVictims, getAllUnits, resetVictimupdate } from '../../redux/response/response.actions';
 import { createSubscription } from '../../redux/subscription/subscription.actions';
 import ResponseUnitSignUp from '../../components/responseUnitSignUp/ResponseUnitSignUp';
 import ResponseUnits from '../../components/responseUnits/response-units';
@@ -25,10 +25,15 @@ class Dashboard extends Component {
       getAllVictims(currentUser.token);
       getAllUnits(currentUser.token);
     }
+    if (this.props.response.message === 201) {
+      getAllVictims(this.props.response.currentUser.token);
+    }
   }
   render() {
-    // const { reports } = this.props.response.victims;
-
+    if (this.props.response.message === 201) {
+      window.location.reload();
+      this.props.resetVictimupdate();
+    }
     return (
       <div className="dashboard-container">
         <Sidebar
@@ -72,6 +77,7 @@ class Dashboard extends Component {
             }
           ]}
         />
+        
         <div className="content-container">
           <Switch>
             <Route exact path={this.props.match.url + '/'} component={Admin} />
@@ -93,7 +99,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getAllVictims: (token) => dispatch(getAllVictims(token)),
   getAllUnits: (token) => dispatch(getAllUnits(token)),
-  createSubscription: (subscription, token) => dispatch(createSubscription(subscription, token))
+  createSubscription: (subscription, token) => dispatch(createSubscription(subscription, token)),
+  resetVictimupdate: () => dispatch(resetVictimupdate())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

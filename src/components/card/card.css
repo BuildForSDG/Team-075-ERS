@@ -35,11 +35,20 @@
   margin-top: 4px;
 }
 
-.card-status-route {
+.card-status-site {
   width: 10px;
   height: 10px;
   border-radius: 100%;
   background-color: #008000;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+
+.card-status-route {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #ffe607;
   margin-right: 5px;
   margin-top: 2px;
 }

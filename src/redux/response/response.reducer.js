@@ -104,6 +104,28 @@ const responseReducer = (state = INITIAL_STATE, action = {}) => {
         isPending: false,
         units: action.payload
       });
+    case ConstantsActionTypes.UPDATE_VICTIM_PROFILE_START:
+      return ({
+        ...state,
+        isPending: true
+      });
+    case ConstantsActionTypes.UPDATE_VICTIM_PROFILE_SUCCESS:
+      return ({
+        ...state,
+        isPending: false,
+        message: action.payload
+      });
+    case ConstantsActionTypes.UPDATE_VICTIM_PROFILE_FAILED:
+      return ({
+        ...state,
+        isPending: false,
+        errorMessage: action.payload
+      });
+    case ConstantsActionTypes.RESET_VICTIM_UPDATE:
+      return ({
+        ...state,
+        message: null
+      });
     default:
       return state;
   }

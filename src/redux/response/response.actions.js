@@ -158,3 +158,57 @@ export const signupResponseUnit = (
       });
     });
 };
+
+export const updateVictimStatus = (
+  id,
+  userId,
+  phoneNo,
+  lat,
+  lng,
+  status,
+  token
+) => (dispatch) => {
+  dispatch({
+    type: ConstantsActionTypes.UPDATE_VICTIM_PROFILE_START
+  });
+  const bearer = `Bearer ${token}`;
+  fetch(`${process.env.REACT_APP_API_URL}/report/id/${id}`, {
+    method: 'put',
+    headers: {
+      Authorization: bearer,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      reporter: {
+        userId,
+        phoneNo
+      },
+      location: {
+        latitude: lat.toString(),
+        longitude: lng.toString()
+      },
+      response: {
+        status
+      }
+    })
+  })
+  .then((response) => {
+    dispatch({
+      type: ConstantsActionTypes.UPDATE_VICTIM_PROFILE_SUCCESS,
+      payload: response.status
+    });
+    if (response.status === 201) {
+      console.log("Updated")
+      return getAllVictims(token);
+    }
+    return response.json();
+  })
+  .catch((error) => {
+    dispatch({
+      type: ConstantsActionTypes.UPDATE_VICTIM_PROFILE_FAILED,
+      payload: error.message
+    });
+  })
+};
+
+export const resetVictimupdate = () => ({ type: ConstantsActionTypes.RESET_VICTIM_UPDATE });

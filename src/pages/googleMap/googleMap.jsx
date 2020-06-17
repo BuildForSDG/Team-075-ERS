@@ -115,14 +115,14 @@ class GoogleMap extends React.Component {
                 <Card
                   key={victim._id}
                   name={victim.reporter.userId.name}
-                  phoneNo={victim.phoneNo}
+                  phoneNo={victim.reporter.userId.phoneNo}
                   latitude={victim.location.latitude}
                   longitude={victim.location.longitude}
                   imageURL={ `https://robohash.org/set_set5/${victim.reporter.userId.name}?size=50x50`}
-                  status={victim.status}
+                  status={victim.response.status}
                 />
               </div>
-              ))
+              )).reverse()
             : null}
         </div>
         <script type="text/javascript" src={`//maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API}`}></script>

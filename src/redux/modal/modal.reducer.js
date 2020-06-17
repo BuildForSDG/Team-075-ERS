@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   promptLogIn: false,
   eyeWitness: false,
   showLogout: false,
+  updateProfile: false,
   index: undefined
 };
 
@@ -53,6 +54,11 @@ const modalReducer = (state = INITIAL_STATE, action = {}) => {
         eyeWitness: false,
         showLogout: false,
         index: undefined
+      });
+    case ConstantsActionTypes.UPDATE_PROFILE:
+      return ({
+        ...state,
+        updateProfile: !state.updateProfile
       });
     default:
       return state;
