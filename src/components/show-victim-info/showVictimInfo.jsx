@@ -31,10 +31,6 @@ const ShowVictimProfile = ({
         <span>{name}</span>
       </p>
       <p>
-        Id: <br />
-        <span>{id}</span>{' '}
-      </p>
-      <p>
         Reporter Phone No: <br />
         <span>
           <a className="victim-tel" href={`tel:${phoneNo}`}>
@@ -43,9 +39,6 @@ const ShowVictimProfile = ({
         </span>
       </p>
       <p>
-        Reporter userid: <br />
-        <span>{userId}</span>{' '}
-      </p>
       <p>
         Latitude: <br />
         <span>{lat}</span>{' '}
