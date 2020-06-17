@@ -19,15 +19,16 @@
   transform: translate(-50%, -50%);
 }
 
-.modal-close:hover {
-  cursor: pointer;
-}
-
 .modal-close {
   float: right;
   font-weight: 700;
   font-size: 18px;
 }
+
+.modal-close:hover {
+  cursor: pointer;
+}
+
 .display-block {
   display: block;
 }
@@ -98,7 +99,8 @@
 .btn-close:hover {
   background-color: white;
   color: #e72020;
-  border: 1px solid #e72020;
+  padding: 0.525rem 5.025rem;
+  border: 0.1rem solid #e72020;
 }
 
 @media screen and (max-width: 640px) {
