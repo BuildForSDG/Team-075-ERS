@@ -38,7 +38,6 @@ const ShowVictimProfile = ({
         </span>
       </p>
       <p>
-      <p>
         Latitude: <br />
         <span>{lat}</span>{' '}
       </p>
