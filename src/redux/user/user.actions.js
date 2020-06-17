@@ -33,7 +33,7 @@ export const loginUserStartAsync = (email, password, api) => (dispatch) => {
         type: ConstantsActionTypes.LOAD_USER,
         payload: data
       });
-      subscribeUser();
+      subscribeUser(data.user._id, data.token);
       return data;
     })
     .catch((error) => {

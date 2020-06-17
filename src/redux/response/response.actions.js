@@ -93,7 +93,8 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
         type: ConstantsActionTypes.LOAD_RESPONSE_UNIT,
         payload: data
       });
-      subscribeUser();
+      console.log(data);
+      subscribeUser(data.responseUnit._id, data.token);
       return data;
     })
     .catch((error) => {
