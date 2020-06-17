@@ -71,10 +71,6 @@ const ShowVictimProfile = ({
           : <a href='#' onClick={toggleInput}>edit</a>
         }
       <p>
-        Created At: <br />
-        <span>{createdAt}</span>
-      </p>
-      <p>
         Updated At: <br />
         <span>{updatedAt}</span>{' '}
       </p>
