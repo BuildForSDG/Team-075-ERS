@@ -14,7 +14,6 @@ const ShowVictimProfile = ({
   lat,
   lng,
   status,
-  createdAt,
   updatedAt,
   modal,
   toggleInput,
