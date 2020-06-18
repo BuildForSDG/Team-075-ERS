@@ -6,7 +6,7 @@ import { updateVictimStatus } from '../../redux/response/response.actions';
 import './show-victim-info.css';
 
 
-const ShowVictimProfile = ({ 
+const ShowVictimProfile = ({
   id,
   name,
   phoneNo,
@@ -61,12 +61,12 @@ const ShowVictimProfile = ({
             <CustomButton onClick={() => {
               if (!inputStatus) return;
               return (
-                updateVictimStatus(id, userId, phoneNo, lat, lng, inputStatus, token), 
+                updateVictimStatus(id, userId, phoneNo, lat, lng, inputStatus, token),
                 toggleInput()
               );
               }}> Save </CustomButton>
-          </div> 
-          : <a href='#' onClick={toggleInput}>edit</a>
+          </div>
+          : <a href='#Input' onClick={toggleInput}>edit</a>
         }
       <p>
         Updated At: <br />
@@ -92,7 +92,7 @@ const mapDispatchToprops = (dispatch) => ({
     lng,
     status,
     token
-  ) => 
+  ) =>
   dispatch(
     updateVictimStatus (
       id,

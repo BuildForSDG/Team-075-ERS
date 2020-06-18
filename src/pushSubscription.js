@@ -9,6 +9,9 @@ let isSubscribed = false;
 let swRegistration = null;
 const applicationKey = process.env.REACT_APP_PUBLIC_VAPID_KEY;
 
+// Throw error for missing required Param
+const isRequired = () => { throw new Error('missing a required parameter'); };
+
 /**
  * Url Encryption
  *
@@ -33,7 +36,7 @@ function urlB64ToUint8Array(base64String) {
  * Add the user's id to the PushSubscription object
  *
  * @param {Object} PushSubscription
- * @param {String} userId
+ * @param {string} userId
  *
  * @returns JSON
  */
@@ -62,12 +65,12 @@ async function checkPermission() {
 /**
  * Save a push subscription to the database
  *
- * @param {Subscription Object} subscriptionObj
- * @param {String} token
+ * @param {Object} subscriptionObj
+ * @param {string} token
  */
 async function savePushSubscription(subscriptionObj, token) {
   // return createSubscription(subscriptionObj, token);
-  return fetch(`${process.env.REACT_APP_API_URL}/subscribe`, {
+  await fetch(`${process.env.REACT_APP_API_URL}/subscribe`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -80,8 +83,8 @@ async function savePushSubscription(subscriptionObj, token) {
 /**
  * Update a push subscription stored in database
  *
- * @param {Subscription Object} subscriptionObj
- * @param {String} token
+ * @param {Object} subscriptionObj
+ * @param {string} token
  */
 async function updatePushSubscription(subscriptionObj, token) {
   // return updateSubscription(subscriptionObj, token);
@@ -102,8 +105,8 @@ async function updatePushSubscription(subscriptionObj, token) {
 /**
  * Subscribe to push notifications
  *
- * @param {String} userId
- * @param {String} token
+ * @param {string} userId
+ * @param {string} token
  */
 function subscribeToPushNotification(userId, token) {
   swRegistration.pushManager.subscribe({
@@ -111,13 +114,15 @@ function subscribeToPushNotification(userId, token) {
     applicationServerKey: urlB64ToUint8Array(applicationKey)
   })
     .then((subscriptionObj) => {
-      console.log('User is subscribed');
+      console.log('User is subscribed to Push Notifications');
 
       const subscription = addUserPushSubscription(subscriptionObj, userId);
 
       savePushSubscription(subscription, token)
         .then((response) => {
-          console.log(`Should have saved subscription to database.\n${response}`);
+          if (response) {
+            console.log(`Subscription saved to database.\n${response}`);
+          }
         })
         .catch((error) => {
           console.log(`Error saving subscription to database.\n${error}`);
@@ -134,10 +139,10 @@ function subscribeToPushNotification(userId, token) {
  * Using service worker create a push notification subscription
  * or get a push notification subscription for update
  *
- * @param {String} userId
- * @param {String} token
+ * @param {string} userId
+ * @param {string} token
  */
-export default function subscribeUser(userId, token) {
+export default function subscribeUser(userId = isRequired(), token) {
   if ('serviceWorker' in navigator && 'PushManager' in window) {
     console.log('Service Worker and Push is supported');
 
