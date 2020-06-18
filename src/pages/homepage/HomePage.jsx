@@ -25,7 +25,25 @@ class HomePage extends React.Component {
     };
   }
   componentDidMount() {
-    
+    // Fetch does not send cookies. So you should add credentials: 'include'
+    fetch(`${process.env.REACT_APP_API_URL}/auth/social-login/success`, {
+      method: 'GET',
+      credentials: "include",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': true
+      }
+    })
+    .then(response => {
+      // TODO: Call a redux action to update state as necessary
+      if(response.status === 200) return response.json();
+      throw new Error('Failed to authenticate user using facebook or google');
+    })
+    .catch(error => {
+      // call reducer to set state for failed login
+      console.log(error);
+    });
 
     const { sendHelp } = this.props;
     if ('geolocation' in navigator) {
@@ -63,13 +81,7 @@ class HomePage extends React.Component {
       const { token, user } = this.props.user.currentUser;
       const { sendReportAsync } = this.props;
       sendReportAsync(user._id, user.phoneNo, lat, lng, token);
-
     }
-    // if (this.props.report.isPending) {
-    //   this.props.showFeedbackSuccess();
-
-    // }
-
   };
 
 

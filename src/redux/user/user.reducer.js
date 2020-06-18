@@ -53,7 +53,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         signup: action.payload,
         pending: false,
         login: null,
-        isLoading: false,
+        isLoading: false
       });
     case ConstantsActionTypes.SIGN_UP_USER_FAILED:
       return ({
@@ -96,7 +96,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       });
     case ConstantsActionTypes.SUBSCRIPTION_STATUS:
       return ({
-        ...state,
+        ...state
       });
     default:
       return state;

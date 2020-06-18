@@ -8,11 +8,11 @@ import App from './app';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <Provider store={ store }>
-    <PersistGate persistor={ persistor }>
-      <App />
-    </PersistGate>
-  </Provider>,
+    <Provider store={ store }>
+      <PersistGate persistor={ persistor }>
+          <App />
+      </PersistGate>
+    </Provider>,
   document.getElementById('root')
 );
 

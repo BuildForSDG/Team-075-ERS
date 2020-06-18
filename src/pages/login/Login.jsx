@@ -27,6 +27,20 @@ class Login extends React.Component {
     this.setState((prevState, PrevProps) => ({ [name]: value }));
   };
 
+  _handleFacebookSignInClick = () => {
+    // Authenticate via passport api in the backend
+    // Open Facebook login page
+    // Upon successful login, a cookie session will be stored in the client
+    window.open(`${process.env.REACT_APP_API_URL}/auth/facebook`, "_self");
+  };
+
+  _handleGoogleSignInClick = () => {
+    // Authenticate via passport api in the backend
+    // Open Google login page
+    // Upon successful login, a cookie session will be stored in the client
+    window.open(`${process.env.REACT_APP_API_URL}/auth/google`, "_self");
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
@@ -93,14 +107,13 @@ class Login extends React.Component {
 
             <div className="right">
               <p>Sign up with one of your social accounts</p>
-              <CustomButton className="soc-btn" onClick={this.props.facebookLogin}>
+              <CustomButton className="soc-btn" onClick={this._handleFacebookSignInClick}>
                 <img src="images/facebook.svg" id="facebook" alt="facebook login" />
                 <span>sign in with facebook</span>
               </CustomButton>
 
-              <CustomButton className="soc-btn">
+              <CustomButton className="soc-btn" onClick={this._handleGoogleSignInClick}>
                 <img src="images/google.svg" alt="google login" id="google" />
-                {/* <Google id="google"/> */}
                 <span>sign in with google</span>
               </CustomButton>
             </div>
