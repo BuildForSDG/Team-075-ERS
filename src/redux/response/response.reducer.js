@@ -7,8 +7,9 @@ const INITIAL_STATE = {
   errorMessage: null,
   message: null,
   currentUser: null,
-  subscriptionStatus: null
-}
+  subscriptionStatus: null,
+  sendLocation: null
+};
 
 const responseReducer = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
@@ -126,9 +127,24 @@ const responseReducer = (state = INITIAL_STATE, action = {}) => {
         ...state,
         message: null
       });
+    case ConstantsActionTypes.SEND_RESPONSE_UNIT_LOCATION_START:
+      return ({
+        ...state,
+        sendLocation: true
+      });
+    case ConstantsActionTypes.SEND_RESPONSE_UNIT_LOCATION_SUCCESS:
+      return ({
+        ...state,
+        sendLocation: action.payload
+      });
+    case ConstantsActionTypes.SEND_RESPONSE_UNIT_LOCATION_FAILED:
+      return ({
+        ...state,
+        sendLocation: action.payload
+      });
     default:
       return state;
   }
-}
+};
 
 export default responseReducer;

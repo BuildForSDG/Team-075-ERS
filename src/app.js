@@ -36,7 +36,6 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
     if (this.props.report.isPending) {
       toast.error('Sending report...', { autoClose: false });
     }
