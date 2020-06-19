@@ -6,32 +6,32 @@ export const getAllVictims = (token) => (dispatch) => {
     type: ConstantsActionTypes.GET_VICTIMS_START
   });
   const bearer = `Bearer ${token}`;
-  fetch('https://emresys.herokuapp.com/api/report/', {
+  fetch(`${process.env.REACT_APP_API_URL}/report/`, {
     method: 'get',
     headers: {
       Authorization: bearer,
       'Content-Type': 'application/json'
     }
   })
-  .then((response) => {
-    dispatch({
-      type: ConstantsActionTypes.GET_VICTIMS_SUCCESS,
-      payload: response.message
+    .then((response) => {
+      dispatch({
+        type: ConstantsActionTypes.GET_VICTIMS_SUCCESS,
+        payload: response.message
+      });
+      return response.json();
+    })
+    .then((data) => {
+      dispatch({
+        type: ConstantsActionTypes.LOAD_VICTIMS,
+        payload: data
+      });
+    })
+    .catch((error) => {
+      dispatch({
+        type: ConstantsActionTypes.GET_VICTIMS_FAILED,
+        payload: error.message
+      });
     });
-    return response.json();
-  })
-  .then((data) => {
-    dispatch({
-      type: ConstantsActionTypes.LOAD_VICTIMS,
-      payload: data
-    });
-  })
-  .catch((error) => {
-    dispatch({
-      type: ConstantsActionTypes.GET_VICTIMS_FAILED,
-      payload: error.message
-    });
-  })
 };
 
 export const getAllUnits = (token) => (dispatch) => {
@@ -39,32 +39,32 @@ export const getAllUnits = (token) => (dispatch) => {
     type: ConstantsActionTypes.GET_RESPONSE_UNITS_START
   });
   const bearer = `Bearer ${token}`;
-  fetch('https://emresys.herokuapp.com/api/response-unit/location', {
+  fetch(`${process.env.REACT_APP_API_URL}/response-unit/location`, {
     method: 'get',
     headers: {
       Authorization: bearer,
       'Content-Type': 'application/json'
     }
   })
-  .then((response) => {
-    dispatch({
+    .then((response) => {
+      dispatch({
         type: ConstantsActionTypes.GET_RESPONSE_UNITS_SUCCESS,
         payload: response.message
-    });
-    return response.json();
-  })
-  .then((data) => {
-    dispatch({
+      });
+      return response.json();
+    })
+    .then((data) => {
+      dispatch({
         type: ConstantsActionTypes.LOAD_ALL_UNITS,
         payload: data
-    });
-  })
-  .catch((error) => {
-    dispatch({
+      });
+    })
+    .catch((error) => {
+      dispatch({
         type: ConstantsActionTypes.GET_RESPONSE_UNITS_FAILED,
         payload: error.message
+      });
     });
-  })
 };
 
 export const logoutResponseUnit = () => ({ type: ConstantsActionTypes.LOGOUT_RESPONSE_UNIT });
@@ -93,6 +93,7 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
         type: ConstantsActionTypes.LOAD_RESPONSE_UNIT,
         payload: data
       });
+      // eslint-disable-next-line no-underscore-dangle
       subscribeUser(data.responseUnit._id, data.token);
       return data;
     })
@@ -192,23 +193,56 @@ export const updateVictimStatus = (
       }
     })
   })
-  .then((response) => {
-    dispatch({
-      type: ConstantsActionTypes.UPDATE_VICTIM_PROFILE_SUCCESS,
-      payload: response.status
+    .then((response) => {
+      dispatch({
+        type: ConstantsActionTypes.UPDATE_VICTIM_PROFILE_SUCCESS,
+        payload: response.status
+      });
+      if (response.status === 201) {
+        return getAllVictims(token);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      dispatch({
+        type: ConstantsActionTypes.UPDATE_VICTIM_PROFILE_FAILED,
+        payload: error.message
+      });
     });
-    if (response.status === 201) {
-      console.log("Updated")
-      return getAllVictims(token);
-    }
-    return response.json();
-  })
-  .catch((error) => {
-    dispatch({
-      type: ConstantsActionTypes.UPDATE_VICTIM_PROFILE_FAILED,
-      payload: error.message
-    });
-  })
 };
 
 export const resetVictimupdate = () => ({ type: ConstantsActionTypes.RESET_VICTIM_UPDATE });
+
+export const sendResponseUnitLocation = (name, location, token) => (dispatch) => {
+  dispatch({
+    type: ConstantsActionTypes.SEND_RESPONSE_UNIT_LOCATION_START
+  });
+  const bearer = `Bearer ${token}`;
+  fetch(`${process.env.REACT_APP_API_URL}/response-unit/location`, {
+    method: 'post',
+    headers: {
+      Authorization: bearer,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name,
+      location: {
+        latitude: location.lat.toString(),
+        longitude: location.lng.toString()
+      }
+    })
+  })
+    .then((response) => {
+      dispatch({
+        type: ConstantsActionTypes.SEND_RESPONSE_UNIT_LOCATION_SUCCESS,
+        payload: response.status
+      });
+      return response.json();
+    })
+    .catch((error) => {
+      dispatch({
+        type: ConstantsActionTypes.SEND_RESPONSE_UNIT_LOCATION_FAILED,
+        payload: error.message
+      });
+    });
+};
