@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { sendHelp  } from '../../redux/sendHelp/sendHelp.actions';
+import { sendHelp } from '../../redux/sendHelp/sendHelp.actions';
 import { showFeedbackSuccess, promptLogIn, eyeWitness } from '../../redux/modal/modal.actions';
-import  { sendReportAsync }  from '../../redux/report/report.actions';
+import { sendReportAsync } from '../../redux/report/report.actions';
 import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
 import MessageModal from '../../components/modal/MessageModal';
@@ -28,23 +28,23 @@ class HomePage extends React.Component {
     // Fetch does not send cookies. So you should add credentials: 'include'
     fetch(`${process.env.REACT_APP_API_URL}/auth/social-login/success`, {
       method: 'GET',
-      credentials: "include",
+      credentials: 'include',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         'Access-Control-Allow-Credentials': true
       }
     })
-    .then(response => {
-      // TODO: Call a redux action to update state as necessary
-      if(response.status === 200) return response.json();
-      throw new Error('Failed to authenticate user using facebook or google');
-    })
-    .then((data) => console.log(data))
-    .catch(error => {
-      // call reducer to set state for failed login
-      console.log(error);
-    });
+      .then((response) => {
+        // TODO: Call a redux action to update state as necessary
+        if (response.status === 200) return response.json();
+        throw new Error('Failed to authenticate user using facebook or google');
+      })
+      .then((data) => console.log(data))
+      .catch((error) => {
+        // call reducer to set state for failed login
+        console.log(error);
+      });
 
     const { sendHelp } = this.props;
     if ('geolocation' in navigator) {
@@ -52,7 +52,7 @@ class HomePage extends React.Component {
         const lat = success.coords.latitude;
         const lng = success.coords.longitude;
         if (!success.coords.latitude || !success.coords.longitude) {
-          toast('no location')
+          toast('no location');
           return;
         } else {
           sendHelp({ lat, lng });
@@ -60,13 +60,12 @@ class HomePage extends React.Component {
       });
     }
 
-    if(!this.props.currentUser) return;
-    if(this.props.user.currentUser) {
+    if (!this.props.currentUser) return;
+    if (this.props.user.currentUser) {
       console.log('Componenet did mount');
-      console.log(this.props.user)
+      console.log(this.props.user);
       subscribeUser(this.props.user.currentUser.user._id);
     }
-
   }
 
   sendHelp = () => {
@@ -74,7 +73,7 @@ class HomePage extends React.Component {
       this.props.promptLogIn();
       return;
     }
-    if (this.props.user.currentUser){
+    if (this.props.user.currentUser) {
       if (!this.props.help.location) {
         return;
       }
@@ -84,7 +83,6 @@ class HomePage extends React.Component {
       sendReportAsync(user._id, user.phoneNo, lat, lng, token);
     }
   };
-
 
   render() {
     const { showFeedback, showVictims, eyeWitness } = this.props.modal;
@@ -114,41 +112,42 @@ class HomePage extends React.Component {
       );
     }
 
-      return (
-        <div className="container-home">
-          <div className="homepage">
-            <div className="div1">
-              <h1>Have you been involved in an ACCIDENT?</h1>
-              <p>
-                Press the help button and help will reach you soon. If you are reporting as an eye witness please make use
-                of the Eye witness button
-              </p>
-            </div>
+    return (
+      <div className="container-home">
+        <div className="homepage">
+          <div className="div1">
+            <h1>Have you been involved in an ACCIDENT?</h1>
+            <p>
+              Press the help button and help will reach you soon. If you are reporting as an eye witness please make use
+              of the Eye witness button
+            </p>
+          </div>
 
-            {
-              isPending ? <WithSpinner></WithSpinner> : null
-            }
+          {isPending ? <WithSpinner></WithSpinner> : null}
 
-            <Toast></Toast>
+          <Toast></Toast>
 
-            <div className="div2">
-              <CustomButton className="custom-button" onClick={() => {
-                return this.sendHelp();
-                }}>
+          <div className="div2">
+            <div className="help-btn-container">
+              <CustomButton
+                className="custom-button help-btn"
+                onClick={() => {
+                  return this.sendHelp();
+                }}
+              >
                 Help me!
               </CustomButton>
-
-              <Link to='/report-accident' className="btn-witness" >
-                Report as an eye witness
-              </Link>
-
             </div>
-            <div className="div3">
-              <img src="images/accident.svg" alt="accident vector illustration" id="accident" />
-            </div>
+            <Link to="/report-accident" className="btn-witness">
+              Report as an eye witness
+            </Link>
+          </div>
+          <div className="div3">
+            <img src="images/accident.svg" alt="accident vector illustration" id="accident" />
           </div>
         </div>
-      );
+      </div>
+    );
   }
 }
 
