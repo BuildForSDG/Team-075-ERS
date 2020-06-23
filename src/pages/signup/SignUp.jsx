@@ -36,7 +36,6 @@ class SignUp extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.props.user)
     const { name, email, phoneNo, password, confirmPassword, terms } = this.state;
     if (!name || !email || !phoneNo || !password) return;
     const { signUpUserStartAsync } = this.props;

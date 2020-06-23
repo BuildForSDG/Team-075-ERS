@@ -26,7 +26,6 @@ class ModalLogin extends React.Component {
     if (!email || !password) {
       return;
     }
-    console.log(email, password);
     const { loginUserStartAsync } = this.props;
     loginUserStartAsync(email, password);
    
