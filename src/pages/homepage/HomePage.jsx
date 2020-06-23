@@ -63,7 +63,6 @@ class HomePage extends React.Component {
     if(!this.props.currentUser) return;
     if(this.props.user.currentUser) {
       console.log('Componenet did mount');
-      console.log(this.props.user)
       subscribeUser(this.props.user.currentUser.user._id);
     }
 
@@ -119,7 +118,7 @@ class HomePage extends React.Component {
         <div className="container-home">
           <div className="homepage">
             <div className="div1">
-              <h1>Have you been involved in an ACCIDENT?</h1>
+              <h1>Involved in an ACCIDENT?</h1>
               <p>
                 Press the help button and help will reach you soon. If you are reporting as an eye witness please make use
                 of the Eye witness button
