@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { helpSent } from '../../redux/sendHelp/sendHelp.actions';
-import { logoutUser } from '../../redux/user/user.actions';
+import { logoutUser, resetUserStatus } from '../../redux/user/user.actions';
 import { logoutResponseUnit } from '../../redux/response/response.actions';
 import { showUserProfile, closeAllModal, showLogoutModal } from '../../redux/modal/modal.actions';
 import { resetError } from '../../redux/report/report.actions';
 import CustomButton from '../custom-button/CustomButton';
 import { ReactComponent as Hamburger } from '../../assets/images/bars.svg';
-
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import './navbar.css';
 
@@ -27,7 +26,6 @@ class Navbar extends Component {
   };
 
   render() {
-    // console.log('currentUser--->', this.props)
     const { login, currentUser } = this.props.user;
     return (
       <header>
@@ -46,7 +44,7 @@ class Navbar extends Component {
               {login === 200 || this.props.response.currentUser ? (
                 <>
                   <p className="nav-link" onClick={this.props.showUserProfile}>
-                    {`Welcome, ${
+                    {`Hi, ${
                       currentUser && !this.props.response.currentUser
                         ? currentUser.user.name
                         : `${
@@ -82,16 +80,18 @@ class Navbar extends Component {
                 </>
               ) : (
                 <>
-                  <Link className="nav-link" to="/login">
+                  <Link className="nav-link" to="/login" onClick={this.showMenu}>
                     Login
                   </Link>
-                  <Link className="nav-link" to="/sign-up">
+                  <Link className="nav-link" to="/sign-up" onClick={() => {
+                    return (this.props.resetUserStatus(), this.showMenu());
+                    }}>
                     Sign Up
                   </Link>
-                  <Link className="nav-link" to="/ers-login">
+                  <Link className="nav-link" to="/ers-login" onClick={this.showMenu}>
                     ERS
                   </Link>
-                  <Link className="nav-link" to="/faq">
+                  <Link className="nav-link" to="/faq" onClick={this.showMenu}>
                     FAQ
                   </Link>
                 </>
@@ -112,7 +112,8 @@ const mapDispatchToProps = (dispatch) => ({
   logoutResponseUnit: () => dispatch(logoutResponseUnit()),
   closeAllModal: () => dispatch(closeAllModal()),
   showLogoutModal: () => dispatch(showLogoutModal()),
-  resetError: () => dispatch(resetError())
+  resetError: () => dispatch(resetError()),
+  resetUserStatus: () => dispatch(resetUserStatus())
 });
 
 const mapStateToProps = (state) => ({

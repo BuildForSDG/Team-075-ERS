@@ -155,7 +155,16 @@
 }
 
 @media screen and (max-width: 320px) {
+  .div1 {
+    margin-top: 10px;
+  }
+  .div1 h1 {
+    font-size: 0.8rem;
+    padding-bottom: 0;
+  }
   .div1 p {
+    font-size: 0.8rem;
     line-height: 15px;
   }
+  
 }

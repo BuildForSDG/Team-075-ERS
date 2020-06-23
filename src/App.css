@@ -8,6 +8,15 @@
   pointer-events: none;
 }
 
+.error-message {
+  color: red;
+}
+
+.signup-message {
+  color: green;
+  font-size: 0.8rem;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
