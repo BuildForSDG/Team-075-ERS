@@ -6,7 +6,6 @@ import { ReactComponent as Girl } from '../../../assets/images/girl.svg';
 import { logoutUser } from '../../../redux/user/user.actions';
 import WithSpinner from '../../../components/with-spinner/with-spinner';
 import '../../signup/sign-up.css';
-import Status from '../../../components/login-status/Status';
 
 class ResponseUnitLogin extends React.Component {
   constructor() {
@@ -47,7 +46,6 @@ class ResponseUnitLogin extends React.Component {
 
             <div className="ers-login">
               <form id="login" onSubmit={this.handleSubmit}>
-                <Status />
                 <fieldset>
                   <input
                     name="email"

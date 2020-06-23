@@ -23,6 +23,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import ResponseUnitLogin from './pages/responseUnit/login/Login';
 import Logout from './components/logout/Logout';
 // import Logout from './components/logout/Logout';
+import { resetUserStatus } from './redux/user/user.actions';
 
 class App extends React.Component {
 
@@ -49,7 +50,10 @@ class App extends React.Component {
           <Navbar />
           {this.props.user.login !== 200 && this.props.modal.promptLogIn ? (
             <Modal>
-              <ModalLogin></ModalLogin>
+              <ModalLogin>
+                <p className='error-message'>{this.props.user.login ? this.props.user.login.error : null}</p>
+
+              </ModalLogin>
             </Modal>
           ) : null}
           {this.props.modal.showLogout ? <Logout /> : null}
@@ -156,4 +160,8 @@ const mapStateToProps = (state) => ({
   response: state.response
 });
 
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = (dispatch) => ({
+  resetUserStatus: () => dispatch(resetUserStatus())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 };
 
 
-const userReducer = (state = INITIAL_STATE, action) => {
+const userReducer = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case ConstantsActionTypes.SET_CURRENT_USER:
       return ({
@@ -32,7 +32,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         pending: false,
         isLoading: false
       });
-    case ConstantsActionTypes.LOGIN_USER_FAILED || ConstantsActionTypes.GET_USER_PROFILE_FAILED:
+    case ConstantsActionTypes.LOGIN_USER_FAILED || ConstantsActionTypes.FACEBOOK_LOGIN_FAILED:
       return ({
         ...state,
         login: action.payload,
@@ -97,6 +97,15 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case ConstantsActionTypes.SUBSCRIPTION_STATUS:
       return ({
         ...state
+      });
+    case ConstantsActionTypes.RESET_USER_STATUS:
+      return ({
+        ...state,
+        currentUser: null,
+        login: null,
+        signup: null,
+        isLoading: false,
+        getError: null
       });
     default:
       return state;

@@ -2,7 +2,7 @@ import React from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUserStartAsync, facebookLogin } from '../../redux/user/user.actions';
+import { loginUserStartAsync, facebookLogin,resetUserStatus } from '../../redux/user/user.actions';
 import { ReactComponent as Line } from '../../assets/images/Line.svg';
 import { ReactComponent as Girl } from '../../assets/images/girl.svg';
 // import { ReactComponent as Google } from '../../assets/images/google.svg';
@@ -49,10 +49,7 @@ class Login extends React.Component {
     }
     const { loginUserStartAsync } = this.props;
     loginUserStartAsync(email, password);
-    this.setState((prevState, prevProps) => ({
-      password: 'Password',
-      email: 'Email address'
-    }));
+    
   };
 
   render() {
@@ -62,10 +59,12 @@ class Login extends React.Component {
           <h2 className="login-title">Hello</h2>
 
           <p id="sub-heading">Please sign in to your account</p>
-
           <div className="login-section">
             <form id="login" onSubmit={this.handleSubmit}>
-              <fieldset>
+            <p className='error-message'>{ this.props.user.login ? this.props.user.login.error : null }</p>
+            <p className='signup-message'>{this.props.user.signup === 201 ? this.props.user.currentUser ? 
+            this.props.user.currentUser.message : null : null }</p>
+              <fieldset> 
                 <div className="left">
                   <input
                     name="email"
@@ -123,7 +122,7 @@ class Login extends React.Component {
 
           <p className="prompt-msg">
             Don't an account?
-            <Link to="/sign-up" className="link">
+            <Link to="/sign-up" className="link" onClick={this.props.resetUserStatus}>
               <b>Sign Up</b>
             </Link>
           </p>
@@ -135,11 +134,13 @@ class Login extends React.Component {
 
 const mapDispatchToprops = (dispatch) => ({
   loginUserStartAsync: (email, password) => dispatch(loginUserStartAsync(email, password)),
-  facebookLogin: () => dispatch(facebookLogin())
+  facebookLogin: () => dispatch(facebookLogin()),
+  resetUserStatus: () => dispatch(resetUserStatus())
 });
 
 const mapStateToProps = (state) => ({
-  isLoading: state.user.isLoading
+  isLoading: state.user.isLoading,
+  user: state.user
 });
 
 export default connect(mapStateToProps, mapDispatchToprops)(Login);
