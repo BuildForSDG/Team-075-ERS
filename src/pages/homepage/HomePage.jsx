@@ -7,7 +7,6 @@ import './home-page.css';
 import CustomButton from '../../components/custom-button/CustomButton';
 import MessageModal from '../../components/modal/MessageModal';
 import Modal from '../../components/modal/Modal';
-// import ModalLogin from '../../components/modalLogin/modal-login';
 import { toast } from 'react-toastify';
 import Toast from '../../components/toast/toast';
 import WithSpinner from '../../components/with-spinner/with-spinner';
@@ -15,6 +14,7 @@ import ReportAccident from '../../pages/reportAccidentPage/ReportAccident';
 import { createSubscription } from '../../redux/subscription/subscription.actions';
 import { Link } from 'react-router-dom';
 import subscribeUser from '../../pushSubscription';
+import { resetUserStatus } from '../../redux/user/user.actions';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -71,10 +71,11 @@ class HomePage extends React.Component {
 
   sendHelp = () => {
     if (!this.props.user.currentUser) {
+      this.props.resetUserStatus();
       this.props.promptLogIn();
       return;
     }
-    if (this.props.user.currentUser){
+    if (this.props.user.login === 200){
       if (!this.props.help.location) {
         return;
       }
@@ -166,7 +167,8 @@ const mapDispatchToProps = (dispatch) => ({
   showFeedbackSuccess: () => dispatch(showFeedbackSuccess()),
   promptLogIn: () => dispatch(promptLogIn()),
   eyeWitness: () => dispatch(eyeWitness()),
-  createSubscription: (subscription, token) => dispatch(createSubscription(subscription, token))
+  createSubscription: (subscription, token) => dispatch(createSubscription(subscription, token)),
+  resetUserStatus: () => dispatch(resetUserStatus())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

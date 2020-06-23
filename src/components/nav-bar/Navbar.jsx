@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { helpSent } from '../../redux/sendHelp/sendHelp.actions';
-import { logoutUser } from '../../redux/user/user.actions';
+import { logoutUser, resetUserStatus } from '../../redux/user/user.actions';
 import { logoutResponseUnit } from '../../redux/response/response.actions';
 import { showUserProfile, closeAllModal, showLogoutModal } from '../../redux/modal/modal.actions';
 import { resetError } from '../../redux/report/report.actions';
@@ -85,7 +85,7 @@ class Navbar extends Component {
                   <Link className="nav-link" to="/login">
                     Login
                   </Link>
-                  <Link className="nav-link" to="/sign-up">
+                  <Link className="nav-link" to="/sign-up" onClick={this.props.resetUserStatus}>
                     Sign Up
                   </Link>
                   <Link className="nav-link" to="/ers-login">
@@ -112,7 +112,8 @@ const mapDispatchToProps = (dispatch) => ({
   logoutResponseUnit: () => dispatch(logoutResponseUnit()),
   closeAllModal: () => dispatch(closeAllModal()),
   showLogoutModal: () => dispatch(showLogoutModal()),
-  resetError: () => dispatch(resetError())
+  resetError: () => dispatch(resetError()),
+  resetUserStatus: () => dispatch(resetUserStatus())
 });
 
 const mapStateToProps = (state) => ({

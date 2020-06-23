@@ -36,19 +36,14 @@ class SignUp extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    console.log(this.props.user)
     const { name, email, phoneNo, password, confirmPassword, terms } = this.state;
     if (!name || !email || !phoneNo || !password) return;
     const { signUpUserStartAsync } = this.props;
     if (password === confirmPassword && terms === 'on') {
       signUpUserStartAsync(name, email, phoneNo, password);
     }
-    this.setState((prevState, prevProps) => ({
-      name: undefined,
-      email: undefined,
-      phoneNo: undefined,
-      password: undefined,
-      terms: undefined
-    }));
+    
   };
 
   render() {
@@ -60,6 +55,9 @@ class SignUp extends React.Component {
 
           <div className="login-section">
             <form id="login" onSubmit={this.handleSubmit}>
+              <p className='error-message'>{this.props.user.signup === 422 ? this.props.user.currentUser ?
+              this.props.user.currentUser.message : null : null}</p>
+              <p className='error-message'>{this.state.password !== this.state.confirmPassword ? 'Password mismatch!' : null}</p>
               <fieldset>
                 <div className="left">
                   <input
@@ -169,4 +167,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(signUpUserStartAsync(name, email, phoneNo, emergencyContactName, emergencyContactPhoneNo, password))
 });
 
-export default connect(null, mapDispatchToProps)(SignUp);
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

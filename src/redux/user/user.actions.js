@@ -1,11 +1,12 @@
 import ConstantsActionTypes from './user.constants';
 import subscribeUser from '../../pushSubscription';
 
-
 export const setCurrentUser = (user) => ({
   type: ConstantsActionTypes.SET_CURRENT_USER,
   payload: user
 });
+
+export const resetUserStatus = () => ({ type: ConstantsActionTypes.RESET_USER_STATUS });
 
 export const loginUserStartAsync = (email, password) => (dispatch) => {
   dispatch({
@@ -21,23 +22,34 @@ export const loginUserStartAsync = (email, password) => (dispatch) => {
     })
   })
     .then((response) => {
-      dispatch({
-        type: ConstantsActionTypes.LOGIN_USER_SUCCESS,
-        payload: response.status
-      });
-      return response.json();
+      if (response.status === 404) {
+        return response.json();
+      }
+      if (response.status === 200) {
+        dispatch({
+          type: ConstantsActionTypes.LOGIN_USER_SUCCESS,
+          payload: response.status
+        });
+        return response.json();
+      }
     }).then((data) => {
+      if (data.error) {
+        dispatch({
+          type: ConstantsActionTypes.LOGIN_USER_FAILED,
+          payload: data
+        });
+        return;
+      }
       dispatch({
         type: ConstantsActionTypes.LOAD_USER,
         payload: data
       });
       subscribeUser(data.user._id, data.token);
-      return data;
     })
     .catch((error) => {
       dispatch({
         type: ConstantsActionTypes.LOGIN_USER_FAILED,
-        payload: error.message
+        payload: error.status
       });
     });
 };
@@ -98,12 +110,21 @@ export const signUpUserStartAsync = (
     })
   })
     .then((data) => {
+      console.log(data.status)
+      if (data.status !== 200) {
+        dispatch({
+          type: ConstantsActionTypes.SIGN_UP_USER_FAILED,
+          payload: data.status
+        });
+        return data.json();
+      }
       dispatch({
         type: ConstantsActionTypes.SIGN_UP_USER_SUCCESS,
         payload: data.status
       });
       return data.json();
     }).then((user) => {
+      console.log(user)
       dispatch({
         type: ConstantsActionTypes.LOAD_USER,
         payload: user

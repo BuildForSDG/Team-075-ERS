@@ -2,7 +2,7 @@ import React from 'react';
 import CustomButton from '../custom-button/CustomButton';
 import { connect } from 'react-redux';
 import { closeAllModal } from '../../redux/modal/modal.actions';
-import { loginUserStartAsync } from '../../redux/user/user.actions';
+import { loginUserStartAsync, resetUserStatus } from '../../redux/user/user.actions';
 import '../modal/modal.css';
 
 class ModalLogin extends React.Component {
@@ -21,24 +21,25 @@ class ModalLogin extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.props.resetUserStatus();
     const { email, password } = this.state;
     if (!email || !password) {
       return;
     }
+    console.log(email, password);
     const { loginUserStartAsync } = this.props;
     loginUserStartAsync(email, password);
-    this.setState((prevState, prevProps) => ({
-      password: undefined,
-      email: undefined
-    }));
+   
   };
 
   render (){
+
     return (
       <div className='modal display-block'>
         <section className="modal-main">
           <p onClick={() => this.props.closeAllModal()} className='modal-close'>x</p>
           <h1>Login to continue</h1>
+          {this.props.children}
           <br></br>
               <form id="login" onSubmit={this.handleSubmit}>
                 <fieldset>
@@ -73,9 +74,14 @@ class ModalLogin extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  closeAllModal: () => dispatch(closeAllModal()),
-  loginUserStartAsync: (email, password) => dispatch(loginUserStartAsync(email, password))
+const mapStateToProps = (state) => ({
+  user: state.user
 });
 
-export default connect(null, mapDispatchToProps)(ModalLogin);
+const mapDispatchToProps = (dispatch) => ({
+  closeAllModal: () => dispatch(closeAllModal()),
+  loginUserStartAsync: (email, password) => dispatch(loginUserStartAsync(email, password)),
+  resetUserStatus: () => dispatch(resetUserStatus())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalLogin);
