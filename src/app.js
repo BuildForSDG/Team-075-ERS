@@ -37,7 +37,7 @@ class App extends React.Component {
 
   render() {
     if (this.props.report.isPending) {
-      toast.error('Sending report...', { autoClose: false });
+      toast.error('Report sent.', { autoClose: 5000 });
     }
 
     if (this.props.report.reportMessage === 200) {
@@ -71,7 +71,7 @@ class App extends React.Component {
                     path="/"
                     render={() => {
                       if (!this.props.response.currentUser) {
-                        return this.props.sent ? <Redirect to="/feedback" /> : <HomePage />;
+                        return (this.props.report.reportMessage === 200) ? <Redirect to="/feedback" /> : <HomePage />;
                       }
                       return this.props.response.currentUser ? <Redirect to="/dashboard" /> : <Dashboard />;
                     }}
@@ -112,7 +112,7 @@ class App extends React.Component {
                     path="/"
                     render={() => {
                       if (!this.props.response.currentUser) {
-                        return this.props.sent ? <Redirect to="/feedback" /> : <HomePage />;
+                        return (this.props.sent) ? <Redirect to="/feedback" /> : <HomePage />;
                       }
                       return this.props.response.currentUser ? <Redirect to="/dashboard" /> : <Dashboard />;
                     }}
