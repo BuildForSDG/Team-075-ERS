@@ -110,7 +110,6 @@ export const signUpUserStartAsync = (
     })
   })
     .then((data) => {
-      console.log(data.status)
       if (data.status !== 200) {
         dispatch({
           type: ConstantsActionTypes.SIGN_UP_USER_FAILED,
@@ -124,7 +123,6 @@ export const signUpUserStartAsync = (
       });
       return data.json();
     }).then((user) => {
-      console.log(user)
       dispatch({
         type: ConstantsActionTypes.LOAD_USER,
         payload: user
