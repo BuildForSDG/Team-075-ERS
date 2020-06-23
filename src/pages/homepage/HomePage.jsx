@@ -40,6 +40,7 @@ class HomePage extends React.Component {
       if(response.status === 200) return response.json();
       throw new Error('Failed to authenticate user using facebook or google');
     })
+    .then((data) => console.log(data))
     .catch(error => {
       // call reducer to set state for failed login
       console.log(error);

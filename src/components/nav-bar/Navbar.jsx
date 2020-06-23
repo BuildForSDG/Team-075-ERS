@@ -67,7 +67,7 @@ class Navbar extends Component {
                   </Link>
                   <Link
                     className="no-padding"
-                    to="/feedback"
+                    to="/"
                     onClick={() => {
                       return (
                         this.props.logoutUser(),
