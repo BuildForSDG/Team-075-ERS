@@ -5,7 +5,6 @@ import { toggleInput } from '../../redux/modal/modal.actions';
 import { updateVictimStatus } from '../../redux/response/response.actions';
 import './show-victim-info.css';
 
-
 const ShowVictimProfile = ({
   id,
   name,
@@ -20,9 +19,10 @@ const ShowVictimProfile = ({
   response,
   updateVictimStatus
 }) => {
-
-  const [ inputStatus, updateState ] = useState(null);
-  const { currentUser: { token} } = response;
+  const [inputStatus, updateState] = useState(null);
+  const {
+    currentUser: { token }
+  } = response;
   return (
     <div className="victim-info">
       <p>
@@ -39,43 +39,54 @@ const ShowVictimProfile = ({
       </p>
       <p>
         Latitude: <br />
-        <span>{lat}</span>{' '}
+        <span>{lat}</span>
       </p>
       <p>
         Longitude: <br />
-        <span>{lng}</span>{' '}
+        <span>{lng}</span>
       </p>
       <p>
         Status: <br />
-        <span>{status}</span>{' '}
+        <span>{status}</span>
       </p>
-      {
-          modal.updateProfile ?
-          <div>
-            <select name="inputStatus" required className="" onChange={(event) => updateState( event.target.value )}>
-              <option value=''>Select option</option>
-              <option value='Response Pending'>Response Pending</option>
-              <option value='en-route'>en-route</option>
-              <option value='on-site'>on-site</option>
-            </select>
-            <CustomButton onClick={() => {
-              if (!inputStatus) return;
-              return (
-                updateVictimStatus(id, userId, phoneNo, lat, lng, inputStatus, token),
-                toggleInput()
-              );
-              }}> Save </CustomButton>
-          </div>
-          : <a href='#Input' onClick={toggleInput}>edit</a>
-        }
       <p>
         Updated At: <br />
-        <span>{updatedAt}</span>{' '}
+        <span>{updatedAt}</span>
       </p>
+      {modal.updateProfile ? (
+        <div>
+          <select
+            id="select-status"
+            name="inputStatus"
+            required
+            className=""
+            onChange={(event) => updateState(event.target.value)}
+          >
+            <option value="">Select option</option>
+            <option value="Response Pending">Response Pending</option>
+            <option value="en-route">en-route</option>
+            <option value="on-site">on-site</option>
+          </select>
+          <CustomButton
+            id="save-status-btn"
+            onClick={() => {
+              if (!inputStatus) return;
+              return updateVictimStatus(id, userId, phoneNo, lat, lng, inputStatus, token), toggleInput();
+            }}
+          >
+            Save
+          </CustomButton>
+        </div>
+      ) : (
+        <a href="#Input" onClick={toggleInput}>
+          <button id="status-btn">Edit Status</button>
+        </a>
+      )}
+
       <CustomButton id="deploy-button">Deploy Personnel</CustomButton>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   modal: state.modal,
@@ -84,26 +95,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToprops = (dispatch) => ({
   toggleInput: () => dispatch(toggleInput()),
-  updateVictimStatus: (
-    id,
-    userId,
-    phoneNo,
-    lat,
-    lng,
-    status,
-    token
-  ) =>
-  dispatch(
-    updateVictimStatus (
-      id,
-      userId,
-      phoneNo,
-      lat,
-      lng,
-      status,
-      token
-    )
-  )
+  updateVictimStatus: (id, userId, phoneNo, lat, lng, status, token) =>
+    dispatch(updateVictimStatus(id, userId, phoneNo, lat, lng, status, token))
 });
 
 export default connect(mapStateToProps, mapDispatchToprops)(ShowVictimProfile);

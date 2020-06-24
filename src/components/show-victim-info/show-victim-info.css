@@ -15,8 +15,10 @@
   font-weight: 400;
 }
 
-#deploy-button {
-  padding: 0.525rem 2rem;
+#deploy-button,
+#status-btn,
+#save-status-btn {
+  padding: 0.525rem 1.95rem;
   display: block;
   margin: 5px auto;
   color: #fff;
@@ -29,8 +31,33 @@
   cursor: pointer;
 }
 
+#status-btn {
+  padding: 0.525rem 3.5rem;
+  background-color: #2d358f;
+  border: 0.1rem solid #2d358f;
+  margin-bottom: 0;
+}
+
+#save-status-btn {
+  padding: 0.525rem 5.2rem;
+  margin-bottom: 0;
+  background-color: #2d358f;
+  border: 0.1rem solid #2d358f;
+}
+
+#select-status {
+  margin: 5px 0 3px 0;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+}
 #deploy-button:hover {
   background-color: #fff;
   border: 0.1rem solid #358f2d;
   color: #358f2d;
+}
+
+@media screen and (max-width: 640px) {
+  #deploy-button {
+    padding: 0.525rem 1.9rem;
+  }
 }
