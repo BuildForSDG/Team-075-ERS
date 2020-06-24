@@ -80,10 +80,10 @@ class Dashboard extends Component {
         
         <div className="content-container">
           <Switch>
-            <Route exact path={this.props.match.url + '/'} component={Admin} />
-            <Route exact path={this.props.match.url + '/signup-response-unit'} component={ResponseUnitSignUp} />
-            <Route exact path={this.props.match.url + '/display-units'} component={ResponseUnits} />
-            <Route exact path={this.props.match.url + '/report-units'} component={GoogleMap} />
+            <Route exact path={'/dashboard/'} component={Admin} />
+            <Route exact path={'/dashboard/signup-response-unit'} component={ResponseUnitSignUp} />
+            <Route exact path={'/dashboard/display-units'} component={ResponseUnits} />
+            <Route exact path={'/dashboard/report-units'} component={GoogleMap} />
           </Switch>
         </div>
       </div>
