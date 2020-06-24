@@ -26,24 +26,31 @@ class ResponseUnitLogin extends React.Component {
     const { email, password } = this.state;
     if (!email || !password) return;
     const { loginResponseUnitAsync, logoutUser } = this.props;
-    const api = `api/response-unit/login`;
+    const api = `response-unit/login`;
     loginResponseUnitAsync(email, password, api);
     logoutUser();
-    this.setState((prevState, prevProps) => ({
-      password: undefined,
-      email: undefined
-    }));
+    
   };
 
   render() {
+    let key;
+    if (this.props.response.errorMessage) {
+      key = Object.keys(this.props.response.errorMessage);
+      console.log(key[0]);
+      key= key[0]
+    }
+    if (!key) {
+      key = false;
+    }
+    
     if (!this.props.response.isPending) {
       return (
         <div className="container">
           <section>
-            <h2 className="ers-title">Hello</h2>
+            <h2 className="ers-title">Response Unit.</h2>
 
             <p id="sub-heading">Please sign in to your account</p>
-
+            <p className='error-message'>{ key === 'error' ? this.props.response.errorMessage.error : null }</p>
             <div className="ers-login">
               <form id="login" onSubmit={this.handleSubmit}>
                 <fieldset>
@@ -63,7 +70,7 @@ class ResponseUnitLogin extends React.Component {
                     onChange={this.setLoginDetails}
                   />
 
-                  <p className="ers-forgot-psw">
+                  <p className="forgot-psw">
                     <b>Forgot password?</b>
                   </p>
 
