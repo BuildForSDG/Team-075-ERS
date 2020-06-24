@@ -83,7 +83,6 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
     })
   })
     .then((response) => {
-      // console.log(response.status)
       dispatch({
         type: ConstantsActionTypes.LOGIN_RESPONSE_UNIT_SUCCESS,
         payload: response.status
@@ -91,7 +90,6 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
       return response.json();
     }).then((data) => {
       const key = Object.keys(data);
-      console.log(key[0])
       if (key[0] === 'responseUnit') {
 
         dispatch({
@@ -108,7 +106,6 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
       });
     })
     .catch((error) => {
-      // console.log(error.message)
       dispatch({
         type: ConstantsActionTypes.LOGIN_RESPONSE_UNIT_FAILED,
         payload: error.message

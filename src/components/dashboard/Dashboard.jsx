@@ -34,7 +34,6 @@ class Dashboard extends Component {
       window.location.reload();
       this.props.resetVictimupdate();
     }
-    console.log(this.props)
     return (
       <div className="dashboard-container">
         <Sidebar
