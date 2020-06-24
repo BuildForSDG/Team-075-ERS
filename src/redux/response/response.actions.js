@@ -74,7 +74,7 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
     type: ConstantsActionTypes.LOGIN_RESPONSE_UNIT_START,
     payload: true
   });
-  fetch(`https://emresys.herokuapp.com/${api}`, {
+  fetch(`${process.env.REACT_APP_API_URL}/${api}`, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -83,21 +83,32 @@ export const loginResponseUnitAsync = (email, password, api) => (dispatch) => {
     })
   })
     .then((response) => {
+      // console.log(response.status)
       dispatch({
         type: ConstantsActionTypes.LOGIN_RESPONSE_UNIT_SUCCESS,
         payload: response.status
       });
       return response.json();
     }).then((data) => {
+      const key = Object.keys(data);
+      console.log(key[0])
+      if (key[0] === 'responseUnit') {
+
+        dispatch({
+          type: ConstantsActionTypes.LOAD_RESPONSE_UNIT,
+          payload: data
+        });
+        // eslint-disable-next-line no-underscore-dangle
+        subscribeUser(data.responseUnit._id, data.token);
+        return data;
+      }
       dispatch({
-        type: ConstantsActionTypes.LOAD_RESPONSE_UNIT,
+        type: ConstantsActionTypes.LOGIN_RESPONSE_UNIT_FAILED,
         payload: data
       });
-      // eslint-disable-next-line no-underscore-dangle
-      subscribeUser(data.responseUnit._id, data.token);
-      return data;
     })
     .catch((error) => {
+      // console.log(error.message)
       dispatch({
         type: ConstantsActionTypes.LOGIN_RESPONSE_UNIT_FAILED,
         payload: error.message

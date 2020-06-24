@@ -19,10 +19,27 @@
   transform: translate(-50%, -50%);
 }
 
+.modal-main h1, h3 {
+  color: #7F7F7F;
+}
+
 .modal-close {
-  float: right;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  color: #7F7F7F;
   font-weight: 700;
   font-size: 18px;
+
+}
+
+.forgot-psw {
+  color: #7F7F7F;
+  cursor: pointer;
+}
+
+.forgot-psw:hover {
+  color: red;
 }
 
 .modal-close:hover {

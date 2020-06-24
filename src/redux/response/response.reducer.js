@@ -38,7 +38,8 @@ const responseReducer = (state = INITIAL_STATE, action = {}) => {
     case ConstantsActionTypes.LOGIN_RESPONSE_UNIT_SUCCESS:
       return ({
         ...state,
-        isPending: false
+        isPending: false,
+        message: action.payload
       });
     case ConstantsActionTypes.LOAD_RESPONSE_UNIT:
       return ({
@@ -48,6 +49,7 @@ const responseReducer = (state = INITIAL_STATE, action = {}) => {
     case ConstantsActionTypes.LOGIN_RESPONSE_UNIT_FAILED:
       return ({
         ...state,
+        isPending: false,
         errorMessage: action.payload
       });
     case ConstantsActionTypes.GET_VICTIMS_START:

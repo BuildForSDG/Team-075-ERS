@@ -90,7 +90,6 @@ export const facebookLogin = () => (dispatch) => {
     });
 };
 
-
 export const signUpUserStartAsync = (
   name, email, phoneNo, password
 ) => (dispatch) => {
