@@ -28,7 +28,7 @@
 
 @media screen and (max-width: 640px) {
   .map-container {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .map-card {
@@ -38,5 +38,6 @@
 
   .map {
     width: 100%;
+    height: 2500px;
   }
 }
