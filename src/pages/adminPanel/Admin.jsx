@@ -11,6 +11,7 @@ class Admin extends React.Component {
     setInterval(async () => {
       const { token, responseUnit } = this.props.response.currentUser;
       const { location } = this.props.help;
+      if (!location) return;
       this.props.sendResponseUnitLocation(responseUnit.name, location, token);
     }, 30000);
   }
