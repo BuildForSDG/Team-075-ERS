@@ -71,7 +71,7 @@ const ShowVictimProfile = ({
             id="save-status-btn"
             onClick={() => {
               if (!inputStatus) return;
-              return updateVictimStatus(id, userId, phoneNo, lat, lng, inputStatus, token), toggleInput();
+              return (updateVictimStatus(id, userId, phoneNo, lat, lng, inputStatus, token), toggleInput());
             }}
           >
             Save
