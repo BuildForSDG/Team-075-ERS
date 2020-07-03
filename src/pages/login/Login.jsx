@@ -32,6 +32,9 @@ class Login extends React.Component {
     // Open Facebook login page
     // Upon successful login, a cookie session will be stored in the client
     window.open(`${process.env.REACT_APP_API_URL}/auth/facebook`, "_self");
+    // fetch(`${process.env.REACT_APP_API_URL}/auth/facebook`,{
+    //   method: 'get'
+    // }).then(data => console.log(data))
   };
 
   _handleGoogleSignInClick = () => {

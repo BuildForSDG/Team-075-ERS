@@ -5,7 +5,8 @@ const INITIAL_STATE = {
   login: null,
   signup: null,
   isLoading: false,
-  getError: null
+  getError: null,
+  cookie: null
 };
 
 
