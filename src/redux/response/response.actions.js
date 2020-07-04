@@ -221,7 +221,7 @@ export const updateVictimStatus = (
 
 export const resetVictimupdate = () => ({ type: ConstantsActionTypes.RESET_VICTIM_UPDATE });
 
-export const sendResponseUnitLocation = (name, location, token) => (dispatch) => {
+export const sendResponseUnitLocation = (id, name, location, token) => (dispatch) => {
   dispatch({
     type: ConstantsActionTypes.SEND_RESPONSE_UNIT_LOCATION_START
   });
@@ -233,6 +233,7 @@ export const sendResponseUnitLocation = (name, location, token) => (dispatch) =>
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
+      _id: id,
       name,
       location: {
         latitude: location.lat.toString(),

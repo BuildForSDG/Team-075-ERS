@@ -11,7 +11,8 @@ class Admin extends React.Component {
     setInterval(async () => {
       const { token, responseUnit } = this.props.response.currentUser;
       const { location } = this.props.help;
-      this.props.sendResponseUnitLocation(responseUnit.name, location, token);
+      if (!location) return;
+      this.props.sendResponseUnitLocation(responseUnit._id, responseUnit.name, location, token);
     }, 30000);
   }
 
@@ -34,7 +35,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   showVictimsInfo: (index) => dispatch(showVictimsInfo(index)),
-  sendResponseUnitLocation: (name, location, token) => dispatch(sendResponseUnitLocation(name, location, token))
+  sendResponseUnitLocation: (id, name, location, token) => dispatch(sendResponseUnitLocation(id, name, location, token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);
