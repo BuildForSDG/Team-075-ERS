@@ -1,4 +1,3 @@
-
 /* eslint-disable no-console */
 // import {
 //   createSubscription,
@@ -90,7 +89,12 @@ async function updatePushSubscription(subscriptionObj, token) {
   // return updateSubscription(subscriptionObj, token);
 
   // Get partial endpoint for update as endpoint url cannot be used for lookup
-  const partialEndpoint = subscriptionObj.endpoint.substr(subscriptionObj.endpoint.lastIndexOf('/') + 1);
+  let partialEndpoint = subscriptionObj.endpoint.substr(subscriptionObj.endpoint.lastIndexOf('/') + 1);
+
+  // Check if partial endpoint contains "token"
+  if (partialEndpoint.includes('token')) {
+    partialEndpoint = partialEndpoint.substr(partialEndpoint.lastIndexOf('token=') + 1);
+  }
 
   return fetch(`${process.env.REACT_APP_API_URL}/subscribe/${partialEndpoint}`, {
     method: 'PUT',
