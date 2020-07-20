@@ -98,3 +98,9 @@ textarea {
   background: #e72020;
   border: 0.0625rem solid #e72020;
 }
+
+@media screen and (max-width: 640px) {
+  .report-desc {
+    padding: 2.7rem 0 0.3rem 0;
+  }
+}

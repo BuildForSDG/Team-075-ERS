@@ -46,9 +46,9 @@ class Dashboard extends Component {
               key: 1
             },
             {
-              title: <span>Response Units</span>,
+              title: <span>Victims Location</span>,
               route: '/dashboard/report-units',
-              icon: <Teams className="icon" />,
+              icon: <Location className="icon" />,
               key: 2
             },
             {
@@ -64,9 +64,9 @@ class Dashboard extends Component {
               key: 4
             },
             {
-              title: <span>Locations</span>,
+              title: <span>Response Units</span>,
               route: '/dashboard/map',
-              icon: <Location className="icon" />,
+              icon: <Teams className="icon" />,
               key: 5
             },
             {
@@ -77,7 +77,7 @@ class Dashboard extends Component {
             }
           ]}
         />
-        
+
         <div className="content-container">
           <Switch>
             <Route exact path={'/dashboard/'} component={Admin} />

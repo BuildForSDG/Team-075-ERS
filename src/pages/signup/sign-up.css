@@ -267,11 +267,13 @@ input[name='terms'] {
   .prompt-msg,
   .right {
     position: relative;
-    margin-top: 20px;
+    margin-top: 15px;
   }
 
   .prompt-msg {
     padding: 0;
+    margin-bottom: 15px;
+    margin-top: 5px;
   }
 
   .right p {
