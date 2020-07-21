@@ -57,7 +57,7 @@ textarea {
 
 .btn-send {
   background-color: #e72020;
-  padding: 0.625rem 0rem;
+  padding: 0.625rem 8.125rem;
   display: block;
   margin: auto;
   color: #fff;
@@ -75,7 +75,7 @@ textarea {
 
 .btn-send:hover {
   color: #e72020;
-  padding: 0.5625rem 0rem;
+  padding: 0.5625rem 8.0625rem;
   background: #fff;
   border: 0.0625rem solid #e72020;
 }
@@ -97,10 +97,4 @@ textarea {
   color: #fff;
   background: #e72020;
   border: 0.0625rem solid #e72020;
-}
-
-@media screen and (max-width: 640px) {
-  .report-desc {
-    padding: 2.7rem 0 0.3rem 0;
-  }
 }

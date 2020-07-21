@@ -48,10 +48,13 @@ a {
 
 .register-btn {
   margin: unset;
+  padding: 0.625rem 0rem;
   width: 300px;
 }
 
-.register-btn:focus {
+.register-btn:focus,
+.register-btn:hover {
+  padding: 0.5625rem 0rem;
   outline: none;
 }
 

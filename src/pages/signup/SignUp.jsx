@@ -42,7 +42,6 @@ class SignUp extends React.Component {
     if (password === confirmPassword && terms === 'on') {
       signUpUserStartAsync(name, email, phoneNo, password);
     }
-    
   };
 
   render() {
@@ -54,9 +53,16 @@ class SignUp extends React.Component {
 
           <div className="login-section">
             <form id="login" onSubmit={this.handleSubmit}>
-              <p className='error-message'>{this.props.user.signup === 422 ? this.props.user.currentUser ?
-              this.props.user.currentUser.message : null : null}</p>
-              <p className='error-message'>{this.state.password !== this.state.confirmPassword ? 'Password mismatch!' : null}</p>
+              <p className="error-message">
+                {this.props.user.signup === 422
+                  ? this.props.user.currentUser
+                    ? this.props.user.currentUser.message
+                    : null
+                  : null}
+              </p>
+              <p className="error-message">
+                {this.state.password !== this.state.confirmPassword ? 'Password mismatch!' : null}
+              </p>
               <fieldset>
                 <div className="left">
                   <input
@@ -105,7 +111,7 @@ class SignUp extends React.Component {
                   />
 
                   <div className="policy">
-                    <input type="checkbox" id="checkbox" name="terms" onChange={this.setLoginDetails} />
+                    <input type="checkbox" id="checkbox" name="terms" onChange={this.setLoginDetails} required />
                     <label htmlFor="checkbox">
                       By clicking continue you agree to our
                       <br />
