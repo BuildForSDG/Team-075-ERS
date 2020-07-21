@@ -75,7 +75,7 @@ textarea {
 
 .btn-send:hover {
   color: #e72020;
-  padding: 0.5625rem 8.0625rem;
+  padding: 0.5625rem 0rem;
   background: #fff;
   border: 0.0625rem solid #e72020;
 }
