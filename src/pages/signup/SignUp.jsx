@@ -19,11 +19,12 @@ class SignUp extends React.Component {
     super();
 
     this.state = {
-      name: undefined,
-      email: undefined,
-      phoneNo: undefined,
-      password: undefined,
-      confirmPassword: undefined,
+      name: '',
+      email: '',
+      phoneNo: '',
+      password: '',
+      confirmPassword: '',
+      passwordMatch: false,
       terms: undefined,
       status: 'Submiting'
     };
@@ -32,6 +33,14 @@ class SignUp extends React.Component {
   setLoginDetails = (event) => {
     const { name, value } = event.target;
     this.setState((prevState, PrevProps) => ({ [name]: value }));
+  };
+
+  checkPasswordMatch = () => {
+    if (this.state.password && this.state.confirmPassword && this.state.password !== this.state.confirmPassword) {
+      this.setState({ passwordMatch: true });
+    } else {
+      this.setState({ passwordMatch: false });
+    }
   };
 
   handleSubmit = (event) => {
@@ -60,15 +69,16 @@ class SignUp extends React.Component {
                     : null
                   : null}
               </p>
-              <p className="error-message">
-                {this.state.password !== this.state.confirmPassword ? 'Password mismatch!' : null}
-              </p>
+
+              <p className="error-message">{this.state.passwordMatch ? 'Password mismatch!' : null}</p>
+
               <fieldset>
                 <div className="left">
                   <input
                     name="name"
                     type="text"
                     className="user-details"
+                    value={this.state.name}
                     required
                     placeholder="Name"
                     onChange={this.setLoginDetails}
@@ -78,6 +88,7 @@ class SignUp extends React.Component {
                     name="phoneNo"
                     type="text"
                     className="user-details"
+                    value={this.state.phoneNo}
                     required
                     placeholder="Phone number"
                     onChange={this.setLoginDetails}
@@ -87,6 +98,7 @@ class SignUp extends React.Component {
                     name="email"
                     type="email"
                     className="user-details"
+                    value={this.state.email}
                     required
                     placeholder="Email address"
                     onChange={this.setLoginDetails}
@@ -96,6 +108,8 @@ class SignUp extends React.Component {
                     name="password"
                     type="password"
                     className="user-details"
+                    value={this.state.password}
+                    onBlur={this.checkPasswordMatch}
                     required
                     placeholder="Password"
                     onChange={this.setLoginDetails}
@@ -105,6 +119,8 @@ class SignUp extends React.Component {
                     name="confirmPassword"
                     type="password"
                     className="user-details"
+                    value={this.state.confirmPassword}
+                    onBlur={this.checkPasswordMatch}
                     required
                     placeholder="Confirm Password"
                     onChange={this.setLoginDetails}
